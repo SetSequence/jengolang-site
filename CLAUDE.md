@@ -4,7 +4,7 @@
 
 ## Project
 jengolang.com — Astro static site, deploys to Cloudflare Pages automatically on push to main.
-The Jengo app (backend) is a separate repo at `/Users/cadenshelley/Documents/Cursor/`.
+The Jengo app (backend) is a separate repo at `/Users/cadenshelley/Documents/JengoApp/`.
 
 ## Commands
 ```bash
