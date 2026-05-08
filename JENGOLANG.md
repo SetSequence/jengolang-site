@@ -187,7 +187,7 @@ The grammar article format above is designed to satisfy this. No extra work need
 
 ## Migration Plan (jengolang.com → app.jengolang.com)
 
-1. Add `app` CNAME in Cloudflare pointing to the Railway app
+1. ✓ Add `app` CNAME in Cloudflare pointing to the Railway app
 2. Deploy new landing page to Cloudflare Pages at `jengolang.com`
 3. Set up redirect: `jengolang.com/app` → `app.jengolang.com` (for any old links)
 4. Update all in-app links and email templates that reference `jengolang.com` to `app.jengolang.com`
@@ -198,17 +198,19 @@ The grammar article format above is designed to satisfy this. No extra work need
 ## Roadmap
 
 ### Phase 0 — Infrastructure (1–2 days)
-- [ ] Create new GitHub repo (`jengolang-site`) — separate from the Jengo backend repo
-- [ ] Init Astro project inside it (`npm create astro@latest`)
-- [ ] Connect repo to Cloudflare Pages (Dashboard → Pages → Connect to Git)
-- [ ] Configure Cloudflare: `app.jengolang.com` CNAME → Railway, `jengolang.com` → Cloudflare Pages
+- [x] Create new GitHub repo (`jengolang-site`) — separate from the Jengo backend repo
+- [x] Init Astro project inside it (`npm create astro@latest`)
+- [x] Connect repo to Cloudflare Pages (Dashboard → Pages → Connect to Git)
+- [x] Configure Cloudflare: `app.jengolang.com` CNAME → Railway, `jengolang.com` → Cloudflare Pages
 - [ ] Set up redirect: `jengolang.com/app` → `app.jengolang.com`
 
 ### Phase 1 — Landing Page (2–3 days)
-- [ ] Design and build `jengolang.com` landing page
-- [ ] SVG hero illustration
+- [ ] Run `/impeccable teach` to generate PRODUCT.md — impeccable installed globally at `~/.claude/skills/impeccable/`
+- [ ] Design and build `jengolang.com` landing page (see design spec below)
 - [ ] Mobile-first layout
 - [ ] "Try Jengo" CTA wired to `app.jengolang.com`
+- [ ] iOS App Store badge (placeholder slot — link to be added after App Store submission)
+- [ ] Creator note section with photo (Caden, 2 years in Japan, built Jengo to solve the flashcard-vs-reading gap)
 
 ### Phase 2 — Content Architecture (2–3 days)
 - [ ] Build Astro content templates (grammar article, vocab list, language index)
