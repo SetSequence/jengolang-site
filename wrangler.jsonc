@@ -4,7 +4,7 @@
 	"name": "jengolang-site",
 	"main": "@astrojs/cloudflare/entrypoints/server",
 	"assets": {
-		"directory": "./dist",
+		"directory": "./dist/client",
 		"binding": "ASSETS"
 	},
 	"observability": {
