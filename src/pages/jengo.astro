@@ -449,8 +449,11 @@ const description = "Jengo takes your vocabulary review list and generates it in
       letter-spacing: 0.01em;
       color: var(--white);
       word-break: break-word;
-      height: 9.5rem; /* fixed — prevents layout shift during typewriter */
+      height: 9.5rem;
       overflow: hidden;
+    }
+    @media (max-width: 420px) {
+      .demo-para { height: 14rem; }
     }
 
     /* Animated cursor */
