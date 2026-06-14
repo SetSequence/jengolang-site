@@ -17,9 +17,9 @@ All design **LOCKED** (content schema + sense layer + render tech 2026-06-04, ap
 2026-06-05); catalog enrichment **complete** (1,458 nodes post-dedup, QA PASS); the full
 Content Collection is **materialized + rendered** ([slug].astro template done). **Frontier
 = Pass-2 long-tail teaching-content fill.** Done so far: Foundations 60/60 + Read-novels
-branch 22/22 + long-tail batches 1–3 (21 + 15 + 14 essential N5/N4) → **138 nodes
-indexed**, ~1,320 stubs remain. **Next action = long-tail batch 4** (run
-`scripts/list_stubs.py --freq essential`; **48 essential stubs left**, then `--freq
+branch 22/22 + long-tail batches 1–4 (21 + 15 + 14 + 12 essential N5/N4) → **150 nodes
+indexed**, ~1,308 stubs remain. **Next action = long-tail batch 5** (run
+`scripts/list_stubs.py --freq essential`; **36 essential stubs left**, then `--freq
 common`). Then **step 4 = tree UI pan/zoom** (extend `index.astro`; render tech locked
 below). The dated BUILD log further down is *history* — for "what now," this block + the
 next one are enough.
@@ -183,6 +183,26 @@ stubs remain). All 1,458 pages build PASS, 0 dangling slugs, 0 furigana imbalanc
 sense-refs match a senses[].label (pre-build stdlib lint + `npm run build`). **Next:
 long-tail batch 4** (48 essential stubs left → then `--freq common`) + **step 4** = tree UI
 pan/zoom.
+**BUILD long-tail batch 4 DONE (2026-06-14):** Pass-2 fill of **12 essential N5/N4/N3 stubs** —
+the **degree / polarity adverbs + demonstratives + sequencing** web, chosen for dense
+internal cross-linking. Nodes: the still/already aspect-adverb pair (まだ 2-sense still/not-yet,
+もう 2-sense already/not-anymore — contrasted as polar opposites; まだ also linked to the
+already-indexed まだ〜ていません), degree (もっと comparative 'more' vs とても absolute 'very' —
+mutually contrasted; とても done **2-sense** very / can't-possibly), negative-polarity (全然
+needs-negative, 絶対に 2-sense will/won't — 全然↔絶対に↔とても triangulated on what each does with
+a negative), the loose adverbs すぐ (variant すぐに + spatial note) / また (2-sense again /
+moreover) / 一緒に, the adnominal demonstrative pair この↔こんな (the specific-item vs
+type-of-thing contrast, each with the これ/こんなに restriction), and sequencing それから
+(contrasted with the batch-1 そして + また). Slot judgment per CALIBRATION2 §1–§3: multi-sense
+`senses[]` only where a real polarity/meaning split exists (まだ/もう/とても/絶対に/また);
+`restrictions` only on genuine learner-errors (とても〜ない≠'not very'; 全然 needs negative;
+この≠これ; こんな vs こんなに); `variants` on 絶対(に)/すぐ(に); `notes` for homonym/series
+disambiguation (もう+number='more', こ・そ・あ・ど series) — no manufactured slots. All flipped
+`noindex:false` (**150 indexed now, was 138**; 36 essential stubs remain). All 1,458 pages
+build PASS, 0 dangling contrast/prereq slugs, 0 furigana brace imbalances, all sense-refs
+match a senses[].label, rendered ruby verified in built HTML (pre-build stdlib lint + `npm run
+build`). **Next: long-tail batch 5** (36 essential stubs left → then `--freq common`) +
+**step 4** = tree UI pan/zoom.
 
 ---
 
