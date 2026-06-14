@@ -1,0 +1,571 @@
+---
+import { getCollection } from "astro:content";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const entries = await getCollection("grammar");
+  // Resolve nav-chrome labels ONCE here (not per-page) so each page gets only the
+  // small slice it needs — passing the whole collection as props is O(n^2) at build.
+  const meta = new Map(
+    entries.map((e) => [e.id, { canonical: e.data.canonical, title: e.data.title }]),
+  );
+  const clean = (s) => String(s).replace(/^\*/, "");
+  return entries.map((entry) => {
+    const d = entry.data;
+    const prereqs = (d.prereqs ?? []).map((s) => {
+      const slug = clean(s);
+      return { slug, canonical: meta.get(slug)?.canonical || slug };
+    });
+    const related = (d.related ?? [])
+      .map((s) => clean(s))
+      .filter((slug) => meta.has(slug))
+      .map((slug) => ({ slug, canonical: meta.get(slug).canonical || slug, title: meta.get(slug).title }));
+    const contrasts = (d.contrasts ?? []).map((c) => {
+      const slug = clean(c.slug);
+      return { ...c, href: meta.has(slug) ? `/learn/japanese/grammar/${slug}` : null };
+    });
+    return { params: { slug: entry.id }, props: { entry, prereqs, related, contrasts } };
+  });
+}
+
+const { entry, prereqs, related, contrasts } = Astro.props;
+const d = entry.data;
+
+// Furigana: 漢字{かんじ} markup → <ruby>漢字<rt>かんじ</rt></ruby> (crawlable).
+const esc = (s = "") =>
+  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+function furigana(jp = "") {
+  const re = /([一-龯々〆ヶ]+)\{([^}]+)\}/g;
+  let out = "",
+    last = 0,
+    m;
+  while ((m = re.exec(jp))) {
+    out += esc(jp.slice(last, m.index));
+    out += `<ruby>${esc(m[1])}<rt>${esc(m[2])}</rt></ruby>`;
+    last = m.index + m[0].length;
+  }
+  return out + esc(jp.slice(last));
+}
+// strip furigana markup for plain-text contexts (meta description)
+const plain = (jp = "") => jp.replace(/\{[^}]+\}/g, "");
+
+// Normalize single-sense ↔ multi-sense to ONE render path (TREE.md sense layer).
+const multi = !!(d.senses && d.senses.length > 1);
+const senses =
+  d.senses && d.senses.length
+    ? d.senses
+    : [
+        {
+          label: "",
+          equivalents: d.equivalents ?? [],
+          keySentence: d.keySentence,
+          examples: d.examples ?? [],
+        },
+      ];
+const senseNum = ["①", "②", "③", "④", "⑤"];
+
+const hasContent =
+  senses.some(
+    (s) => s.equivalents?.length || s.keySentence || s.examples?.length,
+  ) ||
+  d.formation.length ||
+  d.variants.length ||
+  d.restrictions.length ||
+  d.contrasts.length ||
+  d.notes.length ||
+  !!d.nuance ||
+  !!d.usageSetting;
+
+const registerLabel = {
+  "casual-spoken": "casual",
+  "polite-spoken": "polite",
+  "written-modern": "written",
+  literary: "literary",
+  archaic: "archaic",
+};
+const keigoLabel = {
+  teineigo: "teineigo (polite)",
+  sonkeigo: "sonkeigo (respectful)",
+  kenjougo: "kenjougo (humble)",
+};
+const jlptColor = {
+  N5: "oklch(55% 0.10 156)",
+  N4: "oklch(55% 0.10 200)",
+  N3: "oklch(55% 0.11 250)",
+  N2: "oklch(52% 0.12 300)",
+  N1: "oklch(50% 0.13 340)",
+  none: "oklch(60% 0.01 156)",
+};
+
+// — SEO —
+const metaDesc =
+  d.nuance ||
+  (senses[0].equivalents?.length
+    ? `${d.canonical} (${d.reading}): ${senses[0].equivalents.join("; ")}.`
+    : `${d.canonical} — Japanese grammar. ${plain(d.title)}.`);
+const pageTitle = `${d.title} — Japanese Grammar | Jengo`;
+const canonicalURL = `https://jengolang.com/learn/japanese/grammar/${entry.id}`;
+const jsonLd =
+  !d.noindex && hasContent
+    ? {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        headline: d.title,
+        description: metaDesc,
+        inLanguage: "en",
+        about: { "@type": "Thing", name: `${d.canonical} (Japanese grammar)` },
+        url: canonicalURL,
+      }
+    : null;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={metaDesc} />
+    {d.noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{pageTitle}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <style is:global>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      :root {
+        --brand:          oklch(47% 0.089 156);
+        --brand-dark:     oklch(25% 0.062 156);
+        --brand-tint:     oklch(96% 0.016 156);
+        --bg:             oklch(98.5% 0.005 156);
+        --surface:        oklch(99% 0.003 156);
+        --border:         oklch(90% 0.008 156);
+        --border-strong:  oklch(82% 0.012 156);
+        --text-primary:   oklch(22% 0.010 156);
+        --text-secondary: oklch(50% 0.012 156);
+        --text-tertiary:  oklch(68% 0.008 156);
+        --white:          oklch(99.5% 0.002 156);
+        /* "confused with" comparison accent — indigo, distinct from green */
+        --indigo:         oklch(48% 0.13 290);
+        --indigo-tint:    oklch(96% 0.022 290);
+        --indigo-border:  oklch(88% 0.04 290);
+        /* "can't use" callout — warm clay/amber, NOT alarm red */
+        --clay:           oklch(52% 0.12 50);
+        --clay-tint:      oklch(96% 0.03 50);
+        --clay-border:    oklch(85% 0.06 50);
+      }
+      html { font-optical-sizing: auto; scroll-behavior: smooth; }
+      body {
+        font-family: "Onest", system-ui, sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background: var(--bg);
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: inherit; }
+      ruby rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.5em; font-weight: 500; color: var(--text-tertiary); }
+    </style>
+    <style>
+      .nav { background: var(--brand-dark); position: sticky; top: 0; z-index: 100; }
+      .nav-inner {
+        max-width: 920px; margin: 0 auto; padding: 0 1.5rem; height: 56px;
+        display: flex; align-items: center; justify-content: space-between;
+      }
+      .nav-wordmark { font-size: 1rem; font-weight: 600; color: var(--white); text-decoration: none; letter-spacing: -0.01em; }
+      .nav-right { display: flex; align-items: center; gap: 1.25rem; }
+      .nav a.open { font-size: 0.8rem; color: oklch(99.5% 0.002 156 / 0.78); text-decoration: none; }
+      .nav a.open:hover { color: var(--white); }
+      .nav a.try {
+        font-size: 0.8rem; font-weight: 600; color: var(--white); text-decoration: none;
+        border: 1px solid oklch(99.5% 0.002 156 / 0.3); border-radius: 7px; padding: 6px 12px;
+      }
+
+      .wrap { max-width: 760px; margin: 0 auto; padding: 1.5rem 1.5rem 5rem; }
+
+      .crumbs { font-size: 0.78rem; color: var(--text-tertiary); margin-bottom: 1.6rem; }
+      .crumbs a { text-decoration: none; }
+      .crumbs a:hover { color: var(--brand); }
+
+      /* ── Header ── */
+      .badges { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+      .badge {
+        font-size: 0.68rem; font-weight: 600; letter-spacing: 0.02em; padding: 3px 8px;
+        border-radius: 6px; background: var(--brand-tint); color: var(--text-secondary);
+        border: 1px solid var(--border);
+      }
+      .badge.jlpt { color: #fff; border: none; }
+      .badge.cat { background: var(--brand); color: #fff; border: none; }
+
+      h1 {
+        font-size: clamp(1.6rem, 4.5vw, 2.3rem); font-weight: 800; letter-spacing: -0.02em;
+        line-height: 1.15;
+      }
+      .pattern {
+        margin-top: 0.6rem; font-family: "Noto Sans JP", sans-serif; font-weight: 500;
+        font-size: 1rem; color: var(--text-tertiary);
+      }
+
+      /* ── builds-on chips (nav chrome) ── */
+      .builds { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; margin-top: 1.4rem; }
+      .builds .lbl { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-tertiary); margin-right: 0.2rem; }
+      .chip {
+        display: inline-flex; align-items: baseline; gap: 0.35rem; text-decoration: none;
+        font-size: 0.82rem; padding: 4px 10px; border-radius: 999px;
+        background: var(--surface); border: 1px solid var(--border); color: var(--text-secondary);
+        transition: border-color 140ms;
+      }
+      .chip:hover { border-color: var(--brand); }
+      .chip .cj { font-family: "Noto Sans JP", sans-serif; font-weight: 600; color: var(--text-primary); }
+
+      /* ── section scaffolding ── */
+      section { margin-top: 2.6rem; }
+      .sec-h {
+        font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+        color: var(--text-tertiary); margin-bottom: 0.9rem;
+      }
+
+      /* meaning */
+      .equiv { list-style: none; display: grid; gap: 0.5rem; }
+      .equiv li { font-size: 1.1rem; font-weight: 500; line-height: 1.45; padding-left: 1.1rem; position: relative; }
+      .equiv li::before { content: ""; position: absolute; left: 0; top: 0.65em; width: 6px; height: 6px; border-radius: 999px; background: var(--brand); }
+      .sense-eq { display: grid; gap: 0.7rem; }
+      .sense-eq .num { font-weight: 800; color: var(--brand); margin-right: 0.35rem; }
+      .nuance { margin-top: 1rem; font-size: 0.97rem; color: var(--text-secondary); line-height: 1.65; }
+
+      /* key sentence + examples = the visual heart */
+      .hero {
+        background: var(--brand-tint); border: 1px solid var(--border); border-radius: 14px;
+        padding: 1.3rem 1.4rem; margin-top: 0.8rem;
+      }
+      .hero + .hero { margin-top: 0.7rem; }
+      .hero .slabel { font-size: 0.74rem; font-weight: 700; color: var(--brand); margin-bottom: 0.5rem; }
+      .jp-lg { font-family: "Noto Sans JP", sans-serif; font-size: 1.4rem; font-weight: 500; line-height: 1.9; color: var(--text-primary); }
+      .en { margin-top: 0.5rem; font-size: 0.95rem; color: var(--text-secondary); }
+
+      .ex-group + .ex-group { margin-top: 1.4rem; }
+      .ex-group .glabel { font-size: 0.8rem; font-weight: 700; color: var(--brand); margin-bottom: 0.6rem; }
+      .ex { padding: 0.85rem 0; border-top: 1px solid var(--border); }
+      .ex:first-of-type { border-top: none; }
+      .ex .jp-md { font-family: "Noto Sans JP", sans-serif; font-size: 1.18rem; font-weight: 500; line-height: 1.85; }
+      .ex .en { margin-top: 0.25rem; font-size: 0.92rem; }
+      .ex .exnote { margin-top: 0.25rem; font-size: 0.76rem; color: var(--text-tertiary); }
+      .lv { display: inline-block; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-tertiary); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; margin-left: 0.5rem; vertical-align: middle; }
+
+      /* formation table */
+      table.formation { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+      table.formation th, table.formation td { text-align: left; padding: 0.55rem 0.7rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+      table.formation thead th { background: var(--brand-tint); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-secondary); border-bottom: 1px solid var(--border-strong); }
+      table.formation .form { font-family: "Noto Sans JP", sans-serif; font-weight: 600; }
+      table.formation .eg { font-family: "Noto Sans JP", sans-serif; color: var(--text-secondary); }
+      .usage { margin-top: 0.8rem; font-size: 0.9rem; color: var(--text-secondary); }
+      .usage b { font-weight: 600; color: var(--text-primary); }
+
+      /* variants chips */
+      .variants { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+      .vform {
+        background: var(--surface); border: 1px solid var(--border); border-radius: 9px;
+        padding: 0.5rem 0.75rem; font-size: 0.88rem;
+      }
+      .vform .vj { font-family: "Noto Sans JP", sans-serif; font-weight: 600; }
+      .vform .vn { color: var(--text-tertiary); font-size: 0.78rem; }
+
+      /* can't-use callout (clay) */
+      .cantuse { background: var(--clay-tint); border: 1px solid var(--clay-border); border-radius: 12px; padding: 1.1rem 1.3rem; }
+      .cantuse .sec-h { color: var(--clay); }
+      .cantuse ul { list-style: none; display: grid; gap: 0.7rem; }
+      .cantuse li { font-size: 0.95rem; line-height: 1.55; padding-left: 1.4rem; position: relative; }
+      .cantuse li::before { content: "✕"; position: absolute; left: 0; top: 0; color: var(--clay); font-weight: 700; }
+      .pin { font-size: 0.7rem; font-weight: 700; color: var(--clay); margin-left: 0.3rem; }
+
+      /* confused-with comparison (indigo) */
+      .contrast { display: grid; gap: 0.7rem; }
+      .crow {
+        display: grid; grid-template-columns: minmax(90px, auto) 1fr; gap: 0.5rem 1rem;
+        background: var(--indigo-tint); border: 1px solid var(--indigo-border); border-radius: 12px;
+        padding: 0.9rem 1.1rem; text-decoration: none;
+      }
+      .crow:hover { border-color: var(--indigo); }
+      .crow .sib { font-family: "Noto Sans JP", sans-serif; font-weight: 700; color: var(--indigo); font-size: 1.05rem; }
+      .crow .dist { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.5; }
+      .crow .dist b { color: var(--text-primary); font-weight: 600; }
+
+      /* notes */
+      .notes { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.2rem; }
+      .notes ul { list-style: none; display: grid; gap: 0.6rem; }
+      .notes li { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.55; }
+
+      /* stub / coming-soon */
+      .stub { margin-top: 2.4rem; background: var(--surface); border: 1px dashed var(--border-strong); border-radius: 14px; padding: 1.5rem 1.5rem; }
+      .stub p { font-size: 0.98rem; color: var(--text-secondary); line-height: 1.6; }
+      .stub p + p { margin-top: 0.6rem; }
+
+      /* app CTA — one soft companion-tool ask (TREE app-funnel v1) */
+      .appcta {
+        margin-top: 3rem; background: var(--brand-tint); border: 1px solid var(--border);
+        border-radius: 14px; padding: 1.5rem 1.6rem;
+      }
+      .appcta h3 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }
+      .appcta p { margin-top: 0.4rem; font-size: 0.95rem; color: var(--text-secondary); max-width: 52ch; }
+      .appcta a.btn {
+        display: inline-block; margin-top: 1rem; background: var(--brand); color: #fff;
+        font-weight: 600; font-size: 0.92rem; text-decoration: none; padding: 11px 22px; border-radius: 8px;
+        transition: background 120ms;
+      }
+      .appcta a.btn:hover { background: oklch(42% 0.089 156); }
+
+      /* see-also footer (nav chrome) */
+      .seealso { margin-top: 2.6rem; padding-top: 1.6rem; border-top: 1px solid var(--border); }
+      .seealso .sec-h { margin-bottom: 0.8rem; }
+      .seealso .links { display: grid; gap: 0.5rem; }
+      .seealso a { display: flex; align-items: baseline; gap: 0.6rem; text-decoration: none; font-size: 0.92rem; color: var(--text-secondary); }
+      .seealso a:hover { color: var(--brand); }
+      .seealso .sj { font-family: "Noto Sans JP", sans-serif; font-weight: 600; color: var(--text-primary); }
+
+      .backtree { margin-top: 2.6rem; font-size: 0.88rem; }
+      .backtree a { color: var(--brand); text-decoration: none; font-weight: 500; }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-inner">
+        <a class="nav-wordmark" href="/">Jengo</a>
+        <div class="nav-right">
+          <a class="open" href="https://app.jengolang.com">Open app</a>
+          <a class="try" href="https://app.jengolang.com">Try Jengo</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="wrap">
+      <nav class="crumbs">
+        <a href="/learn/japanese/grammar">Grammar tree</a> &nbsp;/&nbsp; {d.canonical || entry.id}
+      </nav>
+
+      {/* ── 1. Header ── */}
+      <header>
+        <div class="badges">
+          <span class="badge cat">{d.family}</span>
+          <span class="badge jlpt" style={`background:${jlptColor[d.jlpt] ?? jlptColor.none}`}>{d.jlpt}</span>
+          <span class="badge">{d.freq}</span>
+          {d.register.map((r) => <span class="badge">{registerLabel[r] ?? r}</span>)}
+          {d.keigo !== "none" && <span class="badge">{keigoLabel[d.keigo] ?? d.keigo}</span>}
+        </div>
+        <h1>{d.title}</h1>
+        {d.canonical && (
+          <div class="pattern">{d.canonical}{d.reading && d.reading !== d.canonical ? ` ・ ${d.reading}` : ""}</div>
+        )}
+      </header>
+
+      {/* ── builds-on (prereqs, nav chrome) ── */}
+      {prereqs.length > 0 && (
+        <div class="builds">
+          <span class="lbl">Builds on</span>
+          {prereqs.map((p) => (
+            <a class="chip" href={`/learn/japanese/grammar/${p.slug}`}>
+              <span class="cj">{p.canonical}</span>
+            </a>
+          ))}
+        </div>
+      )}
+
+      {/* AD SLOT (reserved, Phase 4 — below header). Render off until AdSense is live. */}
+
+      {!hasContent ? (
+        <div class="stub">
+          <p>A full written guide for <b>{d.canonical || d.title}</b> is on the way.</p>
+          <p>
+            This point is mapped in the grammar tree, but its examples, formation table
+            and usage notes haven't been written yet. The fastest way to learn it now is
+            to meet it in real sentences inside Jengo.
+          </p>
+        </div>
+      ) : (
+        <>
+          {/* ── 2. Meaning ── */}
+          <section>
+            <h2 class="sec-h">Meaning</h2>
+            {multi ? (
+              <div class="sense-eq">
+                {senses.map((s, i) => (
+                  <div>
+                    <span class="num">{senseNum[i]}</span>
+                    {s.label && <b>{s.label}: </b>}
+                    {(s.equivalents ?? []).join("; ")}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <ul class="equiv">
+                {(senses[0].equivalents ?? []).map((e) => <li>{e}</li>)}
+              </ul>
+            )}
+            {d.nuance && <p class="nuance">{d.nuance}</p>}
+          </section>
+
+          {/* ── 3. Key sentence(s) ── */}
+          {senses.some((s) => s.keySentence) && (
+            <section>
+              <h2 class="sec-h">Key sentence</h2>
+              {senses.map((s, i) =>
+                s.keySentence ? (
+                  <div class="hero">
+                    {multi && <div class="slabel">{senseNum[i]} {s.label}</div>}
+                    <div class="jp-lg" set:html={furigana(s.keySentence.jp)} />
+                    <div class="en">{s.keySentence.en}</div>
+                  </div>
+                ) : null,
+              )}
+            </section>
+          )}
+
+          {/* ── 4. Formation ── */}
+          {d.formation.length > 0 && (
+            <section>
+              <h2 class="sec-h">Formation</h2>
+              <table class="formation">
+                <thead>
+                  <tr><th>Attaches to</th><th>Form</th><th>Example</th></tr>
+                </thead>
+                <tbody>
+                  {d.formation.map((f) => (
+                    <tr>
+                      <td>{f.attaches_to}</td>
+                      <td class="form" set:html={furigana(f.form)} />
+                      <td class="eg" set:html={f.example ? furigana(f.example) : ""} />
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              {d.usageSetting && <p class="usage"><b>When:</b> {d.usageSetting}</p>}
+            </section>
+          )}
+          {d.formation.length === 0 && d.usageSetting && (
+            <section>
+              <h2 class="sec-h">Usage</h2>
+              <p class="usage">{d.usageSetting}</p>
+            </section>
+          )}
+
+          {/* ── 5. Variants ── */}
+          {d.variants.length > 0 && (
+            <section>
+              <h2 class="sec-h">Variants</h2>
+              <div class="variants">
+                {d.variants.map((v) => (
+                  <span class="vform">
+                    <span class="vj">{v.form}</span>
+                    {v.reading && v.reading !== v.form ? <span class="vn"> ・ {v.reading}</span> : null}
+                    {v.note && <span class="vn"> — {v.note}</span>}
+                  </span>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* ── 6. Examples ── */}
+          {senses.some((s) => s.examples?.length) && (
+            <section>
+              <h2 class="sec-h">Examples</h2>
+              {senses.map((s, i) =>
+                s.examples?.length ? (
+                  <div class="ex-group">
+                    {multi && <div class="glabel">{senseNum[i]} {s.label}</div>}
+                    {s.examples.map((ex) => (
+                      <div class="ex">
+                        <div class="jp-md">
+                          <span set:html={furigana(ex.jp)} />
+                          {ex.level && <span class="lv">{ex.level}</span>}
+                        </div>
+                        <div class="en">{ex.en}</div>
+                        {ex.note && <div class="exnote">{ex.note}</div>}
+                      </div>
+                    ))}
+                  </div>
+                ) : null,
+              )}
+            </section>
+          )}
+
+          {/* ── 7. When you can't use it ── */}
+          {d.restrictions.length > 0 && (
+            <section class="cantuse">
+              <h2 class="sec-h">When you can't use it</h2>
+              <ul>
+                {d.restrictions.map((r) => (
+                  <li>
+                    <span set:html={furigana(r.text)} />
+                    {r.sense && <span class="pin">{r.sense}</span>}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          {/* ── 8. Easily confused with ── */}
+          {d.contrasts.length > 0 && (
+            <section>
+              <h2 class="sec-h">Easily confused with</h2>
+              <div class="contrast">
+                {contrasts.map((c) => {
+                  const Row = c.href ? "a" : "div";
+                  return (
+                    <Row class="crow" href={c.href}>
+                      <span class="sib">{c.label}</span>
+                      <span class="dist" set:html={furigana(c.distinction)} />
+                    </Row>
+                  );
+                })}
+              </div>
+            </section>
+          )}
+
+          {/* ── 9. Notes ── */}
+          {d.notes.length > 0 && (
+            <section class="notes">
+              <h2 class="sec-h">Notes</h2>
+              <ul>
+                {d.notes.map((n) => <li set:html={furigana(n.text)} />)}
+              </ul>
+            </section>
+          )}
+        </>
+      )}
+
+      {/* ── App CTA (one soft companion ask) ── */}
+      <div class="appcta">
+        <h3>See {d.canonical || "this grammar"} in real sentences</h3>
+        <p>
+          Jengo shows {d.canonical ? <b>{d.canonical}</b> : "each grammar point"} the way you
+          actually meet it: inside real Japanese sentences, so it sticks instead of staying
+          an abstract rule.
+        </p>
+        <a class="btn" href="https://app.jengolang.com">Study it in Jengo</a>
+      </div>
+
+      {/* AD SLOT (reserved, Phase 4 — end of content, below the app CTA). */}
+
+      {/* ── See also (related, nav chrome) ── */}
+      {related.length > 0 && (
+        <section class="seealso">
+          <h2 class="sec-h">See also</h2>
+          <div class="links">
+            {related.map((r) => (
+              <a href={`/learn/japanese/grammar/${r.slug}`}>
+                <span class="sj">{r.canonical}</span>
+                <span>{plain(r.title)}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <p class="backtree"><a href="/learn/japanese/grammar">← Back to the grammar tree</a></p>
+    </main>
+  </body>
+</html>

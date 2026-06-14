@@ -1,0 +1,294 @@
+---
+import slice from "../../../../data/grammar_slice.json";
+
+const title = "Japanese Grammar Skill Tree — Jengo";
+const description =
+  "A navigable map of Japanese grammar: a curated Foundations line through the core grammar, with goal-based routes like reading novels lit on top.";
+
+// Group the flat node lists back into their curated stages for layout.
+function byStage(nodes) {
+  const map = new Map();
+  for (const n of nodes) {
+    const k = n.stage.index;
+    if (!map.has(k)) map.set(k, { label: n.stage.label, nodes: [] });
+    map.get(k).nodes.push(n);
+  }
+  return [...map.entries()].sort((a, b) => a[0] - b[0]).map(([, v]) => v);
+}
+
+const foundationStages = byStage(slice.foundations.nodes);
+const branchStages = byStage(slice.branch.route);
+const anchors = slice.anchors;
+const branch = slice.branch;
+const overflow = branch.filter_member_count - branch.route_count;
+
+const jlptColor = {
+  N5: "oklch(55% 0.10 156)",
+  N4: "oklch(55% 0.10 200)",
+  N3: "oklch(55% 0.11 250)",
+  N2: "oklch(52% 0.12 300)",
+  N1: "oklch(50% 0.13 340)",
+  none: "oklch(60% 0.01 156)",
+};
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style is:global>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:          oklch(47% 0.089 156);
+      --brand-dark:     oklch(25% 0.062 156);
+      --brand-tint:     oklch(96% 0.016 156);
+      --bg:             oklch(98.5% 0.005 156);
+      --surface:        oklch(99% 0.003 156);
+      --border:         oklch(90% 0.008 156);
+      --text-primary:   oklch(22% 0.010 156);
+      --text-secondary: oklch(50% 0.012 156);
+      --text-tertiary:  oklch(68% 0.008 156);
+      --white:          oklch(99.5% 0.002 156);
+      /* literary "Read novels" line accent — indigo, distinct from the green */
+      --lit:            oklch(48% 0.13 290);
+      --lit-tint:       oklch(96% 0.022 290);
+      --lit-border:     oklch(88% 0.04 290);
+    }
+    html { font-optical-sizing: auto; scroll-behavior: smooth; }
+    body {
+      font-family: 'Onest', system-ui, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+  </style>
+  <style>
+    .nav { background: var(--brand-dark); position: sticky; top: 0; z-index: 100; }
+    .nav-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-wordmark { font-size: 1rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; text-decoration: none; }
+    .nav a.try { font-size: .8rem; font-weight: 600; color: var(--white); text-decoration: none;
+      border: 1px solid oklch(99.5% 0.002 156 / .3); border-radius: 7px; padding: 6px 12px; }
+
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+
+    .head h1 { font-size: clamp(1.7rem, 5vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+    .head .lede { margin-top: .9rem; max-width: 56ch; color: var(--text-secondary); font-size: 1.05rem; }
+    .preview-pill {
+      display: inline-flex; align-items: center; gap: 6px; margin-bottom: 1rem;
+      font-size: .72rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+      color: var(--brand); background: var(--brand-tint); border: 1px solid var(--border);
+      padding: 4px 10px; border-radius: 999px;
+    }
+    .preview-pill svg { width: 13px; height: 13px; }
+
+    .stats { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin-top: 1.6rem;
+      padding-top: 1.4rem; border-top: 1px solid var(--border); }
+    .stat .n { font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; }
+    .stat .l { font-size: .8rem; color: var(--text-tertiary); }
+
+    /* ─── Line scaffolding ─── */
+    .line { margin-top: 3.5rem; }
+    .line-head { display: flex; align-items: baseline; gap: .75rem; flex-wrap: wrap; }
+    .line-dot { width: 12px; height: 12px; border-radius: 999px; flex: none; align-self: center; }
+    .line-title { font-size: 1.3rem; font-weight: 800; letter-spacing: -.01em; }
+    .line-sub { color: var(--text-secondary); font-size: .95rem; }
+    .line-tagline { width: 100%; color: var(--text-tertiary); font-size: .85rem; margin-top: .1rem; }
+
+    .stage { position: relative; margin-top: 1.5rem; padding-left: 1.75rem; }
+    /* the spine: a vertical rail down the left of each line */
+    .stage::before {
+      content: ""; position: absolute; left: 5px; top: -1.5rem; bottom: -1.5rem; width: 2px;
+      background: var(--rail, var(--border));
+    }
+    .stage:first-of-type::before { top: .55rem; }
+    .stage:last-of-type::before { bottom: auto; height: .55rem; }
+    .stage-label {
+      position: relative; font-size: .78rem; font-weight: 700; letter-spacing: .02em;
+      text-transform: uppercase; color: var(--text-tertiary); margin-bottom: .8rem;
+    }
+    .stage-label::before {
+      content: ""; position: absolute; left: -1.75rem; top: 50%; transform: translateY(-50%);
+      width: 12px; height: 12px; border-radius: 999px; background: var(--bg);
+      border: 2px solid var(--rail, var(--border));
+    }
+
+    .cards { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+
+    .card {
+      display: block; text-decoration: none; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 11px; padding: .7rem .8rem;
+      transition: border-color 140ms, transform 140ms;
+    }
+    .card:hover { border-color: var(--accent, var(--brand)); transform: translateY(-1px); }
+    .card-top { display: flex; align-items: baseline; gap: .5rem; }
+    .jp { font-family: 'Noto Sans JP', sans-serif; font-weight: 700; font-size: 1.15rem; line-height: 1.2; }
+    .reading { font-family: 'Noto Sans JP', sans-serif; font-size: .72rem; color: var(--text-tertiary); }
+    .meaning { font-size: .82rem; color: var(--text-secondary); margin-top: .25rem; line-height: 1.4;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .badges { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .5rem; }
+    .badge {
+      font-size: .64rem; font-weight: 600; letter-spacing: .02em; padding: 2px 6px; border-radius: 5px;
+      background: var(--brand-tint); color: var(--text-secondary); border: 1px solid var(--border);
+    }
+    .badge.jlpt { color: #fff; border: none; }
+    .badge.slug { font-family: ui-monospace, monospace; background: transparent; color: var(--text-tertiary); }
+    .badge.anchor { background: oklch(94% 0.02 156); color: var(--brand-dark); }
+
+    /* Foundations line accents */
+    .line.foundations { --rail: oklch(82% 0.06 156); --accent: var(--brand); }
+    .line.foundations .line-dot { background: var(--brand); }
+
+    /* Branch (literary) accents — dim by default, the route is the bright part */
+    .line.branch { --rail: var(--lit-border); --accent: var(--lit); }
+    .line.branch .line-dot { background: var(--lit); }
+    .line.branch .card:hover { border-color: var(--lit); }
+    .line.branch .stage-label { color: var(--lit); }
+
+    .anchors-row .cards { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+    .anchors-row .card { background: oklch(97% 0.012 156); }
+
+    .overflow {
+      margin-top: 1.5rem; margin-left: 1.75rem; padding: 1rem 1.2rem; border-radius: 11px;
+      background: var(--lit-tint); border: 1px dashed var(--lit-border); color: var(--lit);
+      font-size: .9rem; font-weight: 500;
+    }
+    .overflow strong { font-weight: 800; }
+
+    .note { margin-top: 4rem; padding: 1.3rem 1.5rem; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 14px; font-size: .85rem; color: var(--text-secondary); }
+    .note h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-tertiary); margin-bottom: .6rem; }
+    .note ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-wordmark" href="/">Jengo</a>
+      <a class="try" href="https://app.jengolang.com">Try Jengo</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <header class="head">
+      <span class="preview-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3.2"/></svg>
+        Preview — vertical slice
+      </span>
+      <h1>Japanese Grammar Skill Tree</h1>
+      <p class="lede">
+        Not a list — a map. Every grammar point sits one step out from what you
+        must understand first. Follow the <strong>Foundations</strong> line, then
+        light a goal route — here, everything you need to <strong>read novels</strong>.
+      </p>
+
+      <div class="stats">
+        <div class="stat"><div class="n">{slice.foundations.node_count}</div><div class="l">Foundations points</div></div>
+        <div class="stat"><div class="n">{branch.route_count}</div><div class="l">on the Read-novels route</div></div>
+        <div class="stat"><div class="n">{branch.filter_member_count}</div><div class="l">literary points in the full line</div></div>
+        <div class="stat"><div class="n">{slice.source.match(/\d+/)[0]}</div><div class="l">points in the full catalog</div></div>
+      </div>
+    </header>
+
+    <!-- Forms you build on (the materialized *-anchors) -->
+    <section class="line foundations anchors-row">
+      <div class="line-head">
+        <span class="line-dot"></span>
+        <span class="line-title">Forms you build on</span>
+        <span class="line-sub">the conjugation bases every pattern below assumes</span>
+      </div>
+      <div class="stage" style="margin-top:1.1rem;">
+        <div class="cards">
+          {anchors.map((n) => (
+            <a class="card" href={`/learn/japanese/grammar/${n.slug.replace(/^\*/, "")}`}>
+              <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span></div>
+              <div class="meaning">{n.meaning}</div>
+              <div class="badges"><span class="badge anchor">form</span><span class="badge slug">{n.slug.replace(/^\*/, "")}</span></div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Foundations line -->
+    <section class="line foundations">
+      <div class="line-head">
+        <span class="line-dot"></span>
+        <span class="line-title">{slice.foundations.name}</span>
+        <span class="line-sub">the mandatory spine — shared by every goal</span>
+      </div>
+      {foundationStages.map((st) => (
+        <div class="stage">
+          <div class="stage-label">{st.label}</div>
+          <div class="cards">
+            {st.nodes.map((n) => (
+              <a class="card" href={`/learn/japanese/grammar/${n.slug}`}>
+                <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span></div>
+                <div class="meaning">{n.meaning}</div>
+                <div class="badges">
+                  <span class="badge jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
+                  <span class="badge">{n.family}</span>
+                  <span class="badge slug">{n.slug}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <!-- Read-novels branch -->
+    <section class="line branch">
+      <div class="line-head">
+        <span class="line-dot"></span>
+        <span class="line-title">{branch.name}</span>
+        <span class="line-sub">a goal route — classical &amp; literary grammar, lit on top of Foundations</span>
+        <span class="line-tagline">{branch.tagline}</span>
+      </div>
+      {branchStages.map((st) => (
+        <div class="stage">
+          <div class="stage-label">{st.label}</div>
+          <div class="cards">
+            {st.nodes.map((n) => (
+              <a class="card" href={`/learn/japanese/grammar/${n.slug}`}>
+                <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span></div>
+                <div class="meaning">{n.meaning}</div>
+                <div class="badges">
+                  <span class="badge jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
+                  <span class="badge">{n.family}</span>
+                  <span class="badge slug">{n.slug}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+      <div class="overflow">
+        + <strong>{overflow}</strong> more literary &amp; classical points sit on this
+        line, dimmed until you walk the route above. The full tree keeps them visible —
+        the value is seeing that they exist.
+      </div>
+    </section>
+
+    <aside class="note">
+      <h3>About this preview</h3>
+      <ul>
+        <li>This is a <strong>vertical slice</strong>: one Foundations line + one goal route, generated from the enriched grammar catalog to validate the map model before the full interactive tree is built.</li>
+        <li>Stages are the reading order. JLPT is a badge, never a sort key — usefulness orders the path.</li>
+        <li>Tap any point to open its page. Most are stubs for now — the written guides are being filled in, Foundations first.</li>
+      </ul>
+    </aside>
+  </main>
+</body>
+</html>

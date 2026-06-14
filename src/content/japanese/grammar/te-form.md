@@ -1,0 +1,73 @@
+---
+title: "て形 — The Connective Form"
+canonical: "て形"
+reading: "てけい"
+register: ["casual-spoken", "polite-spoken", "written-modern"]
+keigo: "none"
+freq: "essential"
+jlpt: "N5"
+family: "form"
+prereqs: ["masu-stem"]
+related: ["ta-form", "masu-stem", "te-iru", "te-kara", "te-mo-ii", "te-kudasai"]
+confidence: "high"
+noindex: false
+equivalents:
+  - "the linking / connective form — joins clauses (and then …, …-ing) and is the base every て-auxiliary attaches to"
+nuance: "て形 has no meaning of its own. It chains clauses together and is the slot that ている, てある, てください, てしまう and the rest plug into — so learning it once unlocks a whole layer of grammar."
+keySentence:
+  jp: "朝{あさ}起{お}きて、顔{かお}を洗{あ}う。"
+  en: "I get up in the morning and wash my face."
+formation:
+  - attaches_to: "Godan う・つ・る"
+    form: "→ って"
+    example: "買{か}う → 買{か}って"
+  - attaches_to: "Godan ぬ・ぶ・む"
+    form: "→ んで"
+    example: "飲{の}む → 飲{の}んで"
+  - attaches_to: "Godan く / ぐ"
+    form: "→ いて / いで"
+    example: "書{か}く → 書{か}いて、泳{およ}ぐ → 泳{およ}いで"
+  - attaches_to: "Godan す"
+    form: "→ して"
+    example: "話{はな}す → 話{はな}して"
+  - attaches_to: "Ichidan"
+    form: "stem + て"
+    example: "食{た}べる → 食{た}べて"
+  - attaches_to: "Irregular"
+    form: "する → して、来{く}る → 来{き}て"
+    example: "勉強{べんきょう}する → 勉強{べんきょう}して"
+  - attaches_to: "i-adjective"
+    form: "〜い → 〜くて"
+    example: "高{たか}い → 高{たか}くて"
+  - attaches_to: "na-adjective / noun"
+    form: "+ で"
+    example: "静{しず}か → 静{しず}かで"
+usageSetting: "Register-neutral on its own — the politeness of the sentence lives in its final verb."
+examples:
+  - jp: "駅{えき}まで歩{ある}いて、電車{でんしゃ}に乗{の}った。"
+    en: "I walked to the station and got on the train."
+    note: "sequence of actions"
+  - jp: "この本{ほん}は安{やす}くて面白{おもしろ}い。"
+    en: "This book is cheap and interesting."
+    note: "linking adjectives"
+  - jp: "窓{まど}を開{あ}けて、新{あたら}しい空気{くうき}を入{い}れた。"
+    en: "I opened the window and let in fresh air."
+    note: "means / cause"
+  - jp: "ちょっと待{ま}ってください。"
+    en: "Please wait a moment."
+    note: "base for てください"
+  - jp: "今{いま}、雨{あめ}が降{ふ}っている。"
+    en: "It is raining right now."
+    note: "base for ている"
+restrictions:
+  - text: "行{い}く is irregular: it becomes 行{い}って, not the regular く→いて pattern (×行{い}いて)."
+contrasts:
+  - slug: "ta-form"
+    label: "た形"
+    distinction: "Same euphonic (onbin) sound changes — but て links and continues a clause, while た closes it as plain past (買{か}って 'buy and…' vs 買{か}った 'bought')."
+  - slug: "masu-stem"
+    label: "連用形（ます形）"
+    distinction: "Both can join clauses, but the bare ます-stem link is stiff and written; て is the everyday spoken connector."
+notes:
+  - text: "Learn the て-form order once (う・つ・る→って, ぬ・ぶ・む→んで …): た形 and たら reuse the exact same sound changes."
+---

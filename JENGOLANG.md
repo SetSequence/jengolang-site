@@ -10,11 +10,13 @@ jengolang.com becomes a language learning content hub: grammar guides, vocab lis
 ### Domain Structure
 | URL | Purpose |
 |-----|---------|
-| `jengolang.com` | Landing page (app marketing) |
+| `jengolang.com` | Hub home page |
+| `jengolang.com/jengo` | Jengo app marketing / showcase landing page |
 | `jengolang.com/learn/[language]/grammar/[slug]` | Grammar guides |
 | `jengolang.com/learn/[language]/vocab/[slug]` | Vocab lists |
 | `jengolang.com/learn/[language]` | Language index |
 | `app.jengolang.com` | Jengo app (current Railway deploy) |
+| `app.jengolang.com/privacy` | Jengo privacy policy (lives on Railway, not hub) |
 
 Language segment is required in all content paths — designed for multi-language from day one, Japanese first.
 
@@ -29,7 +31,8 @@ Language segment is required in all content paths — designed for multi-languag
 jengolang-site/
 ├── src/
 │   ├── pages/
-│   │   ├── index.astro              # Landing page
+│   │   ├── index.astro              # Hub home page
+│   │   ├── jengo.astro              # Jengo app showcase / marketing landing page
 │   │   └── learn/
 │   │       └── [language]/
 │   │           ├── index.astro      # Language hub page
@@ -365,6 +368,124 @@ Applies two categories of post-pipeline manual fixes (hardcoded per level):
 - Kana-only entries that have JMdict kanji forms are upgraded automatically by `apply_vocab_fixes.py`
 - Remaining kana-only entries are either genuinely kana (JMdict has no kanji form) or came from triage KANA_ONLY (demoted from bad kanji)
 - OCR characters that Vision never detects (e.g. 柵) remain as genuine misses
+
+---
+
+## Grammar Index OCR Pipeline
+
+Source: `Dictionary of Japanese Grammar Index.pdf` — the romaji "Japanese Index"
+of the DBJG / DIJG / DAJG series (21 pages, image-only). **Different rules from
+the vocab pipeline**: Latin-script terms, so there is *no JMdict validation* —
+the entire validate/fix/reconcile half of the vocab flow does not exist. QA is
+purely structural. Scripts live in `JengoApp/scripts/`.
+
+### Scan Settings
+- OCR: Google Cloud Vision `DOCUMENT_TEXT_DETECTION`, `languageHints: ["en"]`
+- Render: PyMuPDF at **3x** zoom (page is only 510x792pt → 1530x2376px)
+- Output: `scripts/ocr_output/grammar_raw.json` (one object per page) + `.txt`
+
+### Index Page Layout
+- **2 columns** split at the page midpoint (`COL_SPLIT = 765`). Left-column
+  references sit ~x720; the right column starts ~x850.
+- Running header `<page> JAPANESE INDEX` at the top — cut by `y < 150`.
+- Section headers are single Latin capitals (A, B, C …) — set `section`, filtered out.
+
+### Entry Format
+```
+term [<see-also> | "english gloss" | [grammar label]] ...leader... reference
+```
+- **Reference is dual-type**: a page number → entry is in *this* volume; a
+  letter `B` → DBJG, `I` → DIJG. This index belongs to the **Advanced (DAJG)**
+  volume, so numeric refs map to `volume = A` (`HOME_VOLUME` constant).
+- `<...>` = "X is found under Y" see-also; `"..."` = English gloss; `[...]` =
+  grammar label (`[Counter]`, `[Wh-word]`, `[V]`). All captured into `gloss`.
+- Leading `–`/`-` = sub-entry (`type = sub`); `~` = affix marker, kept in term.
+- `→` arrow = cross-reference (`type = xref`, target captured), no page ref.
+
+### Cleaning Rules (`clean_grammar_ocr.py`)
+1. Assign words to columns by x-centre; cluster into physical lines by y-centre.
+2. **Wrapped-entry merge** — the hard part. A line continues the previous entry
+   when the pending entry is *incomplete* AND (hanging-indented past the column
+   margin OR has an open `<`/`[`/`"` delimiter). Merge depth is **capped at 2
+   lines** (`MAX_CONT`) so a single OCR-dropped delimiter damages at most 2
+   entries instead of merging a whole column.
+   - "complete" = ends in a reference, trailing leader dots, a closed gloss, or
+     an arrow. The completeness gate is what stops runaway chaining.
+   - Column margin = the *mode* of entry left-x (robust to far-left OCR outliers
+     that would wreck a plain min()).
+3. **Wrapped reference** — a line that is only a page number / letter (after a
+   gloss filled the entry's line) is re-attached to the pending entry.
+4. `parse_entry()` — split off arrow→xref, then trailing reference, then glosses
+   (`<>` / `""` / `[]`), leaving the term; strip leader dots/ellipses, displaced
+   superscript digits, and a leading sub-entry dash.
+
+### QA (`qa_grammar.py`)
+No dictionary to validate against, so QA only flags rows for manual review →
+`grammar_qa.csv` (flagged rows + a `flags` column). Flags: `missing_ref`,
+`empty_term`, `short_term`, `unbalanced`, `merged_suspect`, `bad_page`,
+`bad_volume`, `xref_no_target`, `duplicate`.
+
+### Pipeline Order
+```
+ocr_grammar_pdf.py    →  grammar_raw.json / .txt
+clean_grammar_ocr.py  →  grammar_clean.csv  (term,gloss,volume,page,type,xref_target,section,src_page)
+qa_grammar.py         →  grammar_qa.csv     (flagged rows only)
+```
+
+### Known OCR Limitations
+- **Single-letter B/I references are frequently dropped by Vision** (the lone
+  letter sits at the far right past the leader dots). ~23% of entries land with
+  no parsed reference — the dots are detected but the trailing letter is not.
+  These are genuine OCR misses (the source layout always carries a reference),
+  surfaced as `missing_ref` for manual fill — not a parser bug.
+- Superscript homograph numbers (`ne²`) OCR inconsistently as `2`/`'`; a leading
+  displaced digit is stripped from the term.
+- A dropped closing `>`/`"` merges up to 2 neighbouring entries (capped),
+  flagged `merged_suspect` / `unbalanced`.
+
+### Re-scan Reconciliation (`reconcile_grammar.py`)
+A second scan fills references the first missed (the dropped B/I letters). Same
+idea as the vocab v2 reconciliation but the second scan here is *lower quality*,
+so the rules are conservative.
+
+- **OCR a second scan as `grammar_v2`.** `ocr_grammar_pdf.py` and
+  `clean_grammar_ocr.py` are scan-aware: `--pdf`, `--pages START END`, and
+  `--columns`. The cleaner **auto-detects layout from page aspect** — portrait =
+  one book page (2 columns), landscape = a 2-page spread (4 columns, split on
+  even width-fractions; book gutter dead-centre).
+- v2 used here = the Japanese Index inside the full *A Dictionary of Advanced
+  Japanese Grammar* book (**pp.414-424**, landscape 4-column spreads — pages
+  before are the English index, page 424's right half is References).
+- **Reconcile rule:** the primary scan is always trusted. The secondary only
+  *fills primary rows with no reference*, never overwrites. A blank is filled only
+  when unambiguous (term → single plausible secondary ref, or a clear gloss match
+  among senses); ambiguous cases go to `grammar_fill_review.csv`. "Plausible" =
+  volume B/I, or volume A with page 1..900 (drops noisy stray pages).
+- Outputs: `grammar_reconciled.csv` (primary + filled blanks, `ref_source` =
+  v1/v2 column), `grammar_fill_review.csv`, `grammar_diff_only_in_v2.csv`.
+- Reusable: point `--secondary grammar_v3` at a better scan later and re-run.
+
+```
+ocr_grammar_pdf.py v2                          →  grammar_v2_raw.json
+clean_grammar_ocr.py --stem grammar_v2         →  grammar_v2_clean.csv  (auto 4-col)
+ocr_grammar_pdf.py v3                          →  grammar_v3_raw.json   (clean standalone)
+clean_grammar_ocr.py --stem grammar_v3         →  grammar_v3_clean.csv  (auto 2-col)
+reconcile_grammar.py --secondary grammar_v3 grammar_v2   →  grammar_reconciled.csv
+qa_grammar.py --stem grammar_reconciled        →  grammar_reconciled_qa.csv
+```
+
+**Scans used:** v1 + v2 (low-quality, pp.414-424) + v3 (clean standalone index,
+21 portrait pages). Reconcile order `grammar_v3 grammar_v2` fills from the clean
+scan first, then the noisy one for anything v3 still missed. v3 also *corrects*
+v2's spurious page-A guesses (v2 mis-read several B/I cross-volume refs as
+`A <page>`; v3 wins because it is listed first).
+
+**Result:** blank references 238 → 62 (135 filled: 110 from v3, 25 from v2),
+QA-flagged down to 5% (89/1502). Of the 25 v2 fills, 19 are A-page (lowest
+confidence — verify via `ref_source` column); the 110 v3 + 6 v2-I are reliable.
+The dash-tolerance fix (refs OCR'd as `B -`, leaders as dashes) also recovered
+~128 refs in v1 on its own. Remaining 62 blanks are faint refs missed by all
+three scans → manual fill (`grammar_reconciled_qa.csv`, flag `missing_ref`).
 
 ---
 

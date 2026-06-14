@@ -1,0 +1,67 @@
+# Same-surface dedup applied (TREE/SLICE Finding 3)
+
+- Catalog: 1527 -> 1458 nodes (69 merged)
+- Prereq fields repointed: 10 rows; fold_into_parent repointed: 4 rows
+
+## Merges (survivor <- dropped)
+
+- `ageru-2` <- `te-ageru`
+- `amari` <- `amari-nai`
+- `chittomo` <- `chittomo-nai`
+- `da-no-da-no` <- `dano`
+- `dake-de-wa-naku` <- `dake-de-wa-naku-3`, `dake-de-wa-naku-4`, `dake-de-wa-naku-5`, `dake-de-wa-naku-6`, `dake-de-wa-naku-7`, `dake-de-wa-naku-8`, `dake-de-wa-naku-9`
+- `de` <- `de-2`
+- `de-are-de-are` <- `de-are-de-are-2`
+- `de-mo` <- `demo`
+- `de-sae` <- `de-sae-2`
+- `de-sura` <- `de-sura-2`
+- `eru` <- `uru-eru`
+- `ga-3` <- `ga`
+- `ichi-tari-tomo-nai` <- `hitoichi-tari-to-mo-nai`
+- `ichi-to-shite-nai` <- `hitoichi-to-shite-nai`
+- `ikan-ni-kakawarazu` <- `ikan-zu`
+- `issho-ni` <- `isshoni`
+- `ka-dou-ka` <- `ka-dou-ka-2`
+- `kanarazushimo` <- `kanarazushimo-nai`
+- `kara-made` <- `kara-made-2`
+- `kesshite` <- `kesshite-nai`
+- `mono-da` <- `mono-da-2`
+- `mono-ka` <- `mono-ka-2`
+- `morau` <- `te-morau`
+- `na-prohibitive` <- `na`
+- `nanra-nai` <- `nani-nai`
+- `nashi-de-wa` <- `nashi-de-wa-2`
+- `nashi-ni-wa` <- `nashi-ni-wa-2`
+- `ni-kakawarazu` <- `ni-kakawarazu-2`
+- `ni-mo-kakawarazu` <- `sore-ni-mo-kakawarazu`
+- `ni-tsuite-wa` <- `ni-tsuite-wa-2`
+- `ni-yotte` <- `ni-yotte-2`, `ni-yotte-3`, `ni-yotte-4`
+- `no-tame-ni` <- `no-tame-ni-2`
+- `node` <- `na-node`
+- `noni` <- `noni-3`
+- `o-ni-naru` <- `o-ni-naru-2`
+- `o-oite-hoka-ni-wa-nai` <- `oite-hoka-ni-wa-nai`
+- `o-vmasu-kudasai` <- `o-kudasai`
+- `ori-ni` <- `ori-ni-2`
+- `roku-ni-nai` <- `rokuni-nai`
+- `taku-to-mo-nai` <- `taku-to-mo-nai-2`
+- `takute-mo-nai` <- `takute-mo-nai-2`
+- `tame-ni` <- `tame-ni-2`
+- `tari-tari` <- `tari-tari-2`
+- `tari-tari-suru` <- `tari-tari-suru-2`
+- `te` <- `te-2`
+- `te-aru` <- `aru-2`
+- `te-bakari-wa-irarenai` <- `bakari-wa-irarenai`
+- `te-iru` <- `iru`, `iru-2`
+- `te-kara` <- `kara-2`
+- `te-oku` <- `oku`
+- `te-wa-ikenai` <- `wa-ikenai`
+- `te-wa-naranai` <- `wa-naranai`
+- `te-yaru` <- `yaru-2`
+- `to-2` <- `to`
+- `to-iu-youni` <- `to-iu-you-fu-ni`
+- `to-naru` <- `ni-to-naru`
+- `yara-yara` <- `yarayara`
+- `you-ni-mo-nai` <- `you-ni-mo-nai-2`
+- `youda` <- `you-2`
+- `youni` <- `yoni-so-that`
