@@ -18,10 +18,13 @@ indefinites (dareka-dokoka, nani-ka-nani-mo — the か=some / も+neg=none syst
 triangulated with the already-indexed zenzen/totemo). **1 kept noindex by design:** ka-2 (か
 'or') — redundant with the enriched `ka` (question/or/embedded), thin redirect-hub (the
 cluster-prep brief flagged the duplicate-content risk; same call as the essentials folds).
-Confidence upgrades dou med→high, takusan med→high (meaning never shaky). **amari kept med**
-— genuine two-sense question flagged to user (あまり〜ない 'not very' indexed; あまりに(も)
-'excessively' noted but not split into its own sense/node — verify against DBJG). All 1,458
-pages build PASS, lint clean (scripts/lint_batch.py), ruby verified. **Next: common batch 2.**
+Confidence upgrades dou med→high, takusan med→high (meaning never shaky). All 1,458
+pages build PASS, lint clean (scripts/lint_batch.py), ruby verified.
+**amari resolved (2026-06-14, user DBJG check):** DBJG treats あまり and あまりに as **two
+separate nodes** — confirmed `amari-2` (あまり(に)〜 'so/excessively') and `amari-ni-mo`
+(あまりにも) already exist as stubs. So `amari` is cleanly single-sense 'not very' (spoken
+あんまり): dropped the free-floating あまりに note, added a `contrasts` link to amari-2, bumped
+med→high. **Next: common batch 2.**
 
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in

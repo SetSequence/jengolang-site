@@ -8,7 +8,7 @@ freq: "common"
 jlpt: "N5"
 family: "adverbial"
 prereqs: ["nai-form"]
-confidence: "med"
+confidence: "high"
 sources:
   volumes: "B|I"
 noindex: false
@@ -41,6 +41,7 @@ contrasts:
   - slug: "totemo"
     label: "とても"
     distinction: "とても = 'very' (affirmative); あまり〜ない = 'not very' (negative). Polar partners on the same scale."
-notes:
-  - text: "Separate from this is あまりに(も) + affirmative = 'excessively / too' (あまりに疲{つか}れて寝{ね}てしまった = so tired I fell asleep)."
+  - slug: "amari-2"
+    label: "あまり(に)〜"
+    distinction: "Without ない, あまり(に) flips to the affirmative 'so much / excessively' — a separate pattern (あまりの寒{さむ}さに… = so cold that…). This page is only the あまり〜ない 'not very' use."
 ---
