@@ -7,6 +7,22 @@ the design is `TREE.md`. Kept for provenance / debugging a past decision.
 
 ## Pass-2 dated build log
 
+**BUILD common batch 1 DONE (2026-06-14):** first `--freq common` batch (182 → **192
+indexed**). Cluster = question words + indefinites + degree/quantity adverbs (N5), chosen
+for dense cross-linking. First batch to use the **cluster-prep subagent** (Explore agent →
+brief: per-stub frontmatter, valid enriched contrast targets, homograph traps, sub-cluster
+map — externalized ~10 grep round-trips). **10 indexed:** interrogatives (dou how/how-about,
+doushite why, douyatte how-by-means, donna what-kind — mutually contrasted + donna↔konna),
+indefinites (dareka-dokoka, nani-ka-nani-mo — the か=some / も+neg=none system, cross-linked
++ to mo), degree (amari not-very, anmari colloquial, takusan a-lot, sugiru too-much —
+triangulated with the already-indexed zenzen/totemo). **1 kept noindex by design:** ka-2 (か
+'or') — redundant with the enriched `ka` (question/or/embedded), thin redirect-hub (the
+cluster-prep brief flagged the duplicate-content risk; same call as the essentials folds).
+Confidence upgrades dou med→high, takusan med→high (meaning never shaky). **amari kept med**
+— genuine two-sense question flagged to user (あまり〜ない 'not very' indexed; あまりに(も)
+'excessively' noted but not split into its own sense/node — verify against DBJG). All 1,458
+pages build PASS, lint clean (scripts/lint_batch.py), ruby verified. **Next: common batch 2.**
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all

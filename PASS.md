@@ -9,10 +9,10 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 182 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
-  band **fully drained** (long-tail batches 1–6 + the essentials-finish pass).
-- **Next batch = first `--freq common` cluster.** Run `python3 scripts/list_stubs.py --freq
-  common`. ~761 common stubs remain (then `uncommon`, then `rare`).
+- **Indexed: 192 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+  band **fully drained** · **common batch 1** (interrogatives/indefinites/degree, 10 indexed).
+- **Next batch = `--freq common` batch 2.** Run `python3 scripts/list_stubs.py --freq
+  common`. **727** common stubs remain (then `uncommon`, then `rare`).
 - There is **no cursor file** — `list_stubs.py` *is* the resume state (a node is done iff
   `noindex:false`). `--enriched` lists finished nodes. `foldInto` nodes are excluded by
   default (folded forms aren't pending work; `--include-folds` to see them).
