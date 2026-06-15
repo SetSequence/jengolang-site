@@ -36,4 +36,6 @@ contrasts:
   - slug: "kudasai"
     label: "ください"
     distinction: "To request an action, attach ください to a て-form verb (待{ま}ってください). To request an object, use Nをください (水{みず}をください)."
+notes:
+  - text: "After verbs whose て-form voices to で (飲{の}む → 飲{の}んで, 急{いそ}ぐ → 急{いそ}いで), the request voices too: 飲{の}んでください, 急{いそ}いでください. Same grammar as てください, just the で-form."
 ---

@@ -53,4 +53,6 @@ contrasts:
     label: "〜てある"
     distinction: "ている (intransitive) describes a state that simply came about — 窓{まど}が開{あ}いている (the window is open). てある describes a state someone deliberately set up — 窓{まど}が開{あ}けてある (the window has been opened on purpose)."
     sense: "resulting state"
+notes:
+  - text: "After verbs whose て-form voices to で (読{よ}む → 読{よ}んで, 遊{あそ}ぶ → 遊{あそ}んで, 死{し}ぬ → 死{し}んで), the auxiliary voices to で too: 読{よ}んでいる, 遊{あそ}んでいる. Same grammar as ている, just the で-form."
 ---

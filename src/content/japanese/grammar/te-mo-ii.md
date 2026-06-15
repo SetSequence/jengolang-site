@@ -38,4 +38,6 @@ contrasts:
   - slug: "te-wa-ikenai"
     label: "〜てはいけない"
     distinction: "てもいい grants permission ('you may'); 〜てはいけない is its opposite — prohibition ('you must not'). 入{はい}ってもいい vs 入{はい}ってはいけない."
+notes:
+  - text: "After verbs whose て-form voices to で (読{よ}む → 読{よ}んで, 飲{の}む → 飲{の}んで), it becomes でもいい: 読{よ}んでもいい, 飲{の}んでもいい. Same grammar as てもいい, just the で-form."
 ---

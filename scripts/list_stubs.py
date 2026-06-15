@@ -40,6 +40,11 @@ def main():
     ap.add_argument("--limit", type=int, default=0, help="cap rows printed (0 = all)")
     ap.add_argument("--enriched", action="store_true",
                     help="list enriched (noindex:false) nodes instead of stubs")
+    ap.add_argument("--include-folds", action="store_true",
+                    help="also list foldInto nodes (folded forms / unresolved). "
+                         "By default these are excluded: a folded form is not pending "
+                         "Pass-2 work — its content lives on the parent and it stays "
+                         "noindex by design (e.g. でいる→ている, o-unresolved→を).")
     args = ap.parse_args()
 
     rows = []
@@ -50,6 +55,8 @@ def main():
         is_stub = "noindex: true" in front
         if args.enriched == is_stub:
             continue  # want enriched but this is a stub (or vice-versa)
+        if not args.enriched and not args.include_folds and "foldInto:" in front:
+            continue  # folded form — noindex by design, not pending work
         freq = field(front, "freq")
         if args.freq and freq != args.freq:
             continue

@@ -17,10 +17,14 @@ All design **LOCKED** (content schema + sense layer + render tech 2026-06-04, ap
 2026-06-05); catalog enrichment **complete** (1,458 nodes post-dedup, QA PASS); the full
 Content Collection is **materialized + rendered** ([slug].astro template done). **Frontier
 = Pass-2 long-tail teaching-content fill.** Done so far: Foundations 60/60 + Read-novels
-branch 22/22 + long-tail batches 1–4 (21 + 15 + 14 + 12 essential N5/N4) → **150 nodes
-indexed**, ~1,308 stubs remain. **Next action = long-tail batch 5** (run
-`scripts/list_stubs.py --freq essential`; **36 essential stubs left**, then `--freq
-common`). Then **step 4 = tree UI pan/zoom** (extend `index.astro`; render tech locked
+branch 22/22 + long-tail batches 1–6 + the essentials-finish pass → **182 nodes indexed**,
+~1,276 stubs remain. **The essential band is fully drained:** `scripts/list_stubs.py --freq
+essential` now shows **0** (de-wa-ikenai, ni, ni-5, shimau got indexed; the remaining 4 are
+`foldInto` folds — de-iru/de-kudasai/de-mo-ii [で-voicing documented as a note on the て-parent,
+child kept as a noindex redirect-hub] + o-unresolved [unrecoverable OCR fragment, folded into を]
+— excluded from the worklist by default since a folded form is not pending work; `--include-folds`
+shows them). **Next action = `--freq common` (long-tail batch 7).** Then **step 4 = tree UI
+pan/zoom** (extend `index.astro`; render tech locked
 below). The dated BUILD log further down is *history* — for "what now," this block + the
 next one are enough.
 
@@ -203,6 +207,71 @@ build PASS, 0 dangling contrast/prereq slugs, 0 furigana brace imbalances, all s
 match a senses[].label, rendered ruby verified in built HTML (pre-build stdlib lint + `npm run
 build`). **Next: long-tail batch 5** (36 essential stubs left → then `--freq common`) +
 **step 4** = tree UI pan/zoom.
+**BUILD long-tail batch 5 DONE (2026-06-14):** Pass-2 fill of **18 essential N5/N4/N3 stubs** —
+the **te-form connectives + concession + listing + topic-comment copula + temporal/range** web,
+chosen for dense internal cross-linking. Nodes: the te-form connective set (くて i-adj 'is~and',
+なくて neg 'not~and/because not', ないで **2-sense** without-~ing / casual 'don't', で copula
+te-form 'being~and' = de-3), concession (ても 'even if/though', でも **2-sense** 'even (extreme
+example)' / '~or something' particle), representative listing (たり〜たり + the full
+たり〜たりする, differentiated by angle — element vs する-closes-and-carries-tense), aspect
+(まだ〜ていません 'not yet', linked to te-iru + もう), the topic-comment copula trio (は〜だ plain /
+は〜です polite / は〜が theme-with-inner-subject 象は鼻が長い) + じゃなかった casual past-neg, and
+the temporal/range set (あとで 'after'=ato-de-2 ↔ 前に, までに deadline ↔ まで/までで, 頃 'around
+(time)' ↔ ぐらい 'about (quantity)', から〜まで 'from~to'). Slot judgment per CALIBRATION2 §1–§3:
+multi-sense `senses[]` only where a real split exists (ないで, でも); `restrictions` only on real
+learner-errors (なくて vs ないで manner; ても+いくら; までに deadline≠まで span; 頃≠ぐらい; は〜が
+が-not-を for 好き/できる; あとで needs た-form; だ not on i-adj); `contrasts` densely cross-linked
+within and into already-indexed te-mo-ii/te-iru/mae-ni/made. Confidence upgrades where meaning
+was never shaky: **te-mo low→high, de-mo med→high, wa-da/wa-desu/wa-ga med→high**. Two seed
+fixes: **wa-ga prereq ga-3→ga-2** (subject が, not 'but' が — homograph), **wa-da prereq
+desu→da** (X は Y だ). **5 `foldInto` voiced-allomorph/unresolved stubs left `noindex` by
+design** (de-iru/de-kudasai/de-mo-ii/de-wa-ikenai → their て-parents; o-unresolved). All flipped
+`noindex:false` (**168 indexed now, was 150**; 18 essential stubs remain, ~13 indexable). All
+1,458 pages build PASS, 0 dangling contrast/prereq slugs, 0 furigana brace imbalances, all
+sense-refs match a senses[].label, rendered ruby verified in built HTML (pre-build stdlib lint +
+`npm run build`). **Next: long-tail batch 6** (remaining indexable essential stubs → then
+`--freq common`) + **step 4** = tree UI pan/zoom.
+**BUILD long-tail batch 6 DONE (2026-06-14):** Pass-2 fill of the **final essential-band stubs** —
+the **motion + giving/receiving keigo + embedding/nominalizing** web. **10 indexed:** motion
+(へ行く destination ↔ 〜に行く purpose-with-masu-stem — the classic へ-vs-に + destination-vs-purpose
+cross-link; 来{く}る done as the irregular-conjugation node, formation table showing the く/こ/き
+reading shifts), title suffixes (さん, cross-linked to the already-present 様/ちゃん/君 + the
+'never on your own name' restriction), humble receiving (いただく, contrasted with くださる viewpoint
++ ていただく auxiliary + the いただきます note), embedded/nominalizing (かどうか yes/no-whether vs
+embedded か with a question-word; 〜方{かた} with the を→の restriction; 連体修飾節 noun-modifying
+clause with the inner-subject-takes-が/の restriction), passive 〜られる=rareru-2 (ichidan +
+irregular formation, suffering-passive restriction, triangulated against reru/rareru/saseru).
+Slot judgment per CALIBRATION2 §1–§3: `restrictions` only on real learner-errors (へ≠static-place;
+masu-stem-not-dict before に行く; さん-not-on-self; かどうか-only-yesno + drop-だ; を→の for 方;
+inner-subject-が/の; suffering-passive); `contrasts` densely cross-linked to existing nodes; no
+manufactured slots. **3 stubs lightly filled but kept `noindex` by design** — ni (bare umbrella),
+ni-5 (に point-in-time), shimau (lexical base): each is **redundant with an already-indexed
+canonical page** (ni-2 owns destination/location/**time** incl. the absolute-vs-relative-time
+restriction; te-shimau owns the auxiliary + ちゃう contraction and lists shimau as its prereq), so
+indexing them = duplicate/thin content — exactly the tax the noindex posture exists to avoid
+(CALIBRATION2 §1/§2 judgment-over-symmetry). They render as navigable disambiguation hubs pointing
+to the canonical page. **5 voiced-allomorph/unresolved foldInto stubs untouched** (de-iru/
+de-kudasai/de-mo-ii/de-wa-ikenai/o-unresolved). Confidence upgrade: **kuru med→high** (verb meaning
+never shaky). All flipped `noindex:false` for the 10 (**178 indexed now, was 168**). All 1,458 pages
+build PASS, 0 dangling contrast/prereq slugs, 0 furigana brace imbalances, all sense-refs match,
+rendered ruby verified in built HTML (pre-build stdlib lint + `npm run build`). **Essential band
+drained** (8 essential stubs left = the 5 foldInto + 3 noindex hubs, all intentional). **Next:
+`--freq common` (batch 7)** + **step 4** = tree UI pan/zoom.
+**BUILD essentials-finish pass DONE (2026-06-14):** drained the last 8 essential stubs to **0
+pending** (178 → **182 indexed**). **4 indexed:** ni (reframed as an *all-roles-of-に* roundup/hub
+— a distinct SEO target, not a per-sense dup), ni-5 (focused *に with time expressions* — deeper than
+ni-2's single time sense: absolute-vs-relative restriction, frequency 一日{いちにち}に二回{にかい}, までに
+deadline contrast), shimau (the lexical verb しまう put-away/close, distinct from the てしまう auxiliary),
+and de-wa-ikenai (**de-fold**: removed its `foldInto`, indexed for its genuine noun/na-adj
+copula-prohibition sense 〜ではいけない 'must not be ~', which te-wa-ikenai [verb prohibition] doesn't
+cover; prereq de-3). **4 stay noindex by design, properly resolved:** de-iru/de-kudasai/de-mo-ii are
+pure phonological で-voicings of ている/てください/てもいい → the voicing rule is now documented as a
+`note` on each て-parent (te-iru/te-kudasai/te-mo-ii) and the child is a clean noindex redirect-hub
+(equiv + key sentence + contrast→parent); o-unresolved is an unrecoverable OCR fragment (canonical="")
+left folded into を. **Tooling:** `list_stubs.py` gained `--include-folds`; by default it now **excludes
+`foldInto` nodes** (a folded form is not pending Pass-2 work) so the worklist reflects genuine work —
+`--freq essential` reads 0. All 1,458 pages build PASS, 0 dangling slugs, 0 furigana imbalances, lint
+clean. **Next: `--freq common` (batch 7)** + **step 4** = tree UI pan/zoom.
 
 ---
 
