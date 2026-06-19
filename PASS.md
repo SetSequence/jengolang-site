@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 406 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 421 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -45,17 +45,27 @@ design lives in `TREE.md`; it is not needed to run a pass.
   trap** igai↔igai-to disambiguated; igai-wa → igai redirect. · **batch 16** (person/address suffixes,
   7): honorific ちゃん↔君↔様 (laddered against enriched san) + plural たち↔ら↔方(sonkeigo, elevates)↔
   ども(humbles/derogates) — politeness-direction grid. Fixed kun's truncated seed title ("for pee"→full).
+  · **batch 17** (change-of-state する/なる + sensation がする + emotion-display, 8): transformation
+  くする(make, transitive ↔ くなる)↔化する(-ize, formal noun-suffix)↔となる(formal become, ↔になる)
+  anchored to naru/ni-naru/ni-suru; sensation がする(non-visual perception, restriction vs 見える)↔
+  ような気がする(mental hunch, ↔ようだ)↔が気になる(preoccupation, +気にする/気になる note); emotion-display
+  がる↔たがる (3rd-person feeling/desire, restriction vs own feeling, anchored hoshii/tai). · **batch 18**
+  (する-based inference/condition connectives, 7): すると(2-sense thereupon/in-that-case)↔そうすると;
+  とする(set premise, ≠volitional うとする)→とすると(assume-that, +とすれば/としたら variants)↔からすると
+  (judging-from, ↔からみると)↔そうすると; となると(when-it-comes-to, topical/hypothetical)↔になると(literal
+  time/stage change) — both off enriched となる; anchored to と-conditional/なら/tara/ば.
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **516**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **501**
   common stubs remain (incl. the 5 batch-15 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
-  limitation + 以外/ほか exclusion + person/address suffixes largely mined; remaining good families:
+  limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation
+  がする + emotion-display + する-inference connectives largely mined; remaining good families:
   **degree/extent adverbials** (donnani/doushitemo/dou-ka/goto-ni/gimi/darake/buri-ni), the
-  **〜化/〜くする/〜にする change-of-state set** (ka-suru/ku-suru/ni-suru), or the **〜がる/〜たがる
-  emotion-display pair** (garu/tagaru). **Heads-up:** batch-15's 5 redirect-hubs
+  **〜場合/〜際/〜上で occasion-and-circumstance set** (baai-wa/no-baai-wa/sai-ni), or the
+  **〜について/〜に関して/〜にとって topic-and-standpoint particles**. **Heads-up:** batch-15's 5 redirect-hubs
   (dake-de-wa-naku-2, bakari-de-wa-naku, bakari-de-wa-naku-2, bakari-de-wa-naku-4, igai-wa) stay
   `noindex:true` by design and will **reappear in the worklist** — they're resolved redirects to a
   canonical, not pending work (same as batch-12's chau/chimau/toku). Skip them. Note: two unresolved

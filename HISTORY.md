@@ -270,6 +270,23 @@ truncated mid-word ("…typically for pee"→"…for juniors and peers"). **Watc
 the 5 batch-15 redirect-hubs stay noindex and **reappear in `list_stubs --freq common`** — they're
 resolved, not pending; skip them.
 
+**BUILD common batches 17–18 DONE (2026-06-19, change-of-state + する-inference connectives):**
+two clusters, one consolidated build (406 → **421 indexed**, +15), build PASS, lint + Hangul clean
+(15). **Batch 17** (8): the make/become transformation set — くする (transitive 'make ~,' paired
+against intransitive くなる) ↔ 化する (formal noun-suffix '-ize,' both trans/intrans by context) ↔
+となる (formal 'become,' result-culmination vs everyday になる), anchored to naru/ni-naru/ni-suru;
+the sensation/impression sub-cluster — がする (non-visual perception only; restriction: sight uses
+見{み}える, not 〜がする) ↔ ような気がする (mental hunch, ↔ ようだ evidence-conjecture) ↔ が気になる
+(spontaneous preoccupation; note pairs it with deliberate 気にする); emotion-display がる ↔ たがる
+(3rd-person feeling vs verb-desire, restriction: not your own feeling, anchored hoshii/tai). Fixed
+ga-suru's truncated seed title ("…feeling occu"→full). **Batch 18** (7): する-based inference/condition
+connectives — すると (2-sense: narrative 'thereupon' / inferential 'in that case') ↔ そうすると; the
+assumption chain とする (set a premise; note ≠ volitional うとする 'try to') → とすると ('assuming that,'
++とすれば/としたら variants) ↔ からすると ('judging from,' ↔ からみると) ; となると ('when it comes to,'
+topical/hypothetical) ↔ になると (literal time/stage change with a regular consequence) — both built
+off enriched となる, anchored to と-conditional/なら/tara/ば. Next families flagged in PASS §1:
+degree/extent adverbials, 〜場合/〜際 occasion set, or topic/standpoint particles.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
