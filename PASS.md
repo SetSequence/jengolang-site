@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 440 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 447 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -70,11 +70,17 @@ design lives in `TREE.md`; it is not needed to run a pass.
   *character*); the 言うまでもない idiom indexed as the frozen instance of productive 〜までもない ('no need to
   even ~', ↔必要はない nuance) — は言うまでもない folded to a redirect; を通して (2-sense via/throughout,
   +を通じて variant, ↔によって means / として role) — fixed its dangling `o-tsujite` prereq → `o`.
+  · **batch 22** (verb completion + capacity/possibility modality web, 7): 切る(complete/utterly)↔切れない
+  (can't-finish/too-many)↔かける(begun-unfinished/on-the-verge) — completion arc; 得る(える/うる formal
+  abstract possibility, ↔れる concrete ability)↔得ない(あり得ない impossible); the **classic trap pair**
+  かねる(polite 'cannot do', keigo decline)↔かねない('might (regrettably) do', undesirable-only, ↔かもしれ
+  ない neutral) — same root, opposite polarity, taught explicitly. All off masu-stem. Fixed kaneru's
+  truncated seed title.
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **482**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **475**
   common stubs remain (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation

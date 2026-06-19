@@ -326,6 +326,20 @@ folded to a noindex redirect → 言うまでもない. を通して (2-sense: '
 seeded dangling prereq `o-tsujite` (no such node) → `o`. Next families flagged in PASS §1: degree/extent
 adverbials, を通して/を通じて siblings, たって/ったって concessive-colloquial, or ことから/ことだから neighbours.
 
+**BUILD common batch 22 DONE (2026-06-19, verb-completion + capacity/possibility modality):** one
+cluster, one build (440 → **447 indexed**, +7), build PASS, lint + Hangul clean (7). A dense
+masu-stem aspect/modality web. Completion arc: 〜切る ('do completely / utterly,' quantity 食{た}べ切る
++ intensity 疲{つか}れ切る) ↔ 〜切れない ('can't finish / too many to,' 数{かぞ}え切れない) ↔ 〜かける ('begun
+but unfinished' 読{よ}みかけ / 'on the verge of' 死{し}にかける) — 切る vs かける mark the two ends of an action's
+arc. Possibility: 〜得る (formal abstract 'it could happen,' read える/うる, restriction: not for learned
+skills — 泳{およ}げる not 泳{およ}ぎ得る; ↔ れる/られる concrete ability) ↔ 〜得ない (あり得{え}ない 'impossible';
+note the reading stays えない). The headline is the **classic trap pair** 〜かねる ('cannot do ~,' a polite
+keigo decline of psychological unwillingness — お答{こた}えしかねます) ↔ 〜かねない ('might (regrettably) do ~,'
+undesirable outcomes only — 体{からだ}を壊{こわ}しかねない; restriction: 成功{せいこう}しかねない is wrong, use
+かもしれない). Same root かねる, opposite polarity — each node's contrast spells the flip out, with the ない
+as the tell. Fixed kaneru's truncated seed title ("…politely decline" missing paren). Next families
+flagged in PASS §1: degree/extent adverbials, を通じて siblings, or -ish/tendency suffixes (気味/っぽい/だらけ).
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
