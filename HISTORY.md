@@ -314,6 +314,18 @@ plain sequence) vs 〜上〔じょう〕('in terms of / from the standpoint of,'
 in ijou-ni pre-build. Next families flagged in PASS §1: degree/extent adverbials, を通して/を通じて, the
 たって/ったって concessive-colloquial set, or ことから/ことだから reason-from-grounds.
 
+**BUILD common batch 21 DONE (2026-06-19, こと-reason + までもない idiom + を通して):** one cluster, one
+build (435 → **440 indexed**, +5, plus 1 redirect), build PASS, lint + Hangul clean (6). The
+grounds-contrast pair: ことから (infer from an observed fact — broken window → burglar; also name-origin
+'called X because ~') ↔ ことだから (predict from a person's known character — 'knowing him, he'll be
+late'); mutually differentiated on evidence-vs-character, both ↔ ので plain cause. The 言うまでもない
+('needless to say') idiom indexed as the frozen instance of the productive 〜までもない ('no need to even
+~,' V-plain + までもない, ↔ 必要{ひつよう}はない which lacks the 'overkill/too-obvious' nuance); 〜は言うまでもない
+folded to a noindex redirect → 言うまでもない. を通して (2-sense: 'via / by way of' an intermediary ↔
+'throughout' a period; +を通じて formal variant; ↔ によって direct means / として role). Fixed を通して's
+seeded dangling prereq `o-tsujite` (no such node) → `o`. Next families flagged in PASS §1: degree/extent
+adverbials, を通して/を通じて siblings, たって/ったって concessive-colloquial, or ことから/ことだから neighbours.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
