@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 384 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 406 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -36,20 +36,31 @@ design lives in `TREE.md`; it is not needed to run a pass.
   (counterfactual regret, ↔ のに). Anchored to enriched ば/たら/なら/と-conditional/なければ-obligation/ほど/のに.
   Dense webs: ところ-phase timeline, 五段/一段 causative-passive grid, られる homograph disambiguation,
   見える/見られる confusion, reported-belief saying/rule/reasoning trio, negative-conditional と/ば/ては/たら
-  base grid.
+  base grid. · **batch 15** (だけ/ばかり limitation + 以外/ほか exclusion, 15 indexed + 5 noindex
+  redirects): bakari (2-sense only/nothing-but ↔ approximate-amount, anchor)・dake-da・dake-de↔dake-demo↔
+  dake-wa・dake-shika(↔shika)・sore-dake・te-bakari-iru・bakari-de(↔dake-de positive/negative);
+  the **"not only but also" canonical pair** だけでなく ↔ ばかりでなく (everyday vs literary, mutually
+  contrasted) with 4 numbered near-dups (dake-de-wa-naku-2, bakari-de-wa-naku/-2/-4) collapsed to
+  **noindex redirect-hubs** → their canonical; igai (以外)↔hoka(ほか)↔hoka-ni-mo, **以外/意外 same-reading
+  trap** igai↔igai-to disambiguated; igai-wa → igai redirect. · **batch 16** (person/address suffixes,
+  7): honorific ちゃん↔君↔様 (laddered against enriched san) + plural たち↔ら↔方(sonkeigo, elevates)↔
+  ども(humbles/derogates) — politeness-direction grid. Fixed kun's truncated seed title ("for pee"→full).
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~533**
-  common stubs remain (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
-  basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals largely
-  mined; remaining good families: the **〜ばかり/〜だけ family** (bakari, dake-da, dake-de-wa-naku-1..4,
-  bakari-de-wa-naku-1..4 — many near-dup variant stubs, likely fold candidates), **〜以外/〜ほか
-  exclusion** (igai/igai-wa/igai-to/hoka/hoka-ni-mo), or **degree/extent adverbials** (donnani/
-  doushitemo/dou-ka/goto-ni/gimi/darake/buri-ni). Note: two unresolved near-dup stub pairs
-  need a catalog-level
-  fold decision — `o-suru`(N3)/`o-suru-2`(N4) and `yaru`/`yaru-3`/`te-yaru`.
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **516**
+  common stubs remain (incl. the 5 batch-15 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
+  basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
+  limitation + 以外/ほか exclusion + person/address suffixes largely mined; remaining good families:
+  **degree/extent adverbials** (donnani/doushitemo/dou-ka/goto-ni/gimi/darake/buri-ni), the
+  **〜化/〜くする/〜にする change-of-state set** (ka-suru/ku-suru/ni-suru), or the **〜がる/〜たがる
+  emotion-display pair** (garu/tagaru). **Heads-up:** batch-15's 5 redirect-hubs
+  (dake-de-wa-naku-2, bakari-de-wa-naku, bakari-de-wa-naku-2, bakari-de-wa-naku-4, igai-wa) stay
+  `noindex:true` by design and will **reappear in the worklist** — they're resolved redirects to a
+  canonical, not pending work (same as batch-12's chau/chimau/toku). Skip them. Note: two unresolved
+  near-dup stub pairs still need a catalog-level fold decision — `o-suru`(N3)/`o-suru-2`(N4) and
+  `yaru`/`yaru-3`/`te-yaru`.
   **Process (user directive 2026-06-15, throughput revised 2026-06-19):** roll multiple clusters
   back-to-back per turn, then ONE consolidated build; checkpoint PASS + HISTORY once per turn, not
   per cluster. **Context can safely run to ~20% (1/5) per turn — that is the target ceiling.**

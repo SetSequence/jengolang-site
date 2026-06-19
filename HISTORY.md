@@ -248,6 +248,28 @@ note) ・ ば〜ほど ba-hodo (proportional 'the more…the more', repeated ver
 variants converge on 'unless' but ride genuinely different conditional bases (と/ば/ては/たら), so each is
 a legit node, not a fold — differentiation lives in the contrast slot, not in withholding the page.
 
+**BUILD common batches 15–16 DONE (2026-06-19, limitation/exclusion + person-suffixes):** two
+clusters, one consolidated build (384 → **406 indexed**, +22), 27 files touched, build PASS, lint +
+Hangul scan clean (27). **First action this turn was a recovery:** a prior session had finished
+batches 6–14 (192 nodes, frontier+HISTORY advanced) but never committed — verified build+Hangul clean
+and committed it as `bfa3425` before starting new work. **Batch 15** (だけ/ばかり limitation + 以外/ほか
+exclusion): anchored on bakari, made 2-sense (only/nothing-but ↔ approximate-amount; たばかり time-sense
+split off via contrast). The だけ sufficiency/minimum/bottom-line trio dake-de(just by, sufficient
+cause)↔dake-demo(even just, worthwhile minimum)↔dake-wa(at least this, non-negotiable) mutually
+differentiated; dake-shika↔shika (emphatic double-limiter, negative-required); bakari-de↔dake-de
+(positive-result vs negative/no-result). The **"not only but also" pair** だけでなく (everyday) ↔
+ばかりでなく (formal/literary) indexed as canonicals and mutually contrasted; the 4 numbered near-dup
+seeds (dake-de-wa-naku-2, bakari-de-wa-naku/-2/-4) collapsed to **noindex redirect-hubs** (equiv +
+keySentence + contrast→canonical, same treatment as batch-12 chau/chimau/toku). Exclusion: igai(以外)
+↔hoka(ほか, +ほかない note)↔hoka-ni-mo; the high-value **同音 以外/意外 trap** igai↔igai-to('unexpectedly')
+disambiguated by kanji (以 vs 意); igai-wa→igai redirect. **Batch 16** (person/address suffixes, all 7
+indexed): honorific ちゃん(affectionate)↔君(junior/peer)↔様(deferential) laddered against enriched
+さん; plural たち(neutral)↔ら(casual/curt)↔方(sonkeigo, *elevates*)↔ども(*humbles/derogates*) — a
+politeness-**direction** grid (方 raises others, ども lowers self/others). Fixed kun's seed title
+truncated mid-word ("…typically for pee"→"…for juniors and peers"). **Watch (carried to PASS §1):**
+the 5 batch-15 redirect-hubs stay noindex and **reappear in `list_stubs --freq common`** — they're
+resolved, not pending; skip them.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all

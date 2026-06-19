@@ -12,4 +12,13 @@ confidence: "med"
 sources:
   volumes: "B|I"
 noindex: true
+equivalents:
+  - "not only ~ (but also) — a written variant of ばかりでなく, with the optional は/も"
+keySentence:
+  jp: "彼{かれ}は医者{いしゃ}であるばかりでなく、作家{さっか}でもある。"
+  en: "He is not only a doctor but also a writer."
+contrasts:
+  - slug: "bakari-de-wa-naku-3"
+    label: "〜ばかりでなく"
+    distinction: "Same grammar point — a spelling variant (ばかりではなく) of ばかりでなく. See ばかりでなく for formation, register, and examples."
 ---
