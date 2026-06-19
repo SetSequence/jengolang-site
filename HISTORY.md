@@ -287,6 +287,20 @@ topical/hypothetical) ↔ になると (literal time/stage change with a regular
 off enriched となる, anchored to と-conditional/なら/tara/ば. Next families flagged in PASS §1:
 degree/extent adverbials, 〜場合/〜際 occasion set, or topic/standpoint particles.
 
+**BUILD common batch 19 DONE (2026-06-19, standpoint/means particles + occasion):** one cluster, one
+build (421 → **428 indexed**, +7, plus 3 noindex redirects), build PASS, lint + Hangul clean (10).
+Standpoint sub-cluster: に関して (formal 'regarding,' ↔ について everyday) ↔ に関する (the adnominal
+noun-modifying form, parallel to について↔についての). The by/source/depends triad — による (2-sense:
+'due to' noun-modifier / 'depends on' sentence-final) ↔ によって (3-sense: means / passive-agent /
+'varies depending on'; the passive-agent sense pinned to rareru-2 as the formal 〜によって描{か}かれた
+agent-marker for creation verbs) ↔ によると ('according to [source],' routinely paired with sentence-end
+そうだ/らしい hearsay, +によれば variant). Occasion sub-cluster: 際に (formal 'on the occasion of,' ↔ とき
+neutral / 場合 hypothetical) ↔ 最中に (the very peak of an ongoing action, almost always interrupted;
+restriction: needs an active action, not a static state; ↔ 間に span / ところ moment). Redirects to
+enriched anchors: については→ni-tsuite; 場合は & の場合は→baai (the verb-attach and noun-の-attach patterns
+of 場合). Fixed ni-yotte/ni-yoru titles to spell out their multi-use senses. Next families flagged in
+PASS §1: degree/extent adverbials, 〜以上/〜上で condition-standpoint, ため purpose, or を通して/にとって.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all

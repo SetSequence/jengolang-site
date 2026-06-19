@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 421 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 428 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -54,19 +54,26 @@ design lives in `TREE.md`; it is not needed to run a pass.
   とする(set premise, ≠volitional うとする)→とすると(assume-that, +とすれば/としたら variants)↔からすると
   (judging-from, ↔からみると)↔そうすると; となると(when-it-comes-to, topical/hypothetical)↔になると(literal
   time/stage change) — both off enriched となる; anchored to と-conditional/なら/tara/ば.
+  · **batch 19** (standpoint/means particles + occasion, 7 indexed + 3 noindex redirects): standpoint
+  に関して(formal vs について)↔に関する(adnominal); the by/source/depends triad による(2-sense due-to/
+  depends-on)↔によって(3-sense means/passive-agent/varies-by, ↔rareru-2 formal passive agent)↔によると
+  (according-to, pairs with そうだ hearsay); occasion 際に(formal 'when', ↔とき/場合)↔最中に(peak-of-action,
+  interrupted, ↔間に/ところ). Redirects: については→ni-tsuite, 場合は & の場合は→baai (both attachment
+  patterns of enriched 場合).
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **501**
-  common stubs remain (incl. the 5 batch-15 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **494**
+  common stubs remain (incl. the batch-15/19 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation
   がする + emotion-display + する-inference connectives largely mined; remaining good families:
   **degree/extent adverbials** (donnani/doushitemo/dou-ka/goto-ni/gimi/darake/buri-ni), the
-  **〜場合/〜際/〜上で occasion-and-circumstance set** (baai-wa/no-baai-wa/sai-ni), or the
-  **〜について/〜に関して/〜にとって topic-and-standpoint particles**. **Heads-up:** batch-15's 5 redirect-hubs
-  (dake-de-wa-naku-2, bakari-de-wa-naku, bakari-de-wa-naku-2, bakari-de-wa-naku-4, igai-wa) stay
+  **〜以上/〜上で/〜上 condition-and-standpoint set** (ijou-wa/ijou-ni/no-ue-de/jou), the **purpose/reason
+  ため family** (tame-da/sono-tame/sono-tame-ni), or the **〜を通して/〜にとって means/perspective particles**
+  (o-toshite/nitotte). **Heads-up:** the redirect-hubs — batch-15's dake-de-wa-naku-2, bakari-de-wa-naku,
+  bakari-de-wa-naku-2, bakari-de-wa-naku-4, igai-wa; batch-19's ni-tsuite-wa, baai-wa, no-baai-wa — stay
   `noindex:true` by design and will **reappear in the worklist** — they're resolved redirects to a
   canonical, not pending work (same as batch-12's chau/chimau/toku). Skip them. Note: two unresolved
   near-dup stub pairs still need a catalog-level fold decision — `o-suru`(N3)/`o-suru-2`(N4) and
