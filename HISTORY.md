@@ -351,6 +351,17 @@ negative-leaning — 休{やす}みがち, 曇{くも}りがち; freq=uncommon b
 specific axis that separates it from the others (気味 slight-now vs がち often-over-time vs っぽい quality
 vs だらけ literal-excess). Next families flagged in PASS §1: degree/extent adverbials, を通じて siblings.
 
+**BUILD common batch 24 DONE (2026-06-19, concessive 〜ても emphasis + permission/futility):** one
+cluster, one build (451 → **458 indexed**, +7), build PASS, lint + Hangul clean (7). The no-matter-how
+trio, differentiated on what each generalises: どんなに〜ても (degree/manner) ↔ いくら〜ても (quantity/repeated
+effort; bumped med→high conf) ↔ たとえ〜ても (a hypothetical, often extreme, supposition — 'even if'). どうしても
+(2-sense fixed adverb: 'at any cost' / with a negative 'just can't however one tries'). The ても-modality
+pair takes opposite stances on the same base: てもかまわない ('it's fine if ~,' permission, ↔ てもいい slightly
+more nonchalant) vs ても始まらない ('no use ~ing,' futility). And ても〜なくても ('whether or not,' the binary
+yes-case + no-case, vs どんなに's range of degrees). All anchored to enriched te-mo / te-mo-ii. This was
+the closing batch of a long session (batches 15–24, +71 indexed nodes: 387→458, all builds green).
+Next families flagged in PASS §1: degree/extent adverbials, を通じて siblings.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
