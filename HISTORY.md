@@ -340,6 +340,17 @@ undesirable outcomes only — 体{からだ}を壊{こわ}しかねない; restr
 as the tell. Fixed kaneru's truncated seed title ("…politely decline" missing paren). Next families
 flagged in PASS §1: degree/extent adverbials, を通じて siblings, or -ish/tendency suffixes (気味/っぽい/だらけ).
 
+**BUILD common batch 23 DONE (2026-06-19, -ish/tendency/excess suffixes):** one cluster, one build
+(447 → **451 indexed**, +4), build PASS, lint + Hangul clean (4). The mutually-confusable
+suffix family, differentiated on a degree × time × literal-vs-quality grid: 〜気味 (a slight onset of a
+usually-unwelcome state *right now* — 風邪{かぜ}気味, 太{ふと}り気味) ↔ 〜がち (a recurring tendency *over time*,
+negative-leaning — 休{やす}みがち, 曇{くも}りがち; freq=uncommon but enriched ahead of band as the 気味 sibling)
+↔ 〜っぽい (2-sense: 'resembles / -ish' 水{みず}っぽい / 'prone to' 忘{わす}れっぽい; conjugates like an い-adj;
+↔ らしい which is positive 'befitting') ↔ 〜だらけ (a heavy, literal excess, almost always unpleasant —
+泥{どろ}だらけ, 間違{まちが}いだらけ; restriction: not for pleasant abundance). Each node's contrasts pin the
+specific axis that separates it from the others (気味 slight-now vs がち often-over-time vs っぽい quality
+vs だらけ literal-excess). Next families flagged in PASS §1: degree/extent adverbials, を通じて siblings.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all

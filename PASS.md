@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 447 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 451 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -76,11 +76,15 @@ design lives in `TREE.md`; it is not needed to run a pass.
   かねる(polite 'cannot do', keigo decline)↔かねない('might (regrettably) do', undesirable-only, ↔かもしれ
   ない neutral) — same root, opposite polarity, taught explicitly. All off masu-stem. Fixed kaneru's
   truncated seed title.
+  · **batch 23** (-ish/tendency/excess suffixes, 4): 気味(slight onset of an unwelcome state, *now*)↔
+  がち(recurring tendency *over time*, negative-leaning; enriched ahead of band as the 気味 sibling)↔
+  っぽい(2-sense resembles / prone-to, ↔らしい positive 'befitting')↔だらけ(literal heavy excess, negative);
+  the four mutually contrasted on degree×time×literal-vs-quality axes.
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **475**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **472**
   common stubs remain (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation
