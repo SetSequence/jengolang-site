@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 428 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 435 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -60,19 +60,23 @@ design lives in `TREE.md`; it is not needed to run a pass.
   (according-to, pairs with そうだ hearsay); occasion 際に(formal 'when', ↔とき/場合)↔最中に(peak-of-action,
   interrupted, ↔間に/ところ). Redirects: については→ni-tsuite, 場合は & の場合は→baai (both attachment
   patterns of enriched 場合).
+  · **batch 20** (reason/purpose connectors + grounds/standpoint, 7): ためだ (2-sense reason 'it's
+  because'/purpose 'it's for', ↔からだ/わけだ/tame-ni) ; そのため (result 'therefore') ↔ そのために (purpose
+  'to that end') — the に flips result→purpose; 以上は (now-that/since, obligation logic, ↔ので/以上に);
+  以上に (more-than, ↔より) — 以上 homograph は/に disambiguated; 上で〔うえで〕(2-sense after-deliberation /
+  in-doing, ↔てから) ↔ 上〔じょう〕(in-terms-of standpoint) — **上 reading-homograph うえで vs じょう** taught.
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **494**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **487**
   common stubs remain (incl. the batch-15/19 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation
   がする + emotion-display + する-inference connectives largely mined; remaining good families:
   **degree/extent adverbials** (donnani/doushitemo/dou-ka/goto-ni/gimi/darake/buri-ni), the
-  **〜以上/〜上で/〜上 condition-and-standpoint set** (ijou-wa/ijou-ni/no-ue-de/jou), the **purpose/reason
-  ため family** (tame-da/sono-tame/sono-tame-ni), or the **〜を通して/〜にとって means/perspective particles**
-  (o-toshite/nitotte). **Heads-up:** the redirect-hubs — batch-15's dake-de-wa-naku-2, bakari-de-wa-naku,
+  **〜を通して/〜を通じて means/perspective particles** (o-toshite + siblings), the **〜たって/〜ったって
+  concessive-colloquial set**, or the **〜ことから/〜ことだから reason-from-grounds connectives**. **Heads-up:** the redirect-hubs — batch-15's dake-de-wa-naku-2, bakari-de-wa-naku,
   bakari-de-wa-naku-2, bakari-de-wa-naku-4, igai-wa; batch-19's ni-tsuite-wa, baai-wa, no-baai-wa — stay
   `noindex:true` by design and will **reappear in the worklist** — they're resolved redirects to a
   canonical, not pending work (same as batch-12's chau/chimau/toku). Skip them. Note: two unresolved

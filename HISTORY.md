@@ -301,6 +301,19 @@ enriched anchors: については→ni-tsuite; 場合は & の場合は→baai (
 of 場合). Fixed ni-yotte/ni-yoru titles to spell out their multi-use senses. Next families flagged in
 PASS §1: degree/extent adverbials, 〜以上/〜上で condition-standpoint, ため purpose, or を通して/にとって.
 
+**BUILD common batch 20 DONE (2026-06-19, reason/purpose connectors + grounds/standpoint):** one
+cluster, one build (428 → **435 indexed**, +7), build PASS, lint + Hangul clean (7). Reason/purpose
+trio: ためだ (2-sense — reason 'it is because' / purpose 'it is for the sake of,' ↔ からだ which lacks the
+purpose reading, ↔ わけだ deduction not raw cause) ; そのため ('therefore,' result) ↔ そのために ('to that
+end,' purpose) — the bare に flips result→purpose, a clean minimal-pair contrast. 以上 disambiguated by
+particle: 以上は ('now that / since,' with obligation/resolve logic in the second clause, ↔ ので plain
+cause) vs 以上に ('more than / even more than,' ↔ より basic comparative). 上 disambiguated by **reading**:
+〜上で〔うえで〕(2-sense — 'after deliberately doing ~' V-た上で / 'in the course of ~ing' V-る上で, ↔ てから
+plain sequence) vs 〜上〔じょう〕('in terms of / from the standpoint of,' fixed compounds 法律{ほうりつ}上,
+健康{けんこう}上) — both nodes carry a note pinning the reading split. Fixed a stray typo'd formation key
+in ijou-ni pre-build. Next families flagged in PASS §1: degree/extent adverbials, を通して/を通じて, the
+たって/ったって concessive-colloquial set, or ことから/ことだから reason-from-grounds.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
