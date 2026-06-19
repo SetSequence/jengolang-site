@@ -1,0 +1,174 @@
+- generic [active] [ref=e1]:
+  - navigation "Main navigation" [ref=e2]:
+    - generic [ref=e3]:
+      - link "Jengo home" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img [ref=e5]:
+          - generic [ref=e7]: J
+        - generic [ref=e8]: Jengo
+      - list [ref=e9]:
+        - listitem [ref=e10]:
+          - link "Japanese" [ref=e11] [cursor=pointer]:
+            - /url: /learn/japanese
+        - listitem [ref=e12]:
+          - link "How it works" [ref=e13] [cursor=pointer]:
+            - /url: "#demo"
+      - link "Try Jengo" [ref=e14] [cursor=pointer]:
+        - /url: https://app.jengolang.com
+  - region "Learn Japanese FASTER." [ref=e15]:
+    - generic:
+      - generic: 言
+      - generic: 語
+      - generic: 読
+      - generic: 書
+      - generic: 文
+      - generic: 字
+      - generic: 話
+      - generic: 聞
+      - generic: 知
+      - generic: 学
+      - generic: 習
+      - generic: 人
+      - generic: 時
+      - generic: 間
+      - generic: 生
+      - generic: 活
+      - generic: 感
+      - generic: 動
+    - generic [ref=e16]:
+      - heading "Learn Japanese FASTER." [level=1] [ref=e17]:
+        - text: Learn Japanese
+        - emphasis [ref=e18]: FASTER.
+      - paragraph [ref=e19]: Jengo generates stories around your target words. Flashcard precision. Native depth.
+      - generic [ref=e20]:
+        - link "Try Jengo" [ref=e21] [cursor=pointer]:
+          - /url: https://app.jengolang.com
+        - link "Download on the App Store" [ref=e22] [cursor=pointer]:
+          - /url: "#"
+          - img [ref=e23]
+          - generic [ref=e25]:
+            - generic [ref=e26]: Download on the
+            - generic [ref=e27]: App Store
+      - paragraph [ref=e28]: Available on desktop browser and iOS
+  - region "Available on mobile and desktop" [ref=e29]:
+    - generic [ref=e30]:
+      - generic [ref=e31]:
+        - generic [ref=e36]:
+          - img [ref=e37]
+          - generic [ref=e40]: app.jengolang.com
+        - img "Jengo web app — home screen showing vocabulary deck selection" [ref=e42]
+      - img "Jengo iOS app — paragraph study screen" [ref=e45]
+  - region "Your words. In context." [ref=e46]:
+    - generic [ref=e47]:
+      - paragraph [ref=e48]: See it in action
+      - heading "Your words. In context." [level=2] [ref=e49]
+      - paragraph [ref=e50]: Flag what you don't know — it comes back sooner.
+    - generic "Animated demonstration of Jengo vocabulary review" [ref=e51]:
+      - generic [ref=e53]: Today's due words
+      - generic [ref=e55]:
+        - generic:
+          - img
+        - paragraph [ref=e56]
+      - generic [ref=e58]:
+        - paragraph
+        - list
+      - button [ref=e59]: Submit
+  - region "How Jengo works" [ref=e60]:
+    - generic [ref=e61]:
+      - generic [ref=e62]:
+        - img "Jengo study screen — a generated story with target words highlighted" [ref=e66]
+        - generic [ref=e67]:
+          - paragraph [ref=e68]: The problem with immersion
+          - heading "Native material buries vocabulary" [level=2] [ref=e69]
+          - paragraph [ref=e70]: Podcasts, books, and shows expose you to real language — but you can't control what words appear. You can spend an hour listening and never encounter the word you studied yesterday.
+      - separator [ref=e71]
+      - generic [ref=e72]:
+        - img "Jengo word lookup — definition and reading shown in context" [ref=e76]
+        - generic [ref=e77]:
+          - paragraph [ref=e78]: The problem with flashcards
+          - heading "Flashcards drill without context" [level=2] [ref=e79]
+          - paragraph [ref=e80]: Drilling a word in isolation is not enough to make it useful. Without native content to anchor your understanding, most of what you review won't survive contact with the real language.
+      - separator [ref=e81]
+      - generic [ref=e82]:
+        - img "Jengo listening mode — audio playback of the generated story" [ref=e86]
+        - generic [ref=e87]:
+          - paragraph [ref=e88]: The Jengo approach
+          - heading "Your words, in context, every time." [level=2] [ref=e89]
+          - paragraph [ref=e90]: Jengo builds paragraphs around the words you actually need to study. Listen back to each paragraph to compound your gains. This is no-compromise learning.
+      - separator [ref=e91]
+      - generic [ref=e92]:
+        - img "Jengo statistics — review history and FSRS retention data" [ref=e96]
+        - generic [ref=e97]:
+          - heading "Review less. Remember more." [level=2] [ref=e98]
+          - paragraph [ref=e99]: Jengo uses custom spaced repetition to schedule every word at the moment you're most likely to forget it.
+  - region "Features" [ref=e100]:
+    - generic [ref=e101]:
+      - paragraph [ref=e102]: Features
+      - generic [ref=e103]:
+        - generic [ref=e104]:
+          - img [ref=e105]
+          - paragraph [ref=e107]: Ready-made decks
+          - paragraph [ref=e108]: JLPT N5 through N1 built in. Import your own word list or start immediately.
+          - generic [ref=e109]:
+            - generic [ref=e110]: N5
+            - generic [ref=e111]: N4
+            - generic [ref=e112]: N3
+            - generic [ref=e113]: N2
+            - generic [ref=e114]: N1
+        - generic [ref=e115]:
+          - img [ref=e116]
+          - paragraph [ref=e119]: Listening mode
+          - paragraph [ref=e120]: Hear your generated paragraphs read aloud. Reinforce reading with audio in the same session.
+        - generic [ref=e121]:
+          - img [ref=e122]
+          - paragraph [ref=e123]: Statistics
+          - paragraph [ref=e124]: Track your review history, retention rate, and word progress over time.
+        - generic [ref=e125]:
+          - img [ref=e126]
+          - paragraph [ref=e128]: Story mode
+          - paragraph [ref=e129]: Submitted paragraphs connect into an ongoing story, making each session feel continuous.
+        - generic [ref=e130]:
+          - img [ref=e131]
+          - paragraph [ref=e133]: AI assists
+          - paragraph [ref=e134]: Get explanations and more example sentences on demand.
+  - region "From the builder" [ref=e135]:
+    - generic [ref=e136]:
+      - generic [ref=e137]:
+        - heading "From the builder" [level=2] [ref=e138]
+        - paragraph [ref=e139]:
+          - text: I lived in Japan for two years, read grammar dictionaries cover to cover, worked through dozens of books and hundreds of podcasts, spent three hours a day on flashcards and four hours speaking with natives, and “learned” more than 15,000 words.
+          - strong [ref=e140]: I did everything right.
+        - paragraph [ref=e141]:
+          - text: But there was always a functional gap between my flashcards and the real language that cost me thousands of hours to close.
+          - strong [ref=e142]: Jengo is the tool I always wanted, but never had.
+      - img "Caden Shelley at Todai-ji temple in Nara, Japan" [ref=e143]
+  - generic [ref=e145]:
+    - heading "Ready to try it?" [level=2] [ref=e146]
+    - paragraph [ref=e147]: Available on desktop browser and iOS. Try it without an account!
+    - generic [ref=e148]:
+      - link "Open in browser" [ref=e149] [cursor=pointer]:
+        - /url: https://app.jengolang.com
+      - link "Download on the App Store" [ref=e150] [cursor=pointer]:
+        - /url: "#"
+        - img [ref=e151]
+        - generic [ref=e153]:
+          - generic [ref=e154]: Download on the
+          - generic [ref=e155]: App Store
+  - contentinfo [ref=e156]:
+    - generic [ref=e157]:
+      - link "Jengo home" [ref=e158] [cursor=pointer]:
+        - /url: /
+        - img [ref=e159]:
+          - generic [ref=e161]: J
+        - generic [ref=e162]: Jengo
+      - list [ref=e163]:
+        - listitem [ref=e164]:
+          - link "Japanese Grammar" [ref=e165] [cursor=pointer]:
+            - /url: /learn/japanese
+        - listitem [ref=e166]:
+          - link "Open App" [ref=e167] [cursor=pointer]:
+            - /url: https://app.jengolang.com
+        - listitem [ref=e168]:
+          - link "Privacy" [ref=e169] [cursor=pointer]:
+            - /url: /privacy
+    - paragraph [ref=e171]: © 2026 Jengo. All rights reserved.

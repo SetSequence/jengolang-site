@@ -12,4 +12,13 @@ confidence: "med"
 sources:
   volumes: "A"
 noindex: true
+equivalents:
+  - "not in the least — same pattern as 少しも + negative"
+keySentence:
+  jp: "少{すこ}しも気{き}にしていない。"
+  en: "I don't mind in the least."
+contrasts:
+  - slug: "sukoshi-mo"
+    label: "少しも"
+    distinction: "Same pattern. The full teaching entry, formation, and contrasts live on 少しも — this is a duplicate surface kept as a redirect."
 ---

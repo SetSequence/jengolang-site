@@ -9,10 +9,57 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 192 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
-  band **fully drained** · **common batch 1** (interrogatives/indefinites/degree, 10 indexed).
-- **Next batch = `--freq common` batch 2.** Run `python3 scripts/list_stubs.py --freq
-  common`. **727** common stubs remain (then `uncommon`, then `rare`).
+- **Indexed: 384 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+  band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
+  6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
+  9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
+  experience, 11) · **batch 10** (keigo verbs + こそあど 連体詞, 18: いらっしゃる/なさる・いたす・
+  さしあげる・くださる・お〜になる↔お〜する・お〜ください・ございます/でございます・なさい; こそあど
+  こういう↔そういう↔このような・どのような・こうした↔こういった) · **batch 11** (benefactive
+  て-grid + connectives, 14): ていただく↔てくださる・てくれない↔ていただけませんか・てもらいたい↔
+  てほしい・てやる(2-sense); それで/それでは/それでも/それなら; だけど→けれど→だが · **batch 12**
+  (aspect/phase + causative/passive/potential/perception, 29 = 26 indexed + 3 noindex redirects):
+  始める↔出す↔終わる・続ける; ておく↔てある; ているところ↔たところ↔るところだ (ところ trio) ↔たばかり;
+  ていく↔てくる (2-sense mirror); ていた; なくなる; ちゃう/ちまう/とく → parents; せる↔させる↔させられる・
+  させてください; れる↔られる(passive/potential/honorific 3-way ら-shape); られない; 見える↔見られる↔
+  が見られる・聞こえる (perception: natural-sense vs opportunity-potential). · **batch 13** (quotation/
+  report + nominalizers, 15): ということ↔ということだ(2-sense)・と聞いた・と言ってもいい; the **reported-belief
+  trio** と言われている (general saying) ↔ とされている (established/rule) ↔ と考えられている (reasoned/
+  expert) mutually contrasted; って(2-sense quotative/topic); nominalizers の(2-sense pronoun/
+  nominalizer)・の-2(sentence-final explanatory)・のこと・のは〜だ cleft・もの(↔こと)・さ(degree)・連用形名詞
+  用法 — anchored to enriched という/と/こと/のだ/そうだ/らしい. · **batch 14** (conditionals, 12):
+  なかったら (negative たら); the **negative-copula "unless" family** でないと (と-base, 'or-else' warning) ↔
+  でなければ (ば-base, neutral) ↔ でなくては (ては-base, 'must be', → でなくてはいけない) ↔ でなかったら (たら-
+  base) — each pinned to its conditional base + mutually differentiated; のなら (explanatory なら); できれば
+  (set 'if possible', ↔ ばいい); でよければ (humble offer); がなければ (negative ば of ある, 'without', ↔
+  でなければ identity-vs-existence); ばいい (suggestion, ↔ たらどう & ば〜のに); ば〜ほど (proportional); ば〜のに
+  (counterfactual regret, ↔ のに). Anchored to enriched ば/たら/なら/と-conditional/なければ-obligation/ほど/のに.
+  Dense webs: ところ-phase timeline, 五段/一段 causative-passive grid, られる homograph disambiguation,
+  見える/見られる confusion, reported-belief saying/rule/reasoning trio, negative-conditional と/ば/ては/たら
+  base grid.
+  **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
+  (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
+  modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
+  connective result/concession/condition axes.
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~533**
+  common stubs remain (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
+  basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals largely
+  mined; remaining good families: the **〜ばかり/〜だけ family** (bakari, dake-da, dake-de-wa-naku-1..4,
+  bakari-de-wa-naku-1..4 — many near-dup variant stubs, likely fold candidates), **〜以外/〜ほか
+  exclusion** (igai/igai-wa/igai-to/hoka/hoka-ni-mo), or **degree/extent adverbials** (donnani/
+  doushitemo/dou-ka/goto-ni/gimi/darake/buri-ni). Note: two unresolved near-dup stub pairs
+  need a catalog-level
+  fold decision — `o-suru`(N3)/`o-suru-2`(N4) and `yaru`/`yaru-3`/`te-yaru`.
+  **Process (user directive 2026-06-15, throughput revised 2026-06-19):** roll multiple clusters
+  back-to-back per turn, then ONE consolidated build; checkpoint PASS + HISTORY once per turn, not
+  per cluster. **Context can safely run to ~20% (1/5) per turn — that is the target ceiling.**
+  Reference point: ~40+ nodes (4 clusters) lands context at only ~13%, so ~20% is roughly 60–70
+  nodes / 5–6 clusters in a turn. Don't stop at one ~15-node batch. A consolidated build + checkpoint
+  per cluster-group is fine (batch 12 then 13 each got their own build in one turn); the cap is the
+  20% context line, not a node count.
+  **Watch:** `variants[]` schema is `form:` (+ optional `note:`/`reading:`/`register:`), NOT
+  `text:` — using `text:` fails the build (caught batch 6). A pure prose aside with no
+  alternate form belongs in `notes:`, not `variants:`.
 - There is **no cursor file** — `list_stubs.py` *is* the resume state (a node is done iff
   `noindex:false`). `--enriched` lists finished nodes. `foldInto` nodes are excluded by
   default (folded forms aren't pending work; `--include-folds` to see them).
@@ -75,6 +122,13 @@ hand on the pen). Parallelize the *read-heavy prep and the verify*, not the writ
   (equiv + key sentence + contrast→parent). Don't index it (duplicate-content tax).
 - **Furigana** is `漢字{かんじ}` markup → build-time `<ruby>`. Every kanji needs a reading;
   verify the reading. Lint balance before building.
+- **Scalar vs array schema fields** (`src/content.config.ts`): `usageSetting` and `nuance`
+  are **plain strings** (`usageSetting: "…"`), NOT YAML lists. `equivalents`/`examples`/
+  `restrictions`/`notes`/`contrasts`/`formation`/`senses` are arrays. Writing a list under
+  `usageSetting`/`nuance` fails the build with "Expected string, received object."
+- **`variants[]` item shape** = `form:` (required) + optional `note:`/`reading:`/`register:`
+  — NOT `text:`. `restrictions`/`notes` items use `text:`; `variants` does not. A prose aside
+  with no alternate surface form belongs in `notes:`, not `variants:`. (Caught in batch 6.)
 - **Don't manufacture slots.** CALIBRATION2 §1–§2: presence is *earned*. A `restriction`
   that restates the rule, or a `contrast` no learner confuses, is padding — omit it.
   Equally, a real prohibition or confusable sibling is **mandatory**, not optional.

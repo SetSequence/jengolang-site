@@ -26,6 +26,228 @@ separate nodes** — confirmed `amari-2` (あまり(に)〜 'so/excessively') an
 あんまり): dropped the free-floating あまりに note, added a `contrasts` link to amari-2, bumped
 med→high. **Next: common batch 2.**
 
+**BUILD common batch 2 DONE (2026-06-15):** N4 degree + progression adverbs (192 → **204
+indexed**, 12 nodes). Cluster chosen to triangulate against the already-indexed degree
+siblings (totemo, amari, anmari, takusan, sugiru, zenzen, motto, mou, sugu) for a dense
+contrast web. **12 indexed:** degree/intensity — hijouni (非常に formal 'extremely'),
+hontou-ni (本当に 'really', sincerity nuance), taihen (大変 **multi-sense:** ①polite 'very'
+intensifier / ②な-adj 'tough/serious'), sonna-ni (そんなに 'that much', context-referenced),
+zenzen-nai (全然〜ない total negation, +note on colloquial 全然+positive), nakanaka-nai
+(なかなか〜ない 'won't easily', impatience nuance); progression/time — dandan↔dondon
+(gradual vs fast, mutually contrasted), zutto (**multi-sense:** ①duration / ②'by far' —
+contrast to motto pinned sense ②), ichido (一度 'once'), mo-sugu (もうすぐ 'soon', contra
+sugu/mou), sakki (さっき 'a while ago', casual-only, contra 先ほど). **Gotcha logged:**
+`usageSetting` and `nuance` are scalar **strings** in the schema, not arrays — first build
+failed on dandan with "Expected string, received object"; fixed across 7 files. All 1,458
+pages build PASS, lint clean, ruby verified. **Next: common batch 3** (adverbial family
+still rich — N4 certainty/frequency kitto/kanarazu/itsu-de-mo, N3 degree kanari/kekkou).
+
+**BUILD common batch 3 DONE (2026-06-15):** negative-polarity / total-negation adverbs
+(204 → **215 indexed**, 11 nodes + 1 noindex redirect). The densest contrast web yet — a
+notoriously confusable set built on a shared 'XXX〜ない' frame, all cross-linked to the
+batch-2 zenzen-nai/nakanaka-nai and the enriched amari. **The GEO spine = a degree scale of
+negation:** あまり〜ない (not very) → ほとんど〜ない (hardly) → 全然/全く〜ない (not at all,
+zero); plus めったに〜ない (seldom — frequency) vs 決して〜ない (never — resolve). **11
+indexed:** hotondo (ほとんど positive 'almost/most') + hotondo-nai (ほとんど〜ない 'hardly');
+mattaku (全く positive 'completely', +exasperation note) + mattaku-nai (全く〜ない, formal/
+emphatic twin of 全然〜ない); chittomo (casual+peevish); sappari (さっぱり〜ない 'no clue/no
+progress', +note on unrelated さっぱりする 'refreshed'); metta-ni (frequency); kesshite
+(resolve/principle, warnings); betsu-ni-nai (dismissive 'not particularly', +別に。curt
+reply); sukoshi-mo (少しも〜ない 'not in the slightest', formal twin of ちっとも); totemo-nai
+(とても〜ない = 'cannot possibly' — **restriction node**: the classic 'not very' misread,
+pairs with a potential-negative). **1 noindex redirect:** sukoshi-mo-nai → sukoshi-mo (少しも
+has no positive use, so 少しも and 少しも〜ない are one pattern; indexed the high-conf headword
+sukoshi-mo, kept sukoshi-mo-nai (conf med) as a navigable duplicate-surface redirect — the
+ka-2/de-iru pattern; still counts as a stub in list_stubs by design). **Polarity-split rule:**
+全く and ほとんど genuinely split positive vs negative → both halves indexed as distinct nodes;
+少しも does not. All 1,458 pages build PASS, lint clean, ruby verified. **Next: common batch
+4** (certainty/likelihood adverbs, or '+' intensifiers kanari/kekkou/daitai).
+
+**BUILD common batch 4 DONE (2026-06-15, larger batch):** two internally-dense adverbial
+sub-clusters (215 → **230 indexed**, 15 nodes). First batch run at the larger size the user
+asked for. **(a) Epistemic certainty/probability adverbs (10)** — the speaker-confidence
+scale, the certainty analog of batch-3's negation spine, all pairing with the modality family
+(でしょう/だろう/かもしれない/ようだ): 必ず kanarazu (objective 100% guarantee/'be sure to') ·
+きっと kitto (confident subjective guess) · おそらく osoraku (formal hedged 'probably', N2) ·
+もしかしたら moshika-shitara (coin-flip 'maybe', +variants もしかすると/もしかして) · まさか masaka
+(incredulous 'surely not') · 確かに tashika-ni (acknowledging 'indeed', concession-setup;
++note 確か≠確かに) · 間違いなく machigai-naku ('without doubt', guarantee) · 必ずしも〜ない
+kanarazushimo (partial negation 'not necessarily' — links 必ず + batch-3 zenzen-nai) · 明らかに
+akiraka-ni (evidence-certain 'clearly') · どうやら dou-yara (evidential 'apparently', pairs
+ようだ/らしい). Cross-contrasted along the confidence axis + zettai-ni. **(b) Positive '+'
+intensifiers (5)** — degree ladder 少し<結構<かなり<とても/非常に: かなり kanari · 結構 kekkou
+(**multi-sense:** ①degree 'quite' / ②結構です 'fine/no thanks' — the famous accept-vs-decline
+ambiguity, flagged in a note) · だいたい daitai ('roughly/mostly', +sentence-head 'to begin
+with' note, contra ほとんど) · なかなか nakanaka (positive 'impressively', admiring-surprise
+nuance; closes the loop with batch-3 nakanaka-nai) · 最も mottomo (formal superlative, contra
+一番; +homograph note 最も≠尤も/もっとも conj). All 1,458 pages build PASS, lint clean (15),
+ruby verified. **Next: common batch 5** (conclusion/result 'finally' adverbs, or pivot off
+the adverbial family to modality/connectives for variety).
+
+**BUILD common batch 5 DONE (2026-06-15, big-batch sweep):** 30 adverbial stubs in one pass
+(230 → **258 indexed**, 28 indexed + 2 redirects) — user pushed batch size up twice; ~30 held
+fine (lint + build green, quality high). Four internally-dense sub-clusters that largely
+**drain the adverbial family**: **(A) culmination 'finally' (7)** — やっと yatto (relief) /
+ついに tsui-ni (climax) / とうとう toutou (inevitable, often negative) / 漸く youyaku (formal) /
+いよいよ iyoiyo (imminent climax) / 結局 kekkyoku (net conclusion) / やがて yagate (literary
+'before long', contra batch-2 mo-sugu) — the classic やっと≠ついに≠とうとう≠結局 confusion,
+mutually contrasted. **(B) stance: as-expected / anyway / first-place (6 + 2 redirect)** —
+やはり yahari (indexed, with やっぱり as a register **variant**; yappari + yahari-yappari →
+noindex redirects, the 3-node-for-1-word dedup) / さすが sasuga (admiring) vs さすがに sasuga-ni
+(concessive limit) / とにかく tonikaku / どうせ douse (resigned) / そもそも somosomo (contra
+batch-4 daitai's reproachful 'to begin with'). **(C) timing / suddenness / already (8)** —
+いきなり ikinari (abrupt onset) / たちまち tachimachi (fast spread) / 一気に ikki-ni (one burst,
+contra batch-2 dondon) / いつの間にか itsu-no-ma-ni-ka / とっくに tokku-ni / 既に sude-ni (formal
+'already', contra essential もう) / 未だに imada-ni (contra essential まだ) / 直ちに tadachi-ni
+(formal 'immediately', contra essential すぐ). **(D) manner / effort / provisional (7)** —
+わざわざ wazawaza vs せっかく sekkaku (trouble-taking vs precious-chance) / なるべく naru-beku /
+思うように omou-you-ni / とりあえず toriaezu vs 一応 ichiou (first-step vs just-in-case) / せめて
+semete (wished minimum, contra 少なくとも). **Two slips caught:** a stray English word in a
+tadachi-ni jp example (→ 操業), and a self-referential contrast slug on naru-beku (→ moved to
+note). All 1,458 pages build PASS, lint clean (30), ruby + ASCII-scan verified. **Next:
+common batch 6 — PIVOT off adverbials** to modality (〜はず/〜わけ/〜べき) or connectives.
+
+**BUILD common batch 6 DONE (2026-06-15, the modality pivot):** the appearance / evidentiality
+/ hearsay web — 9 stubs, **8 indexed + 1 redirect-hub** (258 → **266 indexed**). First
+non-adverbial cluster, chosen for contrast density and it delivered: みたい mitai (casual ようだ,
+2 senses: conjecture + resemblance, with the no-の/な attachment restriction vs ようだ) · みたいだ
+mitaida (**redirect-hub → mitai**, kept noindex to avoid duplicate-content tax — same treatment
+as foldInto) · みたいに・みたいな mitai-ni (adverbial/adnominal, ↔ ように・みたい) · そうだ-様態
+souda-2 (appearance + imminent senses; **stem** attachment) ↔ そうだ-伝聞 souda (hearsay, family
+quotation; **plain-form** attachment) — the classic 降りそう≠降るそう minimal pair, mutually
+contrasted · そうに・そうな sou-ni (adverbial/adnominal of 様態そう; fixed its seeded prereq
+souda→souda-2) · らしい rashii (2 senses: inference/hearsay + 'befitting', with the mandatory
+らしい≠っぽい contrast) · 〜に見える ni-mieru (strictly-visual 'looks ~') · 〜ような yona (adnominal
+of ようだ; **rewrote the bundled 〜ような/〜よな title** down to 〜ような, demoted 〜よな to a variant
+note; confidence stays med). Dense anchors reused: ようだ, ように, っぽい, かもしれない. **One trap
+caught:** `variants[]` items are `form:` (+ optional `note:`), NOT `text:` — used `text:` and
+the build rejected it; fixed across the batch, folded into PASS §4. All 1,458 build PASS, lint
+clean (9).
+
+**BUILD common batches 7–9 DONE (2026-06-15, multi-cluster sweep):** per user directive to
+stop checkpointing at every cluster and roll several per turn, three modality clusters in one
+turn — 33 nodes, all indexed (266 → **299 indexed**), one consolidated build PASS, lint clean
+(33). **Batch 7 — necessity/obligation (9):** the colloquial-ellipsis 'must' forms ないと
+naito / なくては nakute-wa (trailed-off いけない) and their casual contractions なくちゃ naku-cha
+(← なくては) / ちゃいけない cha-ikenai (← てはいけない, with the ては→ちゃ・では→じゃ voicing
+rule), the 必要 trio 〜が必要 ga-hitsuyou (noun) vs 〜必要がある hitsuyou-ga-aru (action) vs 〜必
+要はない hitsuyo-wa-nai, plus 〜なくて済む nakute-sumu (spared having to) and 〜ざるを得ない
+zaru-o-enai (formal 'forced to'; する→せざる irregular). Anchored to the already-enriched core
+(なければならない, てはいけない, なくてもいい). **Batch 8 — はず/わけ/べき expectation-logic
+(13):** はずだ hazu-da (expectation) / はずがない hazu-ga-nai, the わけ family わけだ wake-da
+('no wonder') / わけではない wake-de-wa-nai (partial denial) / わけがない wake-ga-nai (impossible)
+/ わけにはいかない wake-ni-wa-ikanai (mustn't, social) and its negative ないわけにはいかない
+nai-wake-ni-wa-ikanai (must), the という-denials というわけ/というものではない (specific inference
+vs general principle) + とは限らない to-wa-kagiranai ('not always'), and べきだ beki-da /
+べきではない / べきか. Two mandatory look-alike pairs nailed: はずがない≈わけがない (logic vs
+conviction) and わけがない≠わけではない (impossible vs not-necessarily). **Batch 9 — こと
+decision/outcome/experience (11):** the する/なる decision pair ことにする (own choice) ↔
+ことになる (outcome/humble announcement), ことに決める (firmer), the している/なっている pair
+ことにしている (personal habit) ↔ ことになっている (external rule), 〜ことだ (hands-on advice,
+contra べきだ), ことはない (no-need, consoling), the **ことがある ±た minimal pair** (non-past
+= sometimes / past = experience — each contrasts the other), ないことはない (litotes) and the
+frozen set phrase に越したことはない (conf med). **No traps this sweep** — variants schema
+(`form:`/`note:`) applied correctly throughout. All 1,458 build PASS.
+
+**BUILD common batch 10 DONE (2026-06-15, keigo + こそあど sweep):** two tight clusters in
+one turn — 18 nodes, all indexed (299 → **317 indexed**), one consolidated build PASS, lint
+clean (18). **Keigo verb family (12):** the suppletive honorifics いらっしゃる irassharu
+(いる/来る/行く, irregular いらっしゃ**い**ます) and なさる nasaru (する), their humble mirrors
+いたす itasu / いたします itashimasu (する) and さしあげる sashiageru (あげる; 〜てさしあげる
+condescension note), くださる kudasaru (くれる; imperative → ください), and the **productive
+mirror pair** お〜になる o-ni-naru (sonkeigo) ↔ お〜する o-suru-2 (kenjougo), plus the honorific
+request お〜ください o-vmasu-kudasai, the very-polite ございます gozaimasu (ある) / でございます
+de-gozaimasu (です copula), and the soft command なさい nasai (← なさる imperative; contra plain
+命令形 / 〜てください). Dense register-ladder web: plain→polite→very-polite (ある/あります/
+ございます, です/でございます) and the sonkeigo↔kenjougo axis cross-linked throughout. **Trap
+avoided:** `mairu` has no node yet — dropped it as a contrast slug (would dangle the build),
+kept 参る in restriction prose instead. Note: `o-suru` (N3) is a near-dup stub of the enriched
+`o-suru-2` (N4) — left as-is (catalog-level fold decision, out of scope). **こそあど "such /
+that kind of" 連体詞 (6):** こういう kou-iu (proximal) ↔ そういう sou-iu (anaphoric) ↔ formal
+このような kono-youna, and the question どのような dono-youna (formal ↔ casual どんな donna),
+plus the bookish summarizing pair こうした kou-shita ↔ こういった kou-itta. Register ladder
+こういう(spoken)→このような/こうした(formal) and emotive こんな contrasted throughout.
+
+**BUILD common batch 11 DONE (2026-06-15, benefactive て-grid + connectives):** three clusters
+in one turn — 14 nodes, all indexed (317 → **331 indexed**), one consolidated build PASS, lint
+clean (14). **Benefactive て-form grid (7):** the receiving/giving keigo pair ていただく
+te-itadaku (humble, on もらう) ↔ てくださる te-kudasaru (honorific, on くれる) — taught as
+mirror viewpoints of one event; the request ladder てくれない te-kurenai (casual) ↔
+ていただけませんか te-itadakemasen-ka (keigo), with an explicit politeness staircase note
+(てくれる？<てくれない？<てもらえますか<ていただけますか<ていただけませんか<ていただけないでしょうか);
+the wish pair てもらいたい te-moraitai ↔ てほしい te-hoshii (both contra 〜たい for own action,
+both with the ×自分が〜てほしい→行きたい learner-error restriction); and **てやる te-yaru as a
+multi-sense node** — ①down-directed benefactive (inferior/animal, condescending if misused) +
+②defiant 'I'll damn well do it' (sports/shōnen). Anchored to enriched kureru/ageru/morau/itadaku/
+hoshii/tai. **それ-connectives (4):** the result それで sore-de (≈だから but neutral-narrative) vs
+concession それでも sore-demo (mirror logic to それで) vs transition それでは sore-de-wa (それじゃ/
+じゃあ casual) vs conditional-response それなら sore-nara — all four mutually contrasted on the
+real/result vs hypothetical/condition vs concession axes. **"but" connectives (3):** the register
+ladder だけど dakedo (casual) → けれど keredo (neutral, +けれども/けど variants, 前置き softening
+note) → だが daga (formal/written), cross-linked with が (ga-3), けど (kedo), しかし (shikashi).
+**Trap avoided:** `demo` (でも 'but') has no node yet — swapped that それでも contrast to しかし.
+Note: `yaru`/`yaru-3` stubs (〜てやる/やる, やる=する) overlap the now-enriched `te-yaru` — left
+for a catalog-level fold/disambiguation decision (same situation as o-suru/o-suru-2).
+
+**BUILD common batch 12 DONE (2026-06-19, aspect/phase + causative/passive/potential/perception):**
+two clusters in one turn — 29 nodes (26 indexed, 3 noindex colloquial redirects), one consolidated
+build PASS, lint clean (29); 331 → **357 indexed**. **Aspect/phase (17):** the compound-verb onset/
+continuation/completion set 始める hajimeru ↔ 出す dasu (neutral begin vs sudden burst) ↔ 終わる
+owaru ↔ 続ける tsuzukeru; the prep pair ておく te-oku ↔ てある te-aru (doing vs done, with transitive-
+only + が-object restriction on てある); the **ところ-phase timeline trio** ているところ teiru-tokoro
+(during) ↔ たところ ta-tokoro (just after) ↔ るところだ ru-tokoro-da (about to) — each verb-form picks
+a point on the timeline — plus たばかり ta-bakari (subjective recency) contra たところ (objective
+moment); the **ていく iku ↔ てくる kuru-2 mirror** (both 2-sense: directional away/toward + change
+into-future/up-to-now); ていた te-ita (past of ている); なくなる naku-naru (come to no longer, contra
+ようになる); and the colloquial contractions ちゃう chau/ちまう chimau (→てしまう) + とく toku (→ておく)
+kept **noindex** as redirect-hubs to dodge the duplicate-content tax. **Causative/passive/potential/
+perception (12):** the 五段/一段 causative grid せる seru ↔ させる saseru, the causative-passive
+させられる saserareru (put-upon feeling + 飲ます contraction note) and request させてください
+sasete-kudasai (contra てください); the **3-way られる homograph** — passive れる reru (五段) /
+rareru-2 (一段, already enriched) vs potential られる rareru-3 (が-object, ら抜き note) vs honorific/
+spontaneous られる rareru (sonkeigo, lighter than お〜になる) — all mutually disambiguated; られない
+rarenai (negative potential); and the **perception confusion** 見える mieru (2-sense: visible / look-
+appear) ↔ 見られる mirareru (opportunity-potential) ↔ が見られる ga-mirareru (written 'is observed')
++ 聞こえる kikoeru — the natural-sense (見える/聞こえる, no effort) vs opportunity-potential (見られる/
+聞ける, given the chance) split taught explicitly. **Trap caught:** a Hangul 약 slipped into a rarenai
+example (약束→約束) — fixed pre-build; the post-batch Hangul scan (가-힣) is now part of QA.
+
+**BUILD common batch 13 DONE (2026-06-19, quotation/report + nominalizers):** two clusters in the
+same turn as batch 12, separate consolidated build — 15 nodes, all indexed (357 → **372 indexed**),
+build PASS, lint clean (15). **Quotation/report (8):** ということ to-iu-koto (nominalize a whole
+statement, ↔ plain こと) ↔ ということだ to-iu-koto-da (**2-sense:** conclusion 'that is to say' /
+hearsay 'I hear that', contra そうだ); the **reported-belief trio** mutually contrasted — と言われている
+to-iwarete-iru (general unnamed saying) ↔ とされている to-sarete-iru (officially established / rule /
+convention, most authoritative) ↔ と考えられている to-kangaerarete-iru (reasoned/expert view, revisable);
+と聞いた to-kiita (one-time personal hearsay, can name から-source, ↔ そうだ); と言ってもいい to-ittemo-ii
+(hedged 'you could say', + 〜と言っても過言ではない note); and って tte (**2-sense:** casual quotative ≈と /
+topic ≈は・というのは). Anchored to enriched という/と-quotative/souda/rashii. **Nominalizers (7):** の
+no (**2-sense:** pronoun 'the ~ one' / clause-nominalizer for perceived events, ↔ こと) ・ の-2 (casual
+sentence-final explanatory の = だ-dropped のだ, rising=Q falling=soft-explain, feminine note) ・ のこと
+no-koto (widen a noun to 'all about', near-obligatory with 好き/愛する/心配する) ・ のは〜だ no-wa-da (cleft
+focus, ↔ plain word order & のだ) ・ もの mono (concrete thing ↔ こと abstract) ・ さ sa (adjective→degree
+noun 高さ, ↔ ます-stem-noun & 〜み subjective) ・ 連用形名詞用法 masu-stem-noun (動く→動き lexical noun ↔
+clause-nominalizers こと/の). Anchored to enriched こと/のだ. **Trap caught (×2):** Hangul autocomplete
+slipped into kana examples — 약束→約束 (rarenai, batch 12) and 체조子→調子 (no-2, batch 13) — both fixed
+pre-build; a stdlib Hangul scan (가-힣 + Jamo ranges) over each batch is now a standing QA step.
+
+**BUILD common batch 14 DONE (2026-06-19, conditionals):** 12 nodes, all indexed (372 → **384
+indexed**), build PASS, lint + Hangul scan clean (12). The high-confusion **negative-copula "unless"
+grid** taught by pinning each variant to its conditional base and differentiating: でないと de-nai-to
+(と-base, automatic 'or-else' warning) ↔ でなければ de-nakereba (ば-base, neutral, +でなきゃ) ↔ でなくては
+de-nakute-wa (ては-base, 'it must be ~', the base of でなくてはいけない, +でなくちゃ) ↔ でなかったら
+de-nakattara (たら-base, one-off supposition); plus なかったら nakattara (negative たら for verbs/い-adj,
+the copula-form sibling of でなかったら). Other conditionals: のなら no-nara (なら + の, 'taking up what was
+said', +んなら) ・ できれば dekireba (fixed adverb 'if possible', softens requests, ↔ できたら) ・ でよければ
+de-yokereba (humble offer 'if ~ will do') ・ がなければ ga-nakereba (negative ば of existence ある, 'without';
+**bumped low→high conf** — meaning was never shaky, pass-1 artifact; contrast nails existence-vs-identity
+がない vs でない) ・ ばいい ba-ii (forward suggestion 'just ~', ↔ たらどう advice & ば〜のに regret, +ばよかった
+note) ・ ば〜ほど ba-hodo (proportional 'the more…the more', repeated verb, な-adj→であればあるほど note) ・
+ば〜のに ba-noni (counterfactual regret, trailing-のに ellipsis note). Anchored to enriched ば/たら/なら/
+と-conditional/なければ-obligation/なくてはいけない/ほど/のに/たらどう. **Note on near-dups:** the four でな-
+variants converge on 'unless' but ride genuinely different conditional bases (と/ば/ては/たら), so each is
+a legit node, not a fold — differentiation lives in the contrast slot, not in withholding the page.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
