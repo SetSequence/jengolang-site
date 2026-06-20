@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 545 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 553 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -199,9 +199,18 @@ design lives in `TREE.md`; it is not needed to run a pass.
   enriched mo/te-mo/ba/aida-ni/noni/hanmen/o-toshite. **Redirect-hubs (stay noindex):** kagiri-wa,
   no-kawari-ni, o-tsujite. **Fold check that flipped:** tatte-2 looked like a kana dup of tatte but its
   prereq volitional-form revealed the distinct 〜（よ）うたって construction → kept indexed.
+  · **batch 38** (degree / frequency / manner adverbials, 8 indexed, no folds): どんなに (scoped to the
+  non-concessive 'how (much) ~' exclamation/embedded-Q core; どんなに〜ても concessive stays donna-ni-temo —
+  same bare-vs-〜ても split as batch 28's ikura/donnani) ↔ donna-ni-temo; あまりにも ('far too', emphatic
+  excess, ↔ amari plain); ちゃんと ('properly', casual of きちんと note); ごとに ('each/every', ↔ おきに gap-
+  counting & たびに 'each time'); ぶりに ('first time in', 久しぶり note); 一度に ('all at once', いっぺんに
+  note); 再び ('again', formal/written ↔ また everyday); どうか (med, scoped to earnest-plea 'please' ↔
+  どうぞ offer; the 'somehow/whether' sense deferred). Anchored to enriched donna-ni-temo/amari/oki-ni/
+  tabi-ni/mata/douzo. Flat single-sense adverbs — contrasts only where a real confusable enriched sibling
+  exists (chanto/buri-ni/ichido-ni left contrast-empty by design, §1 presence-earned).
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~377**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~369**
   common stubs remain (resolved noindex variants to skip: tara-sugu-2 + batch-36's ni-taishite-2,
   to-itte-mo, naze-ka-to-iu-to-kara-da, dochira-ka-to-iu-to + batch-37's kagiri-wa, no-kawari-ni, o-tsujite) (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり

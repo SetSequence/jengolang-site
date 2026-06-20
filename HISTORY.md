@@ -511,6 +511,17 @@ substitute / trade-off-in-exchange ↔ 反面) ↔ くせに ('even though' with
 noindex, は/の/synonym dups): kagiri-wa (限りは), no-kawari-ni (の代わりに), o-tsujite (を通じて → を通して/
 o-toshite, batch-21 enriched). Anchored to enriched mo/te-mo/ba/aida-ni/noni/hanmen/o-toshite.
 
+**BUILD common batch 38 DONE (2026-06-20, degree / frequency / manner adverbials):** one cluster-group,
+one build (545 → **553 indexed**, +8, no folds), build PASS, lint + Hangul/Cyrillic clean (8). どんなに scoped
+to the non-concessive 'how (much) ~' exclamation/embedded-Q core (どんなに〜ても concessive remains donna-ni-
+temo — the bare-vs-〜ても split from batch 28). あまりにも ('far too', emphatic excess ↔ amari). ちゃんと
+('properly', casual of きちんと). ごとに ('each/every' ↔ おきに gap-counting / たびに 'each time'). ぶりに
+('first time in', 久しぶり note). 一度に ('all at once', いっぺんに note). 再び ('again', formal/written ↔ また
+everyday). どうか (med, earnest-plea 'please' ↔ どうぞ offer; 'somehow/whether' sense deferred to its own row).
+Flat single-sense adverbs — contrasts only where a real enriched confusable exists; chanto/buri-ni/ichido-ni
+left contrast-empty by design (§1 presence-earned, not padded). Anchored to enriched donna-ni-temo/amari/
+oki-ni/tabi-ni/mata/douzo.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
