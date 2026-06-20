@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 473 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 480 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -99,11 +99,18 @@ design lives in `TREE.md`; it is not needed to run a pass.
   ばいい advice you do); the **hindsight valence pair** ばよかった (regret 'should have', +なければよかった
   'shouldn't have') ↔ てよかった (relief 'glad I did', +なくてよかった 'glad I didn't'). Anchored to enriched
   ba-ii/tara/hou-ga-ii/te-mo-ii.
+  · **batch 27** (listing / enumeration particles, 7): the **exhaustive-vs-representative axis** や
+  (noun list 'among others', ↔ と exhaustive) ↔ とか (casual/vaguer, also actions+quotes+single-item
+  hedge, ↔ toka-2 hearsay sense) ↔ とかとか (explicit example list); など (2-sense: 'and so on' / belittling
+  〜なんか・なんて, pairs with や to close a list); the **clause-listing reasons pair** し ('and what's more',
+  cumulative grounds, ↔ から one direct cause) ↔ しし (explicit multi-reason); もも ('both A and B' / with
+  neg 'neither nor', ↔ と neutral & も 'also', particle-stacking にも/とも note). Anchored to enriched
+  to-2/ka/mo/kara/toka-2. **Slug trap:** reason から is `kara` (not `kara-2` — caught pre-build).
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **450**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **443**
   common stubs remain (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation

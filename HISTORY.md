@@ -384,6 +384,16 @@ control). The hindsight valence pair ばよかった (regret 'should have ~', +�
 ↔ てよかった (relief 'I'm glad I ~', +なくてよかった 'glad I didn't') — explicitly warned not to confuse
 なくてよかった (relief) with なければよかった (regret). All anchored to enriched ba-ii/tara/hou-ga-ii/te-mo-ii.
 
+**BUILD common batch 27 DONE (2026-06-19, listing / enumeration particles):** one cluster, one build
+(473 → **480 indexed**, +7), build PASS, lint + Hangul clean (7). The exhaustive-vs-representative axis:
+や (non-exhaustive noun list 'among others', ↔ と exhaustive) → とか (casual/vaguer; also lists actions/
+quotes and hedges a single item; ↔ toka-2 the hearsay とか) → とかとか (explicit example list). など given
+2 senses ('and so on' / belittling 〜なんか・なんて), paired with や to close a list. Clause-listing reasons:
+し ('and what's more', cumulative grounds toward a conclusion, ↔ から one direct cause) → しし (explicit
+multi-reason). もも ('both A and B' / with a negative 'neither nor', ↔ と neutral list & も 'also'; particle-
+stacking にも/とも noted). All anchored to enriched to-2/ka/mo/kara/toka-2. Slug trap caught pre-build:
+the reason particle is `kara`, not `kara-2` (which doesn't exist) — fixed shi.md's contrast before lint.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
