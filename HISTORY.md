@@ -419,6 +419,16 @@ mae-ni/ato-de/nagara/made-ni/te-iru. Slug trap caught pre-build: 'from' から i
 fixed mae-kara's contrast. Dedup handled three 間に faces (aida-ni core / te-iru-aida-ni variant /
 no-aida-ni left stub) and the 前-noun vs mae-ni-connective split — same pattern as batch 28's ikura.
 
+**BUILD common batch 30 DONE (2026-06-19, comparison & superlative constructions):** one cluster, one
+build (492 → **497 indexed**, +5), build PASS, lint + Hangul clean (5). 方{ほう} resolved from its low
+confidence by scoping to the 'the ~ one / side' selection sense — のほうが (`no-hou-ga`, already enriched)
+owns the comparison, ほうがいい owns the advice, so 方{ほう} teaches just option-selection (conf bumped
+low→med). The two-way vs many-way axis: と〜と、どちらが (compare exactly two; answered by のほうが) ↔
+の中で〜が一番 (superlative of three or more; ↔ 一番). の中で sets the group ('among / of all'; で alone
+replaces it when the noun is already a whole scope like 世界, から for picking out). ほど〜ない ('not as ~
+as', negative-only, mirror of positive より). Anchored to enriched no-hou-ga/yori/ichiban/hodo/hou-ga-ii/de.
+Two slug traps caught pre-build: scope で is `de` (not `de-4`), and 'from' から is `kara-3`.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
