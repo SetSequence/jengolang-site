@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 536 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 545 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -186,11 +186,24 @@ design lives in `TREE.md`; it is not needed to run a pass.
   nazenara. **Slug traps:** なぜなら = `nazenara` (not naze-nara); 反面 contrast = `ippou-de`. **Redirect-hubs
   (stay noindex):** ni-taishite-2, to-itte-mo, naze-ka-to-iu-to-kara-da, dochira-ka-to-iu-to. **Over-fill
   caught:** dropped a manufactured に対して contrast on どちらかと言えば (no learner confuses them).
+  · **batch 37** (さえ emphasis/if-only + たって colloquial concessive + 限り as-long-as + instead-of/
+  despite connectives, 9 indexed + 3 noindex redirects): the **さえ family** さえ ('even', extreme example,
+  ↔ も plainer) ↔ でさえ (さえ on a subject noun) ↔ さえ〜ば ('if only', the one sufficient condition, ↔ ば
+  general); the **たって colloquial concessive pair** たって (た-form + って = casual 〜ても 'even if', ↔ te-mo)
+  ↔ たって-2 (**volitional + たって** = 'even if one tries to', futile-effort — a genuine separate construction,
+  NOT a dup) ; 限り (2-sense: 'as long as' condition / 'as far as' extent + ない限り 'unless' note, ↔ 間に
+  time-span; **限りは folded to redirect**); the **instead-of/despite set** 代わりに (2-sense substitute /
+  trade-off-in-exchange, ↔ 反面; **の代わりに folded to redirect**) ↔ くせに ('even though' WITH reproach,
+  same-subject restriction, ↔ のに neutral) ↔ 割には ('considering ~', proportional-expectation mismatch,
+  ↔ のに/くせに). **を通じて folded to redirect → を通して** (o-toshite, batch-21 enriched). Anchored to
+  enriched mo/te-mo/ba/aida-ni/noni/hanmen/o-toshite. **Redirect-hubs (stay noindex):** kagiri-wa,
+  no-kawari-ni, o-tsujite. **Fold check that flipped:** tatte-2 looked like a kana dup of tatte but its
+  prereq volitional-form revealed the distinct 〜（よ）うたって construction → kept indexed.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~386**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~377**
   common stubs remain (resolved noindex variants to skip: tara-sugu-2 + batch-36's ni-taishite-2,
-  to-itte-mo, naze-ka-to-iu-to-kara-da, dochira-ka-to-iu-to) (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
+  to-itte-mo, naze-ka-to-iu-to-kara-da, dochira-ka-to-iu-to + batch-37's kagiri-wa, no-kawari-ni, o-tsujite) (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation
   がする + emotion-display + する-inference connectives + contrast/result/"speaking-of"/concessive-からといって

@@ -498,6 +498,19 @@ to-iu-to-kara-da (〜からだ full form), dochira-ka-to-iu-to (と-base). Slug 
 contrast=`ippou-de`. Dropped a manufactured に対して contrast on どちらかと言えば (over-fill guard, §2). Anchored
 to enriched ni-tsuite/ippou-de/ni-shitagatte/ba-hodo/sono-tame/to-iu/to-naru-to/kara-suru-to/nazenara.
 
+**BUILD common batch 37 DONE (2026-06-20, さえ emphasis/if-only + たって colloquial concessive + 限り
+as-long-as + instead-of/despite connectives):** one cluster-group, one build (536 → **545 indexed**, +9, plus
+3 noindex redirects), build PASS, lint + Hangul/Cyrillic clean (12). さえ family: さえ ('even', extreme example
+↔ も) ↔ でさえ (さえ on a subject noun) ↔ さえ〜ば ('if only', the single sufficient condition ↔ ば). たって
+colloquial concessive: たって (た-form+って = casual 〜ても ↔ te-mo) ↔ たって-2 — caught as a REAL separate
+construction, not a kana dup: its volitional-form prereq is 〜（よ）うたって 'even if one tries to' (futile
+effort), so kept indexed and mutually contrasted with plain たって. 限り 2-sense ('as long as' condition /
+'as far as' extent) + ない限り 'unless' note, ↔ 間に time-span. Instead-of/despite set: 代わりに (2-sense
+substitute / trade-off-in-exchange ↔ 反面) ↔ くせに ('even though' with reproach, same-subject restriction
+↔ のに) ↔ 割には ('considering ~', proportional-expectation mismatch ↔ のに/くせに). Redirect-hubs (stay
+noindex, は/の/synonym dups): kagiri-wa (限りは), no-kawari-ni (の代わりに), o-tsujite (を通じて → を通して/
+o-toshite, batch-21 enriched). Anchored to enriched mo/te-mo/ba/aida-ni/noni/hanmen/o-toshite.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
