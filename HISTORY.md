@@ -439,6 +439,14 @@ trouble of ~ing'; なくて for negative cause; formal 〜て申し訳ない/ご
 te-form/te-kudasai/kureru/ne. This crosses 500 indexed nodes (from 387 at the start of the 2026-06-19
 session — batches 15–31, +113).
 
+**BUILD common batch 32 DONE (2026-06-19, に比べて comparison + と同じ equivalence):** one cluster, one
+build (500 → **504 indexed**, +4), build PASS, lint + Hangul clean (4). Extends batch 30's comparison web.
+The baseline-comparison near-pair: に比べて (plain 'compared to', a baseline + the gap from it — better for
+trends/stats than より which ranks head-to-head) ↔ に比べると (same with the と conditional, 'when one
+compares', marginally more tentative). The equivalence pair: と同じで (identical *in kind*; で = copula
+て-form leading into a further clause; と違って is its antonym) ↔ と同じくらい (equal *in degree*, 'about as
+~ as' — the positive mirror of ほど〜ない). Anchored to enriched yori/hodo-nai/no-hou-ga/gurai/to-2.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all

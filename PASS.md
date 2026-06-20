@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 500 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 504 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -138,11 +138,16 @@ design lives in `TREE.md`; it is not needed to run a pass.
   てくれてありがとう (thanks for a favour, くれて = done-for-me, ↔ kureru) ↔ てすみません (2-sense: apology
   'sorry for ~ing' + すみません-as-thanks 'thanks for the trouble'; なくて negative cause; 〜て申し訳ない
   formal). Anchored to enriched te-form/te-kudasai/kureru/ne. **Milestone: 500 indexed.**
+  · **batch 32** (に比べて comparison + と同じ equivalence, 4; extends batch-30 comparison web): the
+  baseline-comparison near-pair に比べて (plain 'compared to', ↔ より which ranks head-to-head) ↔ に比べると
+  (と-conditional 'when one compares', slightly more tentative); the equivalence pair と同じで (identical
+  *in kind*, で=copula て-form, ↔ と違って antonym) ↔ と同じくらい (equal *in degree* 'as ~ as', positive
+  mirror of ほど〜ない). Anchored to enriched yori/hodo-nai/no-hou-ga/gurai/to-2.
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **423**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **419**
   common stubs remain (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation
