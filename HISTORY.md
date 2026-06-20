@@ -540,6 +540,8 @@ is/unchanged' (そのまま・Nのまま). Contrasts ている (unchanged-with-n
 
 **BUILD common batch 41 DONE (2026-06-20, ずつ distributive):** one node, one build (559 → **560 indexed**, +1), build PASS, lint + Hangul/Cyrillic clean (1). ずつ ('~ each / at a time', equal amount per unit or step) contrasted with ごとに (unit-focus 'every X' vs ずつ amount-focus). Enriched at the context-budget tail of the session. Anchored to enriched goto-ni.
 
+**BUILD common batch 42 DONE (2026-06-20, simile/'as if' modality + ところ connectives):** one cluster-group, one build (560 → **567 indexed**, +7, plus 1 redirect), build PASS, lint + Hangul/Cyrillic clean (8). Simile set: のような (adnominal 'like ~', modifies a NOUN ↔ youda predicate / youni adverbial) ↔ まるで〜ようだ (vivid 'just like', +neg='completely not') ↔ かのようだ (formal 'as if', explicitly counter-to-fact; combine まるで〜かのようだ). mitaida was already a redirect-hub → mitai, left as-is. ところ connectives: ところで (2-sense 'by the way' topic-shift / V-た+ところで futile 'even if') ↔ ところが ('however', SURPRISING actual result ↔ しかし neutral) ↔ ところに/へ ('right when', interruption at the exact moment ↔ 間に span) ↔ ところだった ('was about to / almost', counterfactual near-miss ↔ るところだ real imminence). ところだ folded to redirect → ru-tokoro-da (batch-12 aspect trio owns the 3-phase). Anchored to enriched youda/youni/mitai/shikashi/aida-ni/ta-tokoro/ru-tokoro-da.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all

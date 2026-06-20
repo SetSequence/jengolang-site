@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 560 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 567 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -221,9 +221,20 @@ design lives in `TREE.md`; it is not needed to run a pass.
   で usually droppable). Anchored to enriched te-iru/nai-de.
   · **batch 41** (ずつ distributive, 1 indexed): ずつ ('~ each / at a time', equal amount per unit/step) ↔
   ごとに (unit-focus 'every X' vs ずつ amount-focus). Single node done at context-budget tail. Anchored goto-ni.
+  · **batch 42** (simile/'as if' modality + ところ connectives, 7 indexed + 1 redirect): **simile set** —
+  のような (adnominal 'like ~', modifies a NOUN ↔ youda predicate / youni adverbial; のように・みたいな variants) ↔
+  まるで〜ようだ (vivid 'just like', +neg='completely not' note) ↔ かのようだ (formal/written 'as if', explicitly
+  counter-to-fact; often まるで〜かのようだ). mitaida was ALREADY a redirect-hub → mitai (left as-is). **ところ
+  connectives** — ところで (2-sense: 'by the way' topic-shift / V-た+ところで futile 'even if', ↔ ところが) ↔
+  ところが ('however', SURPRISING actual result ↔ しかし neutral) ↔ ところに/へ ('right when', interruption at
+  the exact moment ↔ 間に span / たところ completion) ↔ ところだった ('was about to / almost', counterfactual
+  near-miss ↔ るところだ real imminence; pairs もう少しで/危うく). **ところだ folded to redirect → ru-tokoro-da**
+  (batch-12 aspect trio owns the 3-phase). Anchored to enriched youda/youni/mitai/shikashi/aida-ni/ta-tokoro/
+  ru-tokoro-da. **Overlap caught:** mitaida & tokoro-da both already covered by enriched siblings → redirect,
+  not re-teach.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~362**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~355**
   common stubs remain (resolved noindex variants to skip: tara-sugu-2 + batch-36's ni-taishite-2,
   to-itte-mo, naze-ka-to-iu-to-kara-da, dochira-ka-to-iu-to + batch-37's kagiri-wa, no-kawari-ni, o-tsujite) (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
