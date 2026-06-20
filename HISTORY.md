@@ -538,6 +538,8 @@ is/unchanged' (そのまま・Nのまま). Contrasts ている (unchanged-with-n
 (ないまま = lingering-undone state vs ないで links to a following action). ままで folded to redirect → mama (just
 まま+で, the で usually droppable). Anchored to enriched te-iru/nai-de.
 
+**BUILD common batch 41 DONE (2026-06-20, ずつ distributive):** one node, one build (559 → **560 indexed**, +1), build PASS, lint + Hangul/Cyrillic clean (1). ずつ ('~ each / at a time', equal amount per unit or step) contrasted with ごとに (unit-focus 'every X' vs ずつ amount-focus). Enriched at the context-budget tail of the session. Anchored to enriched goto-ni.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all

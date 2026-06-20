@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 559 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 560 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -219,9 +219,11 @@ design lives in `TREE.md`; it is not needed to run a pass.
   た-form required — restriction; vs 'as it is/unchanged' そのまま・Nのまま) ↔ ている (unchanged-with-neglect
   vs plain progressive) & ないで (ないまま lingering-undone state); **ままで folded to redirect → mama** (まま+で,
   で usually droppable). Anchored to enriched te-iru/nai-de.
+  · **batch 41** (ずつ distributive, 1 indexed): ずつ ('~ each / at a time', equal amount per unit/step) ↔
+  ごとに (unit-focus 'every X' vs ずつ amount-focus). Single node done at context-budget tail. Anchored goto-ni.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~363**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~362**
   common stubs remain (resolved noindex variants to skip: tara-sugu-2 + batch-36's ni-taishite-2,
   to-itte-mo, naze-ka-to-iu-to-kara-da, dochira-ka-to-iu-to + batch-37's kagiri-wa, no-kawari-ni, o-tsujite) (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
