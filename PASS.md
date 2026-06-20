@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 517 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 536 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -167,13 +167,34 @@ design lives in `TREE.md`; it is not needed to run a pass.
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA. **Extended
   batch 34:** also scan Cyrillic (Ѐ-ӿ) — a stray благодаря slipped into okage.md prose. Combined regex:
   `[가-힣ᄀ-ᇿ㄰-㆏Ѐ-ӿ]`.
+  · **batch 36** (に対して contrast/proportional + result + というと/といえば "speaking of" + concessive
+  からといって web, 19 indexed + 4 noindex redirects): **に対して** (2-sense: target 'toward' ↔ contrastive
+  'whereas', 〜のに対して clause form; に対する adnominal folded to redirect ni-taishite-2) ↔ について (about
+  vs toward) ↔ 反面 (two sides of *same* thing, ↔ ippou-de); **につれて** (proportional gradual change, ↔
+  にしたがって & ば〜ほど; restriction: no command/one-time event); result pair **その結果** (standalone
+  connective, ↔ そのため) ↔ **結果** (bound V-た/Nの結果); the **"speaking of" topic-shift family**: といえば
+  (free association) ↔ というと (2-sense: association + confirmation 'so that means?') ↔ といったら (2-sense:
+  topic + emphatic 'the sheer ~!') ↔ そういえば (sudden recall, changes subject); the **standpoint pair**
+  から言うと (conclusion from a basis, ↔ からすると inference) ↔ で言うと (measure/axis rephrase); the
+  **concessive 〜といって web**: といっても (concede-then-qualify, canonical; **といって-mo kana spelling folded
+  to redirect to-itte-mo**) ↔ からといって ('just because ~, not necessarily', restriction: main clause
+  denial) ↔ だからといって (standalone opener of same logic) ↔ かといって (rejects the *opposite* alternative)
+  ↔ といって (med-conf: stated-reason/pretext + これといって idiom); the **かというと set**: かというた→かというと
+  (Q-then-answer) ↔ なぜかというと (fixed 'the reason is ~からだ', ↔ なぜなら formal; なぜかというと〜からだ folded
+  to redirect) ; どちらかと言えば ('if anything', softening hedge; **と-base どちらかと言うと folded to redirect**).
+  Anchored to enriched ni-tsuite/ippou-de/ni-shitagatte/ba-hodo/sono-tame/to-iu/to-naru-to/kara-suru-to/
+  nazenara. **Slug traps:** なぜなら = `nazenara` (not naze-nara); 反面 contrast = `ippou-de`. **Redirect-hubs
+  (stay noindex):** ni-taishite-2, to-itte-mo, naze-ka-to-iu-to-kara-da, dochira-ka-to-iu-to. **Over-fill
+  caught:** dropped a manufactured に対して contrast on どちらかと言えば (no learner confuses them).
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **405**
-  common stubs remain (1 of which, tara-sugu-2, is now a resolved noindex variant — skip) (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~386**
+  common stubs remain (resolved noindex variants to skip: tara-sugu-2 + batch-36's ni-taishite-2,
+  to-itte-mo, naze-ka-to-iu-to-kara-da, dochira-ka-to-iu-to) (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation
-  がする + emotion-display + する-inference connectives largely mined; remaining good families:
+  がする + emotion-display + する-inference connectives + contrast/result/"speaking-of"/concessive-からといって
+  connective web (batch 36) largely mined; remaining good families:
   **degree/extent adverbials** (donnani/doushitemo/dou-ka/goto-ni/gimi/darake/buri-ni), the
   **〜を通して/〜を通じて means/perspective particles** (o-toshite + siblings), the **〜たって/〜ったって
   concessive-colloquial set**, or the **〜ことから/〜ことだから reason-from-grounds connectives**. **Heads-up:** the redirect-hubs — batch-15's dake-de-wa-naku-2, bakari-de-wa-naku,

@@ -12,4 +12,15 @@ confidence: "med"
 sources:
   volumes: "A"
 noindex: true
+equivalents:
+  - "if anything / rather — leans toward one side without committing strongly"
+keySentence:
+  jp: "どちらかと言{い}うと、私{わたし}はインドア派{は}だ。"
+  en: "If anything, I'm more of an indoor type."
+contrasts:
+  - slug: "dochira-ka-to-ieba"
+    label: "どちらかと言えば"
+    distinction: "Interchangeable と-base variant of どちらかと言えば — same meaning. See that page for the full treatment."
+notes:
+  - text: "Same meaning as どちらかと言えば; the と-form is marginally more tentative-sounding. Refer to どちらかと言えば."
 ---

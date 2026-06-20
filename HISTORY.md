@@ -479,6 +479,25 @@ duplicate-content reasoning as the redirect-hubs; not worth a separate indexed p
 nari/tara/to-conditional/ya-ina-ya/sugu. Fixed to-sugu-ni's prereq suru-to→to-conditional (とすぐに builds
 on the と-result, not すると).
 
+**BUILD common batch 36 DONE (2026-06-20, に対して contrast/proportional + result + "speaking-of" topic-shift
++ concessive 〜からといって web):** one cluster-group, one build (517 → **536 indexed**, +19, plus 4 noindex
+redirects), build PASS, lint + Hangul/Cyrillic clean (23). Directed by /loop at the に対して/につれて contrast-
+and-proportional, その結果 result, and というと/といえば "speaking of" families. に対して taught 2-sense (target
+'toward' ↔ contrastive 'whereas', 〜のに対して clause form) ↔ について ↔ 反面 (two opposite sides of the *same*
+thing, ↔ ippou-de); につれて proportional gradual change (↔ にしたがって/ば〜ほど; restriction bars commands &
+one-time events). Result pair: その結果 (standalone connective ↔ そのため) ↔ 結果 (bound V-た/Nの結果). The
+"speaking-of" family mutually cross-linked: といえば (free association) ↔ というと (2-sense +confirmation 'so
+that means?') ↔ といったら (2-sense +emphatic 'the sheer ~!') ↔ そういえば (sudden recall, changes subject);
+standpoint pair から言うと (conclusion from a basis, ↔ からすると inference) ↔ で言うと (measure/axis rephrase).
+The concessive 〜といって web: といっても (concede-then-qualify, canonical) ↔ からといって ('just because', main-
+clause-denial restriction) ↔ だからといって (standalone opener) ↔ かといって (rejects the *opposite* alternative)
+↔ といって (med-conf: stated-reason/pretext + これといって idiom). かというと set: かというと (Q-then-answer) ↔
+なぜかというと (fixed 'the reason is ~からだ', ↔ なぜなら formal). どちらかと言えば softening hedge. Redirect-hubs
+(stay noindex, kana/adnominal/full-form dups): ni-taishite-2 (に対する), to-itte-mo (kana といっても), naze-ka-
+to-iu-to-kara-da (〜からだ full form), dochira-ka-to-iu-to (と-base). Slug traps: なぜなら=`nazenara`, 反面
+contrast=`ippou-de`. Dropped a manufactured に対して contrast on どちらかと言えば (over-fill guard, §2). Anchored
+to enriched ni-tsuite/ippou-de/ni-shitagatte/ba-hodo/sono-tame/to-iu/to-naru-to/kara-suru-to/nazenara.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
