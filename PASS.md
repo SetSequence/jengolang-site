@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 480 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 486 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -106,11 +106,21 @@ design lives in `TREE.md`; it is not needed to run a pass.
   cumulative grounds, ↔ から one direct cause) ↔ しし (explicit multi-reason); もも ('both A and B' / with
   neg 'neither nor', ↔ と neutral & も 'also', particle-stacking にも/とも note). Anchored to enriched
   to-2/ka/mo/kara/toka-2. **Slug trap:** reason から is `kara` (not `kara-2` — caught pre-build).
+  · **batch 28** (interrogative + でも/も indefinites, 6): the **affirmative-vs-negative sweep pair**
+  何でも (anything, question-word+でも free-choice family 誰でも/どこでも/いつでも) ↔ 何も〜ない (nothing,
+  question-word+も+neg); いつ(で)も (2-sense: いつでも 'any time' free-choice vs いつも 'always' frequency —
+  the で is the difference); いくら reworked to lead with the **'how much?' question word** (concessive
+  deferred to the pre-existing enriched いくら〜ても `ikura-temo`, no dup) ↔ いくら〜でも (2-sense:
+  でも-allomorph concessive vs fused いくらでも 'any amount'); でも〜でも ('whether A or B', ↔ も〜も
+  'both/neither' & de-mo). Anchored to enriched de-mo/mo/te-mo/donna-ni-temo/ikura-temo.
+  **Dedup note:** bare adverbs (`ikura`, `donnani`) overlap their enriched 〜ても constructions
+  (`ikura-temo`, `donna-ni-temo`) — give the bare node its own non-concessive core + cross-ref, don't
+  re-teach the concessive. `donnani` left a stub (donna-ni-temo owns the concessive).
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **443**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **437**
   common stubs remain (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation

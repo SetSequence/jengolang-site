@@ -394,6 +394,18 @@ multi-reason). もも ('both A and B' / with a negative 'neither nor', ↔ と n
 stacking にも/とも noted). All anchored to enriched to-2/ka/mo/kara/toka-2. Slug trap caught pre-build:
 the reason particle is `kara`, not `kara-2` (which doesn't exist) — fixed shi.md's contrast before lint.
 
+**BUILD common batch 28 DONE (2026-06-19, interrogative + でも/も indefinites):** one cluster, one build
+(480 → **486 indexed**, +6), build PASS, lint + Hangul clean (6). The affirmative-vs-negative sweep pair:
+何でも ('anything', question-word + でも free-choice family 誰でも/どこでも/いつでも) ↔ 何も〜ない ('nothing',
+question-word + も + negative). いつ(で)も given 2 senses — いつでも 'any time' (free-choice) vs いつも
+'always' (frequency); the で distinguishes them. いくら reworked: a near-dup risk surfaced — いくら〜ても
+(`ikura-temo`) and どんなに〜ても (`donna-ni-temo`) were already enriched in batch 24, so `ikura` now leads
+with the 'how much?' question word and defers the concessive via cross-ref (no duplicate content). いくら〜でも
+given 2 senses (でも-allomorph concessive vs fused いくらでも 'any amount'). でも〜でも ('whether A or B',
+↔ も〜も 'both/neither'). Anchored to enriched de-mo/mo/te-mo/donna-ni-temo/ikura-temo. `donnani` (bare)
+left a stub by design — donna-ni-temo owns the concessive. New gotcha folded into PASS §1: bare
+interrogative adverbs overlap their enriched 〜ても constructions; teach the non-concessive core + cross-ref.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
