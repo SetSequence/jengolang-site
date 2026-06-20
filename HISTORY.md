@@ -362,6 +362,18 @@ yes-case + no-case, vs どんなに's range of degrees). All anchored to enriche
 the closing batch of a long session (batches 15–24, +71 indexed nodes: 387→458, all builds green).
 Next families flagged in PASS §1: degree/extent adverbials, を通じて siblings.
 
+**BUILD common batch 25 DONE (2026-06-19, sentence-final modal particles):** one cluster, one build
+(458 → **467 indexed**, +9), build PASS, lint + Hangul clean (9). Sentence-final modality web: the
+wondering pair かな (light casual musing; +negative = a wish) ↔ かしら (the feminine equivalent); na-2
+(sentence-final な, emotion / casual agreement — **prohibitive 行くな explicitly disambiguated in a note**)
+↔ なあ (the drawn-out, more emotional variant); よね (よ-assertion + ね-confirmation, 'right?'). The
+rhetorical 'isn't it?' register pair じゃないか (casual contraction) ↔ ではないか (formal full form, +
+volitional 'let us ~'). のだろうか (heavy, introspective 'I wonder' — contrasted as heavier-than-かな,
+question-form-of-だろう). だろ (clipped casual だろう → spoken 'right?', register-laddered vs だろう/でしょう).
+All anchored to enriched ne/yo/darou/deshou/kamoshirenai/no-2/no-da. Process note: PASS §1 updated this
+turn (user directive) — the 20% context ceiling is mine to check between clusters, and I yield the turn
+after each build+checkpoint so the hook can re-sample rather than chaining indefinitely.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all

@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 458 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 467 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -84,11 +84,19 @@ design lives in `TREE.md`; it is not needed to run a pass.
   (degree)↔いくら〜ても(quantity/effort)↔たとえ〜ても(hypothetical 'even if'); どうしても (2-sense at-any-cost /
   with-neg just-can't); permission てもかまわない(↔てもいい) vs futility ても始まらない (same ても, opposite
   stance); ても〜なくても (whether-or-not binary). All off enriched te-mo/te-mo-ii.
+  · **batch 25** (sentence-final modal particles: wondering / agreement / rhetorical confirmation, 9):
+  the **wondering pair** かな (light casual musing, +negative=wish) ↔ かしら (feminine equiv); na-2
+  (sentence-final な emotion/agreement, **prohibitive な disambiguated**) ↔ なあ (drawn-out emotional
+  variant) — both laddered against enriched ね/よ; よね (よ-assert + ね-confirm, 'right?'); the
+  **rhetorical 'isn't it?' register pair** じゃないか (casual contraction) ↔ ではないか (formal full
+  form, +volitional 'let us ~'); のだろうか (heavy introspective 'I wonder', ↔かな light vs だろう
+  conjecture); だろ (clipped casual だろう→'right?', ↔だろう/でしょう register). Anchored to enriched
+  ne/yo/darou/deshou/kamoshirenai/no-2/no-da.
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **465**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **456**
   common stubs remain (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation
@@ -108,6 +116,15 @@ design lives in `TREE.md`; it is not needed to run a pass.
   nodes / 5–6 clusters in a turn. Don't stop at one ~15-node batch. A consolidated build + checkpoint
   per cluster-group is fine (batch 12 then 13 each got their own build in one turn); the cap is the
   20% context line, not a node count.
+  **The 20% ceiling is MY responsibility to check, not a hook's (user directive 2026-06-19).**
+  "Keep rolling" does NOT mean "never come up for air." Between clusters — at each build+checkpoint
+  boundary — I explicitly check context usage against the ~20% line myself and decide whether to
+  start another cluster-group or stop. And I **actually yield the turn** after each build+checkpoint
+  (end the turn / hand control back) rather than chaining indefinitely, so the harness hook can
+  re-sample fresh state (context %, file changes, any injected guidance) before the next group
+  begins. The pattern is: cluster(s) → build → checkpoint (PASS+HISTORY) → **yield**; on the next
+  turn, re-check the threshold and continue. A yield between groups is the norm, not an exception —
+  it is cheap insurance against drifting past the ceiling or acting on stale state.
   **Watch:** `variants[]` schema is `form:` (+ optional `note:`/`reading:`/`register:`), NOT
   `text:` — using `text:` fails the build (caught batch 6). A pure prose aside with no
   alternate form belongs in `notes:`, not `variants:`.
