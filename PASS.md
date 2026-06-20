@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 504 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 509 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -143,11 +143,18 @@ design lives in `TREE.md`; it is not needed to run a pass.
   (と-conditional 'when one compares', slightly more tentative); the equivalence pair と同じで (identical
   *in kind*, で=copula て-form, ↔ と違って antonym) ↔ と同じくらい (equal *in degree* 'as ~ as', positive
   mirror of ほど〜ない). Anchored to enriched yori/hodo-nai/no-hou-ga/gurai/to-2.
+  · **batch 33** (なんか/なんて/なんと colloquial family, 5; follow-on to batch-27 など): なんか (2-sense
+  casual など: example-cite + belittling, ↔ 何か indefinite trap noted); the **なんて homograph pair** なんて
+  citing (re-quotes a clause with attitude, = などと contracted, ↔ nanka noun-only) vs なんて-2 exclamatory
+  ('how ~!', heads an adjective forward); なんと (2-sense: 'how ~!' formal exclamation + 'believe it or not'
+  surprise-flag, ↔ なんて-2 register, ↔ nan-to-ka 'somehow' trap); などと (cite speech/thought dismissively,
+  = なんて's full form, ↔ to-quotative neutral). Anchored to enriched nado/toka/to-quotative.
+  **Slug trap:** 'somehow' = `nan-to-ka` (not `nanto-ka`).
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **419**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **414**
   common stubs remain (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation

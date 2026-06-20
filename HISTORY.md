@@ -447,6 +447,17 @@ compares', marginally more tentative). The equivalence pair: と同じで (ident
 て-form leading into a further clause; と違って is its antonym) ↔ と同じくらい (equal *in degree*, 'about as
 ~ as' — the positive mirror of ほど〜ない). Anchored to enriched yori/hodo-nai/no-hou-ga/gurai/to-2.
 
+**BUILD common batch 33 DONE (2026-06-19, なんか/なんて/なんと colloquial family):** one cluster, one build
+(504 → **509 indexed**, +5), build PASS, lint + Hangul clean (5). Follow-on to batch 27's など. なんか
+(casual contraction of など, 2 senses: example-cite + belittling; flagged the 何か 'something' homograph
+trap). The なんて homograph: citing なんて (re-quotes a word/phrase/**clause** with disbelief/disdain, = などと
+contracted) vs exclamatory なんて-2 ('how ~!', heads an adjective *forward*) — same surface, opposite
+direction, mutually cross-referenced. なんと given 2 senses: the more-formal 'how ~!' exclamation + the
+standalone 'believe it or not' surprise-flag before a fact (flagged the なんとか 'somehow' trap). などと
+(など + quotative と, cites speech/thought dismissively; なんて is its casual contraction; ↔ neutral と).
+Anchored to enriched nado/toka/to-quotative. Slug trap caught pre-build: 'somehow' is `nan-to-ka`, not
+`nanto-ka` — fixed nanto.md's contrast.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
