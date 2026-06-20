@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 514 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 517 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -157,14 +157,20 @@ design lives in `TREE.md`; it is not needed to run a pass.
   sentence-opener 'the reason is', pairs with closing からだ, ↔ から embedded & だから result-first).
   Anchored to enriched kara/node/dakara/tame-da. **New QA trap folded into §4/§7:** a Cyrillic word
   (благодаря) slipped into okage.md prose — post-batch scan now covers Cyrillic (Ѐ-ӿ) alongside Hangul.
+  · **batch 35** (as-soon-as / the-instant temporal set, 3 indexed + 1 noindex variant): たとたん (the
+  instant ~; past + often *unexpected*; bars commands/plans, ↔なり literary) vs the **base-flip pair**
+  たらすぐ (たら base → planned/one-off, freely takes requests, ↔たとたん) ↔ とすぐに (と base → automatic/
+  habitual, bars commands, ↔to-conditional); たらすぐに kept **noindex** as a trivial に-variant of たらすぐ
+  (avoid dup-content tax — same redirect-hub treatment). Anchored to enriched nari/tara/to-conditional/
+  ya-ina-ya/sugu. Fixed to-sugu-ni prereq suru-to→to-conditional (とすぐに uses と-result, not すると).
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA. **Extended
   batch 34:** also scan Cyrillic (Ѐ-ӿ) — a stray благодаря slipped into okage.md prose. Combined regex:
   `[가-힣ᄀ-ᇿ㄰-㆏Ѐ-ӿ]`.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **409**
-  common stubs remain (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **405**
+  common stubs remain (1 of which, tara-sugu-2, is now a resolved noindex variant — skip) (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation
   がする + emotion-display + する-inference connectives largely mined; remaining good families:

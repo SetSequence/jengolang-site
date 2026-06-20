@@ -469,6 +469,16 @@ kara/node/dakara/tame-da. **QA catch:** a Cyrillic word (благодаря) sli
 drafting — caught and removed; the mandatory post-batch scan is now extended to Cyrillic (Ѐ-ӿ) alongside
 Hangul (combined regex in PASS §1/§7).
 
+**BUILD common batch 35 DONE (2026-06-19, as-soon-as / the-instant temporal set):** one cluster, one
+build (514 → **517 indexed**, +3, plus 1 noindex variant), build PASS, lint + Hangul/Cyrillic clean (4).
+たとたん (途端, 'the instant ~') taught as the *past, often unexpected* result that bars commands/plans
+in the second clause (↔ literary なり). The base-flip pair on 'as soon as': たらすぐ (たら base → one-off/
+planned, freely takes requests and commands) ↔ とすぐに (と base → automatic/habitual, bars commands like
+the bare と-result). たらすぐに kept noindex as a trivial に-variant of たらすぐ (just すぐ + optional に — same
+duplicate-content reasoning as the redirect-hubs; not worth a separate indexed page). Anchored to enriched
+nari/tara/to-conditional/ya-ina-ya/sugu. Fixed to-sugu-ni's prereq suru-to→to-conditional (とすぐに builds
+on the と-result, not すると).
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
