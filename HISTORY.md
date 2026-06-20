@@ -406,6 +406,19 @@ given 2 senses (でも-allomorph concessive vs fused いくらでも 'any amount
 left a stub by design — donna-ni-temo owns the concessive. New gotcha folded into PASS §1: bare
 interrogative adverbs overlap their enriched 〜ても constructions; teach the non-concessive core + cross-ref.
 
+**BUILD common batch 29 DONE (2026-06-19, temporal span connectives):** one cluster, one build
+(486 → **492 indexed**, +6), build PASS, lint + Hangul clean (6). 前 done as the noun (2 senses: space
+'front' / time 'ago'), with the 'before ~ing' connective left to the already-enriched mae-ni. 前から
+('from before / for a while now') as a continuing starting-point, contrasted with 前 (point) and 前に
+(one-time event). The core contrast: 間{あいだ}に ('during — at a point within a span'; the に vs bare
+間{あいだ} = throughout) ↔ うちに (2 senses: 'while the chance lasts / before it changes' + ているうちに
+gradual unplanned change — うちに carries urgency 間に lacks). ているあいだに kept as the ている-attachment
+variant cross-referencing 間に (↔ ながら same-subject simultaneity). 間{かん} as the duration suffix
+(三時間), reading-split from the あいだ connective explicitly taught. Anchored to enriched
+mae-ni/ato-de/nagara/made-ni/te-iru. Slug trap caught pre-build: 'from' から is `kara-3` (kara=reason),
+fixed mae-kara's contrast. Dedup handled three 間に faces (aida-ni core / te-iru-aida-ni variant /
+no-aida-ni left stub) and the 前-noun vs mae-ni-connective split — same pattern as batch 28's ikura.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
