@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 509 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 514 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -150,11 +150,20 @@ design lives in `TREE.md`; it is not needed to run a pass.
   surprise-flag, ↔ なんて-2 register, ↔ nan-to-ka 'somehow' trap); などと (cite speech/thought dismissively,
   = なんて's full form, ↔ to-quotative neutral). Anchored to enriched nado/toka/to-quotative.
   **Slug trap:** 'somehow' = `nan-to-ka` (not `nanto-ka`).
+  · **batch 34** (cause/reason connectives with valence, 5): the **canonical valence-contrast pair** せい
+  (noun 'the fault of', negative blame, のせいだ/のせいか/せいにする) ↔ おかげ (noun 'thanks to', positive
+  credit, のおかげだ/おかげさまで); their connective forms せいで ('because of ~, bad result', ↔ neutral
+  から/ので) ↔ おかげで ('thanks to ~, good result') — same structure, opposite valence; なぜなら (formal
+  sentence-opener 'the reason is', pairs with closing からだ, ↔ から embedded & だから result-first).
+  Anchored to enriched kara/node/dakara/tame-da. **New QA trap folded into §4/§7:** a Cyrillic word
+  (благодаря) slipped into okage.md prose — post-batch scan now covers Cyrillic (Ѐ-ӿ) alongside Hangul.
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
-  (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
+  (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA. **Extended
+  batch 34:** also scan Cyrillic (Ѐ-ӿ) — a stray благодаря slipped into okage.md prose. Combined regex:
+  `[가-힣ᄀ-ᇿ㄰-㆏Ѐ-ӿ]`.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **414**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **409**
   common stubs remain (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation

@@ -458,6 +458,17 @@ standalone 'believe it or not' surprise-flag before a fact (flagged the なん�
 Anchored to enriched nado/toka/to-quotative. Slug trap caught pre-build: 'somehow' is `nan-to-ka`, not
 `nanto-ka` — fixed nanto.md's contrast.
 
+**BUILD common batch 34 DONE (2026-06-19, cause/reason connectives with valence):** one cluster, one
+build (509 → **514 indexed**, +5), build PASS, lint + Hangul/Cyrillic clean (5). The canonical
+valence-contrast pair: せい (noun 'the fault of', negative blame — のせいだ / のせいか hedge / せいにする
+'blame on') ↔ おかげ (noun 'thanks to', positive credit — のおかげだ / おかげさまで). Their connective forms
+せいで ('because of ~' with an unwanted result, vs neutral から/ので) ↔ おかげで ('thanks to ~' with a good
+result) — same shape, opposite valence, mutually contrasted. なぜなら (formal sentence-opener 'the reason
+is', pairs with a closing からだ; contrasted with embedded から and result-first だから). Anchored to enriched
+kara/node/dakara/tame-da. **QA catch:** a Cyrillic word (благодаря) slipped into okage.md prose during
+drafting — caught and removed; the mandatory post-batch scan is now extended to Cyrillic (Ѐ-ӿ) alongside
+Hangul (combined regex in PASS §1/§7).
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
