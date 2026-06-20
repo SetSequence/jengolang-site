@@ -522,6 +522,15 @@ Flat single-sense adverbs — contrasts only where a real enriched confusable ex
 left contrast-empty by design (§1 presence-earned, not padded). Anchored to enriched donna-ni-temo/amari/
 oki-ni/tabi-ni/mata/douzo.
 
+**BUILD common batch 39 DONE (2026-06-20, だって homograph + では/でも contrastive-particle cluster):** one
+cluster-group, one build (553 → **558 indexed**, +5), build PASS, lint + Hangul/Cyrillic clean (5). The だって
+homograph pair mutually disambiguated: だって (sentence-initial 'because', casual/defensive, pairs with 〜もん
+↔ から neutral) vs だって-2 (particle 'even' on a noun ↔ でも casual equivalent). でもある taught as a parse-trap
+(で+も+ある = 'is also', an additional truth, NOT the 'even/but' でも; 〜でもあり〜でもある frame). では = で role-
+particle + は contrastive ('in X as opposed to elsewhere', ↔ で neutral / は direct-topic; sentence-initial
+では='well then' noted as a separate use). ではなくて = 'not A but B' correction (↔ janai plain negation;
+じゃなくて casual variant). Anchored to enriched kara/de-mo/de/janai. Slug notes: では=`de-wa`, じゃない=`janai`.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all

@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 553 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 558 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -208,9 +208,16 @@ design lives in `TREE.md`; it is not needed to run a pass.
   どうぞ offer; the 'somehow/whether' sense deferred). Anchored to enriched donna-ni-temo/amari/oki-ni/
   tabi-ni/mata/douzo. Flat single-sense adverbs — contrasts only where a real confusable enriched sibling
   exists (chanto/buri-ni/ichido-ni left contrast-empty by design, §1 presence-earned).
+  · **batch 39** (だって homograph + では/でも contrastive-particle cluster, 5 indexed): the **だって homograph
+  pair** だって (sentence-initial 'because', casual/defensive ↔ から neutral; pairs with 〜もん) vs だって-2
+  (particle 'even', N+だって ↔ でも casual equiv) — mutually disambiguated; でもある (parse-trap: で+も+ある
+  'is also', additional truth, ↔ でも 'even/but'; 〜でもあり〜でもある frame); では (contrastive topic, で role +
+  は; ↔ で neutral & は direct-topic; sentence-initial では='well then' noted); ではなくて ('not A but B'
+  correction, ↔ janai plain negation; じゃなくて casual). Anchored to enriched kara/de-mo/de/janai (+ wa
+  stub). **Slug note:** では = `de-wa` (dewa MISSING is fine); じゃない = `janai` (ja-nai MISSING).
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~369**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~364**
   common stubs remain (resolved noindex variants to skip: tara-sugu-2 + batch-36's ni-taishite-2,
   to-itte-mo, naze-ka-to-iu-to-kara-da, dochira-ka-to-iu-to + batch-37's kagiri-wa, no-kawari-ni, o-tsujite) (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
