@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 558 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 559 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -215,9 +215,13 @@ design lives in `TREE.md`; it is not needed to run a pass.
   は; ↔ で neutral & は direct-topic; sentence-initial では='well then' noted); ではなくて ('not A but B'
   correction, ↔ janai plain negation; じゃなくて casual). Anchored to enriched kara/de-mo/de/janai (+ wa
   stub). **Slug note:** では = `de-wa` (dewa MISSING is fine); じゃない = `janai` (ja-nai MISSING).
+  · **batch 40** (まま state set, 1 indexed + 1 redirect): まま 2-sense ('while left in a state' V-た+まま,
+  た-form required — restriction; vs 'as it is/unchanged' そのまま・Nのまま) ↔ ている (unchanged-with-neglect
+  vs plain progressive) & ないで (ないまま lingering-undone state); **ままで folded to redirect → mama** (まま+で,
+  で usually droppable). Anchored to enriched te-iru/nai-de.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~364**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~363**
   common stubs remain (resolved noindex variants to skip: tara-sugu-2 + batch-36's ni-taishite-2,
   to-itte-mo, naze-ka-to-iu-to-kara-da, dochira-ka-to-iu-to + batch-37's kagiri-wa, no-kawari-ni, o-tsujite) (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり

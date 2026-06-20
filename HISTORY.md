@@ -531,6 +531,13 @@ particle + は contrastive ('in X as opposed to elsewhere', ↔ で neutral / �
 では='well then' noted as a separate use). ではなくて = 'not A but B' correction (↔ janai plain negation;
 じゃなくて casual variant). Anchored to enriched kara/de-mo/de/janai. Slug notes: では=`de-wa`, じゃない=`janai`.
 
+**BUILD common batch 40 DONE (2026-06-20, まま state set):** one cluster, one build (558 → **559 indexed**,
++1, plus 1 redirect), build PASS, lint + Hangul/Cyrillic clean (2). まま taught 2-sense: 'while left in a state'
+(V-た+まま, restriction: た-form required, not dict — 立{た}ったまま not 立{た}つまま; nuance of neglect) vs 'as it
+is/unchanged' (そのまま・Nのまま). Contrasts ている (unchanged-with-neglect vs plain progressive) and ないで
+(ないまま = lingering-undone state vs ないで links to a following action). ままで folded to redirect → mama (just
+まま+で, the で usually droppable). Anchored to enriched te-iru/nai-de.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
