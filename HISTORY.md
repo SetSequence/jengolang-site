@@ -429,6 +429,16 @@ replaces it when the noun is already a whole scope like 世界, から for picki
 as', negative-only, mirror of positive より). Anchored to enriched no-hou-ga/yori/ichiban/hodo/hou-ga-ii/de.
 Two slug traps caught pre-build: scope で is `de` (not `de-4`), and 'from' から is `kara-3`.
 
+**BUILD common batch 31 DONE (2026-06-19, て-form social/emotional formulas) — 500-INDEXED MILESTONE:**
+one cluster, one build (497 → **500 indexed**, +3), build PASS, lint + Hangul clean (3). てね (soft
+request/reminder; ね softens the て-form request into 'do ~, okay?'; contrasted with plainer てください and
+the pushier てよ; conf bumped med→high). The gratitude-vs-apology pair on the same 'て-form cause + social
+reaction' shape: てくれてありがとう ('thank you for ~ing', くれて frames it as a favour done for me) ↔
+てすみません (2 senses — apology 'sorry for ~ing' and, since すみません also thanks, 'thank you for the
+trouble of ~ing'; なくて for negative cause; formal 〜て申し訳ない/ございません noted). Anchored to enriched
+te-form/te-kudasai/kureru/ne. This crosses 500 indexed nodes (from 387 at the start of the 2026-06-19
+session — batches 15–31, +113).
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all

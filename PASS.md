@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 497 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 500 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -133,11 +133,16 @@ design lives in `TREE.md`; it is not needed to run a pass.
   positive comparison). Anchored to enriched no-hou-ga/yori/ichiban/hodo/hou-ga-ii/de.
   **Slug trap:** scope で is `de` (not `de-4`); 'from' = kara-3. Bumped hou-ga conf low→med (scoping
   resolved the role ambiguity).
+  · **batch 31** (て-form social/emotional formulas, 3): てね (soft request/reminder, ↔てください plainer
+  & ne agreement-softening; てよ pushier sibling noted, conf med→high); the **gratitude-vs-apology pair**
+  てくれてありがとう (thanks for a favour, くれて = done-for-me, ↔ kureru) ↔ てすみません (2-sense: apology
+  'sorry for ~ing' + すみません-as-thanks 'thanks for the trouble'; なくて negative cause; 〜て申し訳ない
+  formal). Anchored to enriched te-form/te-kudasai/kureru/ne. **Milestone: 500 indexed.**
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **426**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **423**
   common stubs remain (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation
