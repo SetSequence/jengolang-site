@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 567 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 573 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -232,9 +232,16 @@ design lives in `TREE.md`; it is not needed to run a pass.
   (batch-12 aspect trio owns the 3-phase). Anchored to enriched youda/youni/mitai/shikashi/aida-ni/ta-tokoro/
   ru-tokoro-da. **Overlap caught:** mitaida & tokoro-da both already covered by enriched siblings → redirect,
   not re-teach.
+  · **batch 43** (intention / projection / pretense modality, 6 indexed): 予定だ (fixed arranged schedule,
+  external/objective ↔ つもり personal will); the **つもり family** つもりで ('with the intention/mindset',
+  adverbial frame ↔ plain つもり predicate) ↔ つもりだった ('had intended but didn't' + V-た 'thought I had ~'
+  self-correction); ふりをする ('pretend', intentional act ↔ かのようだ observer-simile — cross-link to batch
+  42); the **ように+verb projection pair** ように祈る ('pray/hope that', uncontrollable outcome ↔ youni purpose;
+  verb usually potential/intransitive) ↔ ように〜てほしい (med, 'want you to ~ so that ~', purpose-clause +
+  てほしい ↔ bare te-hoshii). Anchored to enriched tsumori/youni/hoshii/te-hoshii/ka-no-you-da.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~355**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **~349**
   common stubs remain (resolved noindex variants to skip: tara-sugu-2 + batch-36's ni-taishite-2,
   to-itte-mo, naze-ka-to-iu-to-kara-da, dochira-ka-to-iu-to + batch-37's kagiri-wa, no-kawari-ni, o-tsujite) (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
