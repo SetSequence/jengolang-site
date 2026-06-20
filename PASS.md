@@ -9,7 +9,7 @@ design lives in `TREE.md`; it is not needed to run a pass.
 
 ## 1. Frontier (update this every pass)
 
-- **Indexed: 467 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
+- **Indexed: 473 nodes.** Done: Foundations 60/60 · Read-novels branch 22/22 · essential
   band **fully drained** · common batches 1–5 (adverbial family, largely drained) · **batch
   6** (appearance/evidentiality modality, 8 + 1 redirect) · **batch 7** (necessity/obligation,
   9) · **batch 8** (はず/わけ/べき expectation-logic, 13) · **batch 9** (こと decision/outcome/
@@ -92,11 +92,18 @@ design lives in `TREE.md`; it is not needed to run a pass.
   form, +volitional 'let us ~'); のだろうか (heavy introspective 'I wonder', ↔かな light vs だろう
   conjecture); だろ (clipped casual だろう→'right?', ↔だろう/でしょう register). Anchored to enriched
   ne/yo/darou/deshou/kamoshirenai/no-2/no-da.
+  · **batch 26** (hypothetical-outcome evaluation: suggestion / hope / regret / relief, 6): the
+  **suggestion register pair** たらどう (casual 'why don't you') ↔ たらどうですか (polite) — both flagged as
+  potentially pushy/unsolicited; the **direction-flip pair** たらどうですか (*gives* advice) ↔ たらいいですか
+  (question-word + たらいい, *asks* 'what should I ~?'); といい ('I hope ~', outcome you don't control, ↔
+  ばいい advice you do); the **hindsight valence pair** ばよかった (regret 'should have', +なければよかった
+  'shouldn't have') ↔ てよかった (relief 'glad I did', +なくてよかった 'glad I didn't'). Anchored to enriched
+  ba-ii/tara/hou-ga-ii/te-mo-ii.
   **Trap caught (×2, batch 13):** Hangul slipped into kana examples — 약束→約束 (rarenai), 체조子→調子
   (no-2) — both fixed pre-build; a post-batch Hangul scan (가-힣 + Jamo) is now mandatory QA.
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
-- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **456**
+- **Next batch = `--freq common`.** Run `python3 scripts/list_stubs.py --freq common`. **450**
   common stubs remain (incl. the batch-15/19/21 redirect-hubs below; skip those) (then `uncommon`, then `rare`). Modality + keigo + こそあど + benefactives +
   basic connectives + aspect/causative/passive + quotation/nominalizers + conditionals + だけ/ばかり
   limitation + 以外/ほか exclusion + person/address suffixes + change-of-state する/なる + sensation

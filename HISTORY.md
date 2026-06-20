@@ -374,6 +374,16 @@ All anchored to enriched ne/yo/darou/deshou/kamoshirenai/no-2/no-da. Process not
 turn (user directive) — the 20% context ceiling is mine to check between clusters, and I yield the turn
 after each build+checkpoint so the hook can re-sample rather than chaining indefinitely.
 
+**BUILD common batch 26 DONE (2026-06-19, hypothetical-outcome evaluation: suggestion/hope/regret/
+relief):** one cluster, one build (467 → **473 indexed**, +6), build PASS, lint + Hangul clean (6). The
+suggestion register pair たらどう (casual 'why don't you ~') ↔ たらどうですか (polite) — both noted as
+directive/potentially-nagging when unsolicited or aimed upward (softer 〜てはいかがですか flagged). The
+direction-flip pair: たらどうですか *offers* advice vs たらいいですか (question-word + たらいい) *asks* for it
+('what should I ~?'). といい voices a hope about an uncontrolled outcome ('I hope ~', ↔ ばいい advice you
+control). The hindsight valence pair ばよかった (regret 'should have ~', +なければよかった 'shouldn't have')
+↔ てよかった (relief 'I'm glad I ~', +なくてよかった 'glad I didn't') — explicitly warned not to confuse
+なくてよかった (relief) with なければよかった (regret). All anchored to enriched ba-ii/tara/hou-ga-ii/te-mo-ii.
+
 **BUILD step 1 DONE (2026-06-05):** the 8 form-anchors (SLICE Finding 2) are promoted to
 real catalog rows (`grammar_enriched.csv` = 1,527, `family=form`) + real teaching pages in
 a bootstrapped Astro Content Collection (`src/content.config.ts` + 8 `.md` files); all
