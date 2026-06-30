@@ -100,9 +100,9 @@ const jlptColor = {
 
 // — SEO —
 const metaDesc =
-  d.nuance ||
+  plain(d.nuance) ||
   (senses[0].equivalents?.length
-    ? `${d.canonical} (${d.reading}): ${senses[0].equivalents.join("; ")}.`
+    ? plain(`${d.canonical} (${d.reading}): ${senses[0].equivalents.join("; ")}.`)
     : `${d.canonical} — Japanese grammar. ${plain(d.title)}.`);
 const pageTitle = `${d.title} — Japanese Grammar | Jengo`;
 const canonicalURL = `https://jengolang.com/learn/japanese/grammar/${entry.id}`;
@@ -395,17 +395,17 @@ const jsonLd =
                 {senses.map((s, i) => (
                   <div>
                     <span class="num">{senseNum[i]}</span>
-                    {s.label && <b>{s.label}: </b>}
-                    {(s.equivalents ?? []).join("; ")}
+                    {s.label && <b set:html={furigana(s.label) + ": "} />}
+                    <span set:html={furigana((s.equivalents ?? []).join("; "))} />
                   </div>
                 ))}
               </div>
             ) : (
               <ul class="equiv">
-                {(senses[0].equivalents ?? []).map((e) => <li>{e}</li>)}
+                {(senses[0].equivalents ?? []).map((e) => <li set:html={furigana(e)} />)}
               </ul>
             )}
-            {d.nuance && <p class="nuance">{d.nuance}</p>}
+            {d.nuance && <p class="nuance" set:html={furigana(d.nuance)} />}
           </section>
 
           {/* ── 3. Key sentence(s) ── */}
@@ -415,7 +415,7 @@ const jsonLd =
               {senses.map((s, i) =>
                 s.keySentence ? (
                   <div class="hero">
-                    {multi && <div class="slabel">{senseNum[i]} {s.label}</div>}
+                    {multi && <div class="slabel">{senseNum[i]} <span set:html={furigana(s.label)} /></div>}
                     <div class="jp-lg" set:html={furigana(s.keySentence.jp)} />
                     <div class="en">{s.keySentence.en}</div>
                   </div>
@@ -435,20 +435,20 @@ const jsonLd =
                 <tbody>
                   {d.formation.map((f) => (
                     <tr>
-                      <td>{f.attaches_to}</td>
+                      <td set:html={furigana(f.attaches_to)} />
                       <td class="form" set:html={furigana(f.form)} />
                       <td class="eg" set:html={f.example ? furigana(f.example) : ""} />
                     </tr>
                   ))}
                 </tbody>
               </table>
-              {d.usageSetting && <p class="usage"><b>When:</b> {d.usageSetting}</p>}
+              {d.usageSetting && <p class="usage"><b>When:</b> <span set:html={furigana(d.usageSetting)} /></p>}
             </section>
           )}
           {d.formation.length === 0 && d.usageSetting && (
             <section>
               <h2 class="sec-h">Usage</h2>
-              <p class="usage">{d.usageSetting}</p>
+              <p class="usage" set:html={furigana(d.usageSetting)} />
             </section>
           )}
 
@@ -459,9 +459,9 @@ const jsonLd =
               <div class="variants">
                 {d.variants.map((v) => (
                   <span class="vform">
-                    <span class="vj">{v.form}</span>
+                    <span class="vj" set:html={furigana(v.form)} />
                     {v.reading && v.reading !== v.form ? <span class="vn"> ・ {v.reading}</span> : null}
-                    {v.note && <span class="vn"> — {v.note}</span>}
+                    {v.note && <span class="vn"> — <span set:html={furigana(v.note)} /></span>}
                   </span>
                 ))}
               </div>
@@ -475,7 +475,7 @@ const jsonLd =
               {senses.map((s, i) =>
                 s.examples?.length ? (
                   <div class="ex-group">
-                    {multi && <div class="glabel">{senseNum[i]} {s.label}</div>}
+                    {multi && <div class="glabel">{senseNum[i]} <span set:html={furigana(s.label)} /></div>}
                     {s.examples.map((ex) => (
                       <div class="ex">
                         <div class="jp-md">
@@ -483,7 +483,7 @@ const jsonLd =
                           {ex.level && <span class="lv">{ex.level}</span>}
                         </div>
                         <div class="en">{ex.en}</div>
-                        {ex.note && <div class="exnote">{ex.note}</div>}
+                        {ex.note && <div class="exnote" set:html={furigana(ex.note)} />}
                       </div>
                     ))}
                   </div>
@@ -516,7 +516,7 @@ const jsonLd =
                   const Row = c.href ? "a" : "div";
                   return (
                     <Row class="crow" href={c.href}>
-                      <span class="sib">{c.label}</span>
+                      <span class="sib" set:html={furigana(c.label)} />
                       <span class="dist" set:html={furigana(c.distinction)} />
                     </Row>
                   );

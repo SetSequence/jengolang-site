@@ -20,7 +20,7 @@ keySentence:
 formation:
   - attaches_to: "A quantity (number + counter, or an amount word)"
     form: "[quantity] + ずつ"
-    example: "少{すこ}しずつ / 二つ{ふたつ}ずつ"
+    example: "少{すこ}しずつ / 二{ふた}つずつ"
 examples:
   - jp: "毎日{まいにち}単語{たんご}を十個{じゅっこ}ずつ覚{おぼ}えている。"
     en: "I'm memorizing ten words each day."

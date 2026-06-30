@@ -1,0 +1,418 @@
+---
+import { getCollection } from "astro:content";
+import { GOALS, GOAL_BY_ID } from "../../../../../lib/goals";
+import { glossOf, groupByFamily, jlptColor, JLPT_RANK } from "../../../../../lib/grammar";
+import slice from "../../../../../data/grammar_slice.json";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return GOALS.map((g) => ({ params: { goal: g.id } }));
+}
+
+const goalId = Astro.params.goal;
+const goal = GOAL_BY_ID.get(goalId);
+if (!goal) throw new Error(`Unknown goal route: ${goalId}`);
+
+const all = await getCollection("grammar");
+
+// Curated bold route (only read-novels has one today — from the validated slice).
+// Group it by its pedagogical stage and keep its slugs out of the family grid
+// below so route nodes aren't rendered twice.
+function byStage(nodes) {
+  const map = new Map();
+  for (const n of nodes) {
+    const k = n.stage.index;
+    if (!map.has(k)) map.set(k, { label: n.stage.label, nodes: [] });
+    map.get(k).nodes.push(n);
+  }
+  return [...map.entries()].sort((a, b) => a[0] - b[0]).map(([, v]) => v);
+}
+const hasRoute = goal.id === slice.branch.id;
+const routeStages = hasRoute ? byStage(slice.branch.route) : [];
+const routeSlugs = new Set(hasRoute ? slice.branch.route.map((n) => n.slug) : []);
+
+const matched = all
+  .filter((e) => !e.data.foldInto && goal.match(e.data))
+  .map((e) => ({
+    slug: e.id,
+    canonical: e.data.canonical,
+    reading: e.data.reading,
+    gloss: glossOf(e.data),
+    register: e.data.register,
+    freq: e.data.freq,
+    jlpt: e.data.jlpt,
+    family: e.data.family,
+    written: !e.data.noindex,
+  }));
+
+const total = matched.length;
+const writtenCount = matched.filter((n) => n.written).length;
+
+const gridNodes = matched.filter((n) => !routeSlugs.has(n.slug));
+const familyGroups = groupByFamily(gridNodes);
+
+// JLPT sub-facet: only meaningful when a goal genuinely spans multiple levels.
+const levelsPresent = [...new Set(matched.map((n) => n.jlpt).filter((l) => l !== "none"))]
+  .sort((a, b) => (JLPT_RANK[a] ?? 9) - (JLPT_RANK[b] ?? 9));
+const showJlptFacet = goal.jlptFacet && levelsPresent.length > 1;
+
+const others = GOALS.filter((g) => g.id !== goal.id);
+const base = "https://jengolang.com";
+const canonical = `${base}/learn/japanese/grammar/path/${goal.id}`;
+
+// Structured data: ItemList of the substantive (written-guide) pages for GEO,
+// plus a breadcrumb trail. Cap the list so the page stays light.
+const listItems = (writtenCount > 0 ? matched.filter((n) => n.written) : matched)
+  .slice(0, 200)
+  .map((n, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: `${n.canonical} — ${n.gloss}`,
+    url: `${base}/learn/japanese/grammar/${n.slug}`,
+  }));
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: goal.h1,
+    description: goal.description,
+    numberOfItems: listItems.length,
+    itemListElement: listItems,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Japanese", item: `${base}/learn/japanese` },
+      { "@type": "ListItem", position: 2, name: "Grammar", item: `${base}/learn/japanese/grammar` },
+      { "@type": "ListItem", position: 3, name: goal.label, item: canonical },
+    ],
+  },
+];
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={goal.description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" />
+  <title>{goal.title}</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={goal.title} />
+  <meta property="og:description" content={goal.description} />
+  <meta property="og:url" content={canonical} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <style is:global>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:          oklch(47% 0.089 156);
+      --brand-dark:     oklch(25% 0.062 156);
+      --brand-tint:     oklch(96% 0.016 156);
+      --bg:             oklch(98.5% 0.005 156);
+      --surface:        oklch(99% 0.003 156);
+      --border:         oklch(90% 0.008 156);
+      --text-primary:   oklch(22% 0.010 156);
+      --text-secondary: oklch(50% 0.012 156);
+      --text-tertiary:  oklch(68% 0.008 156);
+      --white:          oklch(99.5% 0.002 156);
+    }
+    html { font-optical-sizing: auto; scroll-behavior: smooth; }
+    body {
+      font-family: 'Onest', system-ui, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+  </style>
+  <style>
+    .nav { background: var(--brand-dark); position: sticky; top: 0; z-index: 100; }
+    .nav-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 1.5rem; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-wordmark { font-size: 1rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; text-decoration: none; }
+    .nav a.try { font-size: .8rem; font-weight: 600; color: var(--white); text-decoration: none;
+      border: 1px solid oklch(99.5% 0.002 156 / .3); border-radius: 7px; padding: 6px 12px; }
+
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+
+    .crumbs { font-size: .8rem; color: var(--text-tertiary); margin-bottom: 1.4rem; }
+    .crumbs a { text-decoration: none; color: var(--text-secondary); }
+    .crumbs a:hover { color: var(--accent); }
+    .crumbs span { margin: 0 .4rem; }
+
+    .head { border-left: 4px solid var(--accent); padding-left: 1.1rem; }
+    .head .kicker { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+    .head h1 { font-size: clamp(1.7rem, 5vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; margin-top: .35rem; }
+    .head .lede { margin-top: 1rem; max-width: 60ch; color: var(--text-secondary); font-size: 1.05rem; }
+    .head .intent { margin-top: .7rem; font-size: .9rem; color: var(--text-tertiary); }
+
+    .stats { display: flex; flex-wrap: wrap; gap: 1.2rem 2.4rem; margin-top: 1.6rem;
+      padding-top: 1.3rem; border-top: 1px solid var(--border); }
+    .stat .n { font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; color: var(--accent); }
+    .stat .l { font-size: .8rem; color: var(--text-tertiary); }
+
+    /* cross-links to the other routes (internal linking) */
+    .routes { margin-top: 1.8rem; }
+    .routes-label { font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: .5rem; }
+    .route-links { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .route-links a {
+      font-size: .78rem; font-weight: 600; text-decoration: none; color: var(--text-secondary);
+      border: 1px solid var(--border); background: var(--surface); padding: 5px 11px; border-radius: 999px; transition: all 120ms;
+    }
+    .route-links a:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* in-page filter (the .lit/.dim mechanic, reused from the hub) */
+    .filter {
+      position: sticky; top: 56px; z-index: 90; margin-top: 1.8rem;
+      background: oklch(98.5% 0.005 156 / .92); backdrop-filter: blur(8px);
+      border: 1px solid var(--border); border-radius: 12px; padding: .7rem .8rem;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+    .chip {
+      font: inherit; font-size: .78rem; font-weight: 600; cursor: pointer;
+      border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary);
+      padding: 5px 11px; border-radius: 999px; transition: all 120ms; white-space: nowrap;
+    }
+    .chip:hover { border-color: var(--accent); color: var(--accent); }
+    .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--white); }
+    .chip-sep { width: 1px; align-self: stretch; background: var(--border); margin: 2px 4px; }
+    .chip.toggle[aria-pressed="true"] { background: var(--tint); border-color: var(--accent); color: var(--brand-dark); }
+    .filter-meta { font-size: .74rem; color: var(--text-tertiary); margin: .55rem .2rem 0; }
+
+    .cards { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+    .card {
+      display: block; text-decoration: none; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 11px; padding: .7rem .8rem;
+      transition: border-color 140ms, transform 140ms, opacity 160ms;
+      content-visibility: auto; contain-intrinsic-size: auto 96px;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .card-top { display: flex; align-items: baseline; gap: .5rem; }
+    .jp { font-family: 'Noto Sans JP', sans-serif; font-weight: 700; font-size: 1.15rem; line-height: 1.2; }
+    .reading { font-family: 'Noto Sans JP', sans-serif; font-size: .72rem; color: var(--text-tertiary); }
+    .stub-dot { margin-left: auto; width: 7px; height: 7px; border-radius: 999px; flex: none;
+      border: 1.5px solid var(--text-tertiary); align-self: center; }
+    .card.written .stub-dot { background: var(--accent); border-color: var(--accent); }
+    .meaning { font-size: .82rem; color: var(--text-secondary); margin-top: .25rem; line-height: 1.4;
+      display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .badges { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .5rem; }
+    .badge {
+      font-size: .64rem; font-weight: 600; letter-spacing: .02em; padding: 2px 6px; border-radius: 5px;
+      background: var(--brand-tint); color: var(--text-secondary); border: 1px solid var(--border);
+    }
+    .badge.jlpt { color: #fff; border: none; }
+    .badge.slug { font-family: ui-monospace, monospace; background: transparent; color: var(--text-tertiary); }
+    .card.dim { opacity: .26; filter: saturate(.4); }
+    .card.dim:hover { opacity: .55; }
+    .stage.empty, .family.empty { display: none; }
+
+    /* curated route block */
+    .route { margin-top: 2.6rem; padding: 1.4rem 1.5rem; background: var(--tint);
+      border: 1px solid var(--border); border-radius: 14px; }
+    .route h2 { font-size: 1.2rem; font-weight: 800; letter-spacing: -.01em; }
+    .route p { color: var(--text-secondary); font-size: .92rem; margin-top: .3rem; max-width: 60ch; }
+    .stage { position: relative; margin-top: 1.4rem; padding-left: 1.6rem; }
+    .stage::before { content: ""; position: absolute; left: 5px; top: -1rem; bottom: -1rem; width: 2px; background: var(--accent); opacity: .35; }
+    .stage:first-of-type::before { top: .5rem; }
+    .stage:last-of-type::before { bottom: auto; height: .5rem; }
+    .stage-label { position: relative; font-size: .76rem; font-weight: 700; letter-spacing: .02em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: .7rem; }
+    .stage-label::before { content: ""; position: absolute; left: -1.6rem; top: 50%; transform: translateY(-50%);
+      width: 12px; height: 12px; border-radius: 999px; background: var(--bg); border: 2px solid var(--accent); }
+
+    .catalog { margin-top: 3rem; }
+    .catalog-head h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.01em; }
+    .catalog-head p { color: var(--text-secondary); font-size: .95rem; margin-top: .3rem; max-width: 60ch; }
+    .family { margin-top: 2rem; }
+    .family-label { display: flex; align-items: baseline; gap: .6rem;
+      font-size: .95rem; font-weight: 700; color: var(--text-primary);
+      padding-bottom: .5rem; border-bottom: 1px solid var(--border); margin-bottom: .9rem; }
+    .family-label .count { font-size: .74rem; font-weight: 600; color: var(--text-tertiary); }
+
+    .cta { margin-top: 3.5rem; padding: 1.8rem; background: var(--brand-dark); border-radius: 16px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+    .cta-text h3 { color: var(--white); font-size: 1.15rem; font-weight: 800; }
+    .cta-text p { color: oklch(99.5% 0.002 156 / .72); font-size: .9rem; margin-top: .3rem; max-width: 44ch; }
+    .cta a { flex: none; font-size: .9rem; font-weight: 700; text-decoration: none; color: var(--brand-dark);
+      background: var(--white); padding: 11px 20px; border-radius: 9px; }
+
+    .empty-note { margin-top: 2rem; color: var(--text-secondary); font-size: .95rem; }
+  </style>
+</head>
+<body style={`--accent:${goal.accent}; --tint:${goal.tint};`}>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-wordmark" href="/">Jengo</a>
+      <a class="try" href="https://app.jengolang.com">Try Jengo</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/learn/japanese">Japanese</a><span>›</span>
+      <a href="/learn/japanese/grammar">Grammar</a><span>›</span>
+      {goal.label}
+    </nav>
+
+    <header class="head">
+      <div class="kicker">Goal route</div>
+      <h1>{goal.h1}</h1>
+      <p class="lede">{goal.lede}</p>
+      <p class="intent">{goal.intent}</p>
+
+      <div class="stats">
+        <div class="stat"><div class="n">{total}</div><div class="l">grammar points on this route</div></div>
+        <div class="stat"><div class="n">{writtenCount}</div><div class="l">with a full written guide</div></div>
+      </div>
+    </header>
+
+    <section class="routes">
+      <div class="routes-label">Other routes through the map</div>
+      <div class="route-links">
+        <a href="/learn/japanese/grammar">← Full grammar map</a>
+        {others.map((g) => (
+          <a href={`/learn/japanese/grammar/path/${g.id}`}>{g.label}</a>
+        ))}
+      </div>
+    </section>
+
+    {total === 0 ? (
+      <p class="empty-note">No grammar points are tagged for this route yet.</p>
+    ) : (
+      <>
+        <section class="filter" id="filter" aria-label="Filter this route">
+          <div class="chips">
+            <button class="chip" data-preset="all" aria-pressed="true">All</button>
+            {showJlptFacet && <span class="chip-sep"></span>}
+            {showJlptFacet && levelsPresent.map((lvl) => (
+              <button class="chip" data-preset={`jlpt:${lvl}`}>{lvl}</button>
+            ))}
+            <span class="chip-sep"></span>
+            <button class="chip toggle" data-toggle="written" aria-pressed="false">Written guides only</button>
+          </div>
+          <div class="filter-meta" id="filter-meta" aria-live="polite"></div>
+        </section>
+
+        {hasRoute && (
+          <section class="route">
+            <h2>Start here — the core path</h2>
+            <p>{slice.branch.tagline} Follow these in order; everything else on this route hangs off them.</p>
+            {routeStages.map((st) => (
+              <div class="stage">
+                <div class="stage-label">{st.label}</div>
+                <div class="cards">
+                  {st.nodes.map((n) => (
+                    <a class="card written" href={`/learn/japanese/grammar/${n.slug}`}
+                       data-slug={n.slug} data-written="1" data-jlpt={n.jlpt}>
+                      <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span><span class="stub-dot"></span></div>
+                      <div class="meaning">{n.meaning}</div>
+                      <div class="badges">
+                        <span class="badge jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
+                        <span class="badge">{n.family}</span>
+                        <span class="badge slug">{n.slug}</span>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </section>
+        )}
+
+        <section class="catalog">
+          <div class="catalog-head">
+            <h2>{hasRoute ? "Every literary & classical point" : "Every point on this route"}</h2>
+            <p>
+              {gridNodes.length} grammar point{gridNodes.length === 1 ? "" : "s"}, grouped by family.
+              A <strong>filled dot</strong> marks the {writtenCount} with a full written guide; hollow dots
+              are mapped but their guide is still being written.
+            </p>
+          </div>
+          {familyGroups.map((g) => (
+            <div class="family" data-family={g.key}>
+              <div class="family-label">{g.label}<span class="count">{g.nodes.length}</span></div>
+              <div class="cards">
+                {g.nodes.map((n) => (
+                  <a class={`card${n.written ? " written" : ""}`} href={`/learn/japanese/grammar/${n.slug}`}
+                     data-slug={n.slug} data-written={n.written ? "1" : "0"} data-jlpt={n.jlpt}>
+                    <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span><span class="stub-dot"></span></div>
+                    <div class="meaning">{n.gloss}</div>
+                    <div class="badges">
+                      <span class="badge jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
+                      <span class="badge">{n.freq}</span>
+                      <span class="badge slug">{n.slug}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </section>
+      </>
+    )}
+
+    <section class="cta">
+      <div class="cta-text">
+        <h3>Practice this grammar in context</h3>
+        <p>Jengo shows these patterns inside real sentences, so they stick as comprehension — not flashcards.</p>
+      </div>
+      <a href="https://app.jengolang.com">Try Jengo</a>
+    </section>
+  </main>
+
+  <script>
+    const root = document.getElementById("filter");
+    if (root) {
+      const meta = document.getElementById("filter-meta");
+      const cards = Array.from(document.querySelectorAll(".card"));
+      let preset = "all";
+      let writtenOnly = false;
+
+      function matchesPreset(c) {
+        if (preset === "all") return true;
+        if (preset.startsWith("jlpt:")) return c.dataset.jlpt === preset.slice(5);
+        return true;
+      }
+      function apply() {
+        let lit = 0;
+        for (const c of cards) {
+          const ok = matchesPreset(c) && (!writtenOnly || c.dataset.written === "1");
+          c.classList.toggle("dim", !ok);
+          if (ok) lit++;
+        }
+        for (const grp of document.querySelectorAll(".stage, .family")) {
+          const any = grp.querySelector(".card:not(.dim)");
+          grp.classList.toggle("empty", (preset !== "all" || writtenOnly) && !any);
+        }
+        meta.textContent =
+          preset === "all" && !writtenOnly
+            ? ""
+            : `${lit} grammar point${lit === 1 ? "" : "s"} shown`;
+      }
+      root.addEventListener("click", (e) => {
+        const btn = e.target.closest("button");
+        if (!btn) return;
+        if (btn.dataset.toggle === "written") {
+          writtenOnly = !writtenOnly;
+          btn.setAttribute("aria-pressed", String(writtenOnly));
+        } else if (btn.dataset.preset) {
+          preset = btn.dataset.preset;
+          for (const b of root.querySelectorAll("[data-preset]"))
+            b.setAttribute("aria-pressed", String(b.dataset.preset === preset));
+        }
+        apply();
+      });
+    }
+  </script>
+</body>
+</html>

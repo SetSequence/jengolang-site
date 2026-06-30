@@ -1,11 +1,16 @@
 ---
+import { getCollection } from "astro:content";
 import slice from "../../../../data/grammar_slice.json";
+import { GOALS } from "../../../../lib/goals";
+import { glossOf, groupByFamily, jlptColor } from "../../../../lib/grammar";
+
+export const prerender = true;
 
 const title = "Japanese Grammar Skill Tree — Jengo";
 const description =
-  "A navigable map of Japanese grammar: a curated Foundations line through the core grammar, with goal-based routes like reading novels lit on top.";
+  "A navigable map of Japanese grammar: a curated Foundations line through the core grammar, with goal-based routes like reading novels lit on top. Every grammar point, grouped and filterable.";
 
-// Group the flat node lists back into their curated stages for layout.
+// ─── Curated spine (from the validated vertical slice) ──────────────────────
 function byStage(nodes) {
   const map = new Map();
   for (const n of nodes) {
@@ -15,21 +20,43 @@ function byStage(nodes) {
   }
   return [...map.entries()].sort((a, b) => a[0] - b[0]).map(([, v]) => v);
 }
-
 const foundationStages = byStage(slice.foundations.nodes);
 const branchStages = byStage(slice.branch.route);
 const anchors = slice.anchors;
 const branch = slice.branch;
-const overflow = branch.filter_member_count - branch.route_count;
 
-const jlptColor = {
-  N5: "oklch(55% 0.10 156)",
-  N4: "oklch(55% 0.10 200)",
-  N3: "oklch(55% 0.11 250)",
-  N2: "oklch(52% 0.12 300)",
-  N1: "oklch(50% 0.13 340)",
-  none: "oklch(60% 0.01 156)",
-};
+// slugs already shown prominently in the spine — excluded from the family grid
+// so they aren't rendered twice (they stay reachable; #5 "always visible" holds).
+const spineSlugs = new Set([
+  ...anchors.map((n) => n.slug.replace(/^\*/, "")),
+  ...slice.foundations.nodes.map((n) => n.slug),
+  ...slice.branch.route.map((n) => n.slug),
+]);
+
+// ─── The full catalog (the rest of the tree) ────────────────────────────────
+const all = await getCollection("grammar");
+const catalogTotal = all.length;
+const writtenCount = all.filter((e) => !e.data.noindex).length;
+
+const rest = all
+  .filter((e) => !spineSlugs.has(e.id) && !e.data.foldInto)
+  .map((e) => ({
+    slug: e.id,
+    canonical: e.data.canonical,
+    reading: e.data.reading,
+    gloss: glossOf(e.data),
+    register: e.data.register,
+    freq: e.data.freq,
+    jlpt: e.data.jlpt,
+    family: e.data.family,
+    written: !e.data.noindex,
+  }));
+
+const familyGroups = groupByFamily(rest);
+const familyCount = familyGroups.length;
+
+// goal-line filter presets exposed in the bar (queries over the tag schema, #10)
+const jlptPresets = ["N5", "N4", "N3", "N2", "N1"];
 ---
 
 <html lang="en">
@@ -37,6 +64,7 @@ const jlptColor = {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
+  <link rel="canonical" href="https://jengolang.com/learn/japanese/grammar" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" href="/favicon.ico" />
   <title>{title}</title>
@@ -56,7 +84,6 @@ const jlptColor = {
       --text-secondary: oklch(50% 0.012 156);
       --text-tertiary:  oklch(68% 0.008 156);
       --white:          oklch(99.5% 0.002 156);
-      /* literary "Read novels" line accent — indigo, distinct from the green */
       --lit:            oklch(48% 0.13 290);
       --lit-tint:       oklch(96% 0.022 290);
       --lit-border:     oklch(88% 0.04 290);
@@ -85,21 +112,46 @@ const jlptColor = {
 
     .head h1 { font-size: clamp(1.7rem, 5vw, 2.5rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
     .head .lede { margin-top: .9rem; max-width: 56ch; color: var(--text-secondary); font-size: 1.05rem; }
-    .preview-pill {
-      display: inline-flex; align-items: center; gap: 6px; margin-bottom: 1rem;
-      font-size: .72rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
-      color: var(--brand); background: var(--brand-tint); border: 1px solid var(--border);
-      padding: 4px 10px; border-radius: 999px;
-    }
-    .preview-pill svg { width: 13px; height: 13px; }
 
     .stats { display: flex; flex-wrap: wrap; gap: 1.5rem 2.5rem; margin-top: 1.6rem;
       padding-top: 1.4rem; border-top: 1px solid var(--border); }
     .stat .n { font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; }
     .stat .l { font-size: .8rem; color: var(--text-tertiary); }
 
+    /* ─── Filter bar (the goal-line island) ─── */
+    .filter {
+      position: sticky; top: 56px; z-index: 90; margin-top: 2rem;
+      background: oklch(98.5% 0.005 156 / .92); backdrop-filter: blur(8px);
+      border: 1px solid var(--border); border-radius: 12px; padding: .7rem .8rem;
+    }
+    .filter-label { font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      color: var(--text-tertiary); margin: 0 .2rem .5rem; }
+    .chips { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
+    .chip {
+      font: inherit; font-size: .78rem; font-weight: 600; cursor: pointer;
+      border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary);
+      padding: 5px 11px; border-radius: 999px; transition: all 120ms; white-space: nowrap;
+    }
+    .chip:hover { border-color: var(--brand); color: var(--brand); }
+    .chip[aria-pressed="true"] { background: var(--brand); border-color: var(--brand); color: var(--white); }
+    .chip.lit-chip[aria-pressed="true"] { background: var(--lit); border-color: var(--lit); }
+    .chip-sep { width: 1px; align-self: stretch; background: var(--border); margin: 2px 4px; }
+    .chip.toggle[aria-pressed="true"] { background: oklch(94% 0.02 156); border-color: var(--brand); color: var(--brand-dark); }
+    .filter-meta { font-size: .74rem; color: var(--text-tertiary); margin: .55rem .2rem 0; }
+
+    /* ─── Goal-route cross-links ─── */
+    .routes { margin-top: 1.6rem; }
+    .routes-label { font-size: .7rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      color: var(--text-tertiary); margin-bottom: .5rem; }
+    .route-links { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .route-links a {
+      font-size: .78rem; font-weight: 600; text-decoration: none; color: var(--text-secondary);
+      border: 1px solid var(--border); background: var(--surface); padding: 5px 11px; border-radius: 999px; transition: all 120ms;
+    }
+    .route-links a:hover { border-color: var(--brand); color: var(--brand); }
+
     /* ─── Line scaffolding ─── */
-    .line { margin-top: 3.5rem; }
+    .line { margin-top: 3rem; }
     .line-head { display: flex; align-items: baseline; gap: .75rem; flex-wrap: wrap; }
     .line-dot { width: 12px; height: 12px; border-radius: 999px; flex: none; align-self: center; }
     .line-title { font-size: 1.3rem; font-weight: 800; letter-spacing: -.01em; }
@@ -107,7 +159,6 @@ const jlptColor = {
     .line-tagline { width: 100%; color: var(--text-tertiary); font-size: .85rem; margin-top: .1rem; }
 
     .stage { position: relative; margin-top: 1.5rem; padding-left: 1.75rem; }
-    /* the spine: a vertical rail down the left of each line */
     .stage::before {
       content: ""; position: absolute; left: 5px; top: -1.5rem; bottom: -1.5rem; width: 2px;
       background: var(--rail, var(--border));
@@ -129,12 +180,16 @@ const jlptColor = {
     .card {
       display: block; text-decoration: none; background: var(--surface);
       border: 1px solid var(--border); border-radius: 11px; padding: .7rem .8rem;
-      transition: border-color 140ms, transform 140ms;
+      transition: border-color 140ms, transform 140ms, opacity 160ms;
+      content-visibility: auto; contain-intrinsic-size: auto 96px;
     }
     .card:hover { border-color: var(--accent, var(--brand)); transform: translateY(-1px); }
     .card-top { display: flex; align-items: baseline; gap: .5rem; }
     .jp { font-family: 'Noto Sans JP', sans-serif; font-weight: 700; font-size: 1.15rem; line-height: 1.2; }
     .reading { font-family: 'Noto Sans JP', sans-serif; font-size: .72rem; color: var(--text-tertiary); }
+    .stub-dot { margin-left: auto; width: 7px; height: 7px; border-radius: 999px; flex: none;
+      border: 1.5px solid var(--text-tertiary); align-self: center; }
+    .card.written .stub-dot { background: var(--brand); border-color: var(--brand); }
     .meaning { font-size: .82rem; color: var(--text-secondary); margin-top: .25rem; line-height: 1.4;
       display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .badges { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .5rem; }
@@ -146,11 +201,13 @@ const jlptColor = {
     .badge.slug { font-family: ui-monospace, monospace; background: transparent; color: var(--text-tertiary); }
     .badge.anchor { background: oklch(94% 0.02 156); color: var(--brand-dark); }
 
-    /* Foundations line accents */
+    /* filter dim/lit states (the .lit/.dim mechanic, #10) */
+    .card.dim { opacity: .26; filter: saturate(.4); }
+    .card.dim:hover { opacity: .55; }
+    .stage.empty, .family.empty { display: none; }
+
     .line.foundations { --rail: oklch(82% 0.06 156); --accent: var(--brand); }
     .line.foundations .line-dot { background: var(--brand); }
-
-    /* Branch (literary) accents — dim by default, the route is the bright part */
     .line.branch { --rail: var(--lit-border); --accent: var(--lit); }
     .line.branch .line-dot { background: var(--lit); }
     .line.branch .card:hover { border-color: var(--lit); }
@@ -159,17 +216,22 @@ const jlptColor = {
     .anchors-row .cards { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
     .anchors-row .card { background: oklch(97% 0.012 156); }
 
-    .overflow {
-      margin-top: 1.5rem; margin-left: 1.75rem; padding: 1rem 1.2rem; border-radius: 11px;
-      background: var(--lit-tint); border: 1px dashed var(--lit-border); color: var(--lit);
-      font-size: .9rem; font-weight: 500;
-    }
-    .overflow strong { font-weight: 800; }
+    /* ─── Family catalog ─── */
+    .catalog { margin-top: 4rem; }
+    .catalog-head h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.01em; }
+    .catalog-head p { color: var(--text-secondary); font-size: .95rem; margin-top: .3rem; max-width: 60ch; }
+    .family { margin-top: 2rem; }
+    .family-label { display: flex; align-items: baseline; gap: .6rem;
+      font-size: .95rem; font-weight: 700; color: var(--text-primary);
+      padding-bottom: .5rem; border-bottom: 1px solid var(--border); margin-bottom: .9rem; }
+    .family-label .count { font-size: .74rem; font-weight: 600; color: var(--text-tertiary); }
 
     .note { margin-top: 4rem; padding: 1.3rem 1.5rem; background: var(--surface);
       border: 1px solid var(--border); border-radius: 14px; font-size: .85rem; color: var(--text-secondary); }
     .note h3 { font-size: .8rem; text-transform: uppercase; letter-spacing: .05em; color: var(--text-tertiary); margin-bottom: .6rem; }
     .note ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .4rem; }
+    .legend { display: inline-flex; align-items: center; gap: .4rem; }
+    .legend .stub-dot { position: static; }
   </style>
 </head>
 <body>
@@ -182,27 +244,50 @@ const jlptColor = {
 
   <main class="wrap">
     <header class="head">
-      <span class="preview-pill">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="3.2"/></svg>
-        Preview — vertical slice
-      </span>
       <h1>Japanese Grammar Skill Tree</h1>
       <p class="lede">
         Not a list — a map. Every grammar point sits one step out from what you
         must understand first. Follow the <strong>Foundations</strong> line, then
-        light a goal route — here, everything you need to <strong>read novels</strong>.
+        light a goal route. Filter the whole catalog by exam level, goal, or family.
       </p>
 
       <div class="stats">
-        <div class="stat"><div class="n">{slice.foundations.node_count}</div><div class="l">Foundations points</div></div>
-        <div class="stat"><div class="n">{branch.route_count}</div><div class="l">on the Read-novels route</div></div>
-        <div class="stat"><div class="n">{branch.filter_member_count}</div><div class="l">literary points in the full line</div></div>
-        <div class="stat"><div class="n">{slice.source.match(/\d+/)[0]}</div><div class="l">points in the full catalog</div></div>
+        <div class="stat"><div class="n">{catalogTotal}</div><div class="l">grammar points mapped</div></div>
+        <div class="stat"><div class="n">{writtenCount}</div><div class="l">written guides live</div></div>
+        <div class="stat"><div class="n">{slice.foundations.node_count}</div><div class="l">on the Foundations line</div></div>
+        <div class="stat"><div class="n">{familyCount}</div><div class="l">grammar families</div></div>
       </div>
     </header>
 
+    <!-- ─── Filter bar (the goal-line island) ─── -->
+    <section class="filter" id="filter" aria-label="Filter the grammar map">
+      <div class="filter-label">Light a route</div>
+      <div class="chips">
+        <button class="chip" data-preset="all" aria-pressed="true">All</button>
+        <button class="chip" data-preset="foundations">Foundations</button>
+        <button class="chip lit-chip" data-preset="route">Read novels</button>
+        <span class="chip-sep"></span>
+        {jlptPresets.map((lvl) => (
+          <button class="chip" data-preset={`jlpt:${lvl}`}>{lvl}</button>
+        ))}
+        <span class="chip-sep"></span>
+        <button class="chip toggle" data-toggle="written" aria-pressed="false">Written guides only</button>
+      </div>
+      <div class="filter-meta" id="filter-meta" aria-live="polite"></div>
+    </section>
+
+    <!-- ─── Goal routes: dedicated landing pages (internal linking) ─── -->
+    <section class="routes" aria-label="Goal routes">
+      <div class="routes-label">Or follow a goal route — a focused page per goal</div>
+      <div class="route-links">
+        {GOALS.map((g) => (
+          <a href={`/learn/japanese/grammar/path/${g.id}`}>{g.label}</a>
+        ))}
+      </div>
+    </section>
+
     <!-- Forms you build on (the materialized *-anchors) -->
-    <section class="line foundations anchors-row">
+    <section class="line foundations anchors-row" data-section="foundations">
       <div class="line-head">
         <span class="line-dot"></span>
         <span class="line-title">Forms you build on</span>
@@ -211,8 +296,10 @@ const jlptColor = {
       <div class="stage" style="margin-top:1.1rem;">
         <div class="cards">
           {anchors.map((n) => (
-            <a class="card" href={`/learn/japanese/grammar/${n.slug.replace(/^\*/, "")}`}>
-              <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span></div>
+            <a class="card written" href={`/learn/japanese/grammar/${n.slug.replace(/^\*/, "")}`}
+               data-slug={n.slug.replace(/^\*/, "")} data-found="1" data-written="1"
+               data-freq="essential" data-jlpt="none" data-fam="form" data-reg="">
+              <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span><span class="stub-dot"></span></div>
               <div class="meaning">{n.meaning}</div>
               <div class="badges"><span class="badge anchor">form</span><span class="badge slug">{n.slug.replace(/^\*/, "")}</span></div>
             </a>
@@ -222,7 +309,7 @@ const jlptColor = {
     </section>
 
     <!-- Foundations line -->
-    <section class="line foundations">
+    <section class="line foundations" data-section="foundations">
       <div class="line-head">
         <span class="line-dot"></span>
         <span class="line-title">{slice.foundations.name}</span>
@@ -233,8 +320,10 @@ const jlptColor = {
           <div class="stage-label">{st.label}</div>
           <div class="cards">
             {st.nodes.map((n) => (
-              <a class="card" href={`/learn/japanese/grammar/${n.slug}`}>
-                <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span></div>
+              <a class="card written" href={`/learn/japanese/grammar/${n.slug}`}
+                 data-slug={n.slug} data-found="1" data-written="1"
+                 data-freq={n.freq} data-jlpt={n.jlpt} data-fam={n.family} data-reg={n.register}>
+                <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span><span class="stub-dot"></span></div>
                 <div class="meaning">{n.meaning}</div>
                 <div class="badges">
                   <span class="badge jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
@@ -249,7 +338,7 @@ const jlptColor = {
     </section>
 
     <!-- Read-novels branch -->
-    <section class="line branch">
+    <section class="line branch" data-section="route">
       <div class="line-head">
         <span class="line-dot"></span>
         <span class="line-title">{branch.name}</span>
@@ -261,8 +350,10 @@ const jlptColor = {
           <div class="stage-label">{st.label}</div>
           <div class="cards">
             {st.nodes.map((n) => (
-              <a class="card" href={`/learn/japanese/grammar/${n.slug}`}>
-                <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span></div>
+              <a class="card written" href={`/learn/japanese/grammar/${n.slug}`}
+                 data-slug={n.slug} data-route="1" data-written="1"
+                 data-freq={n.freq} data-jlpt={n.jlpt} data-fam={n.family} data-reg={n.register}>
+                <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span><span class="stub-dot"></span></div>
                 <div class="meaning">{n.meaning}</div>
                 <div class="badges">
                   <span class="badge jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
@@ -274,21 +365,100 @@ const jlptColor = {
           </div>
         </div>
       ))}
-      <div class="overflow">
-        + <strong>{overflow}</strong> more literary &amp; classical points sit on this
-        line, dimmed until you walk the route above. The full tree keeps them visible —
-        the value is seeing that they exist.
+    </section>
+
+    <!-- ─── The full catalog, grouped by family ─── -->
+    <section class="catalog" data-section="catalog">
+      <div class="catalog-head">
+        <h2>Every grammar point</h2>
+        <p>
+          The rest of the tree — {rest.length} more patterns beyond the Foundations
+          spine, grouped by family. Use the filter above to light a level or goal;
+          dimmed points stay visible because seeing that they exist is the point.
+        </p>
       </div>
+      {familyGroups.map((g) => (
+        <div class="family" data-family={g.key}>
+          <div class="family-label">{g.label}<span class="count">{g.nodes.length}</span></div>
+          <div class="cards">
+            {g.nodes.map((n) => (
+              <a class={`card${n.written ? " written" : ""}`} href={`/learn/japanese/grammar/${n.slug}`}
+                 data-slug={n.slug} data-written={n.written ? "1" : "0"}
+                 data-freq={n.freq} data-jlpt={n.jlpt} data-fam={n.family} data-reg={n.register.join(" ")}>
+                <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span><span class="stub-dot"></span></div>
+                <div class="meaning">{n.gloss}</div>
+                <div class="badges">
+                  <span class="badge jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
+                  <span class="badge">{n.freq}</span>
+                  <span class="badge slug">{n.slug}</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
     </section>
 
     <aside class="note">
-      <h3>About this preview</h3>
+      <h3>About this map</h3>
       <ul>
-        <li>This is a <strong>vertical slice</strong>: one Foundations line + one goal route, generated from the enriched grammar catalog to validate the map model before the full interactive tree is built.</li>
-        <li>Stages are the reading order. JLPT is a badge, never a sort key — usefulness orders the path.</li>
-        <li>Tap any point to open its page. Most are stubs for now — the written guides are being filled in, Foundations first.</li>
+        <li><strong>{catalogTotal}</strong> grammar points, every one with a page. The <span class="legend"><span class="stub-dot" style="background:var(--brand);border-color:var(--brand)"></span> filled dot</span> marks the <strong>{writtenCount}</strong> with a full written guide; hollow dots are mapped but their guide is still being written (Foundations and high-frequency grammar first).</li>
+        <li>Stages are the reading order. JLPT is a badge and a filter, never a sort key — usefulness orders the path.</li>
+        <li>"Read novels" is one goal route; more (pass N2, understand anime, business Japanese) light their own paths through the same map.</li>
       </ul>
     </aside>
   </main>
+
+  <script>
+    const root = document.getElementById("filter");
+    const meta = document.getElementById("filter-meta");
+    const cards = Array.from(document.querySelectorAll(".card"));
+    let preset = "all";
+    let writtenOnly = false;
+
+    function matchesPreset(c) {
+      if (preset === "all") return true;
+      if (preset === "foundations") return c.dataset.found === "1";
+      if (preset === "route") {
+        if (c.dataset.route === "1") return true;
+        const reg = (c.dataset.reg || "").split(" ");
+        return reg.includes("literary") || reg.includes("archaic");
+      }
+      if (preset.startsWith("jlpt:")) return c.dataset.jlpt === preset.slice(5);
+      return true;
+    }
+
+    function apply() {
+      let lit = 0;
+      for (const c of cards) {
+        const ok = matchesPreset(c) && (!writtenOnly || c.dataset.written === "1");
+        c.classList.toggle("dim", !ok);
+        if (ok) lit++;
+      }
+      // hide stages / families that have no lit card left (keeps the page tidy)
+      for (const grp of document.querySelectorAll(".stage, .family")) {
+        const any = grp.querySelector(".card:not(.dim)");
+        grp.classList.toggle("empty", preset !== "all" && !any);
+      }
+      meta.textContent =
+        preset === "all" && !writtenOnly
+          ? ""
+          : `${lit} grammar point${lit === 1 ? "" : "s"} lit`;
+    }
+
+    root.addEventListener("click", (e) => {
+      const btn = e.target.closest("button");
+      if (!btn) return;
+      if (btn.dataset.toggle === "written") {
+        writtenOnly = !writtenOnly;
+        btn.setAttribute("aria-pressed", String(writtenOnly));
+      } else if (btn.dataset.preset) {
+        preset = btn.dataset.preset;
+        for (const b of root.querySelectorAll("[data-preset]"))
+          b.setAttribute("aria-pressed", String(b.dataset.preset === preset));
+      }
+      apply();
+    });
+  </script>
 </body>
 </html>
