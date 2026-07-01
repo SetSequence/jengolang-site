@@ -8,6 +8,7 @@ freq: "common"
 jlpt: "N2"
 family: "connective"
 prereqs: ["naze-ka-to-iu-to"]
+foldInto: "naze-ka-to-iu-to"
 confidence: "med"
 sources:
   volumes: "A"

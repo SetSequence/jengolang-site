@@ -1,16 +1,11 @@
-// Goal routes — the "subway lines" of the grammar map (TREE.md #10).
-// Each goal is a query over the tag schema that selects a coherent, useful
-// subset of the catalog, surfaced as a standalone SEO/GEO landing page at
-// /learn/japanese/grammar/path/[id]. The predicate is the single source of
-// truth: the same `match` drives membership on the landing page and (by id)
-// the lit route on the hub.
-
-import type { CollectionEntry } from "astro:content";
-
-type GrammarData = CollectionEntry<"grammar">["data"];
+// Goal routes — the "subway lines" of the grammar map (ON-RAILS.md, TREE.md #10).
+// PRESENTATION ONLY: a goal's membership and ordering are computed build-side in
+// scripts/build_slice.py and baked into grammar_slice.json (`goals[]`), keyed by
+// the ids below. This module holds only the copy/theme each route renders with —
+// there is no `match` predicate here anymore (it would duplicate the Python one).
 
 export interface Goal {
-  id: string;
+  id: string; // must match a goals[].id in grammar_slice.json
   label: string; // short, for chips / cross-links
   h1: string; // page H1
   title: string; // <title> + og
@@ -19,10 +14,6 @@ export interface Goal {
   intent: string; // one line: who this route is for
   accent: string; // oklch theme colour for the route
   tint: string; // matching pale background
-  // Optional sub-faceting shown in the in-page filter. JLPT chips only make
-  // sense when a goal spans multiple levels (a single-level JLPT goal hides them).
-  jlptFacet: boolean;
-  match: (d: GrammarData) => boolean;
 }
 
 const jlptGoal = (
@@ -43,8 +34,6 @@ const jlptGoal = (
   intent: `Sitting the JLPT ${lvl} — or gauging where you are against it.`,
   accent,
   tint,
-  jlptFacet: false,
-  match: (d) => d.jlpt === lvl,
 });
 
 export const GOALS: Goal[] = [
@@ -110,9 +99,6 @@ export const GOALS: Goal[] = [
     intent: "Cracking open novels, literary essays or classical-flavoured prose.",
     accent: "oklch(48% 0.13 290)",
     tint: "oklch(96% 0.022 290)",
-    jlptFacet: true,
-    match: (d) =>
-      d.register.includes("literary") || d.register.includes("archaic"),
   },
   {
     id: "casual-spoken",
@@ -131,8 +117,6 @@ export const GOALS: Goal[] = [
     intent: "Following anime, dramas and real conversation without subtitles.",
     accent: "oklch(54% 0.12 40)",
     tint: "oklch(96% 0.024 40)",
-    jlptFacet: true,
-    match: (d) => d.register.includes("casual-spoken"),
   },
   {
     id: "keigo",
@@ -151,8 +135,6 @@ export const GOALS: Goal[] = [
     intent: "Working in Japanese, or any setting where register is everything.",
     accent: "oklch(46% 0.10 156)",
     tint: "oklch(96% 0.018 156)",
-    jlptFacet: true,
-    match: (d) => d.keigo !== "none",
   },
 ];
 

@@ -11,7 +11,6 @@ prereqs: ["te-form"]
 confidence: "high"
 sources:
   volumes: "B"
-noindex: true
 equivalents:
   - "rough/casual てしまう — end up ~ing, or get ~ done completely"
 keySentence:
@@ -26,6 +25,17 @@ variants:
     reading: "じまう"
     register: ["casual-spoken"]
     note: "the form after で-ending て-forms: 読{よ}んで → 読{よ}んじまう"
+examples:
+  - jp: "財布{さいふ}をなくしちまった。"
+    en: "I went and lost my wallet."
+  - jp: "酔{よ}っちまって、何{なに}も覚{おぼ}えてない。"
+    en: "I got wasted and don't remember a thing."
+  - jp: "先{さき}にやっちまえ。"
+    en: "Just go ahead and get it done."
+  - jp: "つい言{い}っちまった。"
+    en: "I let it slip."
+  - jp: "もう食{た}べちまったのか？"
+    en: "You already ate it all?"
 contrasts:
   - slug: "chau"
     label: "〜ちゃう"
@@ -33,4 +43,5 @@ contrasts:
   - slug: "te-shimau"
     label: "〜てしまう"
     distinction: "ちまう is just てしまう in rough spoken style — identical completion/regret meaning, never used in writing or polite speech."
+noindex: false
 ---

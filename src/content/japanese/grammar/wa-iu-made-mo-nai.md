@@ -7,6 +7,7 @@ keigo: "none"
 freq: "common"
 jlpt: "N3"
 family: "connective"
+foldInto: "ju-made-mo-nai"
 confidence: "high"
 sources:
   volumes: "ext"

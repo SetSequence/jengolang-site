@@ -1,0 +1,275 @@
+---
+import { getCollection } from "astro:content";
+import { COMPARE_SETS, COMPARE_BY_ID } from "../../../../../lib/compareSets";
+import { glossOf, jlptColor } from "../../../../../lib/grammar";
+
+export const prerender = true;
+
+export function getStaticPaths() {
+  return COMPARE_SETS.map((s) => ({ params: { set: s.id } }));
+}
+
+const setId = Astro.params.set;
+const set = COMPARE_BY_ID.get(setId);
+if (!set) throw new Error(`Unknown compare set: ${setId}`);
+
+// Furigana: 漢字{かんじ} markup → <ruby> (crawlable). Same renderer as [slug].astro.
+const esc = (s = "") =>
+  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+function furigana(jp = "") {
+  const re = /([一-龯々〆ヶ]+)\{([^}]+)\}/g;
+  let out = "", last = 0, m;
+  while ((m = re.exec(jp))) {
+    out += esc(jp.slice(last, m.index));
+    out += `<ruby>${esc(m[1])}<rt>${esc(m[2])}</rt></ruby>`;
+    last = m.index + m[0].length;
+  }
+  return out + esc(jp.slice(last));
+}
+const plain = (jp = "") => jp.replace(/\{[^}]+\}/g, "");
+const cleanSlug = (s = "") => s.replace(/^\*/, "");
+
+// Member view-models in teaching order. This page aggregates data already on the
+// nodes — no new grammar prose is authored here.
+const all = await getCollection("grammar");
+const byId = new Map(all.map((e) => [e.id, e.data]));
+const members = set.members.map((slug) => {
+  const d = byId.get(slug);
+  if (!d) throw new Error(`Compare set "${setId}" references missing node: ${slug}`);
+  return {
+    slug,
+    canonical: d.canonical,
+    reading: d.reading,
+    jlpt: d.jlpt,
+    role: d.equivalents?.[0] ?? glossOf(d),
+    keySentence: d.keySentence,
+    contrasts: d.contrasts ?? [],
+    written: !d.noindex,
+  };
+});
+
+// Pairwise distinctions from the members' own contrasts[]. For each unordered
+// pair we take the distinction one member already wrote about the other.
+const pairs = [];
+for (let i = 0; i < members.length; i++) {
+  for (let j = i + 1; j < members.length; j++) {
+    const a = members[i], b = members[j];
+    const c =
+      a.contrasts.find((x) => cleanSlug(x.slug) === b.slug) ??
+      b.contrasts.find((x) => cleanSlug(x.slug) === a.slug);
+    if (c) pairs.push({ a, b, distinction: c.distinction });
+  }
+}
+
+const base = "https://jengolang.com";
+const canonical = `${base}/learn/japanese/grammar/compare/${set.id}`;
+
+// Structured data: FAQPage (one Q&A per pairwise difference — the GEO-friendly
+// shape for "difference between X and Y" queries) + a breadcrumb trail.
+const faq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: pairs.map((p) => ({
+    "@type": "Question",
+    name: `What's the difference between ${p.a.canonical} and ${p.b.canonical}?`,
+    acceptedAnswer: { "@type": "Answer", text: plain(p.distinction) },
+  })),
+};
+const breadcrumb = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Japanese", item: `${base}/learn/japanese` },
+    { "@type": "ListItem", position: 2, name: "Grammar", item: `${base}/learn/japanese/grammar` },
+    { "@type": "ListItem", position: 3, name: "Compare", item: canonical },
+  ],
+};
+---
+
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={set.description} />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" href="/favicon.ico" />
+  <title>{set.title}</title>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={set.title} />
+  <meta property="og:description" content={set.description} />
+  <meta property="og:url" content={canonical} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" set:html={JSON.stringify([faq, breadcrumb])} />
+  <style is:global>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --brand:          oklch(47% 0.089 156);
+      --brand-dark:     oklch(25% 0.062 156);
+      --brand-tint:     oklch(96% 0.016 156);
+      --bg:             oklch(98.5% 0.005 156);
+      --surface:        oklch(99% 0.003 156);
+      --border:         oklch(90% 0.008 156);
+      --border-strong:  oklch(82% 0.012 156);
+      --text-primary:   oklch(22% 0.010 156);
+      --text-secondary: oklch(50% 0.012 156);
+      --text-tertiary:  oklch(68% 0.008 156);
+      --white:          oklch(99.5% 0.002 156);
+      --indigo:         oklch(48% 0.13 290);
+      --indigo-tint:    oklch(96% 0.022 290);
+      --indigo-border:  oklch(88% 0.04 290);
+    }
+    html { font-optical-sizing: auto; scroll-behavior: smooth; }
+    body {
+      font-family: 'Onest', system-ui, sans-serif;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    ruby rt { font-family: "Noto Sans JP", sans-serif; font-size: 0.5em; font-weight: 500; color: var(--text-tertiary); }
+  </style>
+  <style>
+    .nav { background: var(--brand-dark); position: sticky; top: 0; z-index: 100; }
+    .nav-inner {
+      max-width: 940px; margin: 0 auto; padding: 0 1.5rem; height: 56px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-wordmark { font-size: 1rem; font-weight: 600; color: var(--white); letter-spacing: -0.01em; text-decoration: none; }
+    .nav a.try { font-size: .8rem; font-weight: 600; color: var(--white); text-decoration: none;
+      border: 1px solid oklch(99.5% 0.002 156 / .3); border-radius: 7px; padding: 6px 12px; }
+
+    .wrap { max-width: 940px; margin: 0 auto; padding: 2rem 1.5rem 5rem; }
+
+    .crumbs { font-size: .8rem; color: var(--text-tertiary); margin-bottom: 1.4rem; }
+    .crumbs a { text-decoration: none; color: var(--text-secondary); }
+    .crumbs a:hover { color: var(--brand); }
+    .crumbs span { margin: 0 .4rem; }
+
+    .head { border-left: 4px solid var(--indigo); padding-left: 1.1rem; }
+    .head .kicker { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--indigo); }
+    .head h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; margin-top: .35rem; }
+    .head .lede { margin-top: 1rem; max-width: 60ch; color: var(--text-secondary); font-size: 1.05rem; }
+
+    .sec-h { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+      color: var(--text-tertiary); margin-bottom: 1rem; }
+
+    /* ── At a glance: one card per member ── */
+    .glance { margin-top: 2.6rem; }
+    .members { display: grid; gap: .8rem; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); }
+    .member { display: flex; flex-direction: column; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 14px; padding: 1.1rem 1.2rem; text-decoration: none;
+      transition: border-color 140ms, transform 140ms; }
+    .member:hover { border-color: var(--indigo); transform: translateY(-1px); }
+    .member-top { display: flex; align-items: baseline; gap: .5rem; }
+    .member-jp { font-family: 'Noto Sans JP', sans-serif; font-weight: 700; font-size: 1.5rem; line-height: 1.1; color: var(--text-primary); }
+    .member-reading { font-family: 'Noto Sans JP', sans-serif; font-size: .74rem; color: var(--text-tertiary); }
+    .member-jlpt { margin-left: auto; font-size: .62rem; font-weight: 700; color: #fff; padding: 2px 6px; border-radius: 5px; }
+    .member-role { margin-top: .6rem; font-size: .9rem; color: var(--text-secondary); line-height: 1.5; }
+    .member-eg { margin-top: .8rem; padding-top: .8rem; border-top: 1px solid var(--border); }
+    .member-eg .jp { font-family: 'Noto Sans JP', sans-serif; font-size: 1rem; font-weight: 500; line-height: 1.75; color: var(--text-primary); }
+    .member-eg .en { margin-top: .25rem; font-size: .82rem; color: var(--text-tertiary); }
+    .member-more { margin-top: auto; padding-top: .9rem; font-size: .78rem; font-weight: 600; color: var(--indigo); }
+    .member-more.stub { color: var(--text-tertiary); font-weight: 500; }
+
+    /* ── Pairwise differences ── */
+    .pairs { margin-top: 3rem; }
+    .pair-grid { display: grid; gap: .7rem; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .pair { background: var(--indigo-tint); border: 1px solid var(--indigo-border); border-radius: 12px; padding: 1rem 1.2rem; }
+    .pair-h { display: flex; align-items: center; gap: .5rem; font-family: 'Noto Sans JP', sans-serif;
+      font-weight: 700; font-size: 1.05rem; color: var(--text-primary); margin-bottom: .5rem; }
+    .pair-h a { text-decoration: none; color: var(--indigo); }
+    .pair-h a:hover { text-decoration: underline; }
+    .pair-h .vs { font-family: 'Onest', sans-serif; font-size: .72rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .04em; color: var(--text-tertiary); }
+    .pair-dist { font-size: .92rem; color: var(--text-secondary); line-height: 1.55; }
+
+    /* ── App CTA ── */
+    .cta { margin-top: 3.5rem; padding: 1.8rem; background: var(--brand-dark); border-radius: 16px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; }
+    .cta-text h3 { color: var(--white); font-size: 1.15rem; font-weight: 800; }
+    .cta-text p { color: oklch(99.5% 0.002 156 / .72); font-size: .9rem; margin-top: .3rem; max-width: 46ch; }
+    .cta a { flex: none; font-size: .9rem; font-weight: 700; text-decoration: none; color: var(--brand-dark);
+      background: var(--white); padding: 11px 20px; border-radius: 9px; }
+
+    .backtree { margin-top: 2.6rem; font-size: .88rem; }
+    .backtree a { color: var(--brand); text-decoration: none; font-weight: 500; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="nav-wordmark" href="/">Jengo</a>
+      <a class="try" href="https://app.jengolang.com">Try Jengo</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/learn/japanese">Japanese</a><span>›</span>
+      <a href="/learn/japanese/grammar">Grammar</a><span>›</span>
+      Compare
+    </nav>
+
+    <header class="head">
+      <div class="kicker">Easily confused</div>
+      <h1>{set.h1}</h1>
+      <p class="lede">{set.lede}</p>
+    </header>
+
+    <section class="glance">
+      <h2 class="sec-h">At a glance</h2>
+      <div class="members">
+        {members.map((n) => (
+          <a class="member" href={`/learn/japanese/grammar/${n.slug}`}>
+            <div class="member-top">
+              <span class="member-jp">{n.canonical}</span>
+              {n.reading && n.reading !== n.canonical && <span class="member-reading">{n.reading}</span>}
+              <span class="member-jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
+            </div>
+            <div class="member-role" set:html={furigana(n.role)} />
+            {n.keySentence && (
+              <div class="member-eg">
+                <div class="jp" set:html={furigana(n.keySentence.jp)} />
+                <div class="en">{n.keySentence.en}</div>
+              </div>
+            )}
+            <span class={`member-more${n.written ? "" : " stub"}`}>
+              {n.written ? "Full guide →" : "Guide coming soon"}
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="pairs">
+      <h2 class="sec-h">The difference between each pair</h2>
+      <div class="pair-grid">
+        {pairs.map((p) => (
+          <div class="pair">
+            <div class="pair-h">
+              <a href={`/learn/japanese/grammar/${p.a.slug}`}>{p.a.canonical}</a>
+              <span class="vs">vs</span>
+              <a href={`/learn/japanese/grammar/${p.b.slug}`}>{p.b.canonical}</a>
+            </div>
+            <p class="pair-dist" set:html={furigana(p.distinction)} />
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-text">
+        <h3>See these in real sentences</h3>
+        <p>Rules blur; examples stick. Jengo shows each of these patterns inside real Japanese sentences so the difference becomes intuition.</p>
+      </div>
+      <a href="https://app.jengolang.com">Try Jengo</a>
+    </section>
+
+    <p class="backtree"><a href="/learn/japanese/grammar">← Back to the grammar tree</a></p>
+  </main>
+</body>
+</html>

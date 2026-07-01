@@ -7,6 +7,7 @@ keigo: "none"
 freq: "common"
 jlpt: "N2"
 family: "connective"
+foldInto: "o-toshite"
 confidence: "high"
 sources:
   volumes: "I"

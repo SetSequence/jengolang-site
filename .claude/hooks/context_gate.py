@@ -11,7 +11,7 @@ session in an unbreakable loop).
 import sys
 import json
 
-THRESHOLD = 200_000
+THRESHOLD = 190_000
 
 
 def allow_stop():
@@ -72,7 +72,7 @@ def main():
         "CALIBRATION2.md (Read-before-Write).\n"
         "  3. Validate: `python3 scripts/lint_batch.py <slugs>` + the Hangul scan, then `npm run build`.\n"
         "  4. Checkpoint: update the PASS.md Frontier count and append a one-liner to HISTORY.md.\n"
-        "Keep rolling clusters until this hook stops firing (context >= 200k). "
+        "Keep rolling clusters until this hook stops firing (context >= 190k). "
         "If the worklist is genuinely empty, say so explicitly and stop instead of looping."
     )
     print(json.dumps({"decision": "block", "reason": reason}))

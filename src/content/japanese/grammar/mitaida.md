@@ -7,6 +7,7 @@ keigo: "none"
 freq: "common"
 jlpt: "N4"
 family: "modality"
+foldInto: "mitai"
 confidence: "high"
 sources:
   volumes: "A|B"

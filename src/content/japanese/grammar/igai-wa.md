@@ -7,6 +7,7 @@ keigo: "none"
 freq: "common"
 jlpt: "N3"
 family: "particle"
+foldInto: "igai"
 confidence: "high"
 sources:
   volumes: "A"

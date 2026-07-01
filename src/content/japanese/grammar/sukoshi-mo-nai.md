@@ -8,6 +8,7 @@ freq: "common"
 jlpt: "N3"
 family: "adverbial"
 prereqs: ["sukoshi-mo"]
+foldInto: "sukoshi-mo"
 confidence: "med"
 sources:
   volumes: "A"

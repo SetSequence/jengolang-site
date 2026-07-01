@@ -8,6 +8,7 @@ freq: "common"
 jlpt: "N3"
 family: "adverbial"
 prereqs: ["yahari"]
+foldInto: "yahari"
 confidence: "high"
 sources:
   volumes: "B"

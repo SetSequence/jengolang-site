@@ -8,6 +8,7 @@ freq: "common"
 jlpt: "N4"
 family: "connective"
 prereqs: ["ni-tsuite"]
+foldInto: "ni-tsuite"
 confidence: "med"
 sources:
   volumes: "A"

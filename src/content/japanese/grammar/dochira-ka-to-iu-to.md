@@ -8,6 +8,7 @@ freq: "common"
 jlpt: "N2"
 family: "adverbial"
 prereqs: ["dochira-ka-to-ieba"]
+foldInto: "dochira-ka-to-ieba"
 confidence: "med"
 sources:
   volumes: "A"

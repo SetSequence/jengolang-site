@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { compareSetForSlug } from "../../../../lib/compareSets";
 
 export const prerender = true;
 
@@ -31,6 +32,10 @@ export async function getStaticPaths() {
 
 const { entry, prereqs, related, contrasts } = Astro.props;
 const d = entry.data;
+
+// If this node is part of a confusable set (e.g. the four conditionals), link to
+// its side-by-side comparison page (P1.3).
+const compareSet = compareSetForSlug(entry.id);
 
 // Furigana: 漢字{かんじ} markup → <ruby>漢字<rt>かんじ</rt></ruby> (crawlable).
 const esc = (s = "") =>
@@ -98,6 +103,26 @@ const jlptColor = {
   none: "oklch(60% 0.01 156)",
 };
 
+// — Provenance: this catalog derives from the Dictionary of Basic/Intermediate/
+// Advanced Japanese Grammar series (volume codes B/I/A; "ext" = other references). —
+const VOLUME_LABEL = {
+  B: "A Dictionary of Basic Japanese Grammar",
+  I: "A Dictionary of Intermediate Japanese Grammar",
+  A: "A Dictionary of Advanced Japanese Grammar",
+};
+const volCodes = (d.sources?.volumes ?? "")
+  .split("|")
+  .map((s) => s.trim())
+  .filter(Boolean);
+const dictVolumes = volCodes.filter((v) => VOLUME_LABEL[v]).map((v) => VOLUME_LABEL[v]);
+const hasExternalSource = volCodes.includes("ext") || !!d.sources?.external;
+const confidenceLabel = { high: "high", med: "medium", low: "low" };
+const sourceSentence = dictVolumes.length
+  ? `Compiled with reference to ${dictVolumes.map((v) => `<em>${v}</em>`).join(", ")}${hasExternalSource ? ", and additional grammar references" : ""}.`
+  : hasExternalSource
+    ? "Compiled from published Japanese grammar references."
+    : "";
+
 // — SEO —
 const metaDesc =
   plain(d.nuance) ||
@@ -116,6 +141,7 @@ const jsonLd =
         inLanguage: "en",
         about: { "@type": "Thing", name: `${d.canonical} (Japanese grammar)` },
         url: canonicalURL,
+        ...(dictVolumes.length ? { citation: dictVolumes } : {}),
       }
     : null;
 ---
@@ -294,6 +320,13 @@ const jsonLd =
       .crow .sib { font-family: "Noto Sans JP", sans-serif; font-weight: 700; color: var(--indigo); font-size: 1.05rem; }
       .crow .dist { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.5; }
       .crow .dist b { color: var(--text-primary); font-weight: 600; }
+      .comparelink {
+        display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.9rem;
+        font-size: 0.85rem; font-weight: 700; text-decoration: none; color: var(--indigo);
+        border: 1px solid var(--indigo-border); background: var(--indigo-tint);
+        border-radius: 8px; padding: 8px 14px; transition: border-color 140ms;
+      }
+      .comparelink:hover { border-color: var(--indigo); }
 
       /* notes */
       .notes { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.2rem; }
@@ -326,6 +359,18 @@ const jsonLd =
       .seealso a { display: flex; align-items: baseline; gap: 0.6rem; text-decoration: none; font-size: 0.92rem; color: var(--text-secondary); }
       .seealso a:hover { color: var(--brand); }
       .seealso .sj { font-family: "Noto Sans JP", sans-serif; font-weight: 600; color: var(--text-primary); }
+
+      /* provenance / sourcing (authority signal) */
+      .provenance {
+        margin-top: 2.6rem; padding-top: 1.5rem; border-top: 1px solid var(--border);
+        font-size: 0.8rem; color: var(--text-tertiary); line-height: 1.65; max-width: 60ch;
+      }
+      .provenance .prov-label {
+        display: block; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+        font-size: 0.68rem; color: var(--text-tertiary); margin-bottom: 0.3rem;
+      }
+      .provenance em { font-style: italic; color: var(--text-secondary); }
+      .provenance .prov-conf { color: var(--clay); }
 
       .backtree { margin-top: 2.6rem; font-size: 0.88rem; }
       .backtree a { color: var(--brand); text-decoration: none; font-weight: 500; }
@@ -522,6 +567,11 @@ const jsonLd =
                   );
                 })}
               </div>
+              {compareSet && (
+                <a class="comparelink" href={`/learn/japanese/grammar/compare/${compareSet.id}`}>
+                  Compare {compareSet.label} side by side →
+                </a>
+              )}
             </section>
           )}
 
@@ -563,6 +613,16 @@ const jsonLd =
             ))}
           </div>
         </section>
+      )}
+
+      {(sourceSentence || d.confidence !== "high") && (
+        <p class="provenance">
+          <span class="prov-label">Sources</span>
+          {sourceSentence && <span set:html={sourceSentence} />}
+          {d.confidence !== "high" && (
+            <span class="prov-conf"> Editorial confidence: {confidenceLabel[d.confidence] ?? d.confidence}.</span>
+          )}
+        </p>
       )}
 
       <p class="backtree"><a href="/learn/japanese/grammar">← Back to the grammar tree</a></p>

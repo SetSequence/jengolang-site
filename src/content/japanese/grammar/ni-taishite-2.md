@@ -8,6 +8,7 @@ freq: "common"
 jlpt: "N3"
 family: "connective"
 prereqs: ["ni-taishite"]
+foldInto: "ni-taishite"
 confidence: "med"
 sources:
   volumes: "I"

@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import { GOALS, GOAL_BY_ID } from "../../../../../lib/goals";
-import { glossOf, groupByFamily, jlptColor, JLPT_RANK } from "../../../../../lib/grammar";
+import { glossOf, groupByFamily, jlptColor } from "../../../../../lib/grammar";
 import slice from "../../../../../data/grammar_slice.json";
 
 export const prerender = true;
@@ -14,56 +14,80 @@ const goalId = Astro.params.goal;
 const goal = GOAL_BY_ID.get(goalId);
 if (!goal) throw new Error(`Unknown goal route: ${goalId}`);
 
+// Membership + ordering are canonical in the slice (built by build_slice.py per
+// ON-RAILS.md); this page only joins slugs to the content collection for the
+// state that lives there (written guide? gloss?).
+const gdata = slice.goals.find((g) => g.id === goalId);
+if (!gdata) throw new Error(`No goal path in slice for: ${goalId}`);
+
 const all = await getCollection("grammar");
+const meta = new Map(
+  all.map((e) => [e.id, { written: !e.data.noindex, gloss: glossOf(e.data) }]),
+);
+const enrich = (n) => ({
+  ...n,
+  written: meta.get(n.slug)?.written ?? false,
+  gloss: meta.get(n.slug)?.gloss ?? n.meaning,
+});
 
-// Curated bold route (only read-novels has one today — from the validated slice).
-// Group it by its pedagogical stage and keep its slugs out of the family grid
-// below so route nodes aren't rendered twice.
-function byStage(nodes) {
-  const map = new Map();
-  for (const n of nodes) {
-    const k = n.stage.index;
-    if (!map.has(k)) map.set(k, { label: n.stage.label, nodes: [] });
-    map.get(k).nodes.push(n);
-  }
-  return [...map.entries()].sort((a, b) => a[0] - b[0]).map(([, v]) => v);
-}
-const hasRoute = goal.id === slice.branch.id;
-const routeStages = hasRoute ? byStage(slice.branch.route) : [];
-const routeSlugs = new Set(hasRoute ? slice.branch.route.map((n) => n.slug) : []);
+const bandMode = gdata.foundations_mode; // "band0" (JLPT) | "spine" (register)
+const foundationNodes = slice.foundations.nodes.map(enrich);
+const goalBands = gdata.bands.map((b) => ({ ...b, nodes: b.nodes.map(enrich) }));
 
-const matched = all
-  .filter((e) => !e.data.foldInto && goal.match(e.data))
-  .map((e) => ({
-    slug: e.id,
-    canonical: e.data.canonical,
-    reading: e.data.reading,
-    gloss: glossOf(e.data),
-    register: e.data.register,
-    freq: e.data.freq,
-    jlpt: e.data.jlpt,
-    family: e.data.family,
-    written: !e.data.noindex,
-  }));
+// The numbered path. For JLPT goals the Foundations trunk is the numbered Band 1
+// (the trunk *is* the content); for register goals it's a compact assumed spine
+// shown above, and the path starts at the goal's own first band. (ON-RAILS §3)
+const pathBands =
+  bandMode === "band0"
+    ? [
+        {
+          index: 0,
+          key: "foundations",
+          label: "Foundations — the shared spine",
+          nodes: foundationNodes,
+        },
+        ...goalBands,
+      ]
+    : goalBands;
 
-const total = matched.length;
-const writtenCount = matched.filter((n) => n.written).length;
+// Hero "start here" rail = the true first step: the trunk for JLPT goals, the
+// goal's own first band for register goals (Foundations assumed). (ON-RAILS §4)
+const railSource =
+  bandMode === "band0" ? foundationNodes : goalBands[0]?.nodes ?? [];
+const rail = railSource.slice(0, 6);
 
-const gridNodes = matched.filter((n) => !routeSlugs.has(n.slug));
-const familyGroups = groupByFamily(gridNodes);
+// read-novels: literary members not on the curated route → family grid below.
+const restNodes = (gdata.rest_members ?? [])
+  .map((slug) => {
+    const e = meta.has(slug) ? all.find((x) => x.id === slug) : null;
+    return e
+      ? {
+          slug,
+          canonical: e.data.canonical,
+          reading: e.data.reading,
+          gloss: glossOf(e.data),
+          register: e.data.register,
+          freq: e.data.freq,
+          jlpt: e.data.jlpt,
+          family: e.data.family,
+          written: !e.data.noindex,
+        }
+      : null;
+  })
+  .filter(Boolean);
+const restGroups = groupByFamily(restNodes);
 
-// JLPT sub-facet: only meaningful when a goal genuinely spans multiple levels.
-const levelsPresent = [...new Set(matched.map((n) => n.jlpt).filter((l) => l !== "none"))]
-  .sort((a, b) => (JLPT_RANK[a] ?? 9) - (JLPT_RANK[b] ?? 9));
-const showJlptFacet = goal.jlptFacet && levelsPresent.length > 1;
+const allPathNodes = [...pathBands.flatMap((b) => b.nodes), ...restNodes];
+const total = allPathNodes.length;
+const writtenCount = allPathNodes.filter((n) => n.written).length;
 
 const others = GOALS.filter((g) => g.id !== goal.id);
 const base = "https://jengolang.com";
 const canonical = `${base}/learn/japanese/grammar/path/${goal.id}`;
 
-// Structured data: ItemList of the substantive (written-guide) pages for GEO,
-// plus a breadcrumb trail. Cap the list so the page stays light.
-const listItems = (writtenCount > 0 ? matched.filter((n) => n.written) : matched)
+// Structured data: ItemList of the substantive (written-guide) pages in path
+// order for GEO, plus a breadcrumb trail. Cap so the page stays light.
+const listItems = (writtenCount > 0 ? allPathNodes.filter((n) => n.written) : allPathNodes)
   .slice(0, 200)
   .map((n, i) => ({
     "@type": "ListItem",
@@ -171,29 +195,11 @@ const jsonLd = [
     }
     .route-links a:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* in-page filter (the .lit/.dim mechanic, reused from the hub) */
-    .filter {
-      position: sticky; top: 56px; z-index: 90; margin-top: 1.8rem;
-      background: oklch(98.5% 0.005 156 / .92); backdrop-filter: blur(8px);
-      border: 1px solid var(--border); border-radius: 12px; padding: .7rem .8rem;
-    }
-    .chips { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; }
-    .chip {
-      font: inherit; font-size: .78rem; font-weight: 600; cursor: pointer;
-      border: 1px solid var(--border); background: var(--surface); color: var(--text-secondary);
-      padding: 5px 11px; border-radius: 999px; transition: all 120ms; white-space: nowrap;
-    }
-    .chip:hover { border-color: var(--accent); color: var(--accent); }
-    .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--white); }
-    .chip-sep { width: 1px; align-self: stretch; background: var(--border); margin: 2px 4px; }
-    .chip.toggle[aria-pressed="true"] { background: var(--tint); border-color: var(--accent); color: var(--brand-dark); }
-    .filter-meta { font-size: .74rem; color: var(--text-tertiary); margin: .55rem .2rem 0; }
-
     .cards { display: grid; gap: .6rem; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
     .card {
       display: block; text-decoration: none; background: var(--surface);
       border: 1px solid var(--border); border-radius: 11px; padding: .7rem .8rem;
-      transition: border-color 140ms, transform 140ms, opacity 160ms;
+      transition: border-color 140ms, transform 140ms;
       content-visibility: auto; contain-intrinsic-size: auto 96px;
     }
     .card:hover { border-color: var(--accent); transform: translateY(-1px); }
@@ -212,24 +218,55 @@ const jsonLd = [
     }
     .badge.jlpt { color: #fff; border: none; }
     .badge.slug { font-family: ui-monospace, monospace; background: transparent; color: var(--text-tertiary); }
-    .card.dim { opacity: .26; filter: saturate(.4); }
-    .card.dim:hover { opacity: .55; }
-    .stage.empty, .family.empty { display: none; }
 
-    /* curated route block */
-    .route { margin-top: 2.6rem; padding: 1.4rem 1.5rem; background: var(--tint);
-      border: 1px solid var(--border); border-radius: 14px; }
-    .route h2 { font-size: 1.2rem; font-weight: 800; letter-spacing: -.01em; }
-    .route p { color: var(--text-secondary); font-size: .92rem; margin-top: .3rem; max-width: 60ch; }
-    .stage { position: relative; margin-top: 1.4rem; padding-left: 1.6rem; }
-    .stage::before { content: ""; position: absolute; left: 5px; top: -1rem; bottom: -1rem; width: 2px; background: var(--accent); opacity: .35; }
-    .stage:first-of-type::before { top: .5rem; }
-    .stage:last-of-type::before { bottom: auto; height: .5rem; }
-    .stage-label { position: relative; font-size: .76rem; font-weight: 700; letter-spacing: .02em;
-      text-transform: uppercase; color: var(--accent); margin-bottom: .7rem; }
-    .stage-label::before { content: ""; position: absolute; left: -1.6rem; top: 50%; transform: translateY(-50%);
-      width: 12px; height: 12px; border-radius: 999px; background: var(--bg); border: 2px solid var(--accent); }
+    /* ─── Start-here rail (the hero "next few steps") ─── */
+    .rail { margin-top: 2.4rem; padding: 1.4rem 1.5rem 1.6rem; background: var(--tint);
+      border: 1px solid var(--accent); border-radius: 16px; }
+    .rail-kicker { display: inline-flex; align-items: center; gap: .4rem; font-size: .7rem; font-weight: 800;
+      letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+    .rail-kicker svg { width: 14px; height: 14px; }
+    .rail h2 { font-size: 1.25rem; font-weight: 800; letter-spacing: -.01em; margin-top: .5rem; }
+    .rail p { color: var(--text-secondary); font-size: .9rem; margin-top: .25rem; max-width: 62ch; }
+    .rail-steps { margin-top: 1.1rem; display: grid; gap: .55rem; }
+    .step { display: flex; align-items: stretch; gap: .7rem; text-decoration: none; }
+    .step-n { flex: none; width: 30px; display: grid; place-items: center; font-weight: 800; font-size: .9rem;
+      color: var(--white); background: var(--accent); border-radius: 9px; }
+    .step .card { flex: 1; }
+    .step-1 .step-n { position: relative; }
+    .start-flag { display: inline-block; margin-left: .5rem; font-size: .6rem; font-weight: 800; letter-spacing: .05em;
+      text-transform: uppercase; color: var(--accent); background: var(--surface);
+      border: 1px solid var(--accent); border-radius: 999px; padding: 1px 7px; vertical-align: middle; }
+    .rail-more { margin-top: .9rem; font-size: .8rem; font-weight: 600; color: var(--accent); text-decoration: none; }
+    .rail-more:hover { text-decoration: underline; }
 
+    /* ─── Compact assumed spine (register goals only) ─── */
+    .spine { margin-top: 2rem; padding: 1rem 1.2rem; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 12px; }
+    .spine summary { cursor: pointer; font-size: .82rem; font-weight: 700; color: var(--text-secondary); }
+    .spine summary::marker { color: var(--text-tertiary); }
+    .spine .hint { font-weight: 400; color: var(--text-tertiary); }
+    .spine-list { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .8rem; }
+    .spine-list a { font-size: .76rem; text-decoration: none; color: var(--text-secondary);
+      border: 1px solid var(--border); background: var(--bg); border-radius: 999px; padding: 3px 9px; }
+    .spine-list a:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ─── The numbered path (bands as subway stages) ─── */
+    .path { margin-top: 2.8rem; }
+    .path-head h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.01em; }
+    .path-head p { color: var(--text-secondary); font-size: .95rem; margin-top: .3rem; max-width: 62ch; }
+    .band { position: relative; margin-top: 1.6rem; padding-left: 2.2rem; }
+    .band::before { content: ""; position: absolute; left: 14px; top: -1.1rem; bottom: -1.1rem; width: 2px;
+      background: var(--accent); opacity: .3; }
+    .band:first-of-type::before { top: 1rem; }
+    .band:last-of-type::before { bottom: auto; height: 1rem; }
+    .band-label { position: relative; display: flex; align-items: center; gap: .6rem;
+      font-size: .9rem; font-weight: 800; color: var(--text-primary); margin-bottom: .8rem; }
+    .band-n { position: absolute; left: -2.2rem; top: 50%; transform: translateY(-50%);
+      width: 30px; height: 30px; display: grid; place-items: center; font-size: .85rem; font-weight: 800;
+      color: var(--white); background: var(--accent); border-radius: 999px; border: 3px solid var(--bg); }
+    .band-count { font-size: .72rem; font-weight: 600; color: var(--text-tertiary); }
+
+    /* ─── Everything-else family grid (read-novels rest) ─── */
     .catalog { margin-top: 3rem; }
     .catalog-head h2 { font-size: 1.3rem; font-weight: 800; letter-spacing: -.01em; }
     .catalog-head p { color: var(--text-secondary); font-size: .95rem; margin-top: .3rem; max-width: 60ch; }
@@ -290,35 +327,106 @@ const jsonLd = [
       <p class="empty-note">No grammar points are tagged for this route yet.</p>
     ) : (
       <>
-        <section class="filter" id="filter" aria-label="Filter this route">
-          <div class="chips">
-            <button class="chip" data-preset="all" aria-pressed="true">All</button>
-            {showJlptFacet && <span class="chip-sep"></span>}
-            {showJlptFacet && levelsPresent.map((lvl) => (
-              <button class="chip" data-preset={`jlpt:${lvl}`}>{lvl}</button>
-            ))}
-            <span class="chip-sep"></span>
-            <button class="chip toggle" data-toggle="written" aria-pressed="false">Written guides only</button>
+        {/* Hero: the next few steps, numbered, with a Start-here flag on #1 */}
+        {rail.length > 0 && (
+          <section class="rail" aria-label="Start here">
+            <span class="rail-kicker">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              Your route
+            </span>
+            <h2>Start here</h2>
+            <p>
+              {bandMode === "band0"
+                ? "Begin at the foundations — the trunk every route shares. Work down in order; each step builds on the last."
+                : `${goal.label} assumes the foundations below. Start with these — they're ordered most-useful-first.`}
+            </p>
+            <div class="rail-steps">
+              {rail.map((n, i) => (
+                <a class={`step step-${i + 1}`} href={`/learn/japanese/grammar/${n.slug}`}>
+                  <span class="step-n">{i + 1}</span>
+                  <span class={`card${n.written ? " written" : ""}`}>
+                    <div class="card-top">
+                      <span class="jp">{n.canonical}</span>
+                      <span class="reading">{n.reading}</span>
+                      {i === 0 && <span class="start-flag">Start</span>}
+                      <span class="stub-dot"></span>
+                    </div>
+                    <div class="meaning">{n.gloss}</div>
+                  </span>
+                </a>
+              ))}
+            </div>
+            <a class="rail-more" href="#path">See the full route ↓</a>
+          </section>
+        )}
+
+        {/* Register goals: the trunk is prerequisite, shown compact, not numbered */}
+        {bandMode === "spine" && (
+          <details class="spine">
+            <summary>Foundations — the shared spine <span class="hint">· assumed by this route, start here if you're new</span></summary>
+            <div class="spine-list">
+              {foundationNodes.map((n) => (
+                <a href={`/learn/japanese/grammar/${n.slug}`}>{n.canonical}</a>
+              ))}
+            </div>
+          </details>
+        )}
+
+        {/* The numbered path: bands as subway stages */}
+        <section class="path" id="path">
+          <div class="path-head">
+            <h2>The full route</h2>
+            <p>
+              {pathBands.length} stage{pathBands.length === 1 ? "" : "s"}, ordered so each builds on the last.
+              A <strong>filled dot</strong> marks a point with a full written guide; hollow dots are mapped,
+              their guide still being written.
+            </p>
           </div>
-          <div class="filter-meta" id="filter-meta" aria-live="polite"></div>
+          {pathBands.map((b, i) => (
+            <div class="band">
+              <div class="band-label">
+                <span class="band-n">{i + 1}</span>
+                {b.label}
+                <span class="band-count">{b.nodes.length} point{b.nodes.length === 1 ? "" : "s"}</span>
+              </div>
+              <div class="cards">
+                {b.nodes.map((n) => (
+                  <a class={`card${n.written ? " written" : ""}`} href={`/learn/japanese/grammar/${n.slug}`}>
+                    <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span><span class="stub-dot"></span></div>
+                    <div class="meaning">{n.gloss}</div>
+                    <div class="badges">
+                      <span class="badge jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
+                      <span class="badge">{n.family}</span>
+                      <span class="badge slug">{n.slug}</span>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
         </section>
 
-        {hasRoute && (
-          <section class="route">
-            <h2>Start here — the core path</h2>
-            <p>{slice.branch.tagline} Follow these in order; everything else on this route hangs off them.</p>
-            {routeStages.map((st) => (
-              <div class="stage">
-                <div class="stage-label">{st.label}</div>
+        {/* read-novels: literary points beyond the curated route */}
+        {restGroups.length > 0 && (
+          <section class="catalog">
+            <div class="catalog-head">
+              <h2>Every other literary &amp; classical point</h2>
+              <p>
+                {restNodes.length} more grammar point{restNodes.length === 1 ? "" : "s"} in the literary set,
+                beyond the core route above — grouped by family for reference.
+              </p>
+            </div>
+            {restGroups.map((g) => (
+              <div class="family" data-family={g.key}>
+                <div class="family-label">{g.label}<span class="count">{g.nodes.length}</span></div>
                 <div class="cards">
-                  {st.nodes.map((n) => (
-                    <a class="card written" href={`/learn/japanese/grammar/${n.slug}`}
-                       data-slug={n.slug} data-written="1" data-jlpt={n.jlpt}>
+                  {g.nodes.map((n) => (
+                    <a class={`card${n.written ? " written" : ""}`} href={`/learn/japanese/grammar/${n.slug}`}>
                       <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span><span class="stub-dot"></span></div>
-                      <div class="meaning">{n.meaning}</div>
+                      <div class="meaning">{n.gloss}</div>
                       <div class="badges">
                         <span class="badge jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
-                        <span class="badge">{n.family}</span>
+                        <span class="badge">{n.freq}</span>
                         <span class="badge slug">{n.slug}</span>
                       </div>
                     </a>
@@ -328,36 +436,6 @@ const jsonLd = [
             ))}
           </section>
         )}
-
-        <section class="catalog">
-          <div class="catalog-head">
-            <h2>{hasRoute ? "Every literary & classical point" : "Every point on this route"}</h2>
-            <p>
-              {gridNodes.length} grammar point{gridNodes.length === 1 ? "" : "s"}, grouped by family.
-              A <strong>filled dot</strong> marks the {writtenCount} with a full written guide; hollow dots
-              are mapped but their guide is still being written.
-            </p>
-          </div>
-          {familyGroups.map((g) => (
-            <div class="family" data-family={g.key}>
-              <div class="family-label">{g.label}<span class="count">{g.nodes.length}</span></div>
-              <div class="cards">
-                {g.nodes.map((n) => (
-                  <a class={`card${n.written ? " written" : ""}`} href={`/learn/japanese/grammar/${n.slug}`}
-                     data-slug={n.slug} data-written={n.written ? "1" : "0"} data-jlpt={n.jlpt}>
-                    <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span><span class="stub-dot"></span></div>
-                    <div class="meaning">{n.gloss}</div>
-                    <div class="badges">
-                      <span class="badge jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
-                      <span class="badge">{n.freq}</span>
-                      <span class="badge slug">{n.slug}</span>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
-        </section>
       </>
     )}
 
@@ -369,50 +447,5 @@ const jsonLd = [
       <a href="https://app.jengolang.com">Try Jengo</a>
     </section>
   </main>
-
-  <script>
-    const root = document.getElementById("filter");
-    if (root) {
-      const meta = document.getElementById("filter-meta");
-      const cards = Array.from(document.querySelectorAll(".card"));
-      let preset = "all";
-      let writtenOnly = false;
-
-      function matchesPreset(c) {
-        if (preset === "all") return true;
-        if (preset.startsWith("jlpt:")) return c.dataset.jlpt === preset.slice(5);
-        return true;
-      }
-      function apply() {
-        let lit = 0;
-        for (const c of cards) {
-          const ok = matchesPreset(c) && (!writtenOnly || c.dataset.written === "1");
-          c.classList.toggle("dim", !ok);
-          if (ok) lit++;
-        }
-        for (const grp of document.querySelectorAll(".stage, .family")) {
-          const any = grp.querySelector(".card:not(.dim)");
-          grp.classList.toggle("empty", (preset !== "all" || writtenOnly) && !any);
-        }
-        meta.textContent =
-          preset === "all" && !writtenOnly
-            ? ""
-            : `${lit} grammar point${lit === 1 ? "" : "s"} shown`;
-      }
-      root.addEventListener("click", (e) => {
-        const btn = e.target.closest("button");
-        if (!btn) return;
-        if (btn.dataset.toggle === "written") {
-          writtenOnly = !writtenOnly;
-          btn.setAttribute("aria-pressed", String(writtenOnly));
-        } else if (btn.dataset.preset) {
-          preset = btn.dataset.preset;
-          for (const b of root.querySelectorAll("[data-preset]"))
-            b.setAttribute("aria-pressed", String(b.dataset.preset === preset));
-        }
-        apply();
-      });
-    }
-  </script>
 </body>
 </html>

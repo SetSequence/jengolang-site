@@ -8,6 +8,7 @@ family: "connective"
 freq: "common"
 jlpt: "N3"
 prereqs: ["tara-sugu"]
+foldInto: "tara-sugu"
 confidence: "med"
 sources:
   volumes: "A"

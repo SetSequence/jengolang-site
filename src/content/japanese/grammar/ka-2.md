@@ -10,7 +10,7 @@ family: "particle"
 confidence: "high"
 sources:
   volumes: "B"
-noindex: true
+noindex: false
 equivalents:
   - "A か B = 'A or B' — lists alternatives to choose between"
 keySentence:
@@ -20,6 +20,13 @@ formation:
   - attaches_to: "Noun か Noun"
     form: "N か N"
     example: "肉{にく}か魚{さかな} (meat or fish)"
+examples:
+  - jp: "ペンか鉛筆{えんぴつ}で書{か}いてください。"
+    en: "Please write with a pen or a pencil."
+  - jp: "土曜{どよう}か日曜{にちよう}に会{あ}いましょう。"
+    en: "Let's meet on Saturday or Sunday."
+  - jp: "お父{とう}さんかお母{かあ}さんに聞{き}いてね。"
+    en: "Ask your dad or your mom."
 contrasts:
   - slug: "ka"
     label: "か"

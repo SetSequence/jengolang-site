@@ -7,6 +7,7 @@ keigo: "none"
 freq: "common"
 jlpt: "N3"
 family: "aspect"
+foldInto: "ru-tokoro-da"
 confidence: "med"
 sources:
   volumes: "B"

@@ -8,6 +8,7 @@ freq: "common"
 jlpt: "N3"
 family: "connective"
 prereqs: ["dake-de-wa-naku"]
+foldInto: "dake-de-wa-naku"
 confidence: "med"
 sources:
   volumes: "I"

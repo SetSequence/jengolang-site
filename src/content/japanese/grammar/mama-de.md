@@ -8,6 +8,7 @@ freq: "common"
 jlpt: "N4"
 family: "other"
 prereqs: ["mama"]
+foldInto: "mama"
 confidence: "high"
 sources:
   volumes: "A"

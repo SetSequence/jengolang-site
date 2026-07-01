@@ -104,6 +104,150 @@ BRANCH = {
 }
 BRANCH["route"] = [s for _, slugs in BRANCH["route_stages"] for s in slugs]
 
+# ---------------------------------------------------------------------------
+# GOAL PATHS (ON-RAILS.md) — membership + ordering for every goal route live
+# build-side (single source of truth; goals.ts is presentation only). Each goal
+# becomes an ORDERED, BANDED path: the band is the numbered backbone, the first
+# band's first few nodes are the "start here" rail. Order within a band is by
+# frequency (the "what next" signal in a shallow forest), then JLPT, family,
+# surface. The band AXIS is goal-type-specific — whatever the learner reasons in.
+# ---------------------------------------------------------------------------
+FREQ_RANK = {"essential": 0, "common": 1, "uncommon": 2, "rare": 3}
+JLPT_RANK = {"N5": 0, "N4": 1, "N3": 2, "N2": 3, "N1": 4, "none": 5}
+# mirrors lib/grammar.ts FAMILY_ORDER so within-band order never drifts
+FAMILY_ORDER = [
+    "particle", "copula", "aspect", "conditional", "auxiliary", "modality",
+    "quotation", "nominalizer", "causative", "passive", "honorific",
+    "connective", "adverbial", "counter", "form", "interjection", "other",
+]
+FAM_RANK = {f: i for i, f in enumerate(FAMILY_ORDER)}
+JLPT_LEVELS = ["N5", "N4", "N3", "N2", "N1"]
+
+# keigo bands: pedagogical order polite → respectful → humble (§2)
+KEIGO_BANDS = [
+    ("teineigo", "丁寧語 — Polite (です・ます register)"),
+    ("sonkeigo", "尊敬語 — Respectful (elevating others)"),
+    ("kenjougo", "謙譲語 — Humble (lowering yourself)"),
+]
+# casual bands: freq is the honest axis (948 nodes, only generic families) (§2)
+FREQ_BANDS = [
+    ("essential", "Spoken essentials — start here"),
+    ("common", "Core conversational patterns"),
+    ("uncommon", "Less common, still useful"),
+    ("rare", "Rare & advanced spoken"),
+]
+
+GOAL_SPECS = [
+    {"id": "jlpt-n5", "axis": "jlpt", "level": "N5"},
+    {"id": "jlpt-n4", "axis": "jlpt", "level": "N4"},
+    {"id": "jlpt-n3", "axis": "jlpt", "level": "N3"},
+    {"id": "jlpt-n2", "axis": "jlpt", "level": "N2"},
+    {"id": "jlpt-n1", "axis": "jlpt", "level": "N1"},
+    {"id": "read-novels", "axis": "curated"},
+    {"id": "casual-spoken", "axis": "freq",
+        "member": lambda r: "casual-spoken" in r["register"]},
+    {"id": "keigo", "axis": "keigo", "member": lambda r: r["keigo"] != "none"},
+]
+
+
+def goal_sort_key(r):
+    """Within-band order: freq → JLPT → family → surface (ON-RAILS §1.2)."""
+    return (
+        FREQ_RANK.get(r.get("freq", ""), 9),
+        JLPT_RANK.get(r.get("jlpt", ""), 9),
+        FAM_RANK.get(r.get("family", ""), 99),
+        r.get("canonical", ""),
+    )
+
+
+def build_goals(all_rows, branch_route, filter_members, spine_slugs):
+    """Compute the ordered, banded path for every goal (ON-RAILS §1, §2).
+
+    `spine_slugs` = Foundations + anchors. JLPT goals carry Foundations as a
+    numbered Band 0 rendered from slice.foundations, so their own bands EXCLUDE
+    spine slugs; register goals show Foundations as a compact spine and likewise
+    exclude it. The page joins these slugs to the content collection for written
+    state and gloss; here we only need ordering + the slim record."""
+    by_slug = {r["slug"]: r for r in all_rows}
+    spine = set(spine_slugs)
+
+    def live(r):  # drop folds; they redirect to a parent
+        return not (r.get("fold_into_parent") or "").strip()
+
+    goals = []
+    for spec in GOAL_SPECS:
+        axis = spec["axis"]
+        rest = []
+
+        if axis == "jlpt":
+            cap = JLPT_RANK[spec["level"]]
+            members = [r for r in all_rows
+                       if live(r) and r["jlpt"] in JLPT_RANK
+                       and r["jlpt"] != "none" and JLPT_RANK[r["jlpt"]] <= cap
+                       and r["slug"] not in spine]
+            raw_bands = []
+            for lvl in JLPT_LEVELS[:cap + 1]:
+                ns = sorted([r for r in members if r["jlpt"] == lvl], key=goal_sort_key)
+                if ns:
+                    raw_bands.append((lvl, f"JLPT {lvl}", ns))
+            foundations_mode = "band0"
+
+        elif axis == "keigo":
+            members = [r for r in all_rows if live(r) and spec["member"](r)]
+            raw_bands = []
+            for key, label in KEIGO_BANDS:
+                ns = sorted([r for r in members if r["keigo"] == key], key=goal_sort_key)
+                if ns:
+                    raw_bands.append((key, label, ns))
+            foundations_mode = "spine"
+
+        elif axis == "freq":
+            members = [r for r in all_rows if live(r) and spec["member"](r)
+                       and r["slug"] not in spine]
+            raw_bands = []
+            for key, label in FREQ_BANDS:
+                ns = sorted([r for r in members if r["freq"] == key], key=goal_sort_key)
+                if ns:
+                    raw_bands.append((key, label, ns))
+            foundations_mode = "spine"
+
+        elif axis == "curated":  # read-novels: keep the hand-authored route_stages
+            stage_map = {}
+            for n in branch_route:
+                idx = n["stage"]["index"]
+                stage_map.setdefault(idx, [n["stage"]["label"], []])
+                stage_map[idx][1].append(by_slug[n["slug"]])
+            raw_bands = [(f"stage-{idx}", lbl, ns)
+                         for idx, (lbl, ns) in sorted(stage_map.items())]
+            route_slugs = {n["slug"] for n in branch_route}
+            rest = sorted(s for s in filter_members
+                          if s not in route_slugs and s not in spine)
+            members = [by_slug[s] for s in filter_members]
+            foundations_mode = "spine"
+        else:
+            raise SystemExit(f"unknown goal axis: {axis}")
+
+        out_bands, order = [], 0
+        for i, (key, label, ns) in enumerate(raw_bands, start=1):
+            recs = []
+            for r in ns:
+                order += 1
+                rec = slim(r)
+                rec["order"] = order
+                recs.append(rec)
+            out_bands.append({"index": i, "key": key, "label": label, "nodes": recs})
+
+        goals.append({
+            "id": spec["id"],
+            "band_axis": axis,
+            "foundations_mode": foundations_mode,
+            "member_count": len(members),
+            "path_count": order,
+            "bands": out_bands,
+            "rest_members": rest,
+        })
+    return goals
+
 
 def parse_prereqs(raw):
     raw = (raw or "").strip()
@@ -205,6 +349,12 @@ def main():
          if "literary" in r["register"] or "archaic" in r["register"]),
     )
 
+    # --- ordered, banded goal paths (ON-RAILS.md) ------------------------------
+    goals = build_goals(
+        all_rows, branch_route, filter_members,
+        spine_slugs=set(FOUNDATIONS) | set(ANCHOR_SLUGS),
+    )
+
     # --- tiering ---------------------------------------------------------------
     all_slice = anchors_list + foundations + branch_route
     # de-dup by slug for tiering (a node may appear in both lists conceptually)
@@ -300,6 +450,7 @@ def main():
             "route": branch_route,
             "filter_members": filter_members,
         },
+        "goals": goals,
         "validation": {
             "foundations_count": len(foundations),
             "branch_route_count": len(branch_route),
@@ -342,6 +493,14 @@ def main():
     print(f"  Read-novels route      : {v['branch_route_count']} nodes "
           f"(of {len(filter_members)} in the literary filter)")
     print(f"  max prereq tier        : {v['max_prereq_tier']}  (<- collapses; stage drives layout)")
+    print()
+    print("Goal paths (ON-RAILS.md):")
+    for g in goals:
+        bands = " / ".join(f"{b['label']}:{len(b['nodes'])}" for b in g["bands"])
+        print(f"  {g['id']:<14} [{g['band_axis']}/{g['foundations_mode']}] "
+              f"{g['path_count']} on path, {g['member_count']} members"
+              f"{', ' + str(len(g['rest_members'])) + ' rest' if g['rest_members'] else ''}")
+        print(f"  {'':<14} {bands}")
     print()
     status = "PASS" if not v["dangling_prereqs"] and not v["order_violations"] else "FAIL"
     print(f"VALIDATION: {status}")
