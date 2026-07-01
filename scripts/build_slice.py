@@ -41,7 +41,7 @@ OUT = os.path.abspath(os.path.join(HERE, "..", "src", "data", "grammar_slice.jso
 # tier-0 "form" grouping in the render. Ordered bases-first for display.
 # ---------------------------------------------------------------------------
 ANCHOR_SLUGS = [
-    "masu-stem", "te-form", "ta-form", "nai-form",
+    "verb-classes", "masu-stem", "te-form", "ta-form", "nai-form",
     "ba-conditional", "volitional-form", "causative-form", "counter",
 ]
 
@@ -55,9 +55,9 @@ ANCHOR_SLUGS = [
 FOUNDATION_STAGES = [
     ("Copula & the は～だ frame",  ["da", "desu", "wa-2", "no-3", "janai", "datta"]),
     ("Core case & binding particles",
-        ["ga-2", "o", "ni-2", "ni-3", "de", "e", "to-2", "mo", "kara-3", "made",
-         "ka", "ne", "yo"]),
-    ("Verb bases & politeness",   ["masu-stem", "te-form", "nai", "kudasai"]),
+        ["ga-2", "o", "ni-2", "ni-3", "de", "ka", "e", "to-2", "mo", "kara-3",
+         "made", "ne", "yo"]),
+    ("Verb bases & politeness",   ["masu-stem", "masu-form", "te-form", "nai", "kudasai"]),
     ("て-form uses & aspect",
         ["te", "te-kudasai", "te-iru", "te-kara", "te-mo-ii", "te-wa-ikenai",
          "te-shimau", "te-miru"]),

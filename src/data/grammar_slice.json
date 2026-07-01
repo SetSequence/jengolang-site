@@ -1,8 +1,26 @@
 {
   "generated": "2026-06-30",
-  "source": "grammar_enriched.csv (1458 nodes)",
+  "source": "grammar_enriched.csv (1460 nodes)",
   "purpose": "Vertical slice validating the grammar skill-tree IA (Foundations line + one goal branch) before the tree UI.",
   "anchors": [
+    {
+      "slug": "verb-classes",
+      "canonical": "動詞のグループ",
+      "reading": "どうしのグループ",
+      "meaning": "the three verb classes — godan (u-verb), ichidan (ru-verb), and irregular (する・来る) — that determine how every verb conjugates",
+      "senses": "",
+      "register": "casual-spoken|polite-spoken|written-modern",
+      "keigo": "none",
+      "freq": "essential",
+      "jlpt": "N5",
+      "family": "form",
+      "candidate_prereqs": "",
+      "fold_into_parent": "",
+      "confidence": "high",
+      "review_reason": "foundation form (verb-class classification — prerequisite for every conjugation base)",
+      "kind": "anchor",
+      "tier": 0
+    },
     {
       "slug": "masu-stem",
       "canonical": "連用形（ます形）",
@@ -161,7 +179,7 @@
   "foundations": {
     "name": "Foundations",
     "description": "The mandatory near-linear spine every goal route shares — copula, core particles, verb bases, the て-form/aspect cluster, desire, conditionals, connectives, nominalizers and comparison.",
-    "node_count": 60,
+    "node_count": 61,
     "stages": [
       "Copula & the は～だ frame",
       "Core case & binding particles",
@@ -428,6 +446,29 @@
         "tier": 0
       },
       {
+        "slug": "ka",
+        "canonical": "か",
+        "reading": "か",
+        "meaning": "particle か: question marker; embedded question / uncertainty (〜かどうか)",
+        "senses": "",
+        "register": "casual-spoken|polite-spoken|written-modern",
+        "keigo": "none",
+        "freq": "essential",
+        "jlpt": "N5",
+        "family": "particle",
+        "candidate_prereqs": "",
+        "fold_into_parent": "",
+        "confidence": "high",
+        "review_reason": "question/embedded-question か; 'or' alternative = ka¹",
+        "kind": "catalog",
+        "stage": {
+          "index": 2,
+          "label": "Core case & binding particles",
+          "line": "foundations"
+        },
+        "tier": 0
+      },
+      {
         "slug": "e",
         "canonical": "へ",
         "reading": "え",
@@ -543,29 +584,6 @@
         "tier": 0
       },
       {
-        "slug": "ka",
-        "canonical": "か",
-        "reading": "か",
-        "meaning": "particle か: question marker; embedded question / uncertainty (〜かどうか)",
-        "senses": "",
-        "register": "casual-spoken|polite-spoken|written-modern",
-        "keigo": "none",
-        "freq": "essential",
-        "jlpt": "N5",
-        "family": "particle",
-        "candidate_prereqs": "",
-        "fold_into_parent": "",
-        "confidence": "high",
-        "review_reason": "question/embedded-question か; 'or' alternative = ka¹",
-        "kind": "catalog",
-        "stage": {
-          "index": 2,
-          "label": "Core case & binding particles",
-          "line": "foundations"
-        },
-        "tier": 0
-      },
-      {
         "slug": "ne",
         "canonical": "ね",
         "reading": "ね",
@@ -633,6 +651,29 @@
           "line": "foundations"
         },
         "tier": 0
+      },
+      {
+        "slug": "masu-form",
+        "canonical": "〜ます",
+        "reading": "ます",
+        "meaning": "the polite non-past ます and its paradigm — ます / ません / ました / ませんでした — the standard です・ます-register verb ending",
+        "senses": "",
+        "register": "polite-spoken|written-modern",
+        "keigo": "teineigo",
+        "freq": "essential",
+        "jlpt": "N5",
+        "family": "auxiliary",
+        "candidate_prereqs": "masu-stem",
+        "fold_into_parent": "",
+        "confidence": "high",
+        "review_reason": "foundation politeness paradigm (polite です・ます verb ending)",
+        "kind": "catalog",
+        "stage": {
+          "index": 3,
+          "label": "Verb bases & politeness",
+          "line": "foundations"
+        },
+        "tier": 1
       },
       {
         "slug": "te-form",
@@ -79367,8 +79408,8 @@
       "id": "keigo",
       "band_axis": "keigo",
       "foundations_mode": "spine",
-      "member_count": 36,
-      "path_count": 36,
+      "member_count": 37,
+      "path_count": 37,
       "bands": [
         {
           "index": 1,
@@ -79430,6 +79471,24 @@
               "order": 3
             },
             {
+              "slug": "masu-form",
+              "canonical": "〜ます",
+              "reading": "ます",
+              "meaning": "the polite non-past ます and its paradigm — ます / ません / ました / ませんでした — the standard です・ます-register verb ending",
+              "senses": "",
+              "register": "polite-spoken|written-modern",
+              "keigo": "teineigo",
+              "freq": "essential",
+              "jlpt": "N5",
+              "family": "auxiliary",
+              "candidate_prereqs": "masu-stem",
+              "fold_into_parent": "",
+              "confidence": "high",
+              "review_reason": "foundation politeness paradigm (polite です・ます verb ending)",
+              "kind": "catalog",
+              "order": 4
+            },
+            {
               "slug": "mashou-ka",
               "canonical": "〜ましょうか",
               "reading": "ましょうか",
@@ -79445,7 +79504,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 4
+              "order": 5
             },
             {
               "slug": "masen-ka",
@@ -79463,7 +79522,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 5
+              "order": 6
             },
             {
               "slug": "te-wa-ikemasen",
@@ -79481,7 +79540,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 6
+              "order": 7
             },
             {
               "slug": "deshou",
@@ -79499,7 +79558,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 7
+              "order": 8
             },
             {
               "slug": "no-desu",
@@ -79517,7 +79576,7 @@
               "confidence": "high",
               "review_reason": "polite teineigo form of no-da",
               "kind": "catalog",
-              "order": 8
+              "order": 9
             },
             {
               "slug": "mashou",
@@ -79535,7 +79594,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 9
+              "order": 10
             },
             {
               "slug": "de-gozaimasu",
@@ -79553,7 +79612,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 10
+              "order": 11
             },
             {
               "slug": "gozaimasu",
@@ -79571,7 +79630,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 11
+              "order": 12
             },
             {
               "slug": "tara-ii-desu-ka",
@@ -79589,7 +79648,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 12
+              "order": 13
             },
             {
               "slug": "ikaga",
@@ -79607,7 +79666,7 @@
               "confidence": "high",
               "review_reason": "see-also どう",
               "kind": "catalog",
-              "order": 13
+              "order": 14
             },
             {
               "slug": "no-deshou-ka",
@@ -79625,7 +79684,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 14
+              "order": 15
             },
             {
               "slug": "so-desu-ga",
@@ -79643,7 +79702,7 @@
               "confidence": "med",
               "review_reason": "reconstructed concessive そうですが from see-also そうかといって",
               "kind": "catalog",
-              "order": 15
+              "order": 16
             }
           ]
         },
@@ -79668,7 +79727,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 16
+              "order": 17
             },
             {
               "slug": "nai-de-kudasai",
@@ -79686,7 +79745,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 17
+              "order": 18
             },
             {
               "slug": "te-kudasaru",
@@ -79704,7 +79763,7 @@
               "confidence": "high",
               "review_reason": "てくれる = kureru-2",
               "kind": "catalog",
-              "order": 18
+              "order": 19
             },
             {
               "slug": "irassharu",
@@ -79722,7 +79781,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 19
+              "order": 20
             },
             {
               "slug": "o-vmasu-kudasai",
@@ -79740,7 +79799,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 20
+              "order": 21
             },
             {
               "slug": "o-ni-naru",
@@ -79758,7 +79817,7 @@
               "confidence": "med",
               "review_reason": "OCR 'oni naru' = お〜になる sonkeigo; dup-suspect with o~ni naru row",
               "kind": "catalog",
-              "order": 21
+              "order": 22
             },
             {
               "slug": "kudasaru",
@@ -79776,7 +79835,7 @@
               "confidence": "high",
               "review_reason": "honorific of くれる; てくださる is a separate auxiliary use",
               "kind": "catalog",
-              "order": 22
+              "order": 23
             },
             {
               "slug": "nasaru",
@@ -79794,7 +79853,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 23
+              "order": 24
             },
             {
               "slug": "gata",
@@ -79812,7 +79871,7 @@
               "confidence": "med",
               "review_reason": "see-also -tachi; 方 polite plural suffix",
               "kind": "catalog",
-              "order": 24
+              "order": 25
             },
             {
               "slug": "nai-youni-shite-kudasai",
@@ -79830,7 +79889,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 25
+              "order": 26
             },
             {
               "slug": "rareru",
@@ -79848,7 +79907,7 @@
               "confidence": "med",
               "review_reason": "rareru(I) grouped with honorific お〜だ + spontaneous; the 4 られる uses split across rareru/rareru'/rareru² — verify honorific vs spontaneous | recheck: honorific/spontaneous られる standard (no ext grammar gloss; structural label only)",
               "kind": "catalog",
-              "order": 26
+              "order": 27
             }
           ]
         },
@@ -79873,7 +79932,7 @@
               "confidence": "high",
               "review_reason": "see-also もらう; humble counterpart",
               "kind": "catalog",
-              "order": 27
+              "order": 28
             },
             {
               "slug": "te-itadakemasen-ka",
@@ -79891,7 +79950,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 28
+              "order": 29
             },
             {
               "slug": "te-itadaku",
@@ -79909,7 +79968,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 29
+              "order": 30
             },
             {
               "slug": "itashimasu",
@@ -79927,7 +79986,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 30
+              "order": 31
             },
             {
               "slug": "itasu",
@@ -79945,7 +80004,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 31
+              "order": 32
             },
             {
               "slug": "o-suru-2",
@@ -79963,7 +80022,7 @@
               "confidence": "med",
               "review_reason": "'0' = OCR お; duplicate of o-suru (risk pass); merge in reconciliation",
               "kind": "catalog",
-              "order": 32
+              "order": 33
             },
             {
               "slug": "sashiageru",
@@ -79981,7 +80040,7 @@
               "confidence": "high",
               "review_reason": "humble give; てさしあげる benefactive is a related auxiliary",
               "kind": "catalog",
-              "order": 33
+              "order": 34
             },
             {
               "slug": "o-suru",
@@ -79999,7 +80058,7 @@
               "confidence": "med",
               "review_reason": "split from polysemous 'suru'; kept humble お〜する (kenjougo); dropped lexical do/play/have/cost",
               "kind": "catalog",
-              "order": 34
+              "order": 35
             },
             {
               "slug": "te-sashiageru",
@@ -80017,7 +80076,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 35
+              "order": 36
             },
             {
               "slug": "o-negau",
@@ -80035,7 +80094,7 @@
               "confidence": "high",
               "review_reason": "",
               "kind": "catalog",
-              "order": 36
+              "order": 37
             }
           ]
         }
@@ -80044,9 +80103,9 @@
     }
   ],
   "validation": {
-    "foundations_count": 60,
+    "foundations_count": 61,
     "branch_route_count": 22,
-    "anchors_count": 8,
+    "anchors_count": 9,
     "max_prereq_tier": 2,
     "dangling_prereqs": [],
     "order_violations": [],
@@ -80136,21 +80195,21 @@
         ]
       },
       {
-        "canonical": "も",
-        "kept": [
-          "mo"
-        ],
-        "other_in_catalog": [
-          "mo-2"
-        ]
-      },
-      {
         "canonical": "か",
         "kept": [
           "ka"
         ],
         "other_in_catalog": [
           "ka-2"
+        ]
+      },
+      {
+        "canonical": "も",
+        "kept": [
+          "mo"
+        ],
+        "other_in_catalog": [
+          "mo-2"
         ]
       },
       {
