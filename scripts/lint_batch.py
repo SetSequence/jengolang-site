@@ -78,6 +78,12 @@ def main():
                     print(f"DANGLING prereq  {s} -> {p}")
                     problems += 1
 
+        # foreign-script intrusions (Hangul/Jamo/Cyrillic) — OCR/IME slips that build silently
+        for i, line in enumerate(text.splitlines(), 1):
+            if re.search(r"[가-힣ᄀ-ᇿ㄰-㆏Ѐ-ӿ]", line):
+                print(f"FOREIGN script   {s}:{i}: {line.strip()[:80]}")
+                problems += 1
+
         # every sense:<label> ref must match a senses[].label
         labels = set(re.findall(r'-\s*label:\s*"([^"]+)"', text))
         for ref in re.findall(r'\n\s+sense:\s*"([^"]+)"', text):

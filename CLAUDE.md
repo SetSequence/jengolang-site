@@ -24,8 +24,8 @@ metadata), `CALIBRATION2.md` (pass-2 teaching content).
 python3 scripts/build_slice.py                 # catalog → src/data/grammar_slice.json (the render imports this)
 python3 scripts/seed_nodes.py                  # catalog → one tag-layer src/content/.../*.md per node (never overwrites)
 python3 scripts/qa_grammar_nodes.py scripts/data/grammar_enriched.csv --source grammar_nodes.csv --merges scripts/data/dedup_decisions.json   # catalog QA, must PASS (--merges credits Step-2 dedup-merged high-risk terms)
-python3 scripts/list_stubs.py --freq common    # Pass-2 long-tail worklist: un-enriched stubs (noindex:true), prioritized by freq+JLPT; excludes foldInto folds (--include-folds to see them). The resume state for Pass-2 (see PASS.md). Essential band is drained → next band is `common`.
-python3 scripts/lint_batch.py <slug…>          # pre-build lint over a batch: furigana brace balance, dangling contrast/prereq slugs, sense-ref↔senses[].label (run before `npm run build`)
+python3 scripts/list_stubs.py --freq uncommon  # Pass-2 long-tail worklist: un-enriched stubs (noindex:true), prioritized by freq+JLPT; excludes foldInto folds (--include-folds to see them). The resume state for Pass-2 (see PASS.md §1 for the current band).
+python3 scripts/lint_batch.py <slug…>          # pre-build lint over a batch: furigana brace balance, dangling contrast/prereq slugs, sense-ref↔senses[].label, foreign-script scan (run before `npm run build`)
 ```
 - Catalog: `scripts/data/grammar_enriched.csv` (the seed/tag layer, 1,458 nodes post-dedup).
 - Node pages: `src/content/japanese/grammar/*.md` (Astro Content Collection, schema in `src/content.config.ts`). All 1,458 materialized (tag layer); teaching layer is Pass-2 (`CALIBRATION2.md`).
