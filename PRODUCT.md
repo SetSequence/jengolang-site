@@ -6,11 +6,13 @@ brand
 
 ## Users
 
-Self-study Japanese learners past the very basics — they know hiragana, katakana, and foundational grammar, and are focused on expanding vocabulary and reading comprehension. They study on their own schedule, often in short sessions on a phone or browser tab. They have tried Anki (effective but decontextualized) and reading practice (contextual but passive), found each incomplete alone, and want something that bridges the two.
+Self-study Japanese learners past the very basics — they know hiragana, katakana, and foundational grammar, and are focused on building and retaining vocabulary. They study on their own schedule, often in short sessions on a phone or browser tab, sometimes offline (commute, travel). Today they juggle two tools: a web dictionary (jisho.org) to look words up and Anki to drill them, with a manual, friction-heavy hop between the two. They want one app that does both — look up, save to flashcards, review — and that keeps working without a connection.
 
 ## Product Purpose
 
-Jengo shows vocabulary inside real sentences so words are understood deeply, not just memorized. It is faster than reading alone (which rarely forces active recall) and more effective than isolated drilling (which strips words of meaning). The app lives at app.jengolang.com; jengolang.com markets it and hosts Japanese grammar and vocabulary content that funnels learners toward the app.
+Jengo is a Japanese dictionary and flashcard app in one, and it works offline. Look a word up, send it to spaced-repetition flashcards, and review anywhere — the loop learners currently cobble together from jisho.org plus Anki, without the friction between them. At-level reading practice (stories generated around the words you're learning, for mining new words back into flashcards) is the paid layer on top (Pro), not the core pitch. The app lives at app.jengolang.com; jengolang.com markets it and hosts Japanese grammar and vocabulary content that funnels learners toward the app.
+
+> Identity is fixed by JengoApp `GAMEPLAN.md` §1 — Dictionary + Flashcards, offline is the *how*, AI reading is the *paid tier*. Do not market Jengo as a "reader" or with the old "vocabulary woven into stories / in context" framing (retired pre-pivot story-mode identity).
 
 ## Brand Personality
 

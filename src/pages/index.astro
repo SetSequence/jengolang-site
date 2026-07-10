@@ -1,6 +1,18 @@
 ---
-const title = "Jengo — Between a reader and a flashcard app. Better than both.";
-const description = "Jengo takes your vocabulary review list and generates it into a paragraph. Read, tap what you don't know, and submit. Words land in context and stick.";
+export const prerender = true;
+
+const title = "Jengolang — Everything for Japanese, in one place";
+const description =
+  "A Japanese grammar map, word lists, and dictionary — plus Jengo, the app that puts the whole toolkit in your pocket. iOS and web.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Jengolang",
+  url: "https://jengolang.com",
+  description,
+  inLanguage: "en",
+};
 ---
 
 <html lang="en">
@@ -8,1350 +20,240 @@ const description = "Jengo takes your vocabulary review list and generates it in
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
+  <link rel="canonical" href="https://jengolang.com/" />
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" href="/favicon.ico" />
   <title>{title}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;800&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style is:global>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --brand:          oklch(47% 0.089 156);
-      --brand-dark:     oklch(25% 0.062 156);
-      --brand-tint:     oklch(96% 0.016 156);
-      --bg:             oklch(98.5% 0.005 156);
-      --surface:        oklch(99% 0.003 156);
-      --border:         oklch(90% 0.008 156);
-      --text-primary:   oklch(22% 0.010 156);
-      --text-secondary: oklch(50% 0.012 156);
-      --text-tertiary:  oklch(68% 0.008 156);
-      --white:          oklch(99.5% 0.002 156);
-      --ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
+      --brand:       oklch(47% 0.089 156);
+      --brand-dark:  oklch(25% 0.062 156);
+      --brand-tint:  oklch(96% 0.016 156);
+      --accent:      oklch(74% 0.11 145);
+      --on-dark:     oklch(99% 0.002 156);
+      --on-dim:      oklch(99% 0.002 156 / 0.6);
+      --on-faint:    oklch(99% 0.002 156 / 0.4);
+      --hairline:    oklch(99% 0.002 156 / 0.12);
+      --text-dark:   oklch(22% 0.010 156);
+      --text-mid:    oklch(50% 0.012 156);
     }
-
     html { font-optical-sizing: auto; scroll-behavior: smooth; }
     body {
       font-family: 'Onest', system-ui, sans-serif;
-      font-size: 1rem;
       line-height: 1.6;
-      color: var(--text-primary);
-      background: var(--bg);
+      color: var(--on-dark);
+      background: var(--brand-dark);
       -webkit-font-smoothing: antialiased;
     }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; }
-    h1, h2, h3 { text-wrap: balance; }
-    p { text-wrap: pretty; }
+    a { color: inherit; text-decoration: none; }
+    @keyframes charPulse { 0%,100% { opacity: 0; } 25%,75% { opacity: var(--op); } }
+  </style>
+  <style>
+    .hub { position: relative; max-width: 1120px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); overflow: hidden; }
 
-    /* ─── Nav ─────────────────────────────────────── */
+    /* ambient kanji */
+    .ambient { position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      font-family: 'Noto Sans JP', sans-serif; font-weight: 500; color: #fff; }
+    .ambient span { position: absolute; opacity: 0; animation: charPulse var(--d) var(--delay) infinite; }
 
-    .nav {
-      background: var(--brand-dark);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-    .nav-logo-mark { width: 26px; height: 26px; border-radius: 5px; }
-    .nav-wordmark {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: -0.01em;
-    }
-    .nav-links {
-      display: none;
-      list-style: none;
-      gap: 1.5rem;
-    }
-    @media (min-width: 600px) { .nav-links { display: flex; } }
-    .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: oklch(99.5% 0.002 156 / 0.6);
-      text-decoration: none;
-      transition: color 140ms;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-cta {
-      font-family: inherit;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: oklch(99.5% 0.002 156 / 0.65);
-      background: none;
-      border: none;
-      text-decoration: none;
-      cursor: pointer;
-      transition: color 140ms;
-    }
-    .nav-cta:hover { color: var(--white); }
+    nav, .hero, .tools, .foot { position: relative; z-index: 2; }
 
-    /* ─── Shared helpers ──────────────────────────── */
+    /* nav */
+    nav { height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: flex; align-items: center; gap: 10px; }
+    .brand span { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
+    .logo { width: 28px; height: 28px; border-radius: 6px; }
+    .nav-links { display: flex; align-items: center; gap: 1.4rem; font-size: .84rem; font-weight: 500; }
+    .nav-links a.link { color: var(--on-dim); transition: color .15s; }
+    .nav-links a.link:hover { color: var(--on-dark); }
+    .nav-links a.cta { color: var(--on-dark); border: 1.5px solid oklch(99% 0.002 156 / 0.25);
+      border-radius: 8px; padding: 7px 15px; transition: background .15s; }
+    .nav-links a.cta:hover { background: oklch(99% 0.002 156 / 0.1); }
 
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-family: inherit;
-      font-size: 0.9375rem;
-      font-weight: 600;
-      color: var(--white);
-      background: var(--brand);
-      border: none;
-      border-radius: 8px;
-      padding: 11px 24px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 140ms var(--ease-out);
-      white-space: nowrap;
-    }
-    .btn-primary:hover { background: oklch(42% 0.089 156); }
+    /* hero */
+    .hero { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 2.5rem; align-items: center;
+      padding: clamp(2.5rem, 6vw, 3.5rem) 0 clamp(2rem, 5vw, 2.75rem); }
+    .kicker { font-family: 'JetBrains Mono', monospace; font-size: .75rem; letter-spacing: 0.14em;
+      color: var(--accent); font-weight: 500; }
+    .hero h1 { font-size: clamp(2.1rem, 5.2vw, 3rem); font-weight: 800; letter-spacing: -0.03em;
+      line-height: 1.05; margin-top: 1rem; max-width: 16ch; }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero p { font-size: clamp(1rem, 2.4vw, 1.05rem); line-height: 1.6; color: oklch(80% 0.014 156);
+      margin-top: 1.1rem; max-width: 42ch; }
+    .cta-row { display: flex; align-items: center; gap: 0.9rem; margin-top: 1.75rem; flex-wrap: wrap; }
+    .cta-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--brand);
+      color: #fff; font-size: .95rem; font-weight: 600; border-radius: 9px; padding: 12px 22px; transition: background .15s; }
+    .cta-primary:hover { background: oklch(53% 0.1 156); }
+    .cta-note { font-size: .82rem; font-weight: 500; color: var(--on-dim); }
 
-    .appstore-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      border-radius: 8px;
-      padding: 9px 16px;
-      text-decoration: none;
-      transition: background 140ms var(--ease-out);
-      white-space: nowrap;
-    }
-    .appstore-btn-dark {
-      background: oklch(99.5% 0.002 156 / 0.08);
-      border: 1.5px solid oklch(99.5% 0.002 156 / 0.2);
-    }
-    .appstore-btn-dark:hover { background: oklch(99.5% 0.002 156 / 0.14); }
-    .appstore-btn-light {
-      background: transparent;
-      border: 1.5px solid var(--border);
-    }
-    .appstore-btn-light:hover { background: oklch(94% 0.01 156); }
-    .appstore-btn-text { display: flex; flex-direction: column; line-height: 1.1; }
-    .appstore-btn-sub {
-      font-size: 0.625rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-    }
-    .appstore-btn-label { font-size: 0.875rem; font-weight: 600; }
-    .appstore-btn-dark .appstore-btn-sub   { color: oklch(99.5% 0.002 156 / 0.55); }
-    .appstore-btn-dark .appstore-btn-label { color: var(--white); }
-    .appstore-btn-light .appstore-btn-sub   { color: var(--text-tertiary); }
-    .appstore-btn-light .appstore-btn-label { color: var(--text-primary); }
+    /* phone */
+    .phone-wrap { display: flex; justify-content: center; }
+    .phone { width: 258px; max-width: 100%; background: oklch(16% 0.005 270); border-radius: 36px;
+      padding: 9px; box-shadow: 0 28px 64px oklch(0% 0 0 / 0.45); }
+    .phone-screen { background: oklch(98.5% 0.005 156); border-radius: 28px; overflow: hidden; color: var(--text-dark); }
+    .phone-top { background: var(--brand-dark); padding: 18px 18px 15px; display: flex; align-items: center; gap: 8px; }
+    .phone-top span { font-size: .95rem; font-weight: 700; color: #fff; }
+    .phone-body { padding: 16px 15px 20px; }
+    .phone-label { font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+      color: oklch(60% 0.01 156); margin-bottom: 11px; }
+    .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .tile { display: flex; flex-direction: column; gap: 9px; padding: 15px 14px; border-radius: 14px;
+      background: var(--brand-tint); color: oklch(32% 0.012 156);
+      transition: background .3s cubic-bezier(.16,1,.3,1), color .3s, box-shadow .3s; }
+    .tile span { font-size: .8rem; font-weight: 600; }
+    .tile.active { background: var(--brand); color: #fff; box-shadow: 0 8px 20px oklch(47% 0.089 156 / 0.28); }
 
-    /* ─── Hero ────────────────────────────────────── */
+    /* tools */
+    .tools { padding: 0.5rem 0 2rem; }
+    .tools-kicker { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em;
+      color: var(--on-faint); }
+    .tools-grid { margin-top: 0.9rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
+    .tool { display: flex; flex-direction: column; gap: 0.6rem; min-height: 148px;
+      background: oklch(99% 0.002 156 / 0.06); border: 1px solid var(--hairline); border-radius: 14px; padding: 1.25rem;
+      transition: background .2s, transform .2s cubic-bezier(.16,1,.3,1); }
+    a.tool:hover { background: oklch(99% 0.002 156 / 0.12); transform: translateY(-3px); }
+    .tool-top { display: flex; align-items: center; justify-content: space-between; }
+    .tool-top .icon { color: #fff; }
+    .tag { font-size: .62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--on-dim); border: 1px solid var(--hairline); border-radius: 5px; padding: 3px 7px; }
+    .tool h2 { font-size: 1rem; font-weight: 700; margin-top: 0.15rem; }
+    .tool p { font-size: .8rem; color: var(--on-dim); line-height: 1.5; }
+    .tool .go { font-size: .8rem; font-weight: 600; color: var(--accent); margin-top: auto; }
 
-    .hero {
-      background: var(--brand-dark);
-      padding: 5rem 1.5rem 4.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-inner {
-      max-width: 640px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.25rem;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-heading {
-      font-size: clamp(2.125rem, 1.5rem + 3vw, 3.75rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      color: var(--white);
-    }
-    .hero-heading em {
-      font-style: normal;
-      color: oklch(78% 0.19 50);
-    }
-    .hero-sub {
-      font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
-      color: oklch(78% 0.014 156);
-      max-width: 38ch;
-      line-height: 1.6;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.625rem;
-      justify-content: center;
-    }
-    .hero-platforms {
-      font-size: 0.8125rem;
-      color: oklch(60% 0.08 156);
-      font-weight: 500;
-    }
+    /* footer */
+    .foot { border-top: 1px solid var(--hairline); padding: 20px 0; display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .foot .copy { font-size: .82rem; color: var(--on-faint); }
+    .foot-links { display: flex; gap: 1.25rem; font-size: .82rem; color: var(--on-dim); }
+    .foot-links a:hover { color: #fff; }
 
-    /* Generating background */
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .hero-char {
-      position: absolute;
-      left: var(--x);
-      top: var(--y);
-      font-size: var(--s);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-weight: 500;
-      color: var(--white);
-      opacity: 0;
-      animation: charPulse var(--dur) var(--del) infinite;
-    }
-    @keyframes charPulse {
-      0%, 100%  { opacity: 0; }
-      25%, 75%  { opacity: var(--op); }
+    @media (max-width: 860px) {
+      .hero { grid-template-columns: 1fr; gap: 2.25rem; }
+      .phone-wrap { order: -1; }
+      .tools-grid { grid-template-columns: 1fr; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .hero-char { display: none; }
-    }
-
-    /* ─── Devices ─────────────────────────────────── */
-
-    .devices {
-      background: var(--bg);
-      padding: 4rem 1.5rem;
-      overflow: hidden;
-    }
-    .devices-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    /* Phone device frame */
-    .phone-device {
-      width: 180px;
-      flex-shrink: 0;
-      background: oklch(18% 0.005 270);
-      border-radius: 32px;
-      padding: 8px;
-      box-shadow:
-        0 0 0 1px oklch(40% 0.005 270),
-        0 20px 60px oklch(0% 0 0 / 0.18);
-    }
-    .phone-device-screen {
-      background: var(--surface);
-      border-radius: 25px;
-      overflow: hidden;
-      aspect-ratio: 9 / 19.5;
-      display: flex;
-      align-items: flex-start;
-    }
-    .phone-device-screen img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-    }
-    .phone-device-placeholder {
-      width: 100%;
-      height: 100%;
-      background: var(--brand-tint);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .phone-device-placeholder span {
-      font-size: 0.6rem;
-      color: var(--brand);
-      font-weight: 600;
-      text-align: center;
-      padding: 0.5rem;
-      line-height: 1.4;
-    }
-
-    /* Browser/desktop device frame */
-    .browser-device {
-      flex: 1;
-      min-width: 0;
-      max-width: 560px;
-      background: oklch(20% 0.005 270);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow:
-        0 0 0 1px oklch(38% 0.005 270),
-        0 20px 60px oklch(0% 0 0 / 0.14);
-    }
-    .browser-bar {
-      background: oklch(24% 0.005 270);
-      height: 30px;
-      display: flex;
-      align-items: center;
-      padding: 0 10px;
-      gap: 5px;
-    }
-    .browser-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .browser-dot-red   { background: #ff5f57; }
-    .browser-dot-yel   { background: #febc2e; }
-    .browser-dot-grn   { background: #28c840; }
-    .browser-url {
-      margin-left: 8px;
-      background: oklch(30% 0.005 270);
-      border-radius: 5px;
-      height: 18px;
-      flex: 1;
-      max-width: 220px;
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-      gap: 4px;
-    }
-    .browser-url-text {
-      font-size: 0.625rem;
-      color: oklch(65% 0.005 270);
-    }
-    .browser-screen {
-      background: var(--surface);
-      overflow: hidden;
-      aspect-ratio: 2412 / 1424;
-    }
-    .browser-screen img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .browser-screen-placeholder {
-      width: 100%;
-      height: 100%;
-      background: var(--brand-tint);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .browser-screen-placeholder span {
-      font-size: 0.7rem;
-      color: var(--brand);
-      font-weight: 600;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    @media (max-width: 600px) {
-      .browser-device { display: none; }
-      .phone-device { width: 200px; }
-    }
-
-    /* ─── Demo ────────────────────────────────────── */
-
-    .demo {
-      background: var(--brand-dark);
-      padding: 5rem 1.5rem;
-    }
-    .demo-header {
-      text-align: center;
-      max-width: 480px;
-      margin: 0 auto 2.5rem;
-    }
-    .demo-eyebrow {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: oklch(65% 0.09 156);
-      margin-bottom: 0.75rem;
-    }
-    .demo-heading {
-      font-size: clamp(1.75rem, 1.3rem + 2.2vw, 2.5rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      color: var(--white);
-    }
-    .demo-sub {
-      font-size: 1rem;
-      color: oklch(72% 0.012 156);
-      margin-top: 0.75rem;
-      line-height: 1.6;
-    }
-
-    .demo-widget { max-width: 480px; margin: 0 auto; }
-
-    /* Due chips */
-    .demo-due-bar { margin-bottom: 0.75rem; }
-    .demo-due-label {
-      display: block;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: oklch(60% 0.08 156);
-      margin-bottom: 0.375rem;
-    }
-    .demo-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      min-height: 1.9rem;
-    }
-
-    @keyframes chipIn {
-      from { opacity: 0; transform: scale(0.82) translateY(4px); }
-      to   { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    .demo-chip {
-      display: inline-block;
-      padding: 0.2rem 0.65rem;
-      background: oklch(99.5% 0.002 156 / 0.92);
-      border-radius: 20px;
-      color: oklch(25% 0.062 156);
-      font-size: 1rem;
-      font-weight: 600;
-      font-family: 'Noto Sans JP', sans-serif;
-      opacity: 0;
-      animation: chipIn 0.28s var(--ease-out) forwards;
-    }
-
-    /* Para frame */
-    .demo-frame {
-      background: oklch(0% 0 0 / 0.18);
-      border-radius: 10px;
-      padding: 1rem 1.1rem;
-      border: 1px solid oklch(99.5% 0.002 156 / 0.12);
-      position: relative;
-    }
-    .demo-para {
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 1.25rem;
-      line-height: 2.1;
-      letter-spacing: 0.01em;
-      color: var(--white);
-      word-break: break-word;
-      height: 9.5rem; /* fixed — prevents layout shift during typewriter */
-      overflow: hidden;
-    }
-
-    /* Animated cursor */
-    .demo-cursor {
-      position: absolute;
-      pointer-events: none;
-      z-index: 20;
-      opacity: 0;
-      transition: left 0.42s var(--ease-out), top 0.42s var(--ease-out), opacity 0.2s;
-      filter: drop-shadow(0 1px 2px oklch(0% 0 0 / 0.4));
-    }
-    .demo-cursor.visible { opacity: 1; }
-
-    .demo-word {
-      border-radius: 3px;
-      padding: 0 1px;
-      transition: background 0.18s, color 0.18s;
-      display: inline;
-    }
-    .demo-word-known    { color: oklch(72% 0.12 156); }
-    .demo-word-selected { background: #ffe58a; color: #1a1a1a; }
-
-    /* Dictionary panel — lives in a pre-reserved slot so it never shifts layout */
-    .demo-dict-slot {
-      height: 140px;
-      padding-top: 0.875rem;
-      border-top: 1px solid oklch(99.5% 0.002 156 / 0.15);
-      margin-top: 0.875rem;
-      overflow: hidden;
-    }
-    .demo-dict {
-      opacity: 0;
-      border-radius: 8px;
-      padding: 0.875rem 1rem;
-      transition: opacity 0.25s var(--ease-out);
-    }
-    .demo-dict.visible {
-      opacity: 1;
-      background: oklch(57% 0.148 50);
-      border: none;
-    }
-    .demo-dict.visible .demo-dict-surface,
-    .demo-dict.visible .demo-dict-reading,
-    .demo-dict.visible .demo-dict-pos,
-    .demo-dict.visible .demo-dict-meanings { color: oklch(98% 0.03 50); }
-    .demo-dict-head {
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-      margin-bottom: 0.25rem;
-    }
-    .demo-dict-surface {
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-    .demo-dict-reading { font-size: 0.8rem; color: oklch(65% 0.01 156); }
-    .demo-dict-pos {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: oklch(55% 0.06 156);
-      margin-bottom: 0.375rem;
-    }
-    .demo-dict-meanings {
-      margin: 0;
-      padding-left: 1.1rem;
-      font-size: 0.875rem;
-      color: oklch(82% 0.01 156);
-      line-height: 1.6;
-    }
-
-    /* Submit button */
-    .demo-submit {
-      display: block;
-      width: 100%;
-      margin-top: 1rem;
-      font-family: inherit;
-      font-size: 0.9375rem;
-      font-weight: 600;
-      color: var(--white);
-      background: var(--brand);
-      border: none;
-      border-radius: 8px;
-      padding: 11px;
-      cursor: default;
-      opacity: 0.3;
-      transition: background 140ms var(--ease-out), opacity 0.3s, transform 0.1s;
-    }
-    .demo-submit.ready { opacity: 1; }
-    .demo-submit.fire  { background: oklch(54% 0.089 156); transform: scale(0.97); }
-
-    /* ─── Showcase (alternating) ─────────────────── */
-
-    .showcase {
-      background: var(--surface);
-      padding: 5rem 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-    .showcase-inner {
-      max-width: 1040px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 5rem;
-    }
-    .showcase-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .showcase-row--flip .showcase-img { order: 2; }
-    .showcase-row--flip .showcase-text { order: 1; }
-    @media (max-width: 680px) {
-      .showcase-row {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .showcase-row--flip .showcase-img { order: 0; }
-      .showcase-row--flip .showcase-text { order: 1; }
-    }
-    .showcase-img {
-      display: flex;
-      justify-content: center;
-    }
-    .showcase-phone {
-      width: 220px;
-      background: oklch(18% 0.005 270);
-      border-radius: 36px;
-      padding: 9px;
-      box-shadow:
-        0 0 0 1px oklch(40% 0.005 270),
-        0 24px 64px oklch(0% 0 0 / 0.14);
-    }
-    .showcase-phone-screen {
-      background: var(--surface);
-      border-radius: 28px;
-      overflow: hidden;
-      aspect-ratio: 9 / 19.5;
-    }
-    .showcase-phone-screen img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-    }
-    .showcase-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .showcase-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--brand);
-    }
-    .showcase-heading {
-      font-size: clamp(1.5rem, 1.1rem + 2vw, 2.125rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.15;
-      color: var(--text-primary);
-    }
-    .showcase-body {
-      font-size: 1.0625rem;
-      color: var(--text-secondary);
-      line-height: 1.75;
-      max-width: 42ch;
-    }
-    .showcase-divider {
-      border: none;
-      border-top: 1px solid var(--border);
-    }
-
-    /* ─── Secondary CTA ───────────────────────────── */
-
-    .cta {
-      background: var(--brand-tint);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 4rem 1.5rem;
-      text-align: center;
-    }
-    .cta-inner {
-      max-width: 480px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.25rem;
-    }
-    .cta-heading {
-      font-size: clamp(1.5rem, 1.1rem + 2vw, 2.125rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      color: var(--text-primary);
-    }
-    .cta-sub {
-      font-size: 0.9375rem;
-      color: var(--text-secondary);
-    }
-    .cta-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.625rem;
-      justify-content: center;
-    }
-
-    /* ─── Creator ─────────────────────────────────── */
-
-    .creator {
-      background: var(--bg);
-      padding: 5rem 1.5rem;
-    }
-    .creator-inner {
-      max-width: 760px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 200px;
-      gap: 3rem;
-      align-items: center;
-    }
-    @media (max-width: 560px) {
-      .creator-inner { grid-template-columns: 1fr; justify-items: center; }
-      .creator-photo { width: 220px; height: 220px; order: 0; }
-      .creator-content { order: 1; width: 100%; }
-    }
-    .creator-photo {
-      width: 200px;
-      height: 200px;
-      border-radius: 14px;
-      object-fit: cover;
-      object-position: 50% 22%;
-      border: 1px solid var(--border);
-      order: 2;
-    }
-    .creator-content {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      order: 1;
-    }
-    .creator-label {
-      font-size: clamp(1.75rem, 1.3rem + 2.2vw, 2.5rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      color: var(--text-primary);
-    }
-    .creator-body {
-      font-size: 1.0625rem;
-      color: var(--text-secondary);
-      line-height: 1.75;
-    }
-    /* ─── Features ─────────────────────────────────── */
-
-    .features {
-      background: var(--bg);
-      padding: 5rem 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-    .features-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-    .features-eyebrow {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--brand);
-      margin-bottom: 2.5rem;
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem 4rem;
-    }
-    .feature-item {
-      display: grid;
-      grid-template-columns: 24px 1fr;
-      column-gap: 0.875rem;
-      row-gap: 0.2rem;
-    }
-    .feature-icon {
-      grid-column: 1;
-      grid-row: 1;
-      color: var(--brand);
-      margin-top: 3px;
-      flex-shrink: 0;
-    }
-    .feature-label {
-      grid-column: 2;
-      grid-row: 1;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    .feature-body {
-      grid-column: 2;
-      grid-row: 2;
-      font-size: 0.9375rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      max-width: 52ch;
-    }
-
-    /* ─── Deck badges (inside feature item) ─────── */
-
-    .feature-decks {
-      grid-column: 2;
-      grid-row: 3;
-      display: flex;
-      gap: 0.375rem;
-      margin-top: 0.25rem;
-      flex-wrap: wrap;
-    }
-    .deck-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 34px;
-      height: 34px;
-      border-radius: 7px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    /* ─── Footer ──────────────────────────────────── */
-
-    footer {
-      background: var(--brand-dark);
-      padding: 2.5rem 1.5rem;
-    }
-    .footer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.25rem;
-    }
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      text-decoration: none;
-    }
-    .footer-wordmark {
-      font-size: 0.9375rem;
-      font-weight: 600;
-      color: var(--white);
-    }
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem 1.5rem;
-      list-style: none;
-    }
-    .footer-links a {
-      font-size: 0.875rem;
-      color: oklch(99.5% 0.002 156 / 0.45);
-      text-decoration: none;
-      transition: color 140ms;
-    }
-    .footer-links a:hover { color: var(--white); }
-    .footer-copy {
-      width: 100%;
-      font-size: 0.8125rem;
-      color: oklch(99.5% 0.002 156 / 0.3);
-      border-top: 1px solid oklch(99.5% 0.002 156 / 0.08);
-      padding-top: 1.25rem;
-      margin-top: 0.25rem;
-    }
-
-    /* ─── Animations ──────────────────────────────── */
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-      .hero-inner > * {
-        opacity: 0;
-        animation: fadeUp 0.5s var(--ease-out) forwards;
-      }
-      .hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
-      .hero-inner > *:nth-child(2) { animation-delay: 0.12s; }
-      .hero-inner > *:nth-child(3) { animation-delay: 0.19s; }
-      .hero-inner > *:nth-child(4) { animation-delay: 0.26s; }
-      .hero-inner > *:nth-child(5) { animation-delay: 0.32s; }
+      .ambient span { animation: none; opacity: 0 !important; }
+      html { scroll-behavior: auto; }
     }
   </style>
 </head>
-
 <body>
+  <div class="hub">
+    <div class="ambient" aria-hidden="true">
+      <span style="left:5%;top:12%;font-size:34px;--op:.09;--d:7.2s;--delay:0s">言</span>
+      <span style="left:90%;top:16%;font-size:40px;--op:.08;--d:8.5s;--delay:1.3s">語</span>
+      <span style="left:12%;top:64%;font-size:30px;--op:.07;--d:6.8s;--delay:2.7s">読</span>
+      <span style="left:84%;top:70%;font-size:36px;--op:.08;--d:9.1s;--delay:.6s">書</span>
+      <span style="left:3%;top:40%;font-size:28px;--op:.06;--d:7.6s;--delay:3.8s">文</span>
+      <span style="left:94%;top:44%;font-size:32px;--op:.07;--d:8.2s;--delay:1.9s">字</span>
+      <span style="left:22%;top:8%;font-size:26px;--op:.06;--d:6.4s;--delay:4.5s">話</span>
+      <span style="left:74%;top:90%;font-size:30px;--op:.07;--d:7.3s;--delay:2.2s">聞</span>
+    </div>
 
-  <!-- Nav -->
-  <nav class="nav" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="Jengo home">
-        <svg class="nav-logo-mark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="512" height="512" fill="#357d5e"/>
-          <text x="256" y="360" font-family="Georgia, serif" font-size="320" font-weight="bold" fill="white" text-anchor="middle">J</text>
-        </svg>
-        <span class="nav-wordmark">Jengo</span>
+    <nav>
+      <a class="brand" href="/">
+        <svg class="logo" viewBox="0 0 512 512"><rect width="512" height="512" fill="oklch(47% 0.089 156)"/><text x="256" y="366" font-family="Georgia, serif" font-size="330" font-weight="bold" fill="#fff" text-anchor="middle">J</text></svg>
+        <span>Jengolang</span>
       </a>
-      <ul class="nav-links">
-        <li><a href="/learn/japanese">Japanese</a></li>
-        <li><a href="#demo">How it works</a></li>
-      </ul>
-      <a href="https://app.jengolang.com" class="nav-cta">Try Jengo</a>
-    </div>
-  </nav>
+      <div class="nav-links">
+        <a class="link" href="/learn/japanese/grammar">Grammar</a>
+        <a class="cta" href="/jengo">Open Jengo</a>
+      </div>
+    </nav>
 
-  <!-- Hero -->
-  <section class="hero" aria-labelledby="hero-heading">
-    <div class="hero-bg" aria-hidden="true">
-      <span class="hero-char" style="--x:6%;  --y:10%; --s:1.9rem; --op:0.165; --dur:7.2s; --del:0s">言</span>
-      <span class="hero-char" style="--x:91%; --y:14%; --s:2.2rem; --op:0.15;  --dur:8.5s; --del:1.3s">語</span>
-      <span class="hero-char" style="--x:3%;  --y:48%; --s:1.6rem; --op:0.135; --dur:6.8s; --del:2.7s">読</span>
-      <span class="hero-char" style="--x:89%; --y:42%; --s:2rem;   --op:0.165; --dur:9.1s; --del:0.6s">書</span>
-      <span class="hero-char" style="--x:12%; --y:78%; --s:1.8rem; --op:0.12;  --dur:7.6s; --del:3.8s">文</span>
-      <span class="hero-char" style="--x:84%; --y:72%; --s:1.7rem; --op:0.15;  --dur:8.2s; --del:1.9s">字</span>
-      <span class="hero-char" style="--x:20%; --y:18%; --s:1.6rem; --op:0.105; --dur:6.4s; --del:4.5s">話</span>
-      <span class="hero-char" style="--x:76%; --y:24%; --s:2.1rem; --op:0.12;  --dur:7.3s; --del:2.2s">聞</span>
-      <span class="hero-char" style="--x:8%;  --y:32%; --s:2.3rem; --op:0.09;  --dur:9.8s; --del:5.1s">知</span>
-      <span class="hero-char" style="--x:87%; --y:58%; --s:1.8rem; --op:0.15;  --dur:6.6s; --del:0.4s">学</span>
-      <span class="hero-char" style="--x:28%; --y:65%; --s:1.5rem; --op:0.105; --dur:8.3s; --del:3.2s">習</span>
-      <span class="hero-char" style="--x:67%; --y:82%; --s:2rem;   --op:0.12;  --dur:7.8s; --del:1.6s">人</span>
-      <span class="hero-char" style="--x:44%; --y:4%;  --s:1.7rem; --op:0.084; --dur:10s;  --del:6.2s">時</span>
-      <span class="hero-char" style="--x:52%; --y:88%; --s:1.9rem; --op:0.09;  --dur:8.1s; --del:2.4s">間</span>
-      <span class="hero-char" style="--x:1%;  --y:65%; --s:2.1rem; --op:0.135; --dur:7.1s; --del:4.8s">生</span>
-      <span class="hero-char" style="--x:93%; --y:30%; --s:1.6rem; --op:0.12;  --dur:9.3s; --del:3.5s">活</span>
-      <span class="hero-char" style="--x:36%; --y:82%; --s:1.8rem; --op:0.084; --dur:6.9s; --del:7.1s">感</span>
-      <span class="hero-char" style="--x:72%; --y:7%;  --s:2rem;   --op:0.135; --dur:8.7s; --del:1.1s">動</span>
-    </div>
-    <div class="hero-inner">
-      <h1 class="hero-heading" id="hero-heading">
-        Learn Japanese<br><em>FASTER.</em>
-      </h1>
-      <p class="hero-sub">
-        Jengo generates stories around your target words. Flashcard precision. Native depth.
-      </p>
-      <div class="hero-actions">
-        <a href="https://app.jengolang.com" class="btn-primary">Try Jengo</a>
-        <a href="#" class="appstore-btn appstore-btn-dark" aria-label="Download on the App Store">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="oklch(99.5% 0.002 156)" aria-hidden="true">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/>
-          </svg>
-          <span class="appstore-btn-text">
-            <span class="appstore-btn-sub">Download on the</span>
-            <span class="appstore-btn-label">App Store</span>
-          </span>
+    <header class="hero">
+      <div class="pitch">
+        <div class="kicker">日本語 · JAPANESE</div>
+        <h1>Everything for Japanese, <em>in one place.</em></h1>
+        <p>A dictionary, word lists, and a grammar map — plus Jengo, the app that puts the whole toolkit in your pocket.</p>
+        <div class="cta-row">
+          <a class="cta-primary" href="/jengo">Open Jengo <span aria-hidden="true">→</span></a>
+          <span class="cta-note">iOS · Web · free to start</span>
+        </div>
+      </div>
+
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="phone-top">
+              <svg class="logo" style="width:22px;height:22px" viewBox="0 0 512 512"><rect width="512" height="512" fill="oklch(47% 0.089 156)"/><text x="256" y="366" font-family="Georgia, serif" font-size="330" font-weight="bold" fill="#fff" text-anchor="middle">J</text></svg>
+              <span>Jengo</span>
+            </div>
+            <div class="phone-body">
+              <div class="phone-label">Your toolkit</div>
+              <div class="tiles">
+                <div class="tile active" data-tile="0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span>Dictionary</span></div>
+                <div class="tile" data-tile="1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="14" height="13" rx="2"/><path d="M7 8V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-3"/></svg><span>Flashcards</span></div>
+                <div class="tile" data-tile="2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4H11v15.5H3.5A1.5 1.5 0 0 1 2 18z"/><path d="M22 5.5A1.5 1.5 0 0 0 20.5 4H13v15.5h7.5A1.5 1.5 0 0 0 22 18z"/></svg><span>Grammar</span></div>
+                <div class="tile" data-tile="3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 8L9 4l-3 8H2"/></svg><span>Train</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="tools">
+      <span class="tools-kicker">The rest of Jengolang</span>
+      <div class="tools-grid">
+        <a class="tool" href="/learn/japanese/grammar">
+          <div class="tool-top">
+            <span class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4H11v15.5H3.5A1.5 1.5 0 0 1 2 18z"/><path d="M22 5.5A1.5 1.5 0 0 0 20.5 4H13v15.5h7.5A1.5 1.5 0 0 0 22 18z"/></svg></span>
+          </div>
+          <h2>Grammar</h2>
+          <p>1,458 grammar points, ranked by usefulness — not by textbook.</p>
+          <span class="go">Browse →</span>
+        </a>
+
+        <a class="tool" href="/jengo">
+          <div class="tool-top">
+            <span class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
+            <span class="tag">In app only</span>
+          </div>
+          <h2>Dictionary</h2>
+          <p>Kanji, kana, drawing, romaji — four ways in to every word.</p>
+          <span class="go">See it in Jengo →</span>
+        </a>
+
+        <a class="tool" href="/jengo">
+          <div class="tool-top">
+            <span class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="14" height="13" rx="2"/><path d="M7 8V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-3"/></svg></span>
+            <span class="tag">In app only</span>
+          </div>
+          <h2>Word lists</h2>
+          <p>JLPT N5–N1 decks, deduplicated and ready to review.</p>
+          <span class="go">See it in Jengo →</span>
         </a>
       </div>
-      <p class="hero-platforms">Available on desktop browser and iOS</p>
-    </div>
-  </section>
+    </section>
 
-  <!-- Device showcase: phone + browser -->
-  <section class="devices" aria-label="Available on mobile and desktop">
-    <div class="devices-inner">
-      <!-- Browser window -->
-      <div class="browser-device">
-        <div class="browser-bar">
-          <span class="browser-dot browser-dot-red" aria-hidden="true"></span>
-          <span class="browser-dot browser-dot-yel" aria-hidden="true"></span>
-          <span class="browser-dot browser-dot-grn" aria-hidden="true"></span>
-          <div class="browser-url">
-            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="oklch(65% 0.005 270)" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            <span class="browser-url-text">app.jengolang.com</span>
-          </div>
-        </div>
-        <div class="browser-screen">
-          <img src="/sc-home.png" alt="Jengo web app — home screen showing vocabulary deck selection" loading="lazy" />
-        </div>
+    <footer class="foot">
+      <span class="copy">© 2026 Jengolang · Japanese</span>
+      <div class="foot-links">
+        <a href="/jengo">Jengo app</a>
+        <a href="/learn/japanese/grammar">Grammar</a>
+        <a href="https://app.jengolang.com/privacy">Privacy</a>
       </div>
-      <!-- Phone -->
-      <div class="phone-device">
-        <div class="phone-device-screen">
-          <img src="/sc-study.png" alt="Jengo iOS app — paragraph study screen" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive demo -->
-  <section class="demo" id="demo" aria-labelledby="demo-heading">
-    <div class="demo-header">
-      <p class="demo-eyebrow">See it in action</p>
-      <h2 class="demo-heading" id="demo-heading">Your words. In context.</h2>
-      <p class="demo-sub">Flag what you don't know — it comes back sooner.</p>
-    </div>
-
-    <div class="demo-widget" aria-label="Animated demonstration of Jengo vocabulary review">
-      <div class="demo-due-bar">
-        <span class="demo-due-label">Today's due words</span>
-        <div class="demo-chips" id="demo-chips"></div>
-      </div>
-      <div class="demo-frame">
-        <div class="demo-cursor" id="demo-cursor" aria-hidden="true">
-          <svg width="52" height="64" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L1 15L4.5 11.5L7.5 18L10 17L7 10.5L11.5 10.5Z" fill="white" stroke="oklch(20% 0.01 156)" stroke-width="0.75" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <p class="demo-para" id="demo-para"></p>
-      </div>
-      <div class="demo-dict-slot">
-        <div class="demo-dict" id="demo-dict">
-          <div class="demo-dict-head">
-            <span class="demo-dict-surface" id="demo-dict-surface"></span>
-            <span class="demo-dict-reading" id="demo-dict-reading"></span>
-          </div>
-          <p class="demo-dict-pos" id="demo-dict-pos"></p>
-          <ul class="demo-dict-meanings" id="demo-dict-meanings"></ul>
-        </div>
-      </div>
-      <button class="demo-submit" id="demo-submit-btn" tabindex="-1" aria-hidden="true">Submit</button>
-    </div>
-  </section>
-
-  <!-- Alternating showcase -->
-  <section class="showcase" aria-label="How Jengo works">
-    <div class="showcase-inner">
-
-      <div class="showcase-row">
-        <div class="showcase-img">
-          <div class="showcase-phone">
-            <div class="showcase-phone-screen">
-              <img src="/sc-study.png" alt="Jengo study screen — a generated story with target words highlighted" loading="lazy" />
-            </div>
-          </div>
-        </div>
-        <div class="showcase-text">
-          <p class="showcase-label">The problem with immersion</p>
-          <h2 class="showcase-heading">Native material buries vocabulary</h2>
-          <p class="showcase-body">Podcasts, books, and shows expose you to real language — but you can't control what words appear. You can spend an hour listening and never encounter the word you studied yesterday.</p>
-        </div>
-      </div>
-
-      <hr class="showcase-divider" />
-
-      <div class="showcase-row showcase-row--flip">
-        <div class="showcase-img">
-          <div class="showcase-phone">
-            <div class="showcase-phone-screen">
-              <img src="/sc-lookup.png" alt="Jengo word lookup — definition and reading shown in context" loading="lazy" />
-            </div>
-          </div>
-        </div>
-        <div class="showcase-text">
-          <p class="showcase-label">The problem with flashcards</p>
-          <h2 class="showcase-heading">Flashcards drill without context</h2>
-          <p class="showcase-body">Drilling a word in isolation is not enough to make it useful. Without native content to anchor your understanding, most of what you review won't survive contact with the real language.</p>
-        </div>
-      </div>
-
-      <hr class="showcase-divider" />
-
-      <div class="showcase-row">
-        <div class="showcase-img">
-          <div class="showcase-phone">
-            <div class="showcase-phone-screen">
-              <img src="/sc-listen.png" alt="Jengo listening mode — audio playback of the generated story" loading="lazy" />
-            </div>
-          </div>
-        </div>
-        <div class="showcase-text">
-          <p class="showcase-label">The Jengo approach</p>
-          <h2 class="showcase-heading">Your words, in context, every time.</h2>
-          <p class="showcase-body">Jengo builds paragraphs around the words you actually need to study. Listen back to each paragraph to compound your gains. This is no-compromise learning.</p>
-        </div>
-      </div>
-
-      <hr class="showcase-divider" />
-
-      <div class="showcase-row showcase-row--flip">
-        <div class="showcase-img">
-          <div class="showcase-phone">
-            <div class="showcase-phone-screen">
-              <img src="/sc-stats.png" alt="Jengo statistics — review history and FSRS retention data" loading="lazy" />
-            </div>
-          </div>
-        </div>
-        <div class="showcase-text">
-          <h2 class="showcase-heading">Review less. Remember more.</h2>
-          <p class="showcase-body">Jengo uses custom spaced repetition to schedule every word at the moment you're most likely to forget it.</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Features -->
-  <section class="features" aria-labelledby="features-heading">
-    <div class="features-inner">
-      <p class="features-eyebrow" id="features-heading">Features</p>
-      <div class="features-grid">
-
-        <div class="feature-item">
-          <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-          </svg>
-          <p class="feature-label">Ready-made decks</p>
-          <p class="feature-body">JLPT N5 through N1 built in. Import your own word list or start immediately.</p>
-          <div class="feature-decks">
-            <span class="deck-badge" style="background: oklch(47% 0.089 156)">N5</span>
-            <span class="deck-badge" style="background: oklch(42% 0.07 240)">N4</span>
-            <span class="deck-badge" style="background: oklch(48% 0.08 75)">N3</span>
-            <span class="deck-badge" style="background: oklch(38% 0.09 290)">N2</span>
-            <span class="deck-badge" style="background: oklch(35% 0.09 20)">N1</span>
-          </div>
-        </div>
-
-        <div class="feature-item">
-          <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
-          </svg>
-          <p class="feature-label">Listening mode</p>
-          <p class="feature-body">Hear your generated paragraphs read aloud. Reinforce reading with audio in the same session.</p>
-        </div>
-
-        <div class="feature-item">
-          <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
-          </svg>
-          <p class="feature-label">Statistics</p>
-          <p class="feature-body">Track your review history, retention rate, and word progress over time.</p>
-        </div>
-
-        <div class="feature-item">
-          <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-          </svg>
-          <p class="feature-label">Story mode</p>
-          <p class="feature-body">Submitted paragraphs connect into an ongoing story, making each session feel continuous.</p>
-        </div>
-
-        <div class="feature-item">
-          <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
-          <p class="feature-label">AI assists</p>
-          <p class="feature-body">Get explanations and more example sentences on demand.</p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Creator note -->
-  <section class="creator" aria-label="From the builder">
-    <div class="creator-inner">
-      <div class="creator-content">
-        <h2 class="creator-label">From the builder</h2>
-        <p class="creator-body">
-          I lived in Japan for two years, read grammar dictionaries cover to cover, worked through dozens of books and hundreds of podcasts, spent three hours a day on flashcards and four hours speaking with natives, and &ldquo;learned&rdquo; more than 15,000 words. <strong>I did everything right.</strong>
-        </p>
-        <p class="creator-body">
-          But there was always a functional gap between my flashcards and the real language that cost me thousands of hours to close. <strong>Jengo is the tool I always wanted, but never had.</strong>
-        </p>
-      </div>
-      <img
-        class="creator-photo"
-        src="/caden-nara.jpg"
-        alt="Caden Shelley at Todai-ji temple in Nara, Japan"
-        width="200"
-        height="200"
-        loading="lazy"
-      />
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <div class="cta">
-    <div class="cta-inner">
-      <h2 class="cta-heading">Ready to try it?</h2>
-      <p class="cta-sub">Available on desktop browser and iOS. Try it without an account!</p>
-      <div class="cta-actions">
-        <a href="https://app.jengolang.com" class="btn-primary">Open in browser</a>
-        <a href="#" class="appstore-btn appstore-btn-light" aria-label="Download on the App Store">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--text-secondary)" aria-hidden="true">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/>
-          </svg>
-          <span class="appstore-btn-text">
-            <span class="appstore-btn-sub">Download on the</span>
-            <span class="appstore-btn-label">App Store</span>
-          </span>
-        </a>
-      </div>
-    </div>
+    </footer>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-inner">
-      <a href="/" class="footer-brand" aria-label="Jengo home">
-        <svg width="22" height="22" viewBox="0 0 512 512" aria-hidden="true">
-          <rect width="512" height="512" fill="#357d5e"/>
-          <text x="256" y="360" font-family="Georgia, serif" font-size="320" font-weight="bold" fill="white" text-anchor="middle">J</text>
-        </svg>
-        <span class="footer-wordmark">Jengo</span>
-      </a>
-      <ul class="footer-links">
-        <li><a href="/learn/japanese">Japanese Grammar</a></li>
-        <li><a href="https://app.jengolang.com">Open App</a></li>
-        <li><a href="/privacy">Privacy</a></li>
-      </ul>
-    </div>
-    <div class="footer-inner">
-      <p class="footer-copy">&copy; {new Date().getFullYear()} Jengo. All rights reserved.</p>
-    </div>
-  </footer>
-
   <script>
-    const DEMO_ROUNDS = [
-      {
-        due: ['犬', '医者', '行く', '三'],
-        tokens: [
-          { s: '犬',          r: 'いぬ',       pos: 'Noun',      m: ['dog'],             known: true },
-          { s: 'が',          inert: true },
-          { s: '医者',        r: 'いしゃ',      pos: 'Noun',      m: ['doctor'],          known: true },
-          { s: 'に',          inert: true },
-          { s: '行きました',  r: 'いきました',  pos: 'Verb',      m: ['went'],            known: true },
-          { s: '。',          inert: true },
-          { s: '「',          inert: true },
-          { s: 'どこ',        r: 'どこ',        pos: 'Pronoun',   m: ['where'] },
-          { s: 'が',          inert: true },
-          { s: '痛い',        r: 'いたい',      pos: 'Adjective', m: ['painful', 'sore'] },
-          { s: 'ですか？」',  inert: true },
-          { s: '「ワン！ワン！」', inert: true },
-          { s: '「',          inert: true },
-          { s: 'なるほど',    r: 'なるほど',    pos: 'Adverb',    m: ['I see', 'indeed'] },
-          { s: '、',          inert: true },
-          { s: '三',          r: 'さん',        pos: 'Numeral',   m: ['three'],           known: true },
-          { s: 'か所',        r: 'かしょ',      pos: 'Noun',      m: ['places', 'spots'] },
-          { s: 'ですね。」',  inert: true },
-        ],
-        select: ['医者', 'どこ', '痛い', 'なるほど'],
-      },
-      {
-        due: ['今日', '図書館', '本', '読む'],
-        tokens: [
-          { s: '今日',        r: 'きょう',      pos: 'Noun',      m: ['today'],           known: true },
-          { s: 'は',          inert: true },
-          { s: '図書館',      r: 'としょかん',  pos: 'Noun',      m: ['library'],         known: true },
-          { s: 'で',          inert: true },
-          { s: '本',          r: 'ほん',        pos: 'Noun',      m: ['book'],            known: true },
-          { s: 'を',          inert: true },
-          { s: '読みました',  r: 'よみました',  pos: 'Verb',      m: ['read'],            known: true },
-          { s: '。',          inert: true },
-          { s: '難しい',      r: 'むずかしい',  pos: 'Adjective', m: ['difficult', 'hard'] },
-          { s: '言葉',        r: 'ことば',      pos: 'Noun',      m: ['word', 'vocabulary'] },
-          { s: 'が',          inert: true },
-          { s: 'たくさん',    r: 'たくさん',    pos: 'Adverb',    m: ['many', 'a lot'] },
-          { s: 'ありましたが、', inert: true },
-          { s: '楽しかった',  r: 'たのしかった', pos: 'Adjective', m: ['was fun', 'enjoyable'] },
-          { s: 'です。',      inert: true },
-        ],
-        select: ['図書館', '難しい', '楽しかった'],
-      },
-    ];
-
-    function _sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-    async function _typewriter(text, el, ms) {
-      el.textContent = '';
-      for (const ch of [...text]) { el.textContent += ch; await _sleep(ms); }
+    const tiles = Array.from(document.querySelectorAll('.tile'));
+    let mode = 0;
+    let timer = setInterval(step, 2400);
+    function light(i) {
+      mode = i;
+      tiles.forEach((t, idx) => t.classList.toggle('active', idx === i));
     }
-
-    function _renderTokens(tokens, paraEl) {
-      paraEl.innerHTML = '';
-      tokens.forEach(tok => {
-        const el = document.createElement('span');
-        el.textContent = tok.s;
-        if (!tok.inert) {
-          el.className = 'demo-word' + (tok.known ? ' demo-word-known' : '');
-          el.dataset.surface = tok.s;
-        }
-        paraEl.appendChild(el);
-      });
-    }
-
-    function _showDict(tok) {
-      document.getElementById('demo-dict-surface').textContent = tok.s;
-      document.getElementById('demo-dict-reading').textContent = tok.r ? `[${tok.r}]` : '';
-      document.getElementById('demo-dict-pos').textContent = tok.pos;
-      document.getElementById('demo-dict-meanings').innerHTML = tok.m.map(m => `<li>${m}</li>`).join('');
-      document.getElementById('demo-dict').classList.add('visible');
-    }
-
-    function _hideDict() {
-      document.getElementById('demo-dict').classList.remove('visible');
-    }
-
-    function _placeCursor(wordEl, frameEl, cursorEl, instant) {
-      const frameRect = frameEl.getBoundingClientRect();
-      const wordRect = wordEl.getBoundingClientRect();
-      const left = wordRect.right - frameRect.left - 4; // tip sits just right of the word
-      const top = wordRect.bottom - frameRect.top + 2; // tip sits just below the word
-      if (instant) {
-        cursorEl.style.transition = 'opacity 0.2s';
-        cursorEl.style.left = left + 'px';
-        cursorEl.style.top = top + 'px';
-        cursorEl.offsetHeight; // force reflow
-        cursorEl.style.transition = '';
-      } else {
-        cursorEl.style.left = left + 'px';
-        cursorEl.style.top = top + 'px';
-      }
-    }
-
-    async function _runRound(round) {
-      const paraEl = document.getElementById('demo-para');
-      const chipsEl = document.getElementById('demo-chips');
-      const submitBtn = document.getElementById('demo-submit-btn');
-      const frameEl = document.querySelector('.demo-frame');
-      const cursorEl = document.getElementById('demo-cursor');
-
-      paraEl.textContent = '';
-      chipsEl.innerHTML = '';
-      _hideDict();
-      cursorEl.classList.remove('visible');
-      submitBtn.classList.remove('ready', 'fire');
-
-      for (const word of round.due) {
-        await _sleep(160);
-        const chip = document.createElement('span');
-        chip.className = 'demo-chip';
-        chip.textContent = word;
-        chipsEl.appendChild(chip);
-      }
-
-      await _sleep(520);
-
-      await _typewriter(round.tokens.map(t => t.s).join(''), paraEl, 40);
-      await _sleep(520);
-      _renderTokens(round.tokens, paraEl);
-      await _sleep(400);
-
-      let firstWord = true;
-      for (const surface of round.select) {
-        const wordEl = paraEl.querySelector(`[data-surface="${surface}"]`);
-        const tok = round.tokens.find(t => t.s === surface);
-        if (!wordEl || !tok) continue;
-
-        // Move cursor to word (instant placement on first, animated after)
-        _placeCursor(wordEl, frameEl, cursorEl, firstWord);
-        if (firstWord) { cursorEl.classList.add('visible'); firstWord = false; }
-        await _sleep(480); // cursor arrives
-
-        wordEl.classList.add('demo-word-selected');
-        _showDict(tok);
-        await _sleep(1900);
-      }
-
-      await _sleep(500);
-      cursorEl.classList.remove('visible');
-      submitBtn.classList.add('ready');
-      await _sleep(650);
-      submitBtn.classList.add('fire');
-      await _sleep(280);
-      submitBtn.classList.remove('fire');
-      await _sleep(380);
-    }
-
-    async function _demoLoop() {
-      while (true) {
-        for (const round of DEMO_ROUNDS) {
-          await _runRound(round);
-          await _sleep(350);
-        }
-        await _sleep(1800);
-      }
-    }
-
-    const _demoEl = document.getElementById('demo');
-    const _obs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        _obs.disconnect();
-        _sleep(700).then(_demoLoop);
-      }
-    }, { threshold: 0.25 });
-    _obs.observe(_demoEl);
+    function step() { light((mode + 1) % tiles.length); }
+    tiles.forEach((t, i) => t.addEventListener('click', () => { clearInterval(timer); light(i); }));
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) clearInterval(timer);
   </script>
-
 </body>
 </html>

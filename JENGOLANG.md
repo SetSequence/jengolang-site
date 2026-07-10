@@ -62,13 +62,39 @@ jengolang-site/
 
 ## Pages
 
-### 1. Landing Page (`jengolang.com`)
-An app marketing page — not a blog. One purpose: convert visitors into app users.
+### 1. Hub Home (`jengolang.com`) — BUILT 2026-07-09
+The root is **not** an app-marketing page anymore — it's the **Jengolang hub** (the
+"1B toolkit-led" Claude-design handoff, ported into `src/pages/index.astro`). It presents
+the whole service, then funnels to the app promo. Story-mode framing is gone.
+
+**What it is:** a dark toolkit hero — *"Everything for Japanese, in one place."* — with a
+phone mockup showing the in-app toolkit (Dictionary / Flashcards / Grammar / Train, tiles
+auto-cycle), then a "rest of Jengolang" row of discoverable web tools.
+
+**Tools row (honest state, no Live/Soon badges):**
+- **Grammar** — the one real web tool → `/learn/japanese/grammar`
+- **Dictionary** — tagged **"In app only"** → links to `/jengo` (no web tool yet)
+- **Word lists** — tagged **"In app only"** → links to `/jengo` (no web tool yet)
+
+**Key routing decision:** every "Open Jengo" CTA points to **`/jengo`** (the promo), *not*
+straight to `app.jengolang.com`. The hub shows everything first; the promo shows platforms
+and converts. Privacy stays external (`app.jengolang.com/privacy`).
+
+Built to the existing `grammar/index.astro` idiom: `:root` oklch tokens, `is:global` style,
+real `<head>` with `canonical` + `description` + WebSite JSON-LD, `prerender`, responsive,
+`prefers-reduced-motion` guards.
+
+### 1a. Jengo App Promo (`jengolang.com/jengo`)
+The app-marketing / conversion page — screenshot-forward, one purpose: convert. This is the
+destination of the hub's "Open Jengo" CTAs. **Still stale** (old story-mode copy); rewrite
+brief is `PROPOSED-NEW-MARKETING.md` (section-by-section + paste-ready copy from
+`JengoApp/docs/Appstore-docs.md`). Caden redesigns via Claude design with current App Store
+screenshots.
 
 **Visual reference:** Day One (dayoneapp.com) — screenshot-forward, direct feature language, no sparkly copy, secondary CTA before verbose sections. Warmer than Day One: use Jengo app color theme, add icons alongside feature descriptions.
 
 **Page structure (in order):**
-1. Hero — headline + one-line description + primary CTA (`app.jengolang.com`) + iOS App Store badge (placeholder until link available)
+1. Hero — headline + one-line description + primary CTA (App Store / `app.jengolang.com`) + iOS App Store badge
 2. Platform strip — browser / iOS / (Android future); instant signal that it's multiplatform
 3. Features — icon + short direct label + one sentence each. No marketing fluff.
 4. Screenshots — app UI doing real work, not abstract graphics
@@ -78,11 +104,15 @@ An app marketing page — not a blog. One purpose: convert visitors into app use
 8. Footer — links to grammar hub, about, privacy
 
 **Tagline candidates (pick during build):**
-- "Study smarter. Remember more."
-- "The fastest way from exposure to fluency."
-- "Between a reader and a flashcard app. Better than both."
+- "The Japanese dictionary and flashcard app that works offline."
+- "Look it up. Lock it in."
+- "Your dictionary and your flashcards, one offline loop."
 
-**Core message to convey:** Jengo is not a reader and not a flashcard app. It shows vocabulary in the context of real sentences so words are understood deeply, not just memorized. It's faster than reading alone and more effective than isolated drilling. Target user is a self-study learner past the very basics — not being taught grammar or kana, just expanding their vocabulary and comprehension.
+**Core message to convey:** Jengo IS a dictionary and a flashcard app — the loop competitors make you cobble together from jisho.org + Anki. Look a word up, send it straight to spaced-repetition flashcards, and review anywhere because it all works offline. One tool instead of two. Target user is a self-study learner past the very basics — not being taught grammar or kana, just building and retaining vocabulary.
+
+At-level reading practice (stories generated around the words you're learning, for mining new words back into flashcards) is the **paid layer on top (Pro)** — not the pitch. Lead with the dictionary + flashcards loop; reading is what Pro adds once that loop is stable.
+
+> Identity decision-of-record: JengoApp `GAMEPLAN.md` §1 — "Dictionary + Flashcards toolkit," offline is the *how*, AI reading is the *paid tier*. **Do not revive the old "reader" / "vocabulary woven into stories" / "in context" framing** — that was the pre-pivot story-mode identity and is retired.
 
 **Design rules:**
 - Light mode, not sterile white — pull accent colors from Jengo app palette
@@ -154,6 +184,28 @@ Overview page for Japanese content. Lists all grammar guides (organized by JLPT 
 - Internal linking: every article links to 2–3 related articles + language index
 - Canonical URLs set on all pages
 
+### Crawlability infrastructure — SET UP 2026-07-09
+- **`site: 'https://jengolang.com'`** set in `astro.config.mjs` (required for absolute sitemap URLs).
+- **`@astrojs/sitemap`** integration installed → build emits `sitemap-index.xml` + `sitemap-0.xml`
+  (all prerendered pages: `/`, `/jengo`, every grammar page). Note the Cloudflare adapter writes
+  these under `dist/client/`; SSR-only routes aren't included (nearly everything is prerendered).
+- **`public/robots.txt`** allows all crawling and points to `sitemap-index.xml`.
+- Still manual (Google Search Console, not in repo): submit the sitemap; "Request indexing" on `/`.
+
+### Serving vs. indexing — the stale old-app results
+Searching `jengolang.com` can still surface a **very old version of the app**. This is **not**
+the server — the root serves the new hub, and all old app deep-links (`/login`, `/dictionary`,
+`/decks`, …) correctly **404**. It's **Google's stale index**: pre-migration the app lived at the
+root and Google cached it there; those URLs now 404, so Google shows its old snapshot until it
+recrawls. The sitemap + robots above are the recrawl nudge; finish in Search Console (submit +
+Removals on the old app URLs).
+- **Optional forwarding:** 301 the known old app deep-links → `app.jengolang.com/...` via
+  `public/_redirects` so Google hands its stale entries to the new home. Needs the authoritative
+  old-path list; a `/*` splat would collide with the marketing/grammar routes — list explicit paths.
+- **Bug:** the existing `jengolang.com/app` redirect (a Cloudflare **dashboard** Redirect Rule,
+  not in this repo) appends the path → lands on `app.jengolang.com/app` instead of the app root.
+  Fix in the Cloudflare dashboard.
+
 ### Target Query Types
 | Query type | Example | Page type |
 |-----------|---------|-----------|
@@ -205,22 +257,23 @@ The grammar article format above is designed to satisfy this. No extra work need
 - [x] Init Astro project inside it (`npm create astro@latest`)
 - [x] Connect repo to Cloudflare Pages (Dashboard → Pages → Connect to Git)
 - [x] Configure Cloudflare: `app.jengolang.com` CNAME → Railway, `jengolang.com` → Cloudflare Pages
-- [ ] Set up redirect: `jengolang.com/app` → `app.jengolang.com`
+- [~] Set up redirect: `jengolang.com/app` → `app.jengolang.com` — exists as a dashboard Redirect Rule but appends `/app` (lands on `/app`, not the app root); fix in dashboard. Old app deep-links still 404 (see SEO → Serving vs. indexing).
 
-### Phase 1 — Landing Page (2–3 days)
-- [ ] Run `/impeccable teach` to generate PRODUCT.md — impeccable installed globally at `~/.claude/skills/impeccable/`
-- [ ] Design and build `jengolang.com` landing page (see design spec below)
-- [ ] Mobile-first layout
-- [ ] "Try Jengo" CTA wired to `app.jengolang.com`
-- [ ] iOS App Store badge (placeholder slot — link to be added after App Store submission)
-- [ ] Creator note section with photo (Caden, 2 years in Japan, built Jengo to solve the flashcard-vs-reading gap)
+### Phase 1 — Hub Home + App Promo (2–3 days)
+- [x] Run `/impeccable teach` to generate PRODUCT.md — impeccable installed globally at `~/.claude/skills/impeccable/`
+- [x] Build `jengolang.com` hub home (`index.astro`, 1B toolkit-led, 2026-07-09) — replaces the old story-mode landing
+- [x] Mobile-first layout (hub is responsive, hero stacks, reduced-motion guarded)
+- [x] "Open Jengo" CTAs wired to `/jengo` (the promo), which in turn converts to `app.jengolang.com`
+- [ ] Rewrite the `/jengo` app promo off story-mode copy (see §1a + `PROPOSED-NEW-MARKETING.md`)
+- [ ] iOS App Store badge on `/jengo` (link live after App Store submission)
+- [ ] Creator note section with photo (Caden, 2 years in Japan, built Jengo to solve the flashcard-vs-reading gap) — on `/jengo`
 
 ### Phase 2 — Content Architecture (2–3 days)
 - [ ] Build Astro content templates (grammar article, vocab list, language index)
 - [ ] Implement MDX frontmatter schema
 - [ ] Add `AppCTA` component to all content pages
 - [ ] Set up JSON-LD structured data
-- [ ] Set up sitemap generation
+- [x] Set up sitemap generation — `@astrojs/sitemap` + `site:` + `robots.txt` (2026-07-09; see SEO → Crawlability)
 
 ### Phase 3 — Japanese Content (ongoing, weeks–months)
 - [ ] Write all N5 grammar articles (~80)
