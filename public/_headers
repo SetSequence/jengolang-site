@@ -1,0 +1,4 @@
+# Never let the browser HTTP-cache the service worker script, so the
+# self-destruct kill-switch (public/sw.js) reaches ghost-PWA visitors promptly.
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
