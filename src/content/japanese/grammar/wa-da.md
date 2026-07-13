@@ -7,7 +7,7 @@ keigo: "none"
 freq: "essential"
 jlpt: "N5"
 family: "copula"
-prereqs: ["wa", "da"]
+prereqs: ["wa-2", "da"]
 confidence: "high"
 sources:
   volumes: "B"

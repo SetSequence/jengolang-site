@@ -36,5 +36,5 @@ examples:
 restrictions:
   - text: "Do not use の to link a na-adjective to its noun — na-adjectives take な: 静{しず}かな部屋{へや} (a quiet room), never ×静{しず}かの部屋{へや}. の links noun-to-noun only."
 notes:
-  - text: "の can also stand in for a noun already understood from context: 赤{あか}いのが好{す}き = \"I like the red one.\""
+  - text: "For now, use の only to link one noun to another. Japanese also uses の in other ways later in the path; do not try to make those uses fit this A の B pattern yet."
 ---

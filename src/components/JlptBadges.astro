@@ -1,0 +1,15 @@
+---
+// The five JLPT deck badges, N5→N1.
+const badges = [
+  { label: 'N5', bg: 'oklch(47% 0.089 156)' },
+  { label: 'N4', bg: 'oklch(42% 0.07 240)' },
+  { label: 'N3', bg: 'oklch(48% 0.08 75)' },
+  { label: 'N2', bg: 'oklch(38% 0.09 290)' },
+  { label: 'N1', bg: 'oklch(35% 0.09 20)' },
+];
+---
+<div class="mk-badges">
+  {badges.map((b) => (
+    <span class="mk-badge" style={`background:${b.bg}`}>{b.label}</span>
+  ))}
+</div>

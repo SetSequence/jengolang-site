@@ -1,0 +1,23 @@
+---
+const { mode = "lookup" } = Astro.props;
+---
+
+<nav class="mode-switcher" aria-label="Grammar mode">
+  <a class:list={["mode", { active: mode === "lookup" }]} href="/learn/japanese/grammar" aria-current={mode === "lookup" ? "page" : undefined}>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    Lookup
+  </a>
+  <a class:list={["mode", { active: mode === "path" }]} href="/learn/japanese/grammar/path" aria-current={mode === "path" ? "page" : undefined}>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
+    Path
+  </a>
+</nav>
+
+<style>
+  .mode-switcher { display:flex; width:min(100%, 380px); padding:3px; background:oklch(94% .006 156); border:1px solid var(--border); border-radius:12px; }
+  .mode { flex:1; min-height:40px; display:flex; align-items:center; justify-content:center; gap:7px; border-radius:9px; color:var(--text-secondary); font-size:.85rem; font-weight:600; text-decoration:none; }
+  .mode:hover { color:var(--text-primary); }
+  .mode.active { color:var(--white); background:var(--brand); font-weight:700; }
+  .mode:focus-visible { outline:2px solid var(--brand); outline-offset:2px; }
+  svg { width:15px; height:15px; fill:none; stroke:currentColor; stroke-width:2.25; stroke-linecap:round; stroke-linejoin:round; }
+</style>

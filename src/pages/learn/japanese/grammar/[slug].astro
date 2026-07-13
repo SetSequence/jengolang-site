@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
 import { compareSetForSlug } from "../../../../lib/compareSets";
+import { jlptColor } from "../../../../lib/grammar";
+import slice from "../../../../data/grammar_slice.json";
 
 export const prerender = true;
 
@@ -32,6 +34,7 @@ export async function getStaticPaths() {
 
 const { entry, prereqs, related, contrasts } = Astro.props;
 const d = entry.data;
+const pathPlace = slice.spine.arcs.flatMap((arc) => arc.units.map((unit) => ({ arc, unit }))).find(({ unit }) => unit.nodes.some((node) => node.slug === entry.id));
 
 // If this node is part of a confusable set (e.g. the four conditionals), link to
 // its side-by-side comparison page (P1.3).
@@ -94,14 +97,6 @@ const keigoLabel = {
   sonkeigo: "sonkeigo (respectful)",
   kenjougo: "kenjougo (humble)",
 };
-const jlptColor = {
-  N5: "oklch(55% 0.10 156)",
-  N4: "oklch(55% 0.10 200)",
-  N3: "oklch(55% 0.11 250)",
-  N2: "oklch(52% 0.12 300)",
-  N1: "oklch(50% 0.13 340)",
-  none: "oklch(60% 0.01 156)",
-};
 
 // — Provenance: this catalog derives from the Dictionary of Basic/Intermediate/
 // Advanced Japanese Grammar series (volume codes B/I/A; "ext" = other references). —
@@ -150,6 +145,7 @@ const jsonLd =
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>try{if(window.self!==window.top||new URLSearchParams(location.search).has("embed"))document.documentElement.dataset.grammarEmbed=""}catch{document.documentElement.dataset.grammarEmbed=""}</script>
     <meta name="description" content={metaDesc} />
     {d.noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonicalURL} />
@@ -177,6 +173,7 @@ const jsonLd =
         --text-secondary: oklch(50% 0.012 156);
         --text-tertiary:  oklch(68% 0.008 156);
         --white:          oklch(99.5% 0.002 156);
+        --success:        oklch(44% 0.110 145);
         /* "confused with" comparison accent — indigo, distinct from green */
         --indigo:         oklch(48% 0.13 290);
         --indigo-tint:    oklch(96% 0.022 290);
@@ -227,6 +224,11 @@ const jsonLd =
       }
       .badge.jlpt { color: #fff; border: none; }
       .badge.cat { background: var(--brand); color: #fff; border: none; }
+      .learned-toggle { margin-left:auto; display:inline-flex; align-items:center; gap:.4rem; border:1px solid var(--border-strong); border-radius:7px; padding:4px 9px; background:var(--surface); color:var(--text-secondary); font-size:.72rem; font-weight:600; cursor:pointer; }
+      .learned-toggle svg { width:13px; fill:none; stroke:currentColor; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; }
+      .learned-toggle[aria-pressed="true"] { color:var(--white); border-color:var(--success); background:var(--success); }
+      .path-place { margin-top:1rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.75rem .9rem; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text-secondary); font-size:.78rem; }
+      .path-place a { color:var(--brand); font-weight:700; text-decoration:none; }
 
       h1 {
         font-size: clamp(1.6rem, 4.5vw, 2.3rem); font-weight: 800; letter-spacing: -0.02em;
@@ -374,6 +376,8 @@ const jsonLd =
 
       .backtree { margin-top: 2.6rem; font-size: 0.88rem; }
       .backtree a { color: var(--brand); text-decoration: none; font-weight: 500; }
+      html[data-grammar-embed] .nav, html[data-grammar-embed] .appcta { display: none; }
+      html[data-grammar-embed] .wrap { padding-top: 1rem; }
     </style>
   </head>
   <body>
@@ -400,12 +404,15 @@ const jsonLd =
           <span class="badge">{d.freq}</span>
           {d.register.map((r) => <span class="badge">{registerLabel[r] ?? r}</span>)}
           {d.keigo !== "none" && <span class="badge">{keigoLabel[d.keigo] ?? d.keigo}</span>}
+          <button id="learned-toggle" class="learned-toggle" type="button" aria-pressed="false" data-slug={entry.id}><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m20 6-11 11-5-5" /></svg><span>Mark learned</span></button>
         </div>
         <h1>{d.title}</h1>
         {d.canonical && (
           <div class="pattern">{d.canonical}{d.reading && d.reading !== d.canonical ? ` ・ ${d.reading}` : ""}</div>
         )}
       </header>
+
+      {pathPlace && <div class="path-place"><span>Arc {pathPlace.arc.index}: {pathPlace.arc.label} · Unit {pathPlace.unit.index}</span><a href={`/learn/japanese/grammar/path/unit/${pathPlace.unit.index}`}>View in Path →</a></div>}
 
       {/* ── builds-on (prereqs, nav chrome) ── */}
       {prereqs.length > 0 && (
@@ -627,5 +634,12 @@ const jsonLd =
 
       <p class="backtree"><a href="/learn/japanese/grammar">← Back to the grammar tree</a></p>
     </main>
+    <script>
+      import {loadProgress,saveProgress,isLearned} from "../../../../lib/progress";
+      let state=loadProgress();
+      const button=document.querySelector("#learned-toggle");const progressSlug=button.dataset.slug;
+      const render=()=>{const on=isLearned(state,progressSlug);button.setAttribute("aria-pressed",String(on));button.querySelector("span").textContent=on?"Learned":"Mark learned"};
+      button.addEventListener("click",()=>{if(state.nodes[progressSlug])delete state.nodes[progressSlug];else state.nodes[progressSlug]="learned";saveProgress(state);render()});render();
+    </script>
   </body>
 </html>

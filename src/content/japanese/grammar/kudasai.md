@@ -7,7 +7,7 @@ keigo: "sonkeigo"
 freq: "essential"
 jlpt: "N5"
 family: "auxiliary"
-prereqs: ["te-form", "kudasaru"]
+prereqs: ["o"]
 confidence: "high"
 sources:
   volumes: "B|I"

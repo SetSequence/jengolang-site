@@ -1,0 +1,16 @@
+---
+// Dark iPhone bezel wrapping an app screenshot.
+interface Props {
+  src: string;
+  alt: string;
+  width?: number;
+  rotate?: number;
+}
+const { src, alt, width = 206, rotate = 0 } = Astro.props;
+const style = `width:${width}px;${rotate ? `transform:rotate(${rotate}deg);` : ''}`;
+---
+<div class="mk-phone" style={style}>
+  <div class="mk-phone-screen">
+    <img src={src} alt={alt} loading="lazy" />
+  </div>
+</div>

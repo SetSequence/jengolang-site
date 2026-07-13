@@ -1,6 +1,94 @@
 ---
-const title = "Jengo — Between a reader and a flashcard app. Better than both.";
-const description = "Jengo takes your vocabulary review list and generates it into a paragraph. Read, tap what you don't know, and submit. Words land in context and stick.";
+export const prerender = true;
+
+import '../styles/marketing.css';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import AmbientKanji from '../components/AmbientKanji.astro';
+import PhoneFrame from '../components/PhoneFrame.astro';
+import BrowserFrame from '../components/BrowserFrame.astro';
+import AppStoreButton from '../components/AppStoreButton.astro';
+import JlptBadges from '../components/JlptBadges.astro';
+import { appStore, webApp, grammar, privacy } from '../data/links';
+
+const title = "Jengo — Japanese Dictionary & Flashcards, Offline";
+const description = "A full Japanese dictionary and spaced-repetition flashcards in one offline app. Look up any word by kanji, kana, romaji, English, or handwriting — and add it to your deck in a tap. JLPT N5–N1 decks built in.";
+const canonical = "https://jengolang.com/jengo";
+
+const faqs = [
+  {
+    q: "Does Jengo work offline?",
+    a: "Yes. The full dictionary and all your decks live on your device. It syncs to the web when you're back online.",
+  },
+  {
+    q: "What platforms is it on?",
+    a: "iPhone and any web browser today, with your words synced between them.",
+  },
+  {
+    q: "Can I look up a kanji I can't type?",
+    a: "Yes — draw it with handwriting search, or search by reading, romaji, or English meaning.",
+  },
+  {
+    q: "Does it have JLPT vocabulary?",
+    a: "Yes — JLPT N5 through N1 decks are built in, and you can import your own word lists.",
+  },
+  {
+    q: "How is this different from Anki + jisho.org?",
+    a: "It's both in one app. You look a word up and add it to spaced-repetition flashcards in a single tap — cleaner and more intuitive, with no jumping between tools.",
+  },
+  {
+    q: "What kind of flashcard scheduling does it use?",
+    a: "A modern FSRS scheduler (Free Spaced Repetition Scheduler) that shows each word right before you'd forget it.",
+  },
+];
+
+const appLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Jengo",
+  applicationCategory: "EducationApplication",
+  operatingSystem: "iOS, Web",
+  description,
+  url: canonical,
+};
+
+const faqLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const heroChars = [
+  { c: "言", x: "6%",  y: "10%", s: "1.9rem", op: 0.15, dur: "7.2s", del: "0s" },
+  { c: "語", x: "91%", y: "14%", s: "2.2rem", op: 0.14, dur: "8.5s", del: "1.3s" },
+  { c: "読", x: "3%",  y: "48%", s: "1.6rem", op: 0.12, dur: "6.8s", del: "2.7s" },
+  { c: "書", x: "89%", y: "42%", s: "2rem",   op: 0.15, dur: "9.1s", del: "0.6s" },
+  { c: "文", x: "12%", y: "78%", s: "1.8rem", op: 0.11, dur: "7.6s", del: "3.8s" },
+  { c: "字", x: "84%", y: "72%", s: "1.7rem", op: 0.14, dur: "8.2s", del: "1.9s" },
+  { c: "知", x: "8%",  y: "30%", s: "2.3rem", op: 0.08, dur: "9.8s", del: "5.1s" },
+  { c: "学", x: "87%", y: "58%", s: "1.8rem", op: 0.14, dur: "6.6s", del: "0.4s" },
+  { c: "意", x: "44%", y: "5%",  s: "1.7rem", op: 0.08, dur: "10s",  del: "6.2s" },
+  { c: "覚", x: "72%", y: "8%",  s: "2rem",   op: 0.12, dur: "8.7s", del: "1.1s" },
+];
+
+const loopSteps = [
+  { n: 1, label: "Look it up",     img: "/app-dict-search.png",     alt: "Searching the Jengo dictionary by kana, kanji, romaji, or English" },
+  { n: 2, label: "Add it in a tap", img: "/app-dict-entry.png",      alt: "A Jengo dictionary entry with a one-tap add-to-deck button" },
+  { n: 3, label: "Review offline",  img: "/app-flashcard-front.png", alt: "A Jengo flashcard ready to review, fully offline" },
+];
+
+const showcase = [
+  { img: "/app-decks.png",          heading: "Import premade decks (JLPT included).",             jp: "単語帳", imgOrder: 0, textOrder: 1, rot: -2, alt: "Jengo premade word sets — JLPT N5 through N1 with word counts" },
+  { img: "/app-multicard.png",      heading: "Waste less time. Fly through words with multiview.", jp: "速習",  imgOrder: 1, textOrder: 0, rot: 2,  alt: "Jengo multi-card review — clearing a list of known words at once" },
+  { img: "/app-flashcard-back.png", heading: "Spend your time where it matters in the single view.", jp: "集中", imgOrder: 0, textOrder: 1, rot: -2, alt: "A Jengo flashcard answer in single view showing definitions and example sentences" },
+  { img: "/app-handwriting.png",    heading: "Can't type a kanji? Draw it.",                      jp: "手書き", imgOrder: 1, textOrder: 0, rot: 2,  alt: "Jengo handwriting search — drawing a kanji by hand to look it up" },
+  { img: "/app-explain.png",        heading: "On-demand plain-English explanations.",             jp: "解説",  imgOrder: 0, textOrder: 1, rot: -2, alt: "Jengo plain-English explanation of a Japanese word" },
+];
 ---
 
 <html lang="en">
@@ -8,1354 +96,394 @@ const description = "Jengo takes your vocabulary review list and generates it in
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" href="/favicon.ico" />
   <title>{title}</title>
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;800&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet" />
-  <style is:global>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Onest:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" set:html={JSON.stringify(appLd)} />
+  <script type="application/ld+json" set:html={JSON.stringify(faqLd)} />
+  <style>
+    /* ─── Hero (dictionary entry) ─────────────────── */
+    .promo-hero { background: var(--brand-dark); padding: 5rem 1.5rem 4.5rem; position: relative; overflow: hidden; }
+    .promo-hero-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 1; padding-left: 2.25rem; }
+    .promo-headword { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
+    .promo-word { font-family: var(--font-serif); font-size: clamp(3rem, 2rem + 4vw, 4.8rem); font-weight: 500; line-height: 0.95; color: var(--on-dark); letter-spacing: -0.01em; }
+    .promo-reading { font-family: var(--font-jp); font-size: 1.1rem; font-weight: 500; color: var(--accent-green); }
+    .promo-say { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid oklch(74% 0.11 145 / 0.5); color: var(--accent-green); align-self: center; flex-shrink: 0; }
+    .promo-tags { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-top: 1.25rem; }
+    .promo-tag { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.07em; border-radius: 5px; padding: 5px 11px; font-weight: 500; }
+    .promo-tag--dict  { background: var(--accent-green); color: var(--brand-dark); }
+    .promo-tag--cards { background: var(--amber-2); color: var(--brand-dark); }
+    .promo-tag--gram  { border: 1px solid oklch(99.5% 0.002 156 / 0.35); color: var(--on-dark-75); }
+    .promo-def { display: flex; gap: 1.1rem; margin-top: 2rem; margin-left: -2.25rem; }
+    .promo-def-n { font-family: var(--font-mono); font-size: 0.95rem; color: var(--amber-2); flex-shrink: 0; width: 1.15rem; padding-top: 0.4rem; }
+    .promo-def h1 { font-family: var(--font-serif); font-size: clamp(1.7rem, 1.25rem + 2.1vw, 2.7rem); font-weight: 500; line-height: 1.15; color: oklch(93% 0.015 150); margin: 0; }
+    .promo-def p { font-family: var(--font-serif); font-style: italic; font-size: clamp(1.15rem, 0.95rem + 1vw, 1.6rem); color: oklch(82% 0.04 150); margin: 0.5rem 0 0; }
+    .promo-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; margin-top: 2.5rem; }
 
-    :root {
-      --brand:          oklch(47% 0.089 156);
-      --brand-dark:     oklch(25% 0.062 156);
-      --brand-tint:     oklch(96% 0.016 156);
-      --bg:             oklch(98.5% 0.005 156);
-      --surface:        oklch(99% 0.003 156);
-      --border:         oklch(90% 0.008 156);
-      --text-primary:   oklch(22% 0.010 156);
-      --text-secondary: oklch(50% 0.012 156);
-      --text-tertiary:  oklch(68% 0.008 156);
-      --white:          oklch(99.5% 0.002 156);
-      --ease-out:       cubic-bezier(0.16, 1, 0.3, 1);
-    }
+    /* ─── Platform strip ──────────────────────────── */
+    .plat-row { display: flex; align-items: flex-end; justify-content: center; gap: 3.5rem; flex-wrap: wrap; }
+    .plat-browser { position: relative; flex: 1; min-width: 340px; max-width: 600px; }
+    .plat-phone { position: relative; }
 
-    html { font-optical-sizing: auto; scroll-behavior: smooth; }
-    body {
-      font-family: 'Onest', system-ui, sans-serif;
-      font-size: 1rem;
-      line-height: 1.6;
-      color: var(--text-primary);
-      background: var(--bg);
-      -webkit-font-smoothing: antialiased;
-    }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; }
-    h1, h2, h3 { text-wrap: balance; }
-    p { text-wrap: pretty; }
+    /* ─── Loop ────────────────────────────────────── */
+    .loop-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 2.5rem; }
+    .loop-step { display: flex; flex-direction: column; gap: 1.25rem; }
+    .loop-head { display: flex; align-items: baseline; gap: 0.7rem; }
+    .loop-num { font-family: var(--font-serif); font-size: 2.4rem; font-weight: 500; line-height: 1; color: var(--amber-2); }
+    .loop-label { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 500; color: var(--on-dark); }
 
-    /* ─── Nav ─────────────────────────────────────── */
+    /* ─── Showcase ────────────────────────────────── */
+    .show-inner { max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 5rem; }
+    .show-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem 4rem; align-items: center; }
+    .show-media { display: flex; justify-content: center; }
+    .show-text { display: flex; flex-direction: column; gap: 0.9rem; }
+    .show-jp { font-family: var(--font-jp); font-size: 1rem; color: var(--amber); }
+    .show-h { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.3rem); font-weight: 500; letter-spacing: -0.01em; line-height: 1.12; color: var(--text); margin: 0; }
 
-    .nav {
-      background: var(--brand-dark);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .nav-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-    .nav-logo-mark { width: 26px; height: 26px; border-radius: 5px; }
-    .nav-wordmark {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--white);
-      letter-spacing: -0.01em;
-    }
-    .nav-links {
-      display: none;
-      list-style: none;
-      gap: 1.5rem;
-    }
-    @media (min-width: 600px) { .nav-links { display: flex; } }
-    .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: oklch(99.5% 0.002 156 / 0.6);
-      text-decoration: none;
-      transition: color 140ms;
-    }
-    .nav-links a:hover { color: var(--white); }
-    .nav-cta {
-      font-family: inherit;
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: oklch(99.5% 0.002 156 / 0.65);
-      background: none;
-      border: none;
-      text-decoration: none;
-      cursor: pointer;
-      transition: color 140ms;
-    }
-    .nav-cta:hover { color: var(--white); }
-
-    /* ─── Shared helpers ──────────────────────────── */
-
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-family: inherit;
-      font-size: 0.9375rem;
-      font-weight: 600;
-      color: var(--white);
-      background: var(--brand);
-      border: none;
-      border-radius: 8px;
-      padding: 11px 24px;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 140ms var(--ease-out);
-      white-space: nowrap;
-    }
-    .btn-primary:hover { background: oklch(42% 0.089 156); }
-
-    .appstore-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      border-radius: 8px;
-      padding: 9px 16px;
-      text-decoration: none;
-      transition: background 140ms var(--ease-out);
-      white-space: nowrap;
-    }
-    .appstore-btn-dark {
-      background: oklch(99.5% 0.002 156 / 0.08);
-      border: 1.5px solid oklch(99.5% 0.002 156 / 0.2);
-    }
-    .appstore-btn-dark:hover { background: oklch(99.5% 0.002 156 / 0.14); }
-    .appstore-btn-light {
-      background: transparent;
-      border: 1.5px solid var(--border);
-    }
-    .appstore-btn-light:hover { background: oklch(94% 0.01 156); }
-    .appstore-btn-text { display: flex; flex-direction: column; line-height: 1.1; }
-    .appstore-btn-sub {
-      font-size: 0.625rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-    }
-    .appstore-btn-label { font-size: 0.875rem; font-weight: 600; }
-    .appstore-btn-dark .appstore-btn-sub   { color: oklch(99.5% 0.002 156 / 0.55); }
-    .appstore-btn-dark .appstore-btn-label { color: var(--white); }
-    .appstore-btn-light .appstore-btn-sub   { color: var(--text-tertiary); }
-    .appstore-btn-light .appstore-btn-label { color: var(--text-primary); }
-
-    /* ─── Hero ────────────────────────────────────── */
-
-    .hero {
-      background: var(--brand-dark);
-      padding: 5rem 1.5rem 4.5rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero-inner {
-      max-width: 640px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.25rem;
-      position: relative;
-      z-index: 1;
-    }
-    .hero-heading {
-      font-size: clamp(2.125rem, 1.5rem + 3vw, 3.75rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      color: var(--white);
-    }
-    .hero-heading em {
-      font-style: normal;
-      color: oklch(78% 0.19 50);
-    }
-    .hero-sub {
-      font-size: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
-      color: oklch(78% 0.014 156);
-      max-width: 38ch;
-      line-height: 1.6;
-    }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.625rem;
-      justify-content: center;
-    }
-    .hero-platforms {
-      font-size: 0.8125rem;
-      color: oklch(60% 0.08 156);
-      font-weight: 500;
-    }
-
-    /* Generating background */
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-    .hero-char {
-      position: absolute;
-      left: var(--x);
-      top: var(--y);
-      font-size: var(--s);
-      font-family: 'Noto Sans JP', sans-serif;
-      font-weight: 500;
-      color: var(--white);
-      opacity: 0;
-      animation: charPulse var(--dur) var(--del) infinite;
-    }
-    @keyframes charPulse {
-      0%, 100%  { opacity: 0; }
-      25%, 75%  { opacity: var(--op); }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .hero-char { display: none; }
-    }
-
-    /* ─── Devices ─────────────────────────────────── */
-
-    .devices {
-      background: var(--bg);
-      padding: 4rem 1.5rem;
-      overflow: hidden;
-    }
-    .devices-inner {
-      max-width: 900px;
-      margin: 0 auto;
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 2rem;
-    }
-
-    /* Phone device frame */
-    .phone-device {
-      width: 180px;
-      flex-shrink: 0;
-      background: oklch(18% 0.005 270);
-      border-radius: 32px;
-      padding: 8px;
-      box-shadow:
-        0 0 0 1px oklch(40% 0.005 270),
-        0 20px 60px oklch(0% 0 0 / 0.18);
-    }
-    .phone-device-screen {
-      background: var(--surface);
-      border-radius: 25px;
-      overflow: hidden;
-      aspect-ratio: 9 / 19.5;
-      display: flex;
-      align-items: flex-start;
-    }
-    .phone-device-screen img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-    }
-    .phone-device-placeholder {
-      width: 100%;
-      height: 100%;
-      background: var(--brand-tint);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .phone-device-placeholder span {
-      font-size: 0.6rem;
-      color: var(--brand);
-      font-weight: 600;
-      text-align: center;
-      padding: 0.5rem;
-      line-height: 1.4;
-    }
-
-    /* Browser/desktop device frame */
-    .browser-device {
-      flex: 1;
-      min-width: 0;
-      max-width: 560px;
-      background: oklch(20% 0.005 270);
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow:
-        0 0 0 1px oklch(38% 0.005 270),
-        0 20px 60px oklch(0% 0 0 / 0.14);
-    }
-    .browser-bar {
-      background: oklch(24% 0.005 270);
-      height: 30px;
-      display: flex;
-      align-items: center;
-      padding: 0 10px;
-      gap: 5px;
-    }
-    .browser-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-    .browser-dot-red   { background: #ff5f57; }
-    .browser-dot-yel   { background: #febc2e; }
-    .browser-dot-grn   { background: #28c840; }
-    .browser-url {
-      margin-left: 8px;
-      background: oklch(30% 0.005 270);
-      border-radius: 5px;
-      height: 18px;
-      flex: 1;
-      max-width: 220px;
-      display: flex;
-      align-items: center;
-      padding: 0 8px;
-      gap: 4px;
-    }
-    .browser-url-text {
-      font-size: 0.625rem;
-      color: oklch(65% 0.005 270);
-    }
-    .browser-screen {
-      background: var(--surface);
-      overflow: hidden;
-      aspect-ratio: 2412 / 1424;
-    }
-    .browser-screen img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-    .browser-screen-placeholder {
-      width: 100%;
-      height: 100%;
-      background: var(--brand-tint);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .browser-screen-placeholder span {
-      font-size: 0.7rem;
-      color: var(--brand);
-      font-weight: 600;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    @media (max-width: 600px) {
-      .browser-device { display: none; }
-      .phone-device { width: 200px; }
-    }
-
-    /* ─── Demo ────────────────────────────────────── */
-
-    .demo {
-      background: var(--brand-dark);
-      padding: 5rem 1.5rem;
-    }
-    .demo-header {
-      text-align: center;
-      max-width: 480px;
-      margin: 0 auto 2.5rem;
-    }
-    .demo-eyebrow {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: oklch(65% 0.09 156);
-      margin-bottom: 0.75rem;
-    }
-    .demo-heading {
-      font-size: clamp(1.75rem, 1.3rem + 2.2vw, 2.5rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      color: var(--white);
-    }
-    .demo-sub {
-      font-size: 1rem;
-      color: oklch(72% 0.012 156);
-      margin-top: 0.75rem;
-      line-height: 1.6;
-    }
-
-    .demo-widget { max-width: 480px; margin: 0 auto; }
-
-    /* Due chips */
-    .demo-due-bar { margin-bottom: 0.75rem; }
-    .demo-due-label {
-      display: block;
-      font-size: 0.6875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: oklch(60% 0.08 156);
-      margin-bottom: 0.375rem;
-    }
-    .demo-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      min-height: 1.9rem;
-    }
-
-    @keyframes chipIn {
-      from { opacity: 0; transform: scale(0.82) translateY(4px); }
-      to   { opacity: 1; transform: scale(1) translateY(0); }
-    }
-    .demo-chip {
-      display: inline-block;
-      padding: 0.2rem 0.65rem;
-      background: oklch(99.5% 0.002 156 / 0.92);
-      border-radius: 20px;
-      color: oklch(25% 0.062 156);
-      font-size: 1rem;
-      font-weight: 600;
-      font-family: 'Noto Sans JP', sans-serif;
-      opacity: 0;
-      animation: chipIn 0.28s var(--ease-out) forwards;
-    }
-
-    /* Para frame */
-    .demo-frame {
-      background: oklch(0% 0 0 / 0.18);
-      border-radius: 10px;
-      padding: 1rem 1.1rem;
-      border: 1px solid oklch(99.5% 0.002 156 / 0.12);
-      position: relative;
-    }
-    .demo-para {
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 1.25rem;
-      line-height: 2.1;
-      letter-spacing: 0.01em;
-      color: var(--white);
-      word-break: break-all;
-      line-break: loose;
-      height: 9.5rem;
-      overflow: hidden;
-    }
-    @media (max-width: 420px) {
-      .demo-para { height: 14rem; }
-    }
-
-    /* Animated cursor */
-    .demo-cursor {
-      position: absolute;
-      pointer-events: none;
-      z-index: 20;
-      opacity: 0;
-      transition: left 0.42s var(--ease-out), top 0.42s var(--ease-out), opacity 0.2s;
-      filter: drop-shadow(0 1px 2px oklch(0% 0 0 / 0.4));
-    }
-    .demo-cursor.visible { opacity: 1; }
-
-    .demo-word {
-      border-radius: 3px;
-      padding: 0 1px;
-      transition: background 0.18s, color 0.18s;
-      display: inline;
-    }
-    .demo-word-known    { color: oklch(72% 0.12 156); }
-    .demo-word-selected { background: #ffe58a; color: #1a1a1a; }
-
-    /* Dictionary panel — lives in a pre-reserved slot so it never shifts layout */
-    .demo-dict-slot {
-      height: 140px;
-      padding-top: 0.875rem;
-      border-top: 1px solid oklch(99.5% 0.002 156 / 0.15);
-      margin-top: 0.875rem;
-      overflow: hidden;
-    }
-    .demo-dict {
-      opacity: 0;
-      border-radius: 8px;
-      padding: 0.875rem 1rem;
-      transition: opacity 0.25s var(--ease-out);
-    }
-    .demo-dict.visible {
-      opacity: 1;
-      background: oklch(57% 0.148 50);
-      border: none;
-    }
-    .demo-dict.visible .demo-dict-surface,
-    .demo-dict.visible .demo-dict-reading,
-    .demo-dict.visible .demo-dict-pos,
-    .demo-dict.visible .demo-dict-meanings { color: oklch(98% 0.03 50); }
-    .demo-dict-head {
-      display: flex;
-      align-items: baseline;
-      gap: 0.5rem;
-      margin-bottom: 0.25rem;
-    }
-    .demo-dict-surface {
-      font-family: 'Noto Sans JP', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-    .demo-dict-reading { font-size: 0.8rem; color: oklch(65% 0.01 156); }
-    .demo-dict-pos {
-      font-size: 0.6875rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: oklch(55% 0.06 156);
-      margin-bottom: 0.375rem;
-    }
-    .demo-dict-meanings {
-      margin: 0;
-      padding-left: 1.1rem;
-      font-size: 0.875rem;
-      color: oklch(82% 0.01 156);
-      line-height: 1.6;
-    }
-
-    /* Submit button */
-    .demo-submit {
-      display: block;
-      width: 100%;
-      margin-top: 1rem;
-      font-family: inherit;
-      font-size: 0.9375rem;
-      font-weight: 600;
-      color: var(--white);
-      background: var(--brand);
-      border: none;
-      border-radius: 8px;
-      padding: 11px;
-      cursor: default;
-      opacity: 0.3;
-      transition: background 140ms var(--ease-out), opacity 0.3s, transform 0.1s;
-    }
-    .demo-submit.ready { opacity: 1; }
-    .demo-submit.fire  { background: oklch(54% 0.089 156); transform: scale(0.97); }
-
-    /* ─── Showcase (alternating) ─────────────────── */
-
-    .showcase {
-      background: var(--surface);
-      padding: 5rem 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-    .showcase-inner {
-      max-width: 1040px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 5rem;
-    }
-    .showcase-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: center;
-    }
-    .showcase-row--flip .showcase-img { order: 2; }
-    .showcase-row--flip .showcase-text { order: 1; }
-    @media (max-width: 680px) {
-      .showcase-row {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-      .showcase-row--flip .showcase-img { order: 0; }
-      .showcase-row--flip .showcase-text { order: 1; }
-    }
-    .showcase-img {
-      display: flex;
-      justify-content: center;
-    }
-    .showcase-phone {
-      width: 220px;
-      background: oklch(18% 0.005 270);
-      border-radius: 36px;
-      padding: 9px;
-      box-shadow:
-        0 0 0 1px oklch(40% 0.005 270),
-        0 24px 64px oklch(0% 0 0 / 0.14);
-    }
-    .showcase-phone-screen {
-      background: var(--surface);
-      border-radius: 28px;
-      overflow: hidden;
-      aspect-ratio: 9 / 19.5;
-    }
-    .showcase-phone-screen img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-    }
-    .showcase-text {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-    .showcase-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--brand);
-    }
-    .showcase-heading {
-      font-size: clamp(1.5rem, 1.1rem + 2vw, 2.125rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.15;
-      color: var(--text-primary);
-    }
-    .showcase-body {
-      font-size: 1.0625rem;
-      color: var(--text-secondary);
-      line-height: 1.75;
-      max-width: 42ch;
-    }
-    .showcase-divider {
-      border: none;
-      border-top: 1px solid var(--border);
-    }
+    /* ─── Features ────────────────────────────────── */
+    .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem 4rem; }
+    .feat { display: flex; gap: 0.875rem; align-items: flex-start; }
+    .feat-icon { color: var(--brand); margin-top: 3px; flex-shrink: 0; display: inline-flex; }
+    .feat-label { font-size: 1rem; font-weight: 600; color: var(--text); margin: 0 0 0.2rem; }
+    .feat-body { font-size: 0.9375rem; color: var(--text-2); line-height: 1.6; max-width: 52ch; margin: 0; }
+    .feat-badges { margin-top: 0.625rem; }
 
     /* ─── Secondary CTA ───────────────────────────── */
-
-    .cta {
-      background: var(--brand-tint);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 4rem 1.5rem;
-      text-align: center;
-    }
-    .cta-inner {
-      max-width: 480px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.25rem;
-    }
-    .cta-heading {
-      font-size: clamp(1.5rem, 1.1rem + 2vw, 2.125rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      color: var(--text-primary);
-    }
-    .cta-sub {
-      font-size: 0.9375rem;
-      color: var(--text-secondary);
-    }
-    .cta-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.625rem;
-      justify-content: center;
-    }
+    .pcta { background: var(--bg-tint); border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); padding: 4.5rem 1.5rem; text-align: center; }
+    .pcta-inner { max-width: 540px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+    .pcta-h { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.3rem); font-weight: 500; letter-spacing: -0.01em; line-height: 1.15; color: var(--text); margin: 0; }
+    .pcta-sub { font-family: var(--font-serif); font-size: clamp(1.35rem, 1.1rem + 1.1vw, 1.8rem); font-weight: 500; color: oklch(40% 0.085 152); margin: -0.5rem 0 0; }
+    .pcta-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.25rem; align-items: center; justify-content: center; }
 
     /* ─── Creator ─────────────────────────────────── */
-
-    .creator {
-      background: var(--bg);
-      padding: 5rem 1.5rem;
-    }
-    .creator-inner {
-      max-width: 760px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 200px;
-      gap: 3rem;
-      align-items: center;
-    }
+    .creator { background: var(--bg); padding: 5rem 1.5rem; }
+    .creator-inner { max-width: 780px; margin: 0 auto; display: grid; grid-template-columns: 1fr 200px; gap: 3rem; align-items: center; }
+    .creator-text { display: flex; flex-direction: column; gap: 1rem; }
+    .creator-h { font-family: var(--font-serif); font-size: clamp(1.7rem, 1.25rem + 1.9vw, 2.4rem); font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; color: var(--text); margin: 0; }
+    .creator-body { font-size: 1.0625rem; color: var(--text-2); line-height: 1.75; margin: 0; }
+    .creator-body strong { color: oklch(30% 0.02 120); font-weight: 700; }
+    .creator-sign { font-family: var(--font-serif); font-style: italic; font-size: 1.15rem; color: var(--brand); margin: 0.25rem 0 0; }
+    .creator-photo { width: 200px; height: 200px; border-radius: 14px; object-fit: cover; object-position: 50% 22%; border: 1px solid var(--hairline); transform: rotate(1.4deg); box-shadow: 0 16px 36px -12px oklch(24% 0.05 150 / 0.25); }
     @media (max-width: 560px) {
-      .creator-inner { grid-template-columns: 1fr; justify-items: center; }
-      .creator-photo { width: 220px; height: 220px; order: 0; }
-      .creator-content { order: 1; width: 100%; }
-    }
-    .creator-photo {
-      width: 200px;
-      height: 200px;
-      border-radius: 14px;
-      object-fit: cover;
-      object-position: 50% 22%;
-      border: 1px solid var(--border);
-      order: 2;
-    }
-    .creator-content {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      order: 1;
-    }
-    .creator-label {
-      font-size: clamp(1.75rem, 1.3rem + 2.2vw, 2.5rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      line-height: 1.1;
-      color: var(--text-primary);
-    }
-    .creator-body {
-      font-size: 1.0625rem;
-      color: var(--text-secondary);
-      line-height: 1.75;
-    }
-    /* ─── Features ─────────────────────────────────── */
-
-    .features {
-      background: var(--bg);
-      padding: 5rem 1.5rem;
-      border-top: 1px solid var(--border);
-    }
-    .features-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-    }
-    .features-eyebrow {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--brand);
-      margin-bottom: 2.5rem;
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2.5rem 4rem;
-    }
-    .feature-item {
-      display: grid;
-      grid-template-columns: 24px 1fr;
-      column-gap: 0.875rem;
-      row-gap: 0.2rem;
-    }
-    .feature-icon {
-      grid-column: 1;
-      grid-row: 1;
-      color: var(--brand);
-      margin-top: 3px;
-      flex-shrink: 0;
-    }
-    .feature-label {
-      grid-column: 2;
-      grid-row: 1;
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--text-primary);
-    }
-    .feature-body {
-      grid-column: 2;
-      grid-row: 2;
-      font-size: 0.9375rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      max-width: 52ch;
+      .creator-inner { grid-template-columns: 1fr; justify-items: start; }
+      .creator-photo { order: -1; }
     }
 
-    /* ─── Deck badges (inside feature item) ─────── */
+    /* ─── What's next ─────────────────────────────── */
+    .next { background: var(--bg-tint); border-top: 1px solid var(--hairline); padding: 4.5rem 1.5rem; }
+    .next-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+    .next-eyebrow { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; color: var(--amber); margin: 0 0 0.75rem; }
+    .next-h { font-family: var(--font-serif); font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.2rem); font-weight: 500; letter-spacing: -0.01em; line-height: 1.15; color: var(--text); margin: 0; }
+    .next-list { list-style: none; max-width: 500px; margin: 2rem auto 0; text-align: left; display: flex; flex-direction: column; gap: 1rem; }
+    .next-item { display: flex; align-items: flex-start; gap: 0.875rem; font-size: 1.0625rem; color: var(--text-2); line-height: 1.5; }
+    .next-tag { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; min-width: 54px; padding: 0.2rem 0.55rem; border-radius: 999px; font-family: var(--font-mono); font-size: 0.66rem; font-weight: 500; letter-spacing: 0.06em; margin-top: 0.2rem; }
+    .next-tag--next { background: var(--amber); color: var(--on-dark); }
+    .next-tag--soon { background: var(--brand); color: var(--on-dark); }
+    .next-tag--beta { background: transparent; border: 1.5px solid var(--brand); color: var(--brand); }
 
-    .feature-decks {
-      grid-column: 2;
-      grid-row: 3;
-      display: flex;
-      gap: 0.375rem;
-      margin-top: 0.25rem;
-      flex-wrap: wrap;
-    }
-    .deck-badge {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 34px;
-      height: 34px;
-      border-radius: 7px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #fff;
-    }
+    /* ─── FAQ ─────────────────────────────────────── */
+    .faq-inner { max-width: 760px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--hairline); padding: 1.5rem 0; }
+    .faq-q { font-family: var(--font-serif); font-size: 1.2rem; font-weight: 500; color: var(--text); margin: 0 0 0.375rem; }
+    .faq-a { font-size: 1rem; color: var(--text-2); line-height: 1.7; max-width: 62ch; margin: 0; }
 
-    /* ─── Footer ──────────────────────────────────── */
-
-    footer {
-      background: var(--brand-dark);
-      padding: 2.5rem 1.5rem;
-    }
-    .footer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.25rem;
-    }
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      text-decoration: none;
-    }
-    .footer-wordmark {
-      font-size: 0.9375rem;
-      font-weight: 600;
-      color: var(--white);
-    }
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem 1.5rem;
-      list-style: none;
-    }
-    .footer-links a {
-      font-size: 0.875rem;
-      color: oklch(99.5% 0.002 156 / 0.45);
-      text-decoration: none;
-      transition: color 140ms;
-    }
-    .footer-links a:hover { color: var(--white); }
-    .footer-copy {
-      width: 100%;
-      font-size: 0.8125rem;
-      color: oklch(99.5% 0.002 156 / 0.3);
-      border-top: 1px solid oklch(99.5% 0.002 156 / 0.08);
-      padding-top: 1.25rem;
-      margin-top: 0.25rem;
+    /* ─── Sticky mobile CTA ───────────────────────── */
+    .sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 90; background: oklch(99% 0.003 156 / 0.92); backdrop-filter: blur(10px); border-top: 1px solid var(--hairline); padding: 0.625rem 1rem calc(0.625rem + env(safe-area-inset-bottom)); display: none; }
+    .sticky-cta :global(.mk-appstore) { width: 100%; justify-content: center; }
+    @media (max-width: 600px) {
+      .sticky-cta { display: block; }
+      body { padding-bottom: 4.5rem; }
+      .plat-browser { display: none; }
     }
 
-    /* ─── Animations ──────────────────────────────── */
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(12px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-
+    /* ─── Hero entrance ───────────────────────────── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     @media (prefers-reduced-motion: no-preference) {
-      .hero-inner > * {
-        opacity: 0;
-        animation: fadeUp 0.5s var(--ease-out) forwards;
-      }
-      .hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
-      .hero-inner > *:nth-child(2) { animation-delay: 0.12s; }
-      .hero-inner > *:nth-child(3) { animation-delay: 0.19s; }
-      .hero-inner > *:nth-child(4) { animation-delay: 0.26s; }
-      .hero-inner > *:nth-child(5) { animation-delay: 0.32s; }
+      .promo-hero-inner > * { opacity: 0; animation: fadeUp 0.5s var(--ease-out) forwards; }
+      .promo-hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+      .promo-hero-inner > *:nth-child(2) { animation-delay: 0.12s; }
+      .promo-hero-inner > *:nth-child(3) { animation-delay: 0.19s; }
+      .promo-hero-inner > *:nth-child(4) { animation-delay: 0.26s; }
     }
   </style>
 </head>
 
 <body>
+  <SiteNav
+    wordmark="Jengo"
+    homeHref="/"
+    links={[
+      { label: "GRAMMAR", href: grammar },
+      { label: "FEATURES", href: "#features" },
+      { label: "FAQ", href: "#faq" },
+    ]}
+    cta={{ label: "OPEN IN BROWSER", href: webApp }}
+  />
 
-  <!-- Nav -->
-  <nav class="nav" aria-label="Main navigation">
-    <div class="nav-inner">
-      <a href="/" class="nav-logo" aria-label="Jengo home">
-        <svg class="nav-logo-mark" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="512" height="512" fill="#357d5e"/>
-          <text x="256" y="360" font-family="Georgia, serif" font-size="320" font-weight="bold" fill="white" text-anchor="middle">J</text>
-        </svg>
-        <span class="nav-wordmark">Jengo</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="/learn/japanese">Japanese</a></li>
-        <li><a href="#demo">How it works</a></li>
-      </ul>
-      <a href="https://app.jengolang.com" class="nav-cta">Try Jengo</a>
-    </div>
-  </nav>
-
-  <!-- Hero -->
-  <section class="hero" aria-labelledby="hero-heading">
-    <div class="hero-bg" aria-hidden="true">
-      <span class="hero-char" style="--x:6%;  --y:10%; --s:1.9rem; --op:0.165; --dur:7.2s; --del:0s">言</span>
-      <span class="hero-char" style="--x:91%; --y:14%; --s:2.2rem; --op:0.15;  --dur:8.5s; --del:1.3s">語</span>
-      <span class="hero-char" style="--x:3%;  --y:48%; --s:1.6rem; --op:0.135; --dur:6.8s; --del:2.7s">読</span>
-      <span class="hero-char" style="--x:89%; --y:42%; --s:2rem;   --op:0.165; --dur:9.1s; --del:0.6s">書</span>
-      <span class="hero-char" style="--x:12%; --y:78%; --s:1.8rem; --op:0.12;  --dur:7.6s; --del:3.8s">文</span>
-      <span class="hero-char" style="--x:84%; --y:72%; --s:1.7rem; --op:0.15;  --dur:8.2s; --del:1.9s">字</span>
-      <span class="hero-char" style="--x:20%; --y:18%; --s:1.6rem; --op:0.105; --dur:6.4s; --del:4.5s">話</span>
-      <span class="hero-char" style="--x:76%; --y:24%; --s:2.1rem; --op:0.12;  --dur:7.3s; --del:2.2s">聞</span>
-      <span class="hero-char" style="--x:8%;  --y:32%; --s:2.3rem; --op:0.09;  --dur:9.8s; --del:5.1s">知</span>
-      <span class="hero-char" style="--x:87%; --y:58%; --s:1.8rem; --op:0.15;  --dur:6.6s; --del:0.4s">学</span>
-      <span class="hero-char" style="--x:28%; --y:65%; --s:1.5rem; --op:0.105; --dur:8.3s; --del:3.2s">習</span>
-      <span class="hero-char" style="--x:67%; --y:82%; --s:2rem;   --op:0.12;  --dur:7.8s; --del:1.6s">人</span>
-      <span class="hero-char" style="--x:44%; --y:4%;  --s:1.7rem; --op:0.084; --dur:10s;  --del:6.2s">時</span>
-      <span class="hero-char" style="--x:52%; --y:88%; --s:1.9rem; --op:0.09;  --dur:8.1s; --del:2.4s">間</span>
-      <span class="hero-char" style="--x:1%;  --y:65%; --s:2.1rem; --op:0.135; --dur:7.1s; --del:4.8s">生</span>
-      <span class="hero-char" style="--x:93%; --y:30%; --s:1.6rem; --op:0.12;  --dur:9.3s; --del:3.5s">活</span>
-      <span class="hero-char" style="--x:36%; --y:82%; --s:1.8rem; --op:0.084; --dur:6.9s; --del:7.1s">感</span>
-      <span class="hero-char" style="--x:72%; --y:7%;  --s:2rem;   --op:0.135; --dur:8.7s; --del:1.1s">動</span>
-    </div>
-    <div class="hero-inner">
-      <h1 class="hero-heading" id="hero-heading">
-        Learn Japanese<br><em>FASTER.</em>
-      </h1>
-      <p class="hero-sub">
-        Jengo generates stories around your target words. Flashcard precision. Native depth.
-      </p>
-      <div class="hero-actions">
-        <a href="https://app.jengolang.com" class="btn-primary">Try Jengo</a>
-        <a href="https://apps.apple.com/us/app/jengo-learn-japanese/id6765958942" class="appstore-btn appstore-btn-dark" aria-label="Download on the App Store">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="oklch(99.5% 0.002 156)" aria-hidden="true">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/>
-          </svg>
-          <span class="appstore-btn-text">
-            <span class="appstore-btn-sub">Download on the</span>
-            <span class="appstore-btn-label">App Store</span>
-          </span>
-        </a>
+  <!-- Hero: dictionary entry -->
+  <section class="promo-hero" aria-labelledby="hero-heading">
+    <AmbientKanji chars={heroChars} />
+    <div class="promo-hero-inner">
+      <div class="promo-headword">
+        <span class="promo-word">Jengo</span>
+        <span class="promo-reading">【ジェンゴ】</span>
+        <span class="promo-say" aria-hidden="true">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
+        </span>
       </div>
-      <p class="hero-platforms">Available on desktop browser and iOS</p>
+      <div class="promo-tags">
+        <span class="promo-tag promo-tag--dict">DICTIONARY</span>
+        <span class="promo-tag promo-tag--cards">FLASHCARDS</span>
+        <span class="promo-tag promo-tag--gram">GRAMMAR</span>
+      </div>
+      <div class="promo-def">
+        <span class="promo-def-n" aria-hidden="true">1.</span>
+        <div>
+          <h1 id="hero-heading">Built for serious Japanese study.</h1>
+          <p>Built for you.</p>
+        </div>
+      </div>
+      <div class="promo-actions">
+        <AppStoreButton href={appStore} theme="white" />
+        <a href={webApp} class="mk-link mk-link--green">OPEN IN BROWSER →</a>
+      </div>
     </div>
   </section>
 
-  <!-- Device showcase: phone + browser -->
-  <section class="devices" aria-label="Available on mobile and desktop">
-    <div class="devices-inner">
-      <!-- Browser window -->
-      <div class="browser-device">
-        <div class="browser-bar">
-          <span class="browser-dot browser-dot-red" aria-hidden="true"></span>
-          <span class="browser-dot browser-dot-yel" aria-hidden="true"></span>
-          <span class="browser-dot browser-dot-grn" aria-hidden="true"></span>
-          <div class="browser-url">
-            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="oklch(65% 0.005 270)" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-            <span class="browser-url-text">app.jengolang.com</span>
+  <!-- §01 Platform strip -->
+  <section class="mk-sec mk-sec--light" aria-labelledby="platform-heading">
+    <div class="mk-wrap">
+      <SectionHeader num="§01" title="On iPhone, and in any browser." jp="どこでも" id="platform-heading" mb="3.5rem" />
+      <div class="plat-row">
+        <div class="plat-browser">
+          <BrowserFrame src="/app-web-home.png" alt="Jengo running in a web browser — the study home with a review forecast and flashcards ready to review" url="app.jengolang.com" />
+          <div class="mk-annot" style="left:-0.5rem;bottom:-2rem;" aria-hidden="true">
+            <svg width="30" height="14" viewBox="0 0 30 14" fill="none" stroke="var(--amber)" stroke-width="1.4"><path d="M0 13 L20 2 L14 2 M20 2 L20 8"/></svg>
+            no install — runs in the browser
           </div>
         </div>
-        <div class="browser-screen">
-          <img src="/sc-home.png" alt="Jengo web app — home screen showing vocabulary deck selection" loading="lazy" />
-        </div>
-      </div>
-      <!-- Phone -->
-      <div class="phone-device">
-        <div class="phone-device-screen">
-          <img src="/sc-study.png" alt="Jengo iOS app — paragraph study screen" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Interactive demo -->
-  <section class="demo" id="demo" aria-labelledby="demo-heading">
-    <div class="demo-header">
-      <p class="demo-eyebrow">See it in action</p>
-      <h2 class="demo-heading" id="demo-heading">Your words. In context.</h2>
-      <p class="demo-sub">Flag what you don't know — it comes back sooner.</p>
-    </div>
-
-    <div class="demo-widget" aria-label="Animated demonstration of Jengo vocabulary review">
-      <div class="demo-due-bar">
-        <span class="demo-due-label">Today's due words</span>
-        <div class="demo-chips" id="demo-chips"></div>
-      </div>
-      <div class="demo-frame">
-        <div class="demo-cursor" id="demo-cursor" aria-hidden="true">
-          <svg width="52" height="64" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 1L1 15L4.5 11.5L7.5 18L10 17L7 10.5L11.5 10.5Z" fill="white" stroke="oklch(20% 0.01 156)" stroke-width="0.75" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <p class="demo-para" id="demo-para"></p>
-      </div>
-      <div class="demo-dict-slot">
-        <div class="demo-dict" id="demo-dict">
-          <div class="demo-dict-head">
-            <span class="demo-dict-surface" id="demo-dict-surface"></span>
-            <span class="demo-dict-reading" id="demo-dict-reading"></span>
+        <div class="plat-phone">
+          <PhoneFrame src="/app-dict-entry.png" alt="Jengo on iPhone — a dictionary entry with reading, meanings, and example sentences" width={200} />
+          <div class="mk-annot" style="left:50%;bottom:-2rem;transform:translateX(-50%);" aria-hidden="true">
+            <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="var(--amber)" stroke-width="1.4"><path d="M11 13 L11 4 M11 4 L6 9 M11 4 L16 9"/></svg>
+            same deck on both — synced
           </div>
-          <p class="demo-dict-pos" id="demo-dict-pos"></p>
-          <ul class="demo-dict-meanings" id="demo-dict-meanings"></ul>
         </div>
       </div>
-      <button class="demo-submit" id="demo-submit-btn" tabindex="-1" aria-hidden="true">Submit</button>
     </div>
   </section>
 
-  <!-- Alternating showcase -->
-  <section class="showcase" aria-label="How Jengo works">
-    <div class="showcase-inner">
-
-      <div class="showcase-row">
-        <div class="showcase-img">
-          <div class="showcase-phone">
-            <div class="showcase-phone-screen">
-              <img src="/sc-study.png" alt="Jengo study screen — a generated story with target words highlighted" loading="lazy" />
+  <!-- §02 The loop -->
+  <section class="mk-sec mk-sec--dark" aria-labelledby="loop-heading">
+    <div class="mk-wrap" style="max-width:940px;">
+      <SectionHeader num="§02" title="One loop. Not two apps." jp="くりかえし" tone="dark" id="loop-heading" />
+      <div class="loop-grid">
+        {loopSteps.map((step) => (
+          <div class="loop-step">
+            <div class="loop-head">
+              <span class="loop-num">{step.n}</span>
+              <span class="loop-label">{step.label}</span>
+            </div>
+            <div class="mk-phone" style="width:100%;max-width:210px;">
+              <div class="mk-phone-screen"><img src={step.img} alt={step.alt} loading="lazy" /></div>
             </div>
           </div>
-        </div>
-        <div class="showcase-text">
-          <p class="showcase-label">The problem with immersion</p>
-          <h2 class="showcase-heading">Native material buries vocabulary</h2>
-          <p class="showcase-body">Podcasts, books, and shows expose you to real language — but you can't control what words appear. You can spend an hour listening and never encounter the word you studied yesterday.</p>
-        </div>
+        ))}
       </div>
-
-      <hr class="showcase-divider" />
-
-      <div class="showcase-row showcase-row--flip">
-        <div class="showcase-img">
-          <div class="showcase-phone">
-            <div class="showcase-phone-screen">
-              <img src="/sc-lookup.png" alt="Jengo word lookup — definition and reading shown in context" loading="lazy" />
-            </div>
-          </div>
-        </div>
-        <div class="showcase-text">
-          <p class="showcase-label">The problem with flashcards</p>
-          <h2 class="showcase-heading">Flashcards drill without context</h2>
-          <p class="showcase-body">Drilling a word in isolation is not enough to make it useful. Without native content to anchor your understanding, most of what you review won't survive contact with the real language.</p>
-        </div>
-      </div>
-
-      <hr class="showcase-divider" />
-
-      <div class="showcase-row">
-        <div class="showcase-img">
-          <div class="showcase-phone">
-            <div class="showcase-phone-screen">
-              <img src="/sc-listen.png" alt="Jengo listening mode — audio playback of the generated story" loading="lazy" />
-            </div>
-          </div>
-        </div>
-        <div class="showcase-text">
-          <p class="showcase-label">The Jengo approach</p>
-          <h2 class="showcase-heading">Your words, in context, every time.</h2>
-          <p class="showcase-body">Jengo builds paragraphs around the words you actually need to study. Listen back to each paragraph to compound your gains. This is no-compromise learning.</p>
-        </div>
-      </div>
-
-      <hr class="showcase-divider" />
-
-      <div class="showcase-row showcase-row--flip">
-        <div class="showcase-img">
-          <div class="showcase-phone">
-            <div class="showcase-phone-screen">
-              <img src="/sc-stats.png" alt="Jengo statistics — review history and FSRS retention data" loading="lazy" />
-            </div>
-          </div>
-        </div>
-        <div class="showcase-text">
-          <h2 class="showcase-heading">Review less. Remember more.</h2>
-          <p class="showcase-body">Jengo uses custom spaced repetition to schedule every word at the moment you're most likely to forget it.</p>
-        </div>
-      </div>
-
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="features" aria-labelledby="features-heading">
-    <div class="features-inner">
-      <p class="features-eyebrow" id="features-heading">Features</p>
-      <div class="features-grid">
+  <!-- Showcase -->
+  <section class="mk-sec mk-sec--alt" aria-label="A closer look at Jengo">
+    <div class="show-inner">
+      {showcase.map((row) => (
+        <div class="show-row">
+          <div class="show-media" style={`order:${row.imgOrder}`}>
+            <PhoneFrame src={row.img} alt={row.alt} width={224} rotate={row.rot} />
+          </div>
+          <div class="show-text" style={`order:${row.textOrder}`}>
+            <span class="show-jp">{row.jp}</span>
+            <h2 class="show-h">{row.heading}</h2>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
 
-        <div class="feature-item">
-          <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
-          </svg>
-          <p class="feature-label">Ready-made decks</p>
-          <p class="feature-body">JLPT N5 through N1 built in. Import your own word list or start immediately.</p>
-          <div class="feature-decks">
-            <span class="deck-badge" style="background: oklch(47% 0.089 156)">N5</span>
-            <span class="deck-badge" style="background: oklch(42% 0.07 240)">N4</span>
-            <span class="deck-badge" style="background: oklch(48% 0.08 75)">N3</span>
-            <span class="deck-badge" style="background: oklch(38% 0.09 290)">N2</span>
-            <span class="deck-badge" style="background: oklch(35% 0.09 20)">N1</span>
+  <!-- §03 Features -->
+  <section id="features" class="mk-sec mk-sec--light" aria-labelledby="features-heading">
+    <div class="mk-wrap">
+      <SectionHeader num="§03" title="Everything in the box." jp="ぜんぶ" id="features-heading" mb="2.75rem" />
+      <div class="feat-grid">
+
+        <div class="feat">
+          <span class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 21l-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/><line x1="12" y1="7" x2="12" y2="13"/><line x1="9" y1="10" x2="15" y2="10"/></svg></span>
+          <div>
+            <p class="feat-label">Add to flashcards in a tap</p>
+            <p class="feat-body">Straight from the dictionary entry, with the reading, audio, and examples attached.</p>
           </div>
         </div>
 
-        <div class="feature-item">
-          <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
-          </svg>
-          <p class="feature-label">Listening mode</p>
-          <p class="feature-body">Hear your generated paragraphs read aloud. Reinforce reading with audio in the same session.</p>
+        <div class="feat">
+          <span class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
+          <div>
+            <p class="feat-label">An array of search tools</p>
+            <p class="feat-body">Draw it, or type romaji, kana, kanji, or English. Use wildcards, or paste a whole sentence to look up every word at once.</p>
+          </div>
         </div>
 
-        <div class="feature-item">
-          <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
-          </svg>
-          <p class="feature-label">Statistics</p>
-          <p class="feature-body">Track your review history, retention rate, and word progress over time.</p>
+        <div class="feat">
+          <span class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18.36 6.64A9 9 0 0 1 20.77 15"/><path d="M6.16 6.16a9 9 0 1 0 12.68 12.68"/><path d="M12 2v4"/><line x1="2" y1="2" x2="22" y2="22"/></svg></span>
+          <div>
+            <p class="feat-label">Works fully offline</p>
+            <p class="feat-body">The entire dictionary and your decks live on your device. Syncs to the web when you're back online.</p>
+          </div>
         </div>
 
-        <div class="feature-item">
-          <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
-          </svg>
-          <p class="feature-label">Story mode</p>
-          <p class="feature-body">Submitted paragraphs connect into an ongoing story, making each session feel continuous.</p>
+        <div class="feat">
+          <span class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg></span>
+          <div>
+            <p class="feat-label">Modern spaced repetition</p>
+            <p class="feat-body">An FSRS scheduler shows each word at the moment you'd forget it. No setup, no fiddling with intervals.</p>
+          </div>
         </div>
 
-        <div class="feature-item">
-          <svg class="feature-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
-          <p class="feature-label">AI assists</p>
-          <p class="feature-body">Get explanations and more example sentences on demand.</p>
+        <div class="feat">
+          <span class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+          <div>
+            <p class="feat-label">JLPT decks built in</p>
+            <p class="feat-body">N5 through N1 ready to study — 700 to 2,900 words per level — or import your own list.</p>
+            <div class="feat-badges"><JlptBadges /></div>
+          </div>
+        </div>
+
+        <div class="feat">
+          <span class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span>
+          <div>
+            <p class="feat-label">Kanji handwriting search</p>
+            <p class="feat-body">Can't type a kanji you don't recognize? Draw it and Jengo finds it.</p>
+          </div>
+        </div>
+
+        <div class="feat">
+          <span class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg></span>
+          <div>
+            <p class="feat-label">Audio + pitch accent</p>
+            <p class="feat-body">Hear words and sentences, and see how they actually sound.</p>
+          </div>
+        </div>
+
+        <div class="feat">
+          <span class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+          <div>
+            <p class="feat-label">Plain-English explanations</p>
+            <p class="feat-body">A word's core meaning, the words it's confused with, and how it's actually used — generated on demand.</p>
+          </div>
+        </div>
+
+        <div class="feat">
+          <span class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></span>
+          <div>
+            <p class="feat-label">On-demand example sentences</p>
+            <p class="feat-body">Pull fresh examples for any definition whenever you want more context.</p>
+          </div>
+        </div>
+
+        <div class="feat">
+          <span class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span>
+          <div>
+            <p class="feat-label">Multi-card review</p>
+            <p class="feat-body">Clear the words you already know fast instead of flipping them one at a time.</p>
+          </div>
+        </div>
+
+        <div class="feat">
+          <span class="feat-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg></span>
+          <div>
+            <p class="feat-label">Make it yours</p>
+            <p class="feat-body">Build your own cards quickly, tag decks with colored icons, and auto-enhance lower-quality cards.</p>
+          </div>
         </div>
 
       </div>
-
     </div>
   </section>
 
-  <!-- Creator note -->
-  <section class="creator" aria-label="From the builder">
-    <div class="creator-inner">
-      <div class="creator-content">
-        <h2 class="creator-label">From the builder</h2>
-        <p class="creator-body">
-          I lived in Japan for two years, read grammar dictionaries cover to cover, worked through dozens of books and hundreds of podcasts, spent three hours a day on flashcards and four hours speaking with natives, and &ldquo;learned&rdquo; more than 15,000 words. <strong>I did everything right.</strong>
-        </p>
-        <p class="creator-body">
-          But there was always a functional gap between my flashcards and the real language that cost me thousands of hours to close. <strong>Jengo is the tool I always wanted, but never had.</strong>
-        </p>
-      </div>
-      <img
-        class="creator-photo"
-        src="/caden-nara.jpg"
-        alt="Caden Shelley at Todai-ji temple in Nara, Japan"
-        width="200"
-        height="200"
-        loading="lazy"
-      />
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <div class="cta">
-    <div class="cta-inner">
-      <h2 class="cta-heading">Ready to try it?</h2>
-      <p class="cta-sub">Available on desktop browser and iOS. Try it without an account!</p>
-      <div class="cta-actions">
-        <a href="https://app.jengolang.com" class="btn-primary">Open in browser</a>
-        <a href="https://apps.apple.com/us/app/jengo-learn-japanese/id6765958942" class="appstore-btn appstore-btn-light" aria-label="Download on the App Store">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--text-secondary)" aria-hidden="true">
-            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/>
-          </svg>
-          <span class="appstore-btn-text">
-            <span class="appstore-btn-sub">Download on the</span>
-            <span class="appstore-btn-label">App Store</span>
-          </span>
-        </a>
+  <!-- Secondary CTA -->
+  <div class="pcta">
+    <div class="pcta-inner">
+      <h2 class="pcta-h">Stop juggling apps and learning tools</h2>
+      <p class="pcta-sub">— and let Jengo do it for you.</p>
+      <div class="pcta-actions">
+        <AppStoreButton href={appStore} theme="dark" />
+        <a href={webApp} class="mk-link">OPEN IN BROWSER →</a>
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <div class="footer-inner">
-      <a href="/" class="footer-brand" aria-label="Jengo home">
-        <svg width="22" height="22" viewBox="0 0 512 512" aria-hidden="true">
-          <rect width="512" height="512" fill="#357d5e"/>
-          <text x="256" y="360" font-family="Georgia, serif" font-size="320" font-weight="bold" fill="white" text-anchor="middle">J</text>
-        </svg>
-        <span class="footer-wordmark">Jengo</span>
-      </a>
-      <ul class="footer-links">
-        <li><a href="/learn/japanese">Japanese Grammar</a></li>
-        <li><a href="https://app.jengolang.com">Open App</a></li>
-        <li><a href="/privacy">Privacy</a></li>
+  <!-- Creator -->
+  <section class="creator" aria-label="From the builder">
+    <div class="creator-inner">
+      <div class="creator-text">
+        <h2 class="creator-h">From the builder</h2>
+        <p class="creator-body">I lived in Japan for two years, read grammar dictionaries cover to cover, worked through dozens of books and hundreds of podcasts, spent three hours a day on flashcards and four hours speaking with natives, and &ldquo;learned&rdquo; more than 15,000 words. <strong>I did everything right.</strong></p>
+        <p class="creator-body">But I knew there had to be a better way. <strong>Jengo is the tool I always wanted, but never had.</strong></p>
+        <p class="creator-sign">— JengoDev</p>
+      </div>
+      <img class="creator-photo" src="/nara-todaiji.jpg" alt="The developer at Todai-ji temple in Nara, Japan" width="200" height="200" loading="lazy" />
+    </div>
+  </section>
+
+  <!-- What's next -->
+  <section class="next" aria-labelledby="next-heading">
+    <div class="next-inner">
+      <p class="next-eyebrow">JUST GETTING STARTED</p>
+      <h2 class="next-h" id="next-heading">More on the way.</h2>
+      <ul class="next-list">
+        <li class="next-item"><span class="next-tag next-tag--next">NEXT</span><span>A built-in grammar dictionary and a guided learning path.</span></li>
+        <li class="next-item"><span class="next-tag next-tag--soon">SOON</span><span>At-level reading — short passages built around your words, with tap-to-look-up and add-to-flashcards.</span></li>
+        <li class="next-item"><span class="next-tag next-tag--beta">BETA</span><span>Training Mode for extra drilling, in the app now.</span></li>
       </ul>
     </div>
-    <div class="footer-inner">
-      <p class="footer-copy">&copy; {new Date().getFullYear()} Jengo. All rights reserved.</p>
+  </section>
+
+  <!-- §04 FAQ -->
+  <section id="faq" class="mk-sec mk-sec--light" aria-labelledby="faq-heading">
+    <div class="faq-inner">
+      <SectionHeader num="§04" title="Questions." jp="しつもん" id="faq-heading" mb="1rem" />
+      {faqs.map((f) => (
+        <div class="faq-item">
+          <p class="faq-q">{f.q}</p>
+          <p class="faq-a">{f.a}</p>
+        </div>
+      ))}
     </div>
-  </footer>
+  </section>
 
-  <script>
-    const DEMO_ROUNDS = [
-      {
-        due: ['犬', '医者', '行く', '三'],
-        tokens: [
-          { s: '犬',          r: 'いぬ',       pos: 'Noun',      m: ['dog'],             known: true },
-          { s: 'が',          inert: true },
-          { s: '医者',        r: 'いしゃ',      pos: 'Noun',      m: ['doctor'],          known: true },
-          { s: 'に',          inert: true },
-          { s: '行きました',  r: 'いきました',  pos: 'Verb',      m: ['went'],            known: true },
-          { s: '。',          inert: true },
-          { s: '「',          inert: true },
-          { s: 'どこ',        r: 'どこ',        pos: 'Pronoun',   m: ['where'] },
-          { s: 'が',          inert: true },
-          { s: '痛い',        r: 'いたい',      pos: 'Adjective', m: ['painful', 'sore'] },
-          { s: 'ですか？」',  inert: true },
-          { s: '「ワン！ワン！」', inert: true },
-          { s: '「',          inert: true },
-          { s: 'なるほど',    r: 'なるほど',    pos: 'Adverb',    m: ['I see', 'indeed'] },
-          { s: '、',          inert: true },
-          { s: '三',          r: 'さん',        pos: 'Numeral',   m: ['three'],           known: true },
-          { s: 'か所',        r: 'かしょ',      pos: 'Noun',      m: ['places', 'spots'] },
-          { s: 'ですね。」',  inert: true },
-        ],
-        select: ['医者', 'どこ', '痛い', 'なるほど'],
-      },
-      {
-        due: ['今日', '図書館', '本', '読む'],
-        tokens: [
-          { s: '今日',        r: 'きょう',      pos: 'Noun',      m: ['today'],           known: true },
-          { s: 'は',          inert: true },
-          { s: '図書館',      r: 'としょかん',  pos: 'Noun',      m: ['library'],         known: true },
-          { s: 'で',          inert: true },
-          { s: '本',          r: 'ほん',        pos: 'Noun',      m: ['book'],            known: true },
-          { s: 'を',          inert: true },
-          { s: '読みました',  r: 'よみました',  pos: 'Verb',      m: ['read'],            known: true },
-          { s: '。',          inert: true },
-          { s: '難しい',      r: 'むずかしい',  pos: 'Adjective', m: ['difficult', 'hard'] },
-          { s: '言葉',        r: 'ことば',      pos: 'Noun',      m: ['word', 'vocabulary'] },
-          { s: 'が',          inert: true },
-          { s: 'たくさん',    r: 'たくさん',    pos: 'Adverb',    m: ['many', 'a lot'] },
-          { s: 'ありましたが、', inert: true },
-          { s: '楽しかった',  r: 'たのしかった', pos: 'Adjective', m: ['was fun', 'enjoyable'] },
-          { s: 'です。',      inert: true },
-        ],
-        select: ['図書館', '難しい', '楽しかった'],
-      },
-    ];
+  <SiteFooter
+    wordmark="Jengo"
+    homeHref="/"
+    links={[
+      { label: "FREE GRAMMAR GUIDES", href: grammar },
+      { label: "JENGOLANG", href: "/" },
+      { label: "APP STORE", href: appStore },
+      { label: "OPEN IN BROWSER", href: webApp },
+      { label: "PRIVACY", href: privacy },
+    ]}
+  />
 
-    function _sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
-
-    async function _typewriter(text, el, ms) {
-      el.textContent = '';
-      for (const ch of [...text]) { el.textContent += ch; await _sleep(ms); }
-    }
-
-    function _renderTokens(tokens, paraEl) {
-      paraEl.innerHTML = '';
-      tokens.forEach(tok => {
-        const el = document.createElement('span');
-        el.textContent = tok.s;
-        if (!tok.inert) {
-          el.className = 'demo-word' + (tok.known ? ' demo-word-known' : '');
-          el.dataset.surface = tok.s;
-        }
-        paraEl.appendChild(el);
-      });
-    }
-
-    function _showDict(tok) {
-      document.getElementById('demo-dict-surface').textContent = tok.s;
-      document.getElementById('demo-dict-reading').textContent = tok.r ? `[${tok.r}]` : '';
-      document.getElementById('demo-dict-pos').textContent = tok.pos;
-      document.getElementById('demo-dict-meanings').innerHTML = tok.m.map(m => `<li>${m}</li>`).join('');
-      document.getElementById('demo-dict').classList.add('visible');
-    }
-
-    function _hideDict() {
-      document.getElementById('demo-dict').classList.remove('visible');
-    }
-
-    function _placeCursor(wordEl, frameEl, cursorEl, instant) {
-      const frameRect = frameEl.getBoundingClientRect();
-      const wordRect = wordEl.getBoundingClientRect();
-      const left = wordRect.right - frameRect.left - 4; // tip sits just right of the word
-      const top = wordRect.bottom - frameRect.top + 2; // tip sits just below the word
-      if (instant) {
-        cursorEl.style.transition = 'opacity 0.2s';
-        cursorEl.style.left = left + 'px';
-        cursorEl.style.top = top + 'px';
-        cursorEl.offsetHeight; // force reflow
-        cursorEl.style.transition = '';
-      } else {
-        cursorEl.style.left = left + 'px';
-        cursorEl.style.top = top + 'px';
-      }
-    }
-
-    async function _runRound(round) {
-      const paraEl = document.getElementById('demo-para');
-      const chipsEl = document.getElementById('demo-chips');
-      const submitBtn = document.getElementById('demo-submit-btn');
-      const frameEl = document.querySelector('.demo-frame');
-      const cursorEl = document.getElementById('demo-cursor');
-
-      paraEl.textContent = '';
-      chipsEl.innerHTML = '';
-      _hideDict();
-      cursorEl.classList.remove('visible');
-      submitBtn.classList.remove('ready', 'fire');
-
-      for (const word of round.due) {
-        await _sleep(160);
-        const chip = document.createElement('span');
-        chip.className = 'demo-chip';
-        chip.textContent = word;
-        chipsEl.appendChild(chip);
-      }
-
-      await _sleep(520);
-
-      await _typewriter(round.tokens.map(t => t.s).join(''), paraEl, 40);
-      await _sleep(520);
-      _renderTokens(round.tokens, paraEl);
-      await _sleep(400);
-
-      let firstWord = true;
-      for (const surface of round.select) {
-        const wordEl = paraEl.querySelector(`[data-surface="${surface}"]`);
-        const tok = round.tokens.find(t => t.s === surface);
-        if (!wordEl || !tok) continue;
-
-        // Move cursor to word (instant placement on first, animated after)
-        _placeCursor(wordEl, frameEl, cursorEl, firstWord);
-        if (firstWord) { cursorEl.classList.add('visible'); firstWord = false; }
-        await _sleep(480); // cursor arrives
-
-        wordEl.classList.add('demo-word-selected');
-        _showDict(tok);
-        await _sleep(1900);
-      }
-
-      await _sleep(500);
-      cursorEl.classList.remove('visible');
-      submitBtn.classList.add('ready');
-      await _sleep(650);
-      submitBtn.classList.add('fire');
-      await _sleep(280);
-      submitBtn.classList.remove('fire');
-      await _sleep(380);
-    }
-
-    async function _demoLoop() {
-      while (true) {
-        for (const round of DEMO_ROUNDS) {
-          await _runRound(round);
-          await _sleep(350);
-        }
-        await _sleep(1800);
-      }
-    }
-
-    const _demoEl = document.getElementById('demo');
-    const _obs = new IntersectionObserver(entries => {
-      if (entries[0].isIntersecting) {
-        _obs.disconnect();
-        _sleep(700).then(_demoLoop);
-      }
-    }, { threshold: 0.25 });
-    _obs.observe(_demoEl);
-  </script>
+  <!-- Sticky mobile CTA -->
+  <div class="sticky-cta">
+    <AppStoreButton href={appStore} theme="dark" />
+  </div>
 
 </body>
 </html>

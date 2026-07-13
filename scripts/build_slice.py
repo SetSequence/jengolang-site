@@ -30,6 +30,7 @@ from datetime import date
 
 HERE = os.path.dirname(os.path.abspath(__file__))            # jengolang-site/scripts
 SRC = os.path.join(HERE, "data", "grammar_enriched.csv")    # the catalog (in-repo)
+SPINE_SRC = os.path.join(HERE, "data", "spine_units.csv")
 # Single canonical output: the Astro render imports this directly.
 OUT = os.path.abspath(os.path.join(HERE, "..", "src", "data", "grammar_slice.json"))
 
@@ -53,22 +54,22 @@ ANCHOR_SLUGS = [
 # ONE canonical slug per concept; OCR dups deliberately dropped (audited below).
 # ---------------------------------------------------------------------------
 FOUNDATION_STAGES = [
-    ("Copula & the は～だ frame",  ["da", "desu", "wa-2", "no-3", "janai", "datta"]),
-    ("Core case & binding particles",
+    ("Make your first 'X is Y' sentences",  ["da", "desu", "wa-2", "no-3", "janai", "datta"]),
+    ("Say who, what, where, and when",
         ["ga-2", "o", "ni-2", "ni-3", "de", "ka", "e", "to-2", "mo", "kara-3",
          "made", "ne", "yo"]),
-    ("Verb bases & politeness",   ["masu-stem", "masu-form", "te-form", "nai", "kudasai"]),
-    ("て-form uses & aspect",
+    ("Make verbs polite, negative, and past",   ["masu-stem", "masu-form", "te-form", "nai", "kudasai"]),
+    ("Connect actions with て",
         ["te", "te-kudasai", "te-iru", "te-kara", "te-mo-ii", "te-wa-ikenai",
          "te-shimau", "te-miru"]),
-    ("Benefactive giving/receiving",
+    ("Give, receive, and ask for help",
         ["ageru", "kureru", "ageru-2", "kureru-2", "morau"]),
-    ("Desire & basic modality",
+    ("Want, invite, and express uncertainty",
         ["tai", "hoshii", "darou", "deshou", "kamoshirenai", "hazu"]),
-    ("The four conditionals",     ["to-conditional", "tara", "ba", "nara"]),
-    ("Clause connectives & temporal frames",
+    ("If and when: four patterns",     ["to-conditional", "tara", "ba", "nara"]),
+    ("Join ideas: reason, contrast, and time",
         ["kara", "node", "kedo", "ga-3", "noni", "nagara", "toki", "mae-ni", "ato-de"]),
-    ("Nominalizers & comparison",
+    ("Turn actions into things and compare",
         ["koto", "no-ga-suki", "no-hou-ga", "yori-no-hou-ga", "ichiban"]),
 ]
 FOUNDATIONS = [s for _, slugs in FOUNDATION_STAGES for s in slugs]
@@ -122,6 +123,41 @@ FAMILY_ORDER = [
 ]
 FAM_RANK = {f: i for i, f in enumerate(FAMILY_ORDER)}
 JLPT_LEVELS = ["N5", "N4", "N3", "N2", "N1"]
+
+ARC_RANGES = [
+    (1, "Start speaking and understanding simple Japanese", 1, 10),
+    (2, "Build everyday Japanese", 11, 20),
+    (3, "Make longer sentences", 21, 24),
+    (4, "Make plans, give advice, and talk with people", 25, 30),
+    (5, "Say more precisely", 31, 37),
+    (6, "Add nuance in speech and writing", 38, 38),
+    (7, "Less common, useful patterns", 39, 44),
+    (8, "Read advanced Japanese", 45, 51),
+    (9, "Reference: rare and literary grammar", 52, 55),
+]
+
+UNIT_LABELS = {
+    1: "Make your first 'X is Y' sentences",
+    2: "Say who, what, where, and when",
+    3: "Make verbs polite, negative, and past",
+    4: "Connect actions with て",
+    5: "Give, receive, and ask for help",
+    6: "Want, invite, and express uncertainty",
+    7: "If and when: four patterns",
+    8: "Join ideas: reason, contrast, and time",
+    9: "Turn actions into things and compare",
+    10: "Describe people, things, and change",
+    11: "Everyday reference and detail",
+    12: "Describe and refer to things in more ways",
+    13: "Everyday actions, states, and change",
+    14: "Requests, advice, and obligation",
+    15: "Casual requests and interaction",
+    16: "Ability, plans, and polite interaction",
+    17: "Everyday particles and quantity",
+    18: "Everyday emphasis and choices",
+    19: "Connect everyday conversations",
+    20: "Link everyday ideas",
+}
 
 # keigo bands: pedagogical order polite → respectful → humble (§2)
 KEIGO_BANDS = [
@@ -263,6 +299,105 @@ def load_catalog():
     return {r["slug"]: r for r in rows}, rows
 
 
+def load_spine(catalog, all_rows):
+    required = ["slug", "unit_index", "unit_label", "order"]
+    with open(SPINE_SRC, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        if reader.fieldnames != required:
+            sys.exit(f"ERROR [spine]: expected headers {required}, got {reader.fieldnames}")
+        raw = list(reader)
+
+    errors, seen, units = [], set(), {}
+    live = {r["slug"] for r in all_rows if not r["fold_into_parent"].strip()}
+    for row in raw:
+        slug = row["slug"].strip()
+        try:
+            unit_index = int(row["unit_index"])
+            order = int(row["order"])
+        except ValueError:
+            errors.append(f"invalid unit/order for {slug}")
+            continue
+        if slug in seen:
+            errors.append(f"duplicate slug {slug}")
+        seen.add(slug)
+        if slug not in catalog:
+            errors.append(f"unknown slug {slug}")
+        elif catalog[slug]["fold_into_parent"].strip():
+            errors.append(f"fold assigned {slug}")
+        units.setdefault(unit_index, []).append((order, row["unit_label"].strip(), slug))
+    if seen != live:
+        errors.append(f"assignment mismatch: expected {len(live)} live nodes, got {len(seen)}")
+    if set(units) != set(range(1, max(units, default=0) + 1)):
+        errors.append("unit indexes are not contiguous")
+    if max(units, default=0) != ARC_RANGES[-1][3]:
+        errors.append(f"arc table ends at {ARC_RANGES[-1][3]}, spine ends at {max(units, default=0)}")
+    for index, label, start, end in ARC_RANGES:
+        if set(range(start, end + 1)) - set(units):
+            errors.append(f"arc {index} does not resolve every unit in {start}..{end}")
+    for unit_index, entries in units.items():
+        labels = {label for _, label, _ in entries}
+        orders = sorted(order for order, _, _ in entries)
+        if len(labels) != 1 or not next(iter(labels), ""):
+            errors.append(f"unit {unit_index} has inconsistent labels")
+        if orders != list(range(1, len(entries) + 1)):
+            errors.append(f"unit {unit_index} has non-contiguous orders")
+    if errors:
+        sys.exit("ERROR [spine]: " + "; ".join(errors))
+
+    node_meta, global_order = {}, 0
+    for arc_index, arc_label, start, end in ARC_RANGES:
+        for unit_index in range(start, end + 1):
+            for order, unit_label, slug in sorted(units[unit_index]):
+                global_order += 1
+                node_meta[slug] = {
+                    "arc_index": arc_index,
+                    "arc_label": arc_label,
+                    "unit_index": unit_index,
+                    "unit_label": UNIT_LABELS.get(unit_index, unit_label),
+                    "order": order,
+                    "global_order": global_order,
+                }
+
+    for index, (_, slugs) in enumerate(FOUNDATION_STAGES, start=1):
+        orders = [node_meta[slug]["order"] for slug in slugs]
+        if any(node_meta[slug]["unit_index"] != index for slug in slugs) or orders != sorted(orders):
+            sys.exit(f"ERROR [spine]: Foundation stage {index} was reordered")
+
+    arcs = []
+    for arc_index, arc_label, start, end in ARC_RANGES:
+        arc_units = []
+        for unit_index in range(start, end + 1):
+            entries = sorted(units[unit_index])
+            nodes = []
+            for _, unit_label, slug in entries:
+                node = slim(catalog[slug])
+                if slug in ANCHOR_SLUGS:
+                    node["kind"] = "anchor"
+                node["spine"] = node_meta[slug]
+                nodes.append(node)
+            arc_units.append({
+                "index": unit_index,
+                "label": UNIT_LABELS.get(unit_index, entries[0][1]),
+                "node_count": len(nodes),
+                "nodes": nodes,
+            })
+        arcs.append({
+            "index": arc_index,
+            "label": arc_label,
+            "unit_start": start,
+            "unit_end": end,
+            "node_count": sum(unit["node_count"] for unit in arc_units),
+            "units": arc_units,
+        })
+
+    return {
+        "arc_count": len(arcs),
+        "unit_count": len(units),
+        "node_count": global_order,
+        "arcs": arcs,
+    }
+
+
 def slim(rec):
     """Project a catalog row down to the fields the tree needs."""
     keep = ("slug", "canonical", "reading", "meaning", "senses", "register",
@@ -320,6 +455,7 @@ def compute_tiers(slice_nodes):
 
 def main():
     catalog, all_rows = load_catalog()
+    spine = load_spine(catalog, all_rows)
     # Form anchors are now real catalog rows (Build step 1); resolve from the
     # catalog and tag kind="anchor" so they keep their tier-0 "form" grouping.
     missing_anchors = [s for s in ANCHOR_SLUGS if s not in catalog]
@@ -451,6 +587,7 @@ def main():
             "filter_members": filter_members,
         },
         "goals": goals,
+        "spine": spine,
         "validation": {
             "foundations_count": len(foundations),
             "branch_route_count": len(branch_route),
@@ -492,6 +629,8 @@ def main():
     print(f"  Foundations line       : {v['foundations_count']} nodes")
     print(f"  Read-novels route      : {v['branch_route_count']} nodes "
           f"(of {len(filter_members)} in the literary filter)")
+    print(f"  Full spine             : {spine['node_count']} nodes in "
+          f"{spine['unit_count']} units / {spine['arc_count']} arcs")
     print(f"  max prereq tier        : {v['max_prereq_tier']}  (<- collapses; stage drives layout)")
     print()
     print("Goal paths (ON-RAILS.md):")

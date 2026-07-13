@@ -1,0 +1,26 @@
+---
+// Sticky dark marketing nav.
+import JLogo from "./JLogo.astro";
+interface Link { label: string; href: string }
+interface Props {
+  wordmark: string;
+  links: Link[];
+  cta: Link;
+  homeHref?: string;
+}
+const { wordmark, links, cta, homeHref = '/' } = Astro.props;
+---
+<nav class="mk-nav" aria-label="Main navigation">
+  <div class="mk-nav-inner">
+    <a href={homeHref} class="mk-nav-logo" aria-label={`${wordmark} home`}>
+      <JLogo size={26} />
+      <span class="mk-wordmark">{wordmark}</span>
+    </a>
+    <ul class="mk-nav-links">
+      {links.map((l) => (
+        <li><a href={l.href}>{l.label}</a></li>
+      ))}
+    </ul>
+    <a href={cta.href} class="mk-nav-cta">{cta.label}</a>
+  </div>
+</nav>

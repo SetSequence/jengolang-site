@@ -7,7 +7,7 @@ keigo: "none"
 freq: "essential"
 jlpt: "N5"
 family: "other"
-prereqs: ["ga-arimasu"]
+prereqs: ["aru"]
 confidence: "high"
 sources:
   volumes: "ext"

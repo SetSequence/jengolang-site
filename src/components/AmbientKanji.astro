@@ -1,0 +1,12 @@
+---
+// Decorative pulsing kanji layer behind dark heroes.
+// chars: { c, x, y, s, op, dur, del }[]
+interface Char { c: string; x: string; y: string; s: string; op: number; dur: string; del: string }
+interface Props { chars: Char[] }
+const { chars } = Astro.props;
+---
+<div class="mk-ambient" aria-hidden="true">
+  {chars.map((k) => (
+    <span style={`--x:${k.x};--y:${k.y};--s:${k.s};--op:${k.op};--dur:${k.dur};--del:${k.del}`}>{k.c}</span>
+  ))}
+</div>

@@ -1,6 +1,16 @@
 ---
 export const prerender = true;
 
+import '../styles/marketing.css';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import AmbientKanji from '../components/AmbientKanji.astro';
+import PhoneFrame from '../components/PhoneFrame.astro';
+import JlptBadges from '../components/JlptBadges.astro';
+import JLogo from '../components/JLogo.astro';
+import { webApp, grammar, privacy } from '../data/links';
+
 const title = "Jengolang — Everything for Japanese, in one place";
 const description =
   "A Japanese grammar map, word lists, and dictionary — plus Jengo, the app that puts the whole toolkit in your pocket. iOS and web.";
@@ -13,6 +23,26 @@ const jsonLd = {
   description,
   inLanguage: "en",
 };
+
+const heroChars = [
+  { c: "言", x: "5%",  y: "12%", s: "2rem",   op: 0.13, dur: "7.2s", del: "0s" },
+  { c: "語", x: "91%", y: "15%", s: "2.3rem", op: 0.12, dur: "8.5s", del: "1.3s" },
+  { c: "読", x: "3%",  y: "55%", s: "1.7rem", op: 0.1,  dur: "6.8s", del: "2.7s" },
+  { c: "書", x: "88%", y: "52%", s: "2rem",   op: 0.13, dur: "9.1s", del: "0.6s" },
+  { c: "文", x: "38%", y: "6%",  s: "1.7rem", op: 0.08, dur: "7.6s", del: "3.8s" },
+  { c: "字", x: "68%", y: "9%",  s: "1.9rem", op: 0.11, dur: "8.2s", del: "1.9s" },
+  { c: "話", x: "9%",  y: "82%", s: "1.8rem", op: 0.1,  dur: "6.4s", del: "4.5s" },
+  { c: "聞", x: "85%", y: "84%", s: "1.7rem", op: 0.12, dur: "7.3s", del: "2.2s" },
+];
+
+// TODO(owner): grammarRows is illustrative sample data. If you want the top rows
+// pulled live from src/data/grammar_slice.json / the spine, wire that in here.
+const grammarRows = [
+  { rank: "#1", jp: "は",     gloss: "marks the topic of a sentence" },
+  { rank: "#2", jp: "の",     gloss: "connects and possesses" },
+  { rank: "#3", jp: "て-form", gloss: "links actions together" },
+  { rank: "#4", jp: "ない",   gloss: "makes a verb negative" },
+];
 ---
 
 <html lang="en">
@@ -27,233 +57,237 @@ const jsonLd = {
   <title>{title}</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <style is:global>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --brand:       oklch(47% 0.089 156);
-      --brand-dark:  oklch(25% 0.062 156);
-      --brand-tint:  oklch(96% 0.016 156);
-      --accent:      oklch(74% 0.11 145);
-      --on-dark:     oklch(99% 0.002 156);
-      --on-dim:      oklch(99% 0.002 156 / 0.6);
-      --on-faint:    oklch(99% 0.002 156 / 0.4);
-      --hairline:    oklch(99% 0.002 156 / 0.12);
-      --text-dark:   oklch(22% 0.010 156);
-      --text-mid:    oklch(50% 0.012 156);
-    }
-    html { font-optical-sizing: auto; scroll-behavior: smooth; }
-    body {
-      font-family: 'Onest', system-ui, sans-serif;
-      line-height: 1.6;
-      color: var(--on-dark);
-      background: var(--brand-dark);
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-    @keyframes charPulse { 0%,100% { opacity: 0; } 25%,75% { opacity: var(--op); } }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Onest:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    .hub { position: relative; max-width: 1120px; margin: 0 auto; padding: 0 clamp(1.25rem, 4vw, 2.5rem); overflow: hidden; }
+    /* ─── Hero + hub grid ─────────────────────────── */
+    .hub-hero { background: var(--brand-dark); padding: 4.5rem 1.5rem 4rem; position: relative; overflow: hidden; }
+    .hub-hero-inner { max-width: 1120px; margin: 0 auto; position: relative; z-index: 1; }
+    .hub-kicker { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.14em; color: var(--accent-green); margin: 0 0 1rem; }
+    .hub-h1 { font-family: var(--font-serif); font-size: clamp(2.4rem, 1.7rem + 3.2vw, 4rem); font-weight: 500; letter-spacing: -0.015em; line-height: 1.05; color: var(--on-dark); margin: 0; max-width: 18ch; }
 
-    /* ambient kanji */
-    .ambient { position: absolute; inset: 0; pointer-events: none; z-index: 0;
-      font-family: 'Noto Sans JP', sans-serif; font-weight: 500; color: #fff; }
-    .ambient span { position: absolute; opacity: 0; animation: charPulse var(--d) var(--delay) infinite; }
+    .hub-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; margin-top: 2.75rem; }
+    .hub-card { display: flex; flex-direction: column; gap: 0.7rem; background: oklch(99% 0.002 156 / 0.07); border: 1px solid oklch(99.5% 0.002 156 / 0.16); border-radius: 14px; padding: 1.4rem; }
+    .hub-card-top { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+    .hub-card-title { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 500; color: var(--on-dark); }
+    .hub-card-body { font-size: 0.9rem; color: oklch(99.5% 0.002 156 / 0.65); line-height: 1.55; margin: 0; }
+    .hub-card-links { display: flex; align-items: center; gap: 1rem; margin-top: auto; padding-top: 0.75rem; }
+    .hub-card-open { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.05em; font-weight: 500; border-radius: 7px; padding: 8px 13px; background: var(--on-dark); color: var(--brand-dark); transition: background 140ms; }
+    .hub-card-open:hover { background: oklch(93% 0.01 150); color: var(--brand-dark); }
+    .hub-card-more { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; color: var(--accent-green); white-space: nowrap; }
+    .hub-card-more:hover { color: var(--accent-green); }
 
-    nav, .hero, .tools, .foot { position: relative; z-index: 2; }
+    .hub-jengo { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem 2rem; align-items: center; background: var(--jengo-card); border-radius: 14px; padding: 1.5rem 1.75rem; margin-top: 1rem; box-shadow: 0 20px 48px -18px oklch(0% 0 0 / 0.4); }
+    .hub-jengo-head { display: flex; align-items: center; gap: 0.75rem; }
+    .hub-jengo-head svg { border-radius: 6px; flex-shrink: 0; }
+    .hub-jengo-name { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 500; color: var(--text); }
+    .hub-jengo-pill { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.07em; border-radius: 5px; padding: 4px 9px; background: var(--jengo-pill); color: var(--on-dark); font-weight: 500; }
+    .hub-jengo-body { font-size: 0.9rem; color: oklch(35% 0.06 60); line-height: 1.55; margin: 0.5rem 0 0; max-width: 52ch; }
+    .hub-jengo-actions { display: flex; align-items: center; gap: 1.25rem; justify-self: end; }
+    .hub-jengo-cta { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.05em; font-weight: 500; border-radius: 7px; padding: 9px 15px; background: var(--jengo-pill); color: var(--on-dark); transition: background 140ms; }
+    .hub-jengo-cta:hover { background: oklch(46% 0.13 55); color: var(--on-dark); }
+    .hub-jengo-more { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.04em; color: oklch(42% 0.1 55); white-space: nowrap; }
+    .hub-jengo-more:hover { color: oklch(42% 0.1 55); }
+    @media (max-width: 620px) { .hub-jengo-actions { justify-self: start; } }
 
-    /* nav */
-    nav { height: 64px; display: flex; align-items: center; justify-content: space-between; }
-    .brand { display: flex; align-items: center; gap: 10px; }
-    .brand span { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
-    .logo { width: 28px; height: 28px; border-radius: 6px; }
-    .nav-links { display: flex; align-items: center; gap: 1.4rem; font-size: .84rem; font-weight: 500; }
-    .nav-links a.link { color: var(--on-dim); transition: color .15s; }
-    .nav-links a.link:hover { color: var(--on-dark); }
-    .nav-links a.cta { color: var(--on-dark); border: 1.5px solid oklch(99% 0.002 156 / 0.25);
-      border-radius: 8px; padding: 7px 15px; transition: background .15s; }
-    .nav-links a.cta:hover { background: oklch(99% 0.002 156 / 0.1); }
+    /* ─── §01 Grammar sample card ─────────────────── */
+    .gram-card { background: var(--surface); border: 1px solid var(--hairline); border-radius: 12px; padding: 0.5rem 1.5rem; box-shadow: 0 20px 44px -20px oklch(24% 0.05 150 / 0.2); max-width: 480px; justify-self: center; width: 100%; }
+    .gram-row { display: flex; align-items: baseline; gap: 1.1rem; padding: 0.9rem 0; border-bottom: 1px solid oklch(93% 0.008 110); }
+    .gram-rank { font-family: var(--font-mono); font-size: 0.72rem; color: var(--amber); width: 2.4rem; flex-shrink: 0; }
+    .gram-jp { font-family: var(--font-jp); font-size: 1.05rem; font-weight: 500; color: var(--text); flex-shrink: 0; }
+    .gram-gloss { font-size: 0.875rem; color: var(--text-2); }
+    .gram-more { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em; color: var(--text-3); padding: 0.9rem 0; margin: 0; }
 
-    /* hero */
-    .hero { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 2.5rem; align-items: center;
-      padding: clamp(2.5rem, 6vw, 3.5rem) 0 clamp(2rem, 5vw, 2.75rem); }
-    .kicker { font-family: 'JetBrains Mono', monospace; font-size: .75rem; letter-spacing: 0.14em;
-      color: var(--accent); font-weight: 500; }
-    .hero h1 { font-size: clamp(2.1rem, 5.2vw, 3rem); font-weight: 800; letter-spacing: -0.03em;
-      line-height: 1.05; margin-top: 1rem; max-width: 16ch; }
-    .hero h1 em { font-style: normal; color: var(--accent); }
-    .hero p { font-size: clamp(1rem, 2.4vw, 1.05rem); line-height: 1.6; color: oklch(80% 0.014 156);
-      margin-top: 1.1rem; max-width: 42ch; }
-    .cta-row { display: flex; align-items: center; gap: 0.9rem; margin-top: 1.75rem; flex-wrap: wrap; }
-    .cta-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--brand);
-      color: #fff; font-size: .95rem; font-weight: 600; border-radius: 9px; padding: 12px 22px; transition: background .15s; }
-    .cta-primary:hover { background: oklch(53% 0.1 156); }
-    .cta-note { font-size: .82rem; font-weight: 500; color: var(--on-dim); }
+    /* ─── Shared copy-block helpers ───────────────── */
+    .pill-row { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .dev-wrap { position: relative; }
+    .jengo-media { display: flex; align-items: flex-end; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+    .hub-getjengo { display: inline-flex; align-items: center; gap: 8px; border-radius: 8px; padding: 13px 21px; background: var(--on-dark); font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: 0.05em; font-weight: 500; color: var(--brand-dark); transition: background 140ms; }
+    .hub-getjengo:hover { background: oklch(93% 0.01 150); color: var(--brand-dark); }
+    .dark-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; margin-top: 0.75rem; }
 
-    /* phone */
-    .phone-wrap { display: flex; justify-content: center; }
-    .phone { width: 258px; max-width: 100%; background: oklch(16% 0.005 270); border-radius: 36px;
-      padding: 9px; box-shadow: 0 28px 64px oklch(0% 0 0 / 0.45); }
-    .phone-screen { background: oklch(98.5% 0.005 156); border-radius: 28px; overflow: hidden; color: var(--text-dark); }
-    .phone-top { background: var(--brand-dark); padding: 18px 18px 15px; display: flex; align-items: center; gap: 8px; }
-    .phone-top span { font-size: .95rem; font-weight: 700; color: #fff; }
-    .phone-body { padding: 16px 15px 20px; }
-    .phone-label { font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
-      color: oklch(60% 0.01 156); margin-bottom: 11px; }
-    .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-    .tile { display: flex; flex-direction: column; gap: 9px; padding: 15px 14px; border-radius: 14px;
-      background: var(--brand-tint); color: oklch(32% 0.012 156);
-      transition: background .3s cubic-bezier(.16,1,.3,1), color .3s, box-shadow .3s; }
-    .tile span { font-size: .8rem; font-weight: 600; }
-    .tile.active { background: var(--brand); color: #fff; box-shadow: 0 8px 20px oklch(47% 0.089 156 / 0.28); }
-
-    /* tools */
-    .tools { padding: 0.5rem 0 2rem; }
-    .tools-kicker { font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em;
-      color: var(--on-faint); }
-    .tools-grid { margin-top: 0.9rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem; }
-    .tool { display: flex; flex-direction: column; gap: 0.6rem; min-height: 148px;
-      background: oklch(99% 0.002 156 / 0.06); border: 1px solid var(--hairline); border-radius: 14px; padding: 1.25rem;
-      transition: background .2s, transform .2s cubic-bezier(.16,1,.3,1); }
-    a.tool:hover { background: oklch(99% 0.002 156 / 0.12); transform: translateY(-3px); }
-    .tool-top { display: flex; align-items: center; justify-content: space-between; }
-    .tool-top .icon { color: #fff; }
-    .tag { font-size: .62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-      color: var(--on-dim); border: 1px solid var(--hairline); border-radius: 5px; padding: 3px 7px; }
-    .tool h2 { font-size: 1rem; font-weight: 700; margin-top: 0.15rem; }
-    .tool p { font-size: .8rem; color: var(--on-dim); line-height: 1.5; }
-    .tool .go { font-size: .8rem; font-weight: 600; color: var(--accent); margin-top: auto; }
-
-    /* footer */
-    .foot { border-top: 1px solid var(--hairline); padding: 20px 0; display: flex; align-items: center;
-      justify-content: space-between; flex-wrap: wrap; gap: 12px; }
-    .foot .copy { font-size: .82rem; color: var(--on-faint); }
-    .foot-links { display: flex; gap: 1.25rem; font-size: .82rem; color: var(--on-dim); }
-    .foot-links a:hover { color: #fff; }
-
-    @media (max-width: 860px) {
-      .hero { grid-template-columns: 1fr; gap: 2.25rem; }
-      .phone-wrap { order: -1; }
-      .tools-grid { grid-template-columns: 1fr; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .ambient span { animation: none; opacity: 0 !important; }
-      html { scroll-behavior: auto; }
-    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-  <div class="hub">
-    <div class="ambient" aria-hidden="true">
-      <span style="left:5%;top:12%;font-size:34px;--op:.09;--d:7.2s;--delay:0s">言</span>
-      <span style="left:90%;top:16%;font-size:40px;--op:.08;--d:8.5s;--delay:1.3s">語</span>
-      <span style="left:12%;top:64%;font-size:30px;--op:.07;--d:6.8s;--delay:2.7s">読</span>
-      <span style="left:84%;top:70%;font-size:36px;--op:.08;--d:9.1s;--delay:.6s">書</span>
-      <span style="left:3%;top:40%;font-size:28px;--op:.06;--d:7.6s;--delay:3.8s">文</span>
-      <span style="left:94%;top:44%;font-size:32px;--op:.07;--d:8.2s;--delay:1.9s">字</span>
-      <span style="left:22%;top:8%;font-size:26px;--op:.06;--d:6.4s;--delay:4.5s">話</span>
-      <span style="left:74%;top:90%;font-size:30px;--op:.07;--d:7.3s;--delay:2.2s">聞</span>
+  <SiteNav
+    wordmark="Jengolang"
+    homeHref="/"
+    links={[
+      { label: "GRAMMAR", href: "#grammar" },
+      { label: "DICTIONARY", href: "#dictionary" },
+      { label: "WORD LISTS", href: "#wordlists" },
+      { label: "JENGO", href: "#jengo" },
+    ]}
+    cta={{ label: "OPEN JENGO", href: "/jengo" }}
+  />
+
+  <!-- Hero + hub grid -->
+  <section class="hub-hero" aria-labelledby="hub-heading">
+    <AmbientKanji chars={heroChars} />
+    <div class="hub-hero-inner">
+      <p class="hub-kicker">日本語 · JAPANESE</p>
+      <h1 class="hub-h1" id="hub-heading">A Japanese learning hub</h1>
+
+      <div class="hub-cards">
+        <div class="hub-card">
+          <div class="hub-card-top">
+            <span class="hub-card-title">Grammar</span>
+            <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5" cy="5.5" r="2.2"/><circle cx="19" cy="5.5" r="2.2"/><circle cx="12" cy="18.5" r="2.2"/><path d="M7.2 5.5h9.6M6 7.5l4.8 9M18 7.5l-4.8 9"/></svg></span>
+          </div>
+          <p class="hub-card-body">1,458 grammar points, ranked by usefulness.</p>
+          <div class="hub-card-links">
+            <a href={grammar} class="hub-card-open">OPEN →</a>
+            <a href="#grammar" class="hub-card-more">MORE BELOW ↓</a>
+          </div>
+        </div>
+
+        <div class="hub-card">
+          <div class="hub-card-top">
+            <span class="hub-card-title">Dictionary</span>
+            <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9.5 12.5 12 6.5l2.5 6M10.3 10.7h3.4"/></svg></span>
+          </div>
+          <p class="hub-card-body">Search by kanji, kana, romaji, English, or drawing.</p>
+          <div class="hub-card-links">
+            <a href={webApp} class="hub-card-open">OPEN →</a>
+            <a href="#dictionary" class="hub-card-more">MORE BELOW ↓</a>
+          </div>
+        </div>
+
+        <div class="hub-card">
+          <div class="hub-card-top">
+            <span class="hub-card-title">Word lists</span>
+            <span><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6h12M9 12h12M9 18h12"/><path d="M3.5 6h.01M3.5 12h.01M3.5 18h.01" stroke-width="2.6"/></svg></span>
+          </div>
+          <p class="hub-card-body">JLPT N5–N1 word sets and more.</p>
+          <div class="hub-card-links">
+            <a href={webApp} class="hub-card-open">OPEN →</a>
+            <a href="#wordlists" class="hub-card-more">MORE BELOW ↓</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jengo: the tying card -->
+      <div class="hub-jengo">
+        <div>
+          <div class="hub-jengo-head">
+            <JLogo size={26} />
+            <span class="hub-jengo-name">Jengo</span>
+            <span class="hub-jengo-pill">THE APP</span>
+          </div>
+          <p class="hub-jengo-body">Jengo puts the dictionary, the word lists, and spaced-repetition flashcards in one loop — on iPhone and in any browser.</p>
+        </div>
+        <div class="hub-jengo-actions">
+          <a href="/jengo" class="hub-jengo-cta">SEE JENGO →</a>
+          <a href="#jengo" class="hub-jengo-more">MORE BELOW ↓</a>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <nav>
-      <a class="brand" href="/">
-        <svg class="logo" viewBox="0 0 512 512"><rect width="512" height="512" fill="oklch(47% 0.089 156)"/><text x="256" y="366" font-family="Georgia, serif" font-size="330" font-weight="bold" fill="#fff" text-anchor="middle">J</text></svg>
-        <span>Jengolang</span>
-      </a>
-      <div class="nav-links">
-        <a class="link" href="/learn/japanese/grammar">Grammar</a>
-        <a class="cta" href="/jengo">Open Jengo</a>
-      </div>
-    </nav>
-
-    <header class="hero">
-      <div class="pitch">
-        <div class="kicker">日本語 · JAPANESE</div>
-        <h1>Everything for Japanese, <em>in one place.</em></h1>
-        <p>A dictionary, word lists, and a grammar map — plus Jengo, the app that puts the whole toolkit in your pocket.</p>
-        <div class="cta-row">
-          <a class="cta-primary" href="/jengo">Open Jengo <span aria-hidden="true">→</span></a>
-          <span class="cta-note">iOS · Web · free to start</span>
+  <!-- §01 Grammar -->
+  <section id="grammar" class="mk-sec mk-sec--light">
+    <div class="mk-wrap">
+      <SectionHeader num="§01" title="Grammar dictionary + learning path" jp="文法" />
+      <div class="mk-split">
+        <div class="mk-copy">
+          <p class="mk-lede">The map covers 1,458 grammar points and ranks them by how useful each one is in real Japanese, not by textbook order. It is free and needs no account.</p>
+          <a href={grammar} class="mk-link" style="align-self:flex-start;">BROWSE THE GRAMMAR MAP →</a>
+        </div>
+        <div class="gram-card">
+          {grammarRows.map((g) => (
+            <div class="gram-row">
+              <span class="gram-rank">{g.rank}</span>
+              <span class="gram-jp">{g.jp}</span>
+              <span class="gram-gloss">{g.gloss}</span>
+            </div>
+          ))}
+          <p class="gram-more">… 1,454 more, ranked by usefulness</p>
         </div>
       </div>
+    </div>
+  </section>
 
-      <div class="phone-wrap">
-        <div class="phone">
-          <div class="phone-screen">
-            <div class="phone-top">
-              <svg class="logo" style="width:22px;height:22px" viewBox="0 0 512 512"><rect width="512" height="512" fill="oklch(47% 0.089 156)"/><text x="256" y="366" font-family="Georgia, serif" font-size="330" font-weight="bold" fill="#fff" text-anchor="middle">J</text></svg>
-              <span>Jengo</span>
-            </div>
-            <div class="phone-body">
-              <div class="phone-label">Your toolkit</div>
-              <div class="tiles">
-                <div class="tile active" data-tile="0"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span>Dictionary</span></div>
-                <div class="tile" data-tile="1"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="14" height="13" rx="2"/><path d="M7 8V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-3"/></svg><span>Flashcards</span></div>
-                <div class="tile" data-tile="2"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4H11v15.5H3.5A1.5 1.5 0 0 1 2 18z"/><path d="M22 5.5A1.5 1.5 0 0 0 20.5 4H13v15.5h7.5A1.5 1.5 0 0 0 22 18z"/></svg><span>Grammar</span></div>
-                <div class="tile" data-tile="3"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 8L9 4l-3 8H2"/></svg><span>Train</span></div>
-              </div>
+  <!-- §02 Dictionary -->
+  <section id="dictionary" class="mk-sec mk-sec--alt">
+    <div class="mk-wrap">
+      <SectionHeader num="§02" title="A clean, tool-packed dictionary" jp="辞書" />
+      <div class="mk-split">
+        <div class="mk-copy">
+          <p class="mk-lede">You can search by kanji, kana, romaji, or English — or draw a kanji you can't type. Every entry carries readings, audio, pitch accent, and examples. The standalone web dictionary is publishing soon; the full version lives in Jengo today.</p>
+          <div class="pill-row">
+            <span class="mk-pill">PUBLISHING SOON</span>
+            <a href="#jengo" class="mk-link">USE IT IN JENGO NOW →</a>
+          </div>
+        </div>
+        <div class="mk-media">
+          <div class="dev-wrap">
+            <PhoneFrame src="/app-dict-search.png" alt="Dictionary search in Jengo" width={206} rotate={1.5} />
+            <div class="mk-annot" style="left:50%;bottom:-2.1rem;transform:translateX(-50%);" aria-hidden="true">
+              <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="var(--amber)" stroke-width="1.4"><path d="M11 13 L11 4 M11 4 L6 9 M11 4 L16 9"/></svg>
+              the dictionary in Jengo today
             </div>
           </div>
         </div>
       </div>
-    </header>
+    </div>
+  </section>
 
-    <section class="tools">
-      <span class="tools-kicker">The rest of Jengolang</span>
-      <div class="tools-grid">
-        <a class="tool" href="/learn/japanese/grammar">
-          <div class="tool-top">
-            <span class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5.5A1.5 1.5 0 0 1 3.5 4H11v15.5H3.5A1.5 1.5 0 0 1 2 18z"/><path d="M22 5.5A1.5 1.5 0 0 0 20.5 4H13v15.5h7.5A1.5 1.5 0 0 0 22 18z"/></svg></span>
+  <!-- §03 Word lists -->
+  <section id="wordlists" class="mk-sec mk-sec--light" style="border-top:1px solid var(--hairline);">
+    <div class="mk-wrap">
+      <SectionHeader num="§03" title="Word lists, level by level" jp="単語帳" />
+      <div class="mk-split">
+        <div class="mk-copy">
+          <p class="mk-lede">JLPT N5 through N1, deduplicated — 700 to 2,900 words per level. The browsable lists are publishing soon on this site, and each one imports into Jengo as a ready-made deck.</p>
+          <JlptBadges />
+          <div class="pill-row">
+            <span class="mk-pill">PUBLISHING SOON</span>
+            <a href="#jengo" class="mk-link">STUDY THEM IN JENGO NOW →</a>
           </div>
-          <h2>Grammar</h2>
-          <p>1,458 grammar points, ranked by usefulness — not by textbook.</p>
-          <span class="go">Browse →</span>
-        </a>
-
-        <a class="tool" href="/jengo">
-          <div class="tool-top">
-            <span class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span>
-            <span class="tag">In app only</span>
-          </div>
-          <h2>Dictionary</h2>
-          <p>Kanji, kana, drawing, romaji — four ways in to every word.</p>
-          <span class="go">See it in Jengo →</span>
-        </a>
-
-        <a class="tool" href="/jengo">
-          <div class="tool-top">
-            <span class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="14" height="13" rx="2"/><path d="M7 8V5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-3"/></svg></span>
-            <span class="tag">In app only</span>
-          </div>
-          <h2>Word lists</h2>
-          <p>JLPT N5–N1 decks, deduplicated and ready to review.</p>
-          <span class="go">See it in Jengo →</span>
-        </a>
+        </div>
+        <div class="mk-media">
+          <PhoneFrame src="/app-decks.png" alt="JLPT decks in Jengo" width={206} rotate={-1.5} />
+        </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <footer class="foot">
-      <span class="copy">© 2026 Jengolang · Japanese</span>
-      <div class="foot-links">
-        <a href="/jengo">Jengo app</a>
-        <a href="/learn/japanese/grammar">Grammar</a>
-        <a href="https://app.jengolang.com/privacy">Privacy</a>
+  <!-- §04 Jengo -->
+  <section id="jengo" class="mk-sec mk-sec--dark">
+    <div class="mk-wrap">
+      <SectionHeader num="§04" title="Jengo ties it together" jp="アプリ" tone="dark" />
+      <div class="mk-split">
+        <div class="mk-copy">
+          <p class="mk-lede">The dictionary, the word lists, and spaced-repetition flashcards live in one app. You look a word up, add it in a tap, and review it right before you'd forget it — offline on iPhone, synced to any browser.</p>
+          <div class="dark-actions">
+            <a href="/jengo" class="hub-getjengo">GET JENGO →</a>
+            <a href={webApp} class="mk-link mk-link--green">OPEN IN BROWSER →</a>
+          </div>
+        </div>
+        <div class="jengo-media">
+          <div class="dev-wrap">
+            <PhoneFrame src="/app-dict-entry.png" alt="A dictionary entry in Jengo" width={196} rotate={-1.5} />
+            <div class="mk-annot mk-annot--dark" style="left:50%;bottom:-2.1rem;transform:translateX(-50%);" aria-hidden="true">
+              <svg width="22" height="14" viewBox="0 0 22 14" fill="none" stroke="var(--amber-2)" stroke-width="1.4"><path d="M11 13 L11 4 M11 4 L6 9 M11 4 L16 9"/></svg>
+              synced between iPhone and browser
+            </div>
+          </div>
+          <PhoneFrame src="/app-flashcard-front.png" alt="A flashcard in Jengo" width={196} rotate={1.5} />
+        </div>
       </div>
-    </footer>
-  </div>
+    </div>
+  </section>
 
-  <script>
-    const tiles = Array.from(document.querySelectorAll('.tile'));
-    let mode = 0;
-    let timer = setInterval(step, 2400);
-    function light(i) {
-      mode = i;
-      tiles.forEach((t, idx) => t.classList.toggle('active', idx === i));
-    }
-    function step() { light((mode + 1) % tiles.length); }
-    tiles.forEach((t, i) => t.addEventListener('click', () => { clearInterval(timer); light(i); }));
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) clearInterval(timer);
-  </script>
+  <SiteFooter
+    wordmark="Jengolang"
+    homeHref="/"
+    links={[
+      { label: "GRAMMAR", href: "#grammar" },
+      { label: "DICTIONARY", href: "#dictionary" },
+      { label: "WORD LISTS", href: "#wordlists" },
+      { label: "JENGO APP", href: "#jengo" },
+      { label: "PRIVACY", href: privacy },
+    ]}
+  />
 </body>
 </html>

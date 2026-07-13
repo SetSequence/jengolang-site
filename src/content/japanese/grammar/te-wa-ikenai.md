@@ -7,7 +7,7 @@ keigo: "none"
 freq: "essential"
 jlpt: "N5"
 family: "modality"
-prereqs: ["te-wa"]
+prereqs: ["te-form", "wa-2"]
 confidence: "high"
 sources:
   volumes: "A|B|I"

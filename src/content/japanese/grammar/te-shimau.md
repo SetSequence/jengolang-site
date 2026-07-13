@@ -7,7 +7,7 @@ keigo: "none"
 freq: "essential"
 jlpt: "N4"
 family: "aspect"
-prereqs: ["te-form", "shimau"]
+prereqs: ["te-form"]
 confidence: "high"
 sources:
   volumes: "B"

@@ -1,5 +1,11 @@
 # PROPOSED-NEW-MARKETING.md
 
+> **SUPERSEDED for content (2026-07-11).** The finalized, build-ready content spec now
+> lives in **`JENGO-PROMO-CONTENT.md`** — that is the single source of truth for copy,
+> features, screenshots, and structure (with the pricing/social-proof/reading facts
+> locked). This file is kept as the original brief/rationale. When they disagree,
+> `JENGO-PROMO-CONTENT.md` wins.
+
 **Status:** Proposal / handoff brief. **Nothing here is implemented.** This is the
 starting point for a Claude-design redesign of the Jengo promo page. Source copy is
 pulled from `JengoApp/docs/Appstore-docs.md` (the live App Store listing, already in

@@ -1,0 +1,17 @@
+---
+// §NN section header: mono number · serif title · JP word over a hairline rule.
+interface Props {
+  num: string;
+  title: string;
+  jp: string;
+  tone?: 'light' | 'dark';
+  id?: string;
+  mb?: string;
+}
+const { num, title, jp, tone = 'light', id, mb } = Astro.props;
+---
+<div class={`mk-sechead${tone === 'dark' ? ' mk-sechead--dark' : ''}`} style={mb ? `margin-bottom:${mb}` : undefined}>
+  <span class="mk-sechead-num">{num}</span>
+  <h2 class="mk-sechead-title" id={id}>{title}</h2>
+  <span class="mk-sechead-jp">{jp}</span>
+</div>

@@ -1,5 +1,5 @@
 ---
-title: "て形 — The Connective Form"
+title: "て形 — Make the て-Form"
 canonical: "て形"
 reading: "てけい"
 register: ["casual-spoken", "polite-spoken", "written-modern"]
@@ -12,8 +12,8 @@ related: ["ta-form", "masu-stem", "te-iru", "te-kara", "te-mo-ii", "te-kudasai"]
 confidence: "high"
 noindex: false
 equivalents:
-  - "the linking / connective form — joins clauses (and then …, …-ing) and is the base every て-auxiliary attaches to"
-nuance: "て形 has no meaning of its own. It chains clauses together and is the slot that ている, てある, てください, てしまう and the rest plug into — so learning it once unlocks a whole layer of grammar."
+  - "a verb shape — make this shape first; the next lesson shows how it joins clauses and supports expressions such as ている and てください"
+nuance: "Think of て形 as a shape, not a complete message. Learn how to build it here. The next lesson explains what you can say once you use that shape in a sentence."
 keySentence:
   jp: "朝{あさ}起{お}きて、顔{かお}を洗{あ}う。"
   en: "I get up in the morning and wash my face."
@@ -42,7 +42,7 @@ formation:
   - attaches_to: "na-adjective / noun"
     form: "+ で"
     example: "静{しず}か → 静{しず}かで"
-usageSetting: "Register-neutral on its own — the politeness of the sentence lives in its final verb."
+usageSetting: "This page is about making the shape. It does not set tense or politeness on its own; the final verb does that when you use the shape in a sentence."
 examples:
   - jp: "駅{えき}まで歩{ある}いて、電車{でんしゃ}に乗{の}った。"
     en: "I walked to the station and got on the train."

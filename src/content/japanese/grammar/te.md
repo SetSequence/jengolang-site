@@ -1,5 +1,5 @@
 ---
-title: "て — connecting clauses (and, -ing, so)"
+title: "て — Use the て-Form to Join Ideas"
 canonical: "て"
 reading: "て"
 register: ["casual-spoken", "polite-spoken", "written-modern"]
@@ -13,7 +13,7 @@ sources:
   volumes: "B"
 noindex: false
 equivalents:
-  - "…and then / …-ing / and so — joins a clause to the next, expressing sequence, cause, means, or manner"
+  - "…and then / …-ing / and so — now that you can make the て-form, use it to join one idea to the next"
 keySentence:
   jp: "朝{あさ}起{お}きて、コーヒーを飲{の}む。"
   en: "I get up in the morning and drink coffee."
@@ -21,7 +21,7 @@ formation:
   - attaches_to: "Verb / adjective"
     form: "put the word in its て-form, then continue (see て形 for the sound changes)"
     example: "食{た}べる → 食{た}べて、…"
-usageSetting: "て carries no tense or politeness of its own — the final clause sets both for the whole sentence."
+usageSetting: "You already learned how to make the て-form. Here, it carries no tense or politeness of its own; the final clause sets both for the whole sentence."
 examples:
   - jp: "駅{えき}まで歩{ある}いて、電車{でんしゃ}に乗{の}った。"
     en: "I walked to the station and got on the train."

@@ -44,5 +44,5 @@ contrasts:
     label: "ない"
     distinction: "じゃない negates nouns and na-adjectives (the copula). Plain verbs and i-adjectives take their own 〜ない / 〜くない instead: 行{い}かない, 高{たか}くない — never ×行{い}くじゃない."
 notes:
-  - text: "Said with rising intonation, 〜じゃない？ becomes a tag/confirmation: 便利{べんり}じゃない？ = \"It's convenient, isn't it?\""
+  - text: "For now, じゃない means only \"is not.\" Its sentence-ending confirmation use is a separate, later pattern."
 ---

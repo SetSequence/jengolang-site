@@ -7,7 +7,7 @@ keigo: "none"
 freq: "essential"
 jlpt: "N5"
 family: "connective"
-prereqs: ["mae"]
+prereqs: []
 confidence: "high"
 sources:
   volumes: "B"

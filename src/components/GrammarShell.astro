@@ -1,0 +1,41 @@
+---
+const { title, description, canonical, noindex = false } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>try{if(window.self!==window.top||new URLSearchParams(location.search).has("embed"))document.documentElement.dataset.grammarEmbed=""}catch{document.documentElement.dataset.grammarEmbed=""}</script>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style is:global>
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      :root{--brand:oklch(47% .089 156);--brand-dark:oklch(25% .062 156);--brand-tint:oklch(96% .016 156);--bg:oklch(98.5% .005 156);--surface:oklch(99.5% .002 156);--border:oklch(90% .008 156);--border-strong:oklch(82% .012 156);--text-primary:oklch(22% .01 156);--text-secondary:oklch(50% .012 156);--text-tertiary:oklch(68% .008 156);--white:oklch(99.5% .002 156);--learned:oklch(44% .11 145);--keigo:oklch(50% .12 330);--literary:oklch(52% .10 85)}
+      html{background:var(--bg);font-optical-sizing:auto;scroll-behavior:smooth}
+      body{min-height:100vh;background:var(--bg);color:var(--text-primary);font-family:"Onest",system-ui,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+      a{color:inherit}
+      button,input{font:inherit}
+      .site-nav{height:56px;background:var(--brand-dark)}
+      .site-nav-inner{height:100%;max-width:1080px;margin:auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+      .wordmark{color:var(--white);font-weight:700;text-decoration:none}
+      .try{color:var(--white);font-size:.8rem;font-weight:600;text-decoration:none;border:1px solid oklch(99.5% .002 156/.3);border-radius:7px;padding:6px 12px}
+      .grammar-wrap{width:min(100% - 32px,780px);margin:0 auto;padding:28px 0 80px}
+      html[data-grammar-embed] .site-nav{display:none}
+      html[data-grammar-embed] .grammar-wrap{padding-top:18px}
+      :focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+      @media(min-width:700px){.grammar-wrap{width:min(100% - 56px,780px);padding-top:40px}}
+      @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:.01ms!important}}
+    </style>
+    <slot name="head" />
+  </head>
+  <body>
+    <header class="site-nav"><div class="site-nav-inner"><a class="wordmark" href="/">Jengo</a><a class="try" href="/jengo">Try Jengo</a></div></header>
+    <slot />
+  </body>
+</html>
