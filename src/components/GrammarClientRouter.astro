@@ -1,0 +1,14 @@
+---
+import { ClientRouter } from "astro:transitions";
+---
+
+<ClientRouter fallback="swap" />
+<style is:global>
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation-duration: 100ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) { animation-duration: 1ms; }
+  }
+</style>

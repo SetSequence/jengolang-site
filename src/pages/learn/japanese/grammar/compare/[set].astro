@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import { COMPARE_SETS, COMPARE_BY_ID } from "../../../../../lib/compareSets";
 import { glossOf, jlptColor } from "../../../../../lib/grammar";
+import GrammarEmbedBridge from "../../../../../components/GrammarEmbedBridge.astro";
+import GrammarClientRouter from "../../../../../components/GrammarClientRouter.astro";
 
 export const prerender = true;
 
@@ -12,6 +14,7 @@ export function getStaticPaths() {
 const setId = Astro.params.set;
 const set = COMPARE_BY_ID.get(setId);
 if (!set) throw new Error(`Unknown compare set: ${setId}`);
+const hasKanji = (value = "") => /[\u3400-\u9fff々〆ヶ]/.test(value);
 
 // Furigana: 漢字{かんじ} markup → <ruby> (crawlable). Same renderer as [slug].astro.
 const esc = (s = "") =>
@@ -90,6 +93,7 @@ const breadcrumb = {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script is:inline>try{if(window.self!==window.top||new URLSearchParams(location.search).has("embed"))document.documentElement.dataset.grammarEmbed=""}catch{document.documentElement.dataset.grammarEmbed=""}</script>
   <meta name="description" content={set.description} />
   <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -99,9 +103,6 @@ const breadcrumb = {
   <meta property="og:title" content={set.title} />
   <meta property="og:description" content={set.description} />
   <meta property="og:url" content={canonical} />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
   <script type="application/ld+json" set:html={JSON.stringify([faq, breadcrumb])} />
   <style is:global>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -149,7 +150,7 @@ const breadcrumb = {
     .crumbs a:hover { color: var(--brand); }
     .crumbs span { margin: 0 .4rem; }
 
-    .head { border-left: 4px solid var(--indigo); padding-left: 1.1rem; }
+    .head { padding: 1rem 1.1rem; border: 1px solid var(--indigo-border); border-radius: 12px; background: var(--indigo-tint); }
     .head .kicker { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--indigo); }
     .head h1 { font-size: clamp(1.6rem, 4.5vw, 2.4rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.12; margin-top: .35rem; }
     .head .lede { margin-top: 1rem; max-width: 60ch; color: var(--text-secondary); font-size: 1.05rem; }
@@ -166,7 +167,7 @@ const breadcrumb = {
     .member:hover { border-color: var(--indigo); transform: translateY(-1px); }
     .member-top { display: flex; align-items: baseline; gap: .5rem; }
     .member-jp { font-family: 'Noto Sans JP', sans-serif; font-weight: 700; font-size: 1.5rem; line-height: 1.1; color: var(--text-primary); }
-    .member-reading { font-family: 'Noto Sans JP', sans-serif; font-size: .74rem; color: var(--text-tertiary); }
+    .member-jp rt { font-size: .46em; color: var(--text-tertiary); }
     .member-jlpt { margin-left: auto; font-size: .62rem; font-weight: 700; color: #fff; padding: 2px 6px; border-radius: 5px; }
     .member-role { margin-top: .6rem; font-size: .9rem; color: var(--text-secondary); line-height: 1.5; }
     .member-eg { margin-top: .8rem; padding-top: .8rem; border-top: 1px solid var(--border); }
@@ -197,9 +198,13 @@ const breadcrumb = {
 
     .backtree { margin-top: 2.6rem; font-size: .88rem; }
     .backtree a { color: var(--brand); text-decoration: none; font-weight: 500; }
+    html[data-grammar-embed] .nav,html[data-grammar-embed] .cta{display:none}html[data-grammar-embed] .wrap{padding-top:1rem}
+    @media(max-width:600px){.wrap{padding-inline:1rem}.members,.pair-grid{grid-template-columns:1fr}.pair-h{flex-wrap:wrap}.head .lede{font-size:.95rem}}
   </style>
+  <GrammarClientRouter />
 </head>
 <body>
+  <GrammarEmbedBridge />
   <nav class="nav">
     <div class="nav-inner">
       <a class="nav-wordmark" href="/">Jengo</a>
@@ -226,8 +231,7 @@ const breadcrumb = {
         {members.map((n) => (
           <a class="member" href={`/learn/japanese/grammar/${n.slug}`}>
             <div class="member-top">
-              <span class="member-jp">{n.canonical}</span>
-              {n.reading && n.reading !== n.canonical && <span class="member-reading">{n.reading}</span>}
+              <span class="member-jp">{hasKanji(n.canonical)&&n.reading&&n.reading!==n.canonical?<ruby>{n.canonical}<rt>{n.reading}</rt></ruby>:n.canonical}</span>
               <span class="member-jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
             </div>
             <div class="member-role" set:html={furigana(n.role)} />

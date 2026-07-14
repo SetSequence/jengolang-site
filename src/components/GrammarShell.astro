@@ -1,4 +1,6 @@
 ---
+import GrammarEmbedBridge from "./GrammarEmbedBridge.astro";
+import GrammarClientRouter from "./GrammarClientRouter.astro";
 const { title, description, canonical, noindex = false } = Astro.props;
 ---
 <html lang="en">
@@ -6,14 +8,12 @@ const { title, description, canonical, noindex = false } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script is:inline>try{if(window.self!==window.top||new URLSearchParams(location.search).has("embed"))document.documentElement.dataset.grammarEmbed=""}catch{document.documentElement.dataset.grammarEmbed=""}</script>
+    <GrammarClientRouter />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, follow" />}
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
     <style is:global>
       *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
       :root{--brand:oklch(47% .089 156);--brand-dark:oklch(25% .062 156);--brand-tint:oklch(96% .016 156);--bg:oklch(98.5% .005 156);--surface:oklch(99.5% .002 156);--border:oklch(90% .008 156);--border-strong:oklch(82% .012 156);--text-primary:oklch(22% .01 156);--text-secondary:oklch(50% .012 156);--text-tertiary:oklch(68% .008 156);--white:oklch(99.5% .002 156);--learned:oklch(44% .11 145);--keigo:oklch(50% .12 330);--literary:oklch(52% .10 85)}
@@ -35,6 +35,7 @@ const { title, description, canonical, noindex = false } = Astro.props;
     <slot name="head" />
   </head>
   <body>
+    <GrammarEmbedBridge />
     <header class="site-nav"><div class="site-nav-inner"><a class="wordmark" href="/">Jengo</a><a class="try" href="/jengo">Try Jengo</a></div></header>
     <slot />
   </body>

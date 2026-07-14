@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import { GOALS, GOAL_BY_ID } from "../../../../../lib/goals";
 import { glossOf, groupByFamily, jlptColor } from "../../../../../lib/grammar";
+import GrammarEmbedBridge from "../../../../../components/GrammarEmbedBridge.astro";
+import GrammarClientRouter from "../../../../../components/GrammarClientRouter.astro";
 import slice from "../../../../../data/grammar_slice.json";
 
 export const prerender = true;
@@ -13,6 +15,7 @@ export function getStaticPaths() {
 const goalId = Astro.params.goal;
 const goal = GOAL_BY_ID.get(goalId);
 if (!goal) throw new Error(`Unknown goal route: ${goalId}`);
+const hasKanji = (value = "") => /[\u3400-\u9fff々〆ヶ]/.test(value);
 
 // Membership + ordering are canonical in the slice (built by build_slice.py per
 // ON-RAILS.md); this page only joins slugs to the content collection for the
@@ -120,6 +123,7 @@ const jsonLd = [
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script is:inline>try{if(window.self!==window.top||new URLSearchParams(location.search).has("embed"))document.documentElement.dataset.grammarEmbed=""}catch{document.documentElement.dataset.grammarEmbed=""}</script>
   <meta name="description" content={goal.description} />
   <link rel="canonical" href={canonical} />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -129,9 +133,6 @@ const jsonLd = [
   <meta property="og:title" content={goal.title} />
   <meta property="og:description" content={goal.description} />
   <meta property="og:url" content={canonical} />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <style is:global>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -174,7 +175,7 @@ const jsonLd = [
     .crumbs a:hover { color: var(--accent); }
     .crumbs span { margin: 0 .4rem; }
 
-    .head { border-left: 4px solid var(--accent); padding-left: 1.1rem; }
+    .head { padding: 1rem 1.1rem; border: 1px solid var(--border); border-radius: 12px; background: var(--tint); }
     .head .kicker { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
     .head h1 { font-size: clamp(1.7rem, 5vw, 2.6rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.08; margin-top: .35rem; }
     .head .lede { margin-top: 1rem; max-width: 60ch; color: var(--text-secondary); font-size: 1.05rem; }
@@ -205,7 +206,7 @@ const jsonLd = [
     .card:hover { border-color: var(--accent); transform: translateY(-1px); }
     .card-top { display: flex; align-items: baseline; gap: .5rem; }
     .jp { font-family: 'Noto Sans JP', sans-serif; font-weight: 700; font-size: 1.15rem; line-height: 1.2; }
-    .reading { font-family: 'Noto Sans JP', sans-serif; font-size: .72rem; color: var(--text-tertiary); }
+    .jp rt { font-size: .48em; color: var(--text-tertiary); }
     .stub-dot { margin-left: auto; width: 7px; height: 7px; border-radius: 999px; flex: none;
       border: 1.5px solid var(--text-tertiary); align-self: center; }
     .card.written .stub-dot { background: var(--accent); border-color: var(--accent); }
@@ -284,9 +285,13 @@ const jsonLd = [
       background: var(--white); padding: 11px 20px; border-radius: 9px; }
 
     .empty-note { margin-top: 2rem; color: var(--text-secondary); font-size: .95rem; }
+    html[data-grammar-embed] .nav,html[data-grammar-embed] .cta{display:none}html[data-grammar-embed] .wrap{padding-top:1rem}
+    @media(max-width:600px){.wrap{padding-inline:1rem}.cards{grid-template-columns:1fr}.stats{gap:1rem}.band{padding-left:1.8rem}.band-n{left:-1.8rem}}
   </style>
+  <GrammarClientRouter />
 </head>
 <body style={`--accent:${goal.accent}; --tint:${goal.tint};`}>
+  <GrammarEmbedBridge />
   <nav class="nav">
     <div class="nav-inner">
       <a class="nav-wordmark" href="/">Jengo</a>
@@ -346,8 +351,7 @@ const jsonLd = [
                   <span class="step-n">{i + 1}</span>
                   <span class={`card${n.written ? " written" : ""}`}>
                     <div class="card-top">
-                      <span class="jp">{n.canonical}</span>
-                      <span class="reading">{n.reading}</span>
+                      <span class="jp">{hasKanji(n.canonical)&&n.reading!==n.canonical?<ruby>{n.canonical}<rt>{n.reading}</rt></ruby>:n.canonical}</span>
                       {i === 0 && <span class="start-flag">Start</span>}
                       <span class="stub-dot"></span>
                     </div>
@@ -392,7 +396,7 @@ const jsonLd = [
               <div class="cards">
                 {b.nodes.map((n) => (
                   <a class={`card${n.written ? " written" : ""}`} href={`/learn/japanese/grammar/${n.slug}`}>
-                    <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span><span class="stub-dot"></span></div>
+                    <div class="card-top"><span class="jp">{hasKanji(n.canonical)&&n.reading!==n.canonical?<ruby>{n.canonical}<rt>{n.reading}</rt></ruby>:n.canonical}</span><span class="stub-dot"></span></div>
                     <div class="meaning">{n.gloss}</div>
                     <div class="badges">
                       <span class="badge jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>
@@ -422,7 +426,7 @@ const jsonLd = [
                 <div class="cards">
                   {g.nodes.map((n) => (
                     <a class={`card${n.written ? " written" : ""}`} href={`/learn/japanese/grammar/${n.slug}`}>
-                      <div class="card-top"><span class="jp">{n.canonical}</span><span class="reading">{n.reading}</span><span class="stub-dot"></span></div>
+                      <div class="card-top"><span class="jp">{hasKanji(n.canonical)&&n.reading!==n.canonical?<ruby>{n.canonical}<rt>{n.reading}</rt></ruby>:n.canonical}</span><span class="stub-dot"></span></div>
                       <div class="meaning">{n.gloss}</div>
                       <div class="badges">
                         <span class="badge jlpt" style={`background:${jlptColor[n.jlpt] ?? jlptColor.none}`}>{n.jlpt}</span>

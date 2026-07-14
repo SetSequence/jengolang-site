@@ -1,0 +1,34 @@
+<script is:inline>
+  (() => {
+    if (window.self === window.top) return;
+    const send = (message) => window.parent.postMessage(message, "*");
+    const announce = () => {
+      send({ type: "jengo:grammar-ready", path: location.pathname });
+      send({ type: "jengo:grammar-progress-request" });
+    };
+    if (!window.__jengoGrammarBridgeInstalled) {
+      window.__jengoGrammarBridgeInstalled = true;
+      window.addEventListener("message", (event) => {
+        if (event.source !== window.parent) return;
+        if (event.data?.type === "jengo:grammar-back") history.back();
+      });
+      document.addEventListener("click", (event) => {
+        if (!(event.target instanceof Element)) return;
+        const target = event.target.closest("a,button");
+        if (!target) return;
+        if (target instanceof HTMLAnchorElement && target.origin !== location.origin) {
+          event.preventDefault();
+          send({ type: "jengo:grammar-haptic", style: "light" });
+          if (!window.open(target.href, "_blank", "noopener")) {
+            send({ type: "jengo:grammar-external", url: target.href });
+          }
+          return;
+        }
+        if (target.matches(".node-check,.mark-unit,.clear-unit,#mark-all,#learned-toggle")) return;
+        send({ type: "jengo:grammar-haptic", style: "light" });
+      });
+      document.addEventListener("astro:page-load", announce);
+    }
+    announce();
+  })();
+</script>
