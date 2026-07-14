@@ -19,9 +19,10 @@
         if (target instanceof HTMLAnchorElement && target.origin !== location.origin) {
           event.preventDefault();
           send({ type: "jengo:grammar-haptic", style: "light" });
-          if (!window.open(target.href, "_blank", "noopener")) {
-            send({ type: "jengo:grammar-external", url: target.href });
-          }
+          // The native shell owns external navigation so its browser always has
+          // a Done control. Letting an iframe call window.open can strand the
+          // learner in a WebView without a route back to Grammar.
+          send({ type: "jengo:grammar-external", url: target.href });
           return;
         }
         if (target.matches(".node-check,.mark-unit,.clear-unit,#mark-all,#learned-toggle")) return;
