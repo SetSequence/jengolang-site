@@ -1,0 +1,16 @@
+---
+const { compact = false } = Astro.props;
+---
+
+<a class:list={["back-to-path", { compact }]} href="/learn/japanese/grammar/path">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+  <span>Back to Path</span>
+</a>
+
+<style>
+  .back-to-path { display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:9px 13px;border:1px solid color-mix(in oklab,var(--brand) 28%,var(--border));border-radius:9px;background:var(--brand-tint);color:var(--brand);font-size:.82rem;font-weight:750;text-decoration:none; }
+  .back-to-path:hover { background:color-mix(in oklab,var(--brand) 12%,var(--surface)); }
+  .back-to-path:focus-visible { outline:2px solid var(--brand);outline-offset:2px; }
+  .back-to-path svg { width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round; }
+  .back-to-path.compact { min-height:36px;padding:7px 10px;font-size:.78rem; }
+</style>

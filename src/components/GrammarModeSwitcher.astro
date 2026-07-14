@@ -3,13 +3,13 @@ const { mode = "lookup" } = Astro.props;
 ---
 
 <nav class="mode-switcher" aria-label="Grammar mode">
-  <a class:list={["mode", { active: mode === "lookup" }]} href="/learn/japanese/grammar" aria-current={mode === "lookup" ? "page" : undefined}>
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-    Lookup
-  </a>
   <a class:list={["mode", { active: mode === "path" }]} href="/learn/japanese/grammar/path" aria-current={mode === "path" ? "page" : undefined}>
     <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></svg>
     Path
+  </a>
+  <a class:list={["mode", { active: mode === "lookup" }]} href="/learn/japanese/grammar" aria-current={mode === "lookup" ? "page" : undefined}>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    Search
   </a>
 </nav>
 

@@ -4,6 +4,7 @@ import { compareSetForSlug } from "../../../../lib/compareSets";
 import { jlptColor } from "../../../../lib/grammar";
 import GrammarEmbedBridge from "../../../../components/GrammarEmbedBridge.astro";
 import GrammarClientRouter from "../../../../components/GrammarClientRouter.astro";
+import GrammarBackToPath from "../../../../components/GrammarBackToPath.astro";
 import slice from "../../../../data/grammar_slice.json";
 
 export const prerender = true;
@@ -368,8 +369,7 @@ const jsonLd =
       .provenance em { font-style: italic; color: var(--text-secondary); }
       .provenance .prov-conf { color: var(--clay); }
 
-      .backtree { margin-top: 2.6rem; font-size: 0.88rem; }
-      .backtree a { color: var(--brand); text-decoration: none; font-weight: 500; }
+      .backtree { margin-top: 2.6rem; }
       html[data-grammar-embed] .nav, html[data-grammar-embed] .appcta { display: none; }
       html[data-grammar-embed] .wrap { padding-top: 1rem; }
       .lesson-complete { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
@@ -394,7 +394,7 @@ const jsonLd =
 
     <main class="wrap">
       <nav class="crumbs">
-        <a href="/learn/japanese/grammar">Grammar tree</a> &nbsp;/&nbsp; {d.canonical || entry.id}
+        <a href="/learn/japanese/grammar/path">Path</a> &nbsp;/&nbsp; {d.canonical || entry.id}
       </nav>
 
       {/* ── 1. Header ── */}
@@ -432,7 +432,7 @@ const jsonLd =
         <div class="stub">
           <p>A full written guide for <b>{d.canonical || d.title}</b> is on the way.</p>
           <p>
-            This point is mapped in the grammar tree, but its examples, formation table
+            This point is mapped in the grammar Path, but its examples, formation table
             and usage notes haven't been written yet. The fastest way to learn it now is
             to meet it in real sentences inside Jengo.
           </p>
@@ -636,7 +636,7 @@ const jsonLd =
         </p>
       )}
 
-      <p class="backtree"><a href="/learn/japanese/grammar">← Back to the grammar tree</a></p>
+      <p class="backtree"><GrammarBackToPath /></p>
     </main>
     <script>
       import {connectProgress,isLearned,loadProgress,saveProgress,setLearned} from "../../../../lib/progress";
