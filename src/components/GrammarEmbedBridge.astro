@@ -1,6 +1,13 @@
 <script is:inline>
   (() => {
-    if (window.self === window.top) return;
+    const embedded = window.self !== window.top || new URLSearchParams(location.search).has("embed");
+    if (!embedded) return;
+    document.documentElement.dataset.grammarEmbed = "";
+    const removeEmbedPromos = () => {
+      document.querySelectorAll(".site-nav, .nav, .appcta, .cta").forEach((element) => element.remove());
+    };
+    document.addEventListener("DOMContentLoaded", removeEmbedPromos, { once: true });
+    document.addEventListener("astro:page-load", removeEmbedPromos);
     const send = (message) => window.parent.postMessage(message, "*");
     const announce = () => {
       send({ type: "jengo:grammar-ready", path: location.pathname });
