@@ -56,21 +56,9 @@ export function connectProgress(render: (state: Progress) => void) {
     window.addEventListener("message", (event) => {
       if (event.source !== window.parent) return;
       if (event.data?.type !== "jengo:grammar-progress" || !event.data.state) return;
-      const local = loadProgress();
       const incoming = event.data.state as Progress;
-      const changes = [];
-      for (const [slug, node] of Object.entries(local.nodes)) {
-        const other = incoming.nodes[slug];
-        if (!other || node.updated_at > other.updated_at) {
-          incoming.nodes[slug] = node;
-          changes.push({ slug, ...node });
-        }
-      }
       try { localStorage.setItem(KEY, JSON.stringify(incoming)); } catch {}
       bridge.render?.(incoming);
-      if (changes.length) {
-        window.parent.postMessage({ type: "jengo:grammar-progress-change", changes }, "*");
-      }
     });
   }
   if (window.self !== window.top) {
