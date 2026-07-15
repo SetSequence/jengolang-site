@@ -8,6 +8,10 @@ const { title, description, canonical, noindex = false } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script is:inline>try{if(window.self!==window.top||new URLSearchParams(location.search).has("embed"))document.documentElement.dataset.grammarEmbed=""}catch{document.documentElement.dataset.grammarEmbed=""}</script>
+    <script>
+      import * as progress from "../lib/progress";
+      (window as any).__jengoGrammarProgress = progress;
+    </script>
     <GrammarClientRouter />
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, follow" />}

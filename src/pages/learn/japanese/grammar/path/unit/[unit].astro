@@ -17,7 +17,7 @@ const title=`${unit.label} — Japanese Grammar Path | Jengo`;const description=
 ---
 <GrammarShell title={title} description={description} canonical={`https://jengolang.com/learn/japanese/grammar/path/unit/${unit.index}`}>
   <main class="grammar-wrap">
-    <GrammarBackToPath compact />
+    <GrammarBackToPath compact unit={unit.index} />
     <GrammarModeSwitcher mode="path" />
     <nav class="crumb">Arc {arc.index}<span>/</span>Unit {unit.index}</nav>
     <header class="unit-head"><small>Unit {unit.index} · Arc {arc.index}</small><h1>{unit.label}</h1><div class="unit-summary"><span><strong id="done">0</strong> of {nodes.length} learned</span></div><div class="bar"><i id="bar"></i></div></header>
