@@ -73,15 +73,18 @@ const description = "A short primer for absolute beginners before starting the J
       <a class="primary" href="/learn/japanese/grammar/path/unit/1">Start Unit 1 →</a>
     </section>
   </main>
-  <script type="module" data-astro-rerun>
-    const {connectProgress,isLearned,loadProgress,saveProgress,setLearned}=window.__jengoGrammarProgress;
+  <script type="module">
+    function setupStart(){
+    const progress=window.__jengoGrammarProgress;
     const root=document.querySelector(".start-wrap");
-    if(root&&!root.dataset.progressReady){
+    if(!progress||!root||root.dataset.progressReady)return;
     root.dataset.progressReady="true";
+    const {connectProgress,isLearned,loadProgress,saveProgress,setLearned}=progress;
     const slug="grammar-path-primer",button=document.querySelector("#mark-start");let state=loadProgress();
     const render=()=>{const on=isLearned(state,slug);button.setAttribute("aria-pressed",String(on));button.querySelector("span").textContent=on?"Unit 0 learned · tap to undo":"Mark Unit 0 learned"};
     button.addEventListener("click",()=>{setLearned(state,slug,!isLearned(state,slug));saveProgress(state,[slug]);render()});connectProgress((next)=>{state=next;render()});render();
     }
+    document.addEventListener("astro:page-load",setupStart);
   </script>
 </GrammarShell>
 

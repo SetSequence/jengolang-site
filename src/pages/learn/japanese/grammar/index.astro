@@ -40,7 +40,7 @@ const description="Search 1,458 Japanese grammar points by romaji, kana, kanji, 
     <noscript><p class="noscript">Search needs JavaScript. You can still browse the <a href="/learn/japanese/grammar/path">grammar path</a>.</p></noscript>
   </main>
   <script id="grammar-data" type="application/json" set:html={JSON.stringify(rows).replaceAll("<", "\\u003c")} />
-  <script type="module" data-astro-rerun>
+  <script type="module">
     function setupLookup(){
       const dataElement=document.querySelector("#grammar-data");
       if(!dataElement||dataElement.dataset.ready)return;
@@ -82,7 +82,9 @@ const description="Search 1,458 Japanese grammar points by romaji, kana, kanji, 
       more.addEventListener("click",()=>{limit+=60;render()});
       render();
     }
-    setupLookup();
+    // astro:page-load fires on initial load AND every client-router navigation,
+    // including back/forward — data-astro-rerun does not re-run on popstate.
+    document.addEventListener("astro:page-load", setupLookup);
   </script>
 </GrammarShell>
 

@@ -52,11 +52,13 @@ const description="A complete, zero-lock path through Japanese grammar, organize
       </section>)}
     </div>
   </main>
-  <script type="module" data-astro-rerun>
-    const {connectProgress,isLearned,loadProgress,saveProgress,setLearned}=window.__jengoGrammarProgress;
+  <script type="module">
+    function setupPath(){
+    const progress=window.__jengoGrammarProgress;
     const root=document.querySelector(".path-wrap");
-    if(root&&!root.dataset.progressReady){
+    if(!progress||!root||root.dataset.progressReady)return;
     root.dataset.progressReady="true";
+    const {connectProgress,isLearned,loadProgress,saveProgress,setLearned}=progress;
     let state=loadProgress();
     const units=[...document.querySelectorAll(".unit")],cards=[...document.querySelectorAll(".path-node")],primer=document.querySelector(".primer-unit");
     const nodeTotal=Number(document.querySelector("#total-bar").dataset.total)||cards.length;
@@ -64,7 +66,7 @@ const description="A complete, zero-lock path through Japanese grammar, organize
     function render(){let all=0;document.querySelectorAll(".arc").forEach((arc)=>{let done=0,total=0;arc.querySelectorAll(".unit").forEach((unit)=>{const slugs=unit.dataset.slugs.split(" "),n=slugs.filter(learned).length;done+=n;total+=slugs.length;unit.querySelector(".unit-progress").textContent=`${n}/${slugs.length}`;unit.classList.toggle("complete",n===slugs.length)});all+=done;const pct=total?Math.round(done/total*100):0;arc.querySelector(".arc-progress").textContent=`${pct}%`;arc.querySelector(".arc-bar i").style.width=`${pct}%`});cards.forEach((card)=>{const on=learned(card.dataset.slug);card.classList.toggle("learned",on);card.querySelector(".node-check").setAttribute("aria-pressed",String(on))});if(primer){const on=learned(primer.dataset.slug);primer.classList.toggle("learned",on);primer.querySelector(".primer-check").setAttribute("aria-pressed",String(on))}const pct=Math.round(all/nodeTotal*100);document.querySelector("#learned-total").textContent=all;document.querySelector("#total-pct").textContent=`${pct}%`;document.querySelector("#total-bar").style.width=`${pct}%`}
     cards.forEach((card)=>card.querySelector(".node-check").addEventListener("click",()=>{const slug=card.dataset.slug;setLearned(state,slug,!learned(slug));saveProgress(state,[slug]);render()}));
     primer?.querySelector(".primer-check").addEventListener("click",()=>{const slug=primer.dataset.slug;setLearned(state,slug,!learned(slug));saveProgress(state,[slug]);render()});
-    units.forEach((unit)=>{const set=(value)=>{const slugs=unit.dataset.slugs.split(" ");slugs.forEach((slug)=>setLearned(state,slug,value));saveProgress(state,slugs);render()};unit.querySelector(".mark-unit").addEventListener("click",()=>set(true));unit.querySelector(".clear-unit").addEventListener("click",()=>set(false))});
+    units.forEach((unit)=>{const set=(value)=>{const slugs=unit.dataset.slugs.split(" ");slugs.forEach((slug)=>setLearned(state,slug,value));saveProgress(state,slugs);render()};unit.querySelector(".mark-unit").addEventListener("click",()=>set(true));unit.querySelector(".clear-unit").addEventListener("click",()=>set(false));unit.addEventListener("toggle",()=>{if(unit.open)history.replaceState(history.state,"",`#${unit.id}`);else if(location.hash===`#${unit.id}`)history.replaceState(history.state,"",location.pathname+location.search)});});
     const panel=document.querySelector("#placement-panel"),intro=document.querySelector("#placement-intro"),result=document.querySelector("#placement-result");
     const show=(which)=>{[intro,result].forEach((x)=>x.hidden=x!==which);panel.hidden=false;panel.scrollIntoView({behavior:"smooth",block:"center"})};const close=()=>{panel.hidden=true};
     document.querySelector("#open-placement").addEventListener("click",()=>show(intro));document.querySelector("#close-placement").addEventListener("click",close);document.querySelector("#placement-again").addEventListener("click",()=>show(intro));
@@ -72,6 +74,7 @@ const description="A complete, zero-lock path through Japanese grammar, organize
     const restoreUnit=()=>{const unit=location.hash&&document.querySelector(location.hash);if(unit instanceof HTMLDetailsElement){unit.open=true;unit.scrollIntoView({block:"start"})}};
     connectProgress((next)=>{state=next;render()});render();requestAnimationFrame(restoreUnit);
     }
+    document.addEventListener("astro:page-load",setupPath);
   </script>
 </GrammarShell>
 <style>
