@@ -7,6 +7,25 @@ the design is `TREE.md`. Kept for provenance / debugging a past decision.
 
 ## Pass-2 dated build log
 
+**STRUCTURAL — Arc 1 adjectives + follow-ups DONE (2026-07-15, second session):** filled
+the **adjective hole** flagged in the Arc-1 reorder. Introduced a new `adjective` family
+(registered in `build_slice.py` FAMILY_ORDER, `lib/grammar.ts` FAMILY_ORDER+FAMILY_LABEL,
+`qa_grammar_nodes.py` FAMILY) and authored two net-new indexed Foundations nodes —
+`i-adjective` (高い/高くない/高かった/高く + いい irregular; self-contained) and `na-adjective`
+(leads with polite です-forms since plain だ/じゃない land in the next unit; cross-links
+kute/de-3/ni-naru). Placed as a **new Arc-1 unit 4 "Describe things: い and な adjectives"**
+(after existence U3, before plain form) via a **global spine renumber**: old units 4–55 →
+5–56; edited `ARC_RANGES` (Arc 1 now 1–11, every later arc +1), `UNIT_LABELS` (1–21),
+`FOUNDATION_STAGES` (11 stages), shifted all 1,391 `spine_units.csv` rows with unit_index≥4,
+and added 2 catalog rows. Catalog **1,460 → 1,462**; indexed **1197 → 1199**; slice validates
+**56 units / 9 arcs**, Foundations **70 → 72 nodes**. Rendering is fully data-driven from
+`grammar_slice.json`, so no `.astro`/`.ts` unit literals needed touching. **Also:** demoted
+Japanese-linguistics-jargon `title`s to lead with plain English on verb-classes / ta-form /
+volitional-form (on-path) + te-form / masu-stem / nai-form / ba-conditional (off-path),
+keeping `canonical` intact; and rewrote 8 forward-reference example lines (て-form/ている/
+てください/てもいい/ましょう used before U5–U7) across yo/e/o/to-2/ni-2/made/ta-form to use
+only ≤-unit grammar. build_slice PASS · lint clean · npm build clean · qa_grammar_nodes PASS.
+
 **BUILD common batch 1 DONE (2026-06-14):** first `--freq common` batch (182 → **192
 indexed**). Cluster = question words + indefinites + degree/quantity adverbs (N5), chosen
 for dense cross-linking. First batch to use the **cluster-prep subagent** (Explore agent →

@@ -26,8 +26,8 @@ examples:
     en: "I drink coffee every morning."
   - jp: "手紙{てがみ}を書{か}いた。"
     en: "I wrote a letter."
-  - jp: "窓{まど}を開{あ}けてください。"
-    en: "Please open the window."
+  - jp: "毎朝{まいあさ}窓{まど}を開{あ}ける。"
+    en: "I open the window every morning."
 restrictions:
   - text: "A clause takes only one を. With desire (〜たい) and potential forms the object often switches to が: 水{みず}を飲{の}みたい and 水{みず}が飲{の}みたい are both natural — but you cannot stack two を on one verb."
 contrasts:

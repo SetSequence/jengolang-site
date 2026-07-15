@@ -24,8 +24,8 @@ formation:
 examples:
   - jp: "その映画{えいが}、面白{おもしろ}いよ。"
     en: "That movie's good, you know."
-  - jp: "鍵{かぎ}を忘{わす}れているよ。"
-    en: "You're forgetting your keys (I'm telling you)."
+  - jp: "外{そと}はすごく寒{さむ}いよ。"
+    en: "It's really cold out, you know."
   - jp: "心配{しんぱい}しなくても大丈夫{だいじょうぶ}だよ。"
     en: "It's fine, you don't need to worry."
 contrasts:

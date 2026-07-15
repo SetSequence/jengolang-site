@@ -1,5 +1,5 @@
 ---
-title: "ば形 — The Provisional Conditional"
+title: "The ば conditional — if / whenever"
 canonical: "ば形"
 reading: "ばけい"
 register: ["casual-spoken", "polite-spoken", "written-modern"]

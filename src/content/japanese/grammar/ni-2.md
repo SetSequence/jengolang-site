@@ -41,8 +41,8 @@ senses:
       jp: "七時{しちじ}に起{お}きる。"
       en: "I get up at seven."
     examples:
-      - jp: "日曜日{にちようび}に会{あ}いましょう。"
-        en: "Let's meet on Sunday."
+      - jp: "日曜日{にちようび}に友{とも}だちと会{あ}う。"
+        en: "I'm meeting a friend on Sunday."
 formation:
   - attaches_to: "Noun (place / time)"
     form: "N + に"

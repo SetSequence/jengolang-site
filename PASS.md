@@ -14,11 +14,12 @@ narratives are **append-only in `HISTORY.md`** ("PASS.md frontier ledger" sectio
 batch 6–119 ledger was archived there 2026-07-02). After a pass: update the numbers
 here, write the batch narrative in HISTORY.md.
 
-- **Indexed: 1192 / 1,458** (through batch 119; truth = working-tree grep
-  `noindex: false`). `list_stubs.py` *is* the resume state — there is no cursor file; a
-  node is done iff `noindex:false`. `--enriched` lists finished nodes; `foldInto` folds
-  are excluded by default (`--include-folds` to see them).
-- **Position:** Foundations 60/60 · read-novels 22/22 · **essential band drained** ·
+- **Indexed: 1199 / 1,462** (through batch 119 + the 2026-07-15 adjectives unit; truth =
+  working-tree grep `noindex: false`). `list_stubs.py` *is* the resume state — there is no
+  cursor file; a node is done iff `noindex:false`. `--enriched` lists finished nodes;
+  `foldInto` folds are excluded by default (`--include-folds` to see them).
+- **Position:** Foundations 72/72 (+い/な-adjective unit, Arc-1 U4, 2026-07-15) ·
+  read-novels 22/22 · **essential band drained** ·
   **common band drained (batch 72)** — any "common stubs" still surfacing in the
   worklist are resolved noindex redirect-hubs by design; skip them. Currently mining
   the **uncommon band**: `python3 scripts/list_stubs.py --freq uncommon` (then `rare`).

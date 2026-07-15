@@ -1,5 +1,5 @@
 ---
-title: "ない形 — The Plain Negative Form"
+title: "Plain negative — the ない form"
 canonical: "ない形"
 reading: "ないけい"
 register: ["casual-spoken", "polite-spoken", "written-modern"]

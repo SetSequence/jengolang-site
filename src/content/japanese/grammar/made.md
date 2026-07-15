@@ -30,11 +30,11 @@ senses:
     equivalents:
       - "even ~ — reaching as far as something surprising"
     keySentence:
-      jp: "子供{こども}までそのニュースを知{し}っていた。"
-      en: "Even the children knew that news."
+      jp: "この村{むら}では子供{こども}まで英語{えいご}を話{はな}す。"
+      en: "In this village, even the children speak English."
     examples:
-      - jp: "そんなことまで言{い}わなくてもいい。"
-        en: "You don't have to go so far as to say that."
+      - jp: "この祭{まつ}りには外国人{がいこくじん}まで来{く}る。"
+        en: "Even foreigners come to this festival."
 formation:
   - attaches_to: "Noun / dictionary-form verb"
     form: "N / V-る + まで"

@@ -1,5 +1,5 @@
 ---
-title: "連用形 — The Masu-Stem (Verb Base)"
+title: "The masu-stem — the verb base for polite and compound forms"
 canonical: "連用形（ます形）"
 reading: "れんようけい"
 register: ["casual-spoken", "polite-spoken", "written-modern"]

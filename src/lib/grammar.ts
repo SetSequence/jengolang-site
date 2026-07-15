@@ -4,13 +4,14 @@
 // drift between the two views.
 
 export const FAMILY_ORDER = [
-  "particle", "copula", "aspect", "conditional", "auxiliary", "modality",
-  "quotation", "nominalizer", "causative", "passive", "honorific",
+  "particle", "copula", "adjective", "aspect", "conditional", "auxiliary",
+  "modality", "quotation", "nominalizer", "causative", "passive", "honorific",
   "connective", "adverbial", "counter", "form", "interjection", "other",
 ] as const;
 
 export const FAMILY_LABEL: Record<string, string> = {
-  particle: "Particles", copula: "Copula", aspect: "Aspect & phase",
+  particle: "Particles", copula: "Copula", adjective: "Adjectives",
+  aspect: "Aspect & phase",
   conditional: "Conditionals", auxiliary: "Auxiliaries", modality: "Modality & mood",
   quotation: "Quotation & report", nominalizer: "Nominalizers",
   causative: "Causative", passive: "Passive", honorific: "Keigo & honorifics",

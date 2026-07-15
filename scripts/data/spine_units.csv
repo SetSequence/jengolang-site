@@ -1,1420 +1,1416 @@
 slug,unit_index,unit_label,order
-da,1,Copula & the は～だ frame,1
-desu,1,Copula & the は～だ frame,2
-wa-2,1,Copula & the は～だ frame,3
-no-3,1,Copula & the は～だ frame,4
-janai,1,Copula & the は～だ frame,5
-datta,1,Copula & the は～だ frame,6
-ga-2,2,Core case & binding particles,1
-o,2,Core case & binding particles,2
-ni-2,2,Core case & binding particles,3
-ni-3,2,Core case & binding particles,4
-de,2,Core case & binding particles,5
-ka,2,Core case & binding particles,6
-e,2,Core case & binding particles,7
-to-2,2,Core case & binding particles,8
-mo,2,Core case & binding particles,9
-kara-3,2,Core case & binding particles,10
-made,2,Core case & binding particles,11
-ne,2,Core case & binding particles,12
-yo,2,Core case & binding particles,13
-aru,2,Core case & binding particles,14
-ga-aru,2,Core case & binding particles,15
-iru-3,2,Core case & binding particles,16
-ga-iru,2,Core case & binding particles,17
-verb-classes,3,Verb bases & politeness,1
-masu-stem,3,Verb bases & politeness,2
-masu-form,3,Verb bases & politeness,3
-te-form,3,Verb bases & politeness,4
-ta-form,3,Verb bases & politeness,5
-nai-form,3,Verb bases & politeness,6
-nai,3,Verb bases & politeness,7
-kudasai,3,Verb bases & politeness,8
-te,4,て-form uses & aspect,1
-te-kudasai,4,て-form uses & aspect,2
-te-iru,4,て-form uses & aspect,3
-te-kara,4,て-form uses & aspect,4
-te-mo-ii,4,て-form uses & aspect,5
-te-wa-ikenai,4,て-form uses & aspect,6
-te-shimau,4,て-form uses & aspect,7
-te-miru,4,て-form uses & aspect,8
-ageru,5,Benefactive giving/receiving,1
-kureru,5,Benefactive giving/receiving,2
-ageru-2,5,Benefactive giving/receiving,3
-kureru-2,5,Benefactive giving/receiving,4
-morau,5,Benefactive giving/receiving,5
-tai,6,Desire & basic modality,1
-hoshii,6,Desire & basic modality,2
-volitional-form,6,Desire & basic modality,3
-darou,6,Desire & basic modality,4
-deshou,6,Desire & basic modality,5
-kamoshirenai,6,Desire & basic modality,6
-hazu,6,Desire & basic modality,7
-to-conditional,7,The four conditionals,1
-tara,7,The four conditionals,2
-ba-conditional,7,The four conditionals,3
-ba,7,The four conditionals,4
-nara,7,The four conditionals,5
-kara,8,Clause connectives & temporal frames,1
-node,8,Clause connectives & temporal frames,2
-kedo,8,Clause connectives & temporal frames,3
-ga-3,8,Clause connectives & temporal frames,4
-noni,8,Clause connectives & temporal frames,5
-nagara,8,Clause connectives & temporal frames,6
-toki,8,Clause connectives & temporal frames,7
-mae-ni,8,Clause connectives & temporal frames,8
-ato-de,8,Clause connectives & temporal frames,9
-koto,9,Nominalizers & comparison,1
-no-ga-suki,9,Nominalizers & comparison,2
-yori,9,Nominalizers & comparison,3
-no-hou-ga,9,Nominalizers & comparison,4
-yori-no-hou-ga,9,Nominalizers & comparison,5
-ichiban,9,Nominalizers & comparison,6
-janakatta,10,Voice & action control,1
-wa-da,10,Voice & action control,2
-wa-desu,10,Voice & action control,3
-de-3,10,Voice & action control,4
-ni-naru,10,Voice & action control,5
-ga-arimasu,11,Everyday descriptions & reference I,1
-kono,11,Everyday descriptions & reference I,2
-san,11,Everyday descriptions & reference I,3
-naru,11,Everyday descriptions & reference I,4
-kuru,11,Everyday descriptions & reference I,5
-no-ga-jouzu,11,Everyday descriptions & reference I,6
-no-ga-heta,11,Everyday descriptions & reference I,7
-chan,11,Everyday descriptions & reference I,8
-tachi,11,Everyday descriptions & reference I,9
-donna,11,Everyday descriptions & reference I,10
-o-tsukatte,11,Everyday descriptions & reference I,11
-mae,11,Everyday descriptions & reference I,12
-sukida,11,Everyday descriptions & reference I,13
-sukunai,11,Everyday descriptions & reference I,14
-shiru,11,Everyday descriptions & reference I,15
-iru-4,11,Everyday descriptions & reference I,16
-kata,11,Everyday descriptions & reference I,17
-goro,11,Everyday descriptions & reference I,18
-konna,11,Everyday descriptions & reference I,19
-ni-suru,11,Everyday descriptions & reference I,20
-relative-clause,11,Everyday descriptions & reference I,21
-de-gozaimasu,12,Everyday descriptions & reference II,1
-wa-no-hitotsu-da,12,Everyday descriptions & reference II,2
-to-iu-koto,12,Everyday descriptions & reference II,3
-no,12,Everyday descriptions & reference II,4
-sa,12,Everyday descriptions & reference II,5
-tokoro,12,Everyday descriptions & reference II,6
-no-koto,12,Everyday descriptions & reference II,7
-no-wa-da,12,Everyday descriptions & reference II,8
-mono,12,Everyday descriptions & reference II,9
-ga-suru,12,Everyday descriptions & reference II,10
-ni-ki-ga-tsuku,12,Everyday descriptions & reference II,11
-gata,12,Everyday descriptions & reference II,12
-me,12,Everyday descriptions & reference II,13
-kan,12,Everyday descriptions & reference II,14
-kou-iu,12,Everyday descriptions & reference II,15
-kono-youna,12,Everyday descriptions & reference II,16
-sashiageru,12,Everyday descriptions & reference II,17
-sou-iu,12,Everyday descriptions & reference II,18
-dono-youna,12,Everyday descriptions & reference II,19
-mama,12,Everyday descriptions & reference II,20
-mama-de,12,Everyday descriptions & reference II,21
-yaru-3,12,Everyday descriptions & reference II,22
-ra,12,Everyday descriptions & reference II,23
-nandemo,12,Everyday descriptions & reference II,24
-kun,12,Everyday descriptions & reference II,25
-imperative,12,Everyday descriptions & reference II,26
-sukunakunai,12,Everyday descriptions & reference II,27
-sama,12,Everyday descriptions & reference II,28
-jidoushi-tadoushi,12,Everyday descriptions & reference II,29
-mieru,12,Everyday descriptions & reference II,30
-mada-te-imasen,13,"Everyday actions, states & change",1
-koto-ga-aru,13,"Everyday actions, states & change",2
-you-to-suru,13,"Everyday actions, states & change",3
-youni-suru,13,"Everyday actions, states & change",4
-youni-naru,13,"Everyday actions, states & change",5
-shimau,13,"Everyday actions, states & change",6
-rareru-2,13,"Everyday actions, states & change",7
-causative-form,13,"Everyday actions, states & change",8
-seru,13,"Everyday actions, states & change",9
-saseru,13,"Everyday actions, states & change",10
-saserareru,13,"Everyday actions, states & change",11
-sasete-kudasai,13,"Everyday actions, states & change",12
-ta-tokoro,13,"Everyday actions, states & change",13
-ta-bakari,13,"Everyday actions, states & change",14
-iku,13,"Everyday actions, states & change",15
-te-ita,13,"Everyday actions, states & change",16
-teiru-tokoro,13,"Everyday actions, states & change",17
-kuru-2,13,"Everyday actions, states & change",18
-toku,13,"Everyday actions, states & change",19
-ru-tokoro-da,13,"Everyday actions, states & change",20
-dasu,13,"Everyday actions, states & change",21
-hajimeru,13,"Everyday actions, states & change",22
-tsuzukeru,13,"Everyday actions, states & change",23
-te-aru,13,"Everyday actions, states & change",24
-te-oku,13,"Everyday actions, states & change",25
-naku-naru,13,"Everyday actions, states & change",26
-owaru,13,"Everyday actions, states & change",27
-reru,13,"Everyday actions, states & change",28
-mirareru,13,"Everyday actions, states & change",29
-nai-de-kudasai,14,"Everyday intention, ability & interaction I",1
-ga-hoshii,14,"Everyday intention, ability & interaction I",2
-ta-hou-ga-ii,14,"Everyday intention, ability & interaction I",3
-nai-hou-ga-ii,14,"Everyday intention, ability & interaction I",4
-naku-temo-ii,14,"Everyday intention, ability & interaction I",5
-mashou-ka,14,"Everyday intention, ability & interaction I",6
-masen-ka,14,"Everyday intention, ability & interaction I",7
-te-wa-ikemasen,14,"Everyday intention, ability & interaction I",8
-nakute-wa-ikenai,14,"Everyday intention, ability & interaction I",9
-nakute-wa-naranai,14,"Everyday intention, ability & interaction I",10
-no-desu,14,"Everyday intention, ability & interaction I",11
-mashou,14,"Everyday intention, ability & interaction I",12
-n-desu,14,"Everyday intention, ability & interaction I",13
-to-quotative,14,"Everyday intention, ability & interaction I",14
-sugiru,14,"Everyday intention, ability & interaction I",15
-cha-ikenai,14,"Everyday intention, ability & interaction I",16
-naku-cha,14,"Everyday intention, ability & interaction I",17
-douzo,14,"Everyday intention, ability & interaction I",18
-yasui,14,"Everyday intention, ability & interaction I",19
-itadaku,14,"Everyday intention, ability & interaction I",20
-you-to-omou,14,"Everyday intention, ability & interaction I",21
-hou-ga-ii,14,"Everyday intention, ability & interaction I",22
-koto-ga-dekiru,14,"Everyday intention, ability & interaction I",23
-tsumori,14,"Everyday intention, ability & interaction I",24
-nai-to-ikenai,14,"Everyday intention, ability & interaction I",25
-nakereba-ikenai,14,"Everyday intention, ability & interaction I",26
-nakereba-naranai,14,"Everyday intention, ability & interaction I",27
-no-da,14,"Everyday intention, ability & interaction I",28
-youda,14,"Everyday intention, ability & interaction I",29
-to-omou,14,"Everyday intention, ability & interaction I",30
-to-iu,14,"Everyday intention, ability & interaction I",31
-garu,14,"Everyday intention, ability & interaction I",32
-ku-suru,14,"Everyday intention, ability & interaction I",33
-tagaru,14,"Everyday intention, ability & interaction I",34
-chimau,15,"Everyday intention, ability & interaction II",1
-chau,15,"Everyday intention, ability & interaction II",2
-te-itadakemasen-ka,15,"Everyday intention, ability & interaction II",3
-te-kurenai,15,"Everyday intention, ability & interaction II",4
-yaru,15,"Everyday intention, ability & interaction II",5
-ka-suru,15,"Everyday intention, ability & interaction II",6
-gozaimasu,15,"Everyday intention, ability & interaction II",7
-te-itadaku,15,"Everyday intention, ability & interaction II",8
-te-kudasaru,15,"Everyday intention, ability & interaction II",9
-nikui,15,"Everyday intention, ability & interaction II",10
-no-youna,15,"Everyday intention, ability & interaction II",11
-ma-prefix,15,"Everyday intention, ability & interaction II",12
-ga-hitsuyou,15,"Everyday intention, ability & interaction II",13
-ga-mirareru,15,"Everyday intention, ability & interaction II",14
-koto-ga-aru-2,15,"Everyday intention, ability & interaction II",15
-janai-ka,15,"Everyday intention, ability & interaction II",16
-souda-2,15,"Everyday intention, ability & interaction II",17
-sou-ni,15,"Everyday intention, ability & interaction II",18
-tara-ii-desu-ka,15,"Everyday intention, ability & interaction II",19
-tara-dou,15,"Everyday intention, ability & interaction II",20
-dewa-nai-ka,15,"Everyday intention, ability & interaction II",21
-to-ii,15,"Everyday intention, ability & interaction II",22
-to-sarete-iru,15,"Everyday intention, ability & interaction II",23
-to-kangaerarete-iru,15,"Everyday intention, ability & interaction II",24
-to-ittemo-ii,15,"Everyday intention, ability & interaction II",25
-to-iwarete-iru,15,"Everyday intention, ability & interaction II",26
-naito,15,"Everyday intention, ability & interaction II",27
-ni-mieru,15,"Everyday intention, ability & interaction II",28
-no-darou-ka,15,"Everyday intention, ability & interaction II",29
-hazu-ga-nai,15,"Everyday intention, ability & interaction II",30
-hazu-da,15,"Everyday intention, ability & interaction II",31
-ba-yokatta,15,"Everyday intention, ability & interaction II",32
-mitai,15,"Everyday intention, ability & interaction II",33
-mitai-ni,16,"Everyday intention, ability & interaction III",1
-yona,16,"Everyday intention, ability & interaction III",2
-you-ni-te-hoshii,16,"Everyday intention, ability & interaction III",3
-rareru-3,16,"Everyday intention, ability & interaction III",4
-yotei-da,16,"Everyday intention, ability & interaction III",5
-hitsuyou-ga-aru,16,"Everyday intention, ability & interaction III",6
-ii,16,"Everyday intention, ability & interaction III",7
-koto-ni-suru,16,"Everyday intention, ability & interaction III",8
-koto-ni-naru,16,"Everyday intention, ability & interaction III",9
-koto-ni-kimeru,16,"Everyday intention, ability & interaction III",10
-tara-do-desuka,16,"Everyday intention, ability & interaction III",11
-daro,16,"Everyday intention, ability & interaction III",12
-te-hoshii,16,"Everyday intention, ability & interaction III",13
-te-moraitai,16,"Everyday intention, ability & interaction III",14
-te-yokatta,16,"Everyday intention, ability & interaction III",15
-nakute-wa,16,"Everyday intention, ability & interaction III",16
-nasai,16,"Everyday intention, ability & interaction III",17
-mitaida,16,"Everyday intention, ability & interaction III",18
-rashii,16,"Everyday intention, ability & interaction III",19
-rarenai,16,"Everyday intention, ability & interaction III",20
-kikoeru,16,"Everyday intention, ability & interaction III",21
-to-kiita,16,"Everyday intention, ability & interaction III",22
-souda,16,"Everyday intention, ability & interaction III",23
-itashimasu,16,"Everyday intention, ability & interaction III",24
-itasu,16,"Everyday intention, ability & interaction III",25
-irassharu,16,"Everyday intention, ability & interaction III",26
-o-vmasu-kudasai,16,"Everyday intention, ability & interaction III",27
-o-suru-2,16,"Everyday intention, ability & interaction III",28
-o-ni-naru,16,"Everyday intention, ability & interaction III",29
-kudasaru,16,"Everyday intention, ability & interaction III",30
-nasaru,16,"Everyday intention, ability & interaction III",31
-oi,16,"Everyday intention, ability & interaction III",32
-te-ne,16,"Everyday intention, ability & interaction III",33
-kara-made,17,"Everyday particles, quantity & emphasis I",1
-dake,17,"Everyday particles, quantity & emphasis I",2
-wa-ga,17,"Everyday particles, quantity & emphasis I",3
-he-iku,17,"Everyday particles, quantity & emphasis I",4
-shika,17,"Everyday particles, quantity & emphasis I",5
-ni,17,"Everyday particles, quantity & emphasis I",6
-ni-5,17,"Everyday particles, quantity & emphasis I",7
-no-2,17,"Everyday particles, quantity & emphasis I",8
-no-naka-de-ga-ichiban,17,"Everyday particles, quantity & emphasis I",9
-ka-2,17,"Everyday particles, quantity & emphasis I",10
-nani-ka-nani-mo,17,"Everyday particles, quantity & emphasis I",11
-ni-4,17,"Everyday particles, quantity & emphasis I",12
-yo-ne,17,"Everyday particles, quantity & emphasis I",13
-dareka-dokoka,17,"Everyday particles, quantity & emphasis I",14
-ka-dou-ka,17,"Everyday particles, quantity & emphasis I",15
-tari-tari,17,"Everyday particles, quantity & emphasis I",16
-tari-tari-suru,17,"Everyday particles, quantity & emphasis I",17
-de-mo,17,"Everyday particles, quantity & emphasis I",18
-made-ni,17,"Everyday particles, quantity & emphasis I",19
-ka-ka,17,"Everyday particles, quantity & emphasis I",20
-counter,17,"Everyday particles, quantity & emphasis I",21
-kana,18,"Everyday particles, quantity & emphasis II",1
-kara-tsukuru,18,"Everyday particles, quantity & emphasis II",2
-zutsu,18,"Everyday particles, quantity & emphasis II",3
-de-dekiru,18,"Everyday particles, quantity & emphasis II",4
-to-to-dochira-ga,18,"Everyday particles, quantity & emphasis II",5
-toka-toka,18,"Everyday particles, quantity & emphasis II",6
-no-naka-de,18,"Everyday particles, quantity & emphasis II",7
-mo-mo,18,"Everyday particles, quantity & emphasis II",8
-igai,18,"Everyday particles, quantity & emphasis II",9
-hou-ga,18,"Everyday particles, quantity & emphasis II",10
-kashira,18,"Everyday particles, quantity & emphasis II",11
-toka,18,"Everyday particles, quantity & emphasis II",12
-na-2,18,"Everyday particles, quantity & emphasis II",13
-naa,18,"Everyday particles, quantity & emphasis II",14
-nado,18,"Everyday particles, quantity & emphasis II",15
-mo-2,18,"Everyday particles, quantity & emphasis II",16
-ya,18,"Everyday particles, quantity & emphasis II",17
-o-2,18,"Everyday particles, quantity & emphasis II",18
-o-3,18,"Everyday particles, quantity & emphasis II",19
-mae-kara,18,"Everyday particles, quantity & emphasis II",20
-kute,19,Everyday connections & conversation I,1
-ni-iku,19,Everyday connections & conversation I,2
-soshite,19,Everyday connections & conversation I,3
-sore-kara,19,Everyday connections & conversation I,4
-mata,19,Everyday connections & conversation I,5
-sugu,19,Everyday connections & conversation I,6
-totemo,19,Everyday connections & conversation I,7
-mada,19,Everyday connections & conversation I,8
-mou,19,Everyday connections & conversation I,9
-motto,19,Everyday connections & conversation I,10
-issho-ni,19,Everyday connections & conversation I,11
-amari,19,Everyday connections & conversation I,12
-takusan,19,Everyday connections & conversation I,13
-dou,19,Everyday connections & conversation I,14
-doushite,19,Everyday connections & conversation I,15
-douyatte,19,Everyday connections & conversation I,16
-nakereba,19,Everyday connections & conversation I,17
-ato-de-2,19,Everyday connections & conversation I,18
-te-mo,19,Everyday connections & conversation I,19
-baai,19,Everyday connections & conversation I,20
-shikashi,19,Everyday connections & conversation I,21
-dakara,19,Everyday connections & conversation I,22
-nai-de,19,Everyday connections & conversation I,23
-nakute,19,Everyday connections & conversation I,24
-no-tame-ni,19,Everyday connections & conversation I,25
-youni,19,Everyday connections & conversation I,26
-zenzen,19,Everyday connections & conversation I,27
-nakattara,19,Everyday connections & conversation I,28
-no-nara,19,Everyday connections & conversation I,29
-shi-shi,19,Everyday connections & conversation I,30
-dake-de,19,Everyday connections & conversation I,31
-te-iru-aida-ni,19,Everyday connections & conversation I,32
-te-kurete-arigatou,19,Everyday connections & conversation I,33
-te-sumimasen,19,Everyday connections & conversation I,34
-you-ni-inoru,19,Everyday connections & conversation I,35
-ndakedo,19,Everyday connections & conversation I,36
-baai-wa,19,Everyday connections & conversation I,37
-aida-ni,20,Everyday connections & conversation II,1
-uchi-ni,20,Everyday connections & conversation II,2
-keredo,20,Everyday connections & conversation II,3
-shi,20,Everyday connections & conversation II,4
-sore-de,20,Everyday connections & conversation II,5
-sore-de-wa,20,Everyday connections & conversation II,6
-sore-demo,20,Everyday connections & conversation II,7
-sore-nara,20,Everyday connections & conversation II,8
-dakedo,20,Everyday connections & conversation II,9
-to-issho-ni,20,Everyday connections & conversation II,10
-nakute-mo,20,Everyday connections & conversation II,11
-ni-tsuite-wa,20,Everyday connections & conversation II,12
-no-baai-wa,20,Everyday connections & conversation II,13
-anmari,20,Everyday connections & conversation II,14
-ikaga,20,Everyday connections & conversation II,15
-ikura,20,Everyday connections & conversation II,16
-itsu-de-mo,20,Everyday connections & conversation II,17
-kitto,20,Everyday connections & conversation II,18
-sakki,20,Everyday connections & conversation II,19
-zutto,20,Everyday connections & conversation II,20
-sonna-ni,20,Everyday connections & conversation II,21
-dandan,20,Everyday connections & conversation II,22
-dondon,20,Everyday connections & conversation II,23
-nakanaka-nai,20,Everyday connections & conversation II,24
-naru-beku,20,Everyday connections & conversation II,25
-hoka-ni-mo,20,Everyday connections & conversation II,26
-hotondo,20,Everyday connections & conversation II,27
-mo-sugu,20,Everyday connections & conversation II,28
-moshi-mo,20,Everyday connections & conversation II,29
-ichido,20,Everyday connections & conversation II,30
-nani-mo-nai,20,Everyday connections & conversation II,31
-zenzen-nai,20,Everyday connections & conversation II,32
-taihen,20,Everyday connections & conversation II,33
-kanarazu,20,Everyday connections & conversation II,34
-hontou-ni,20,Everyday connections & conversation II,35
-hijouni,20,Everyday connections & conversation II,36
-tame-ni,21,Linking ideas I,1
-ga-nakereba,21,Linking ideas I,2
-sae-ba,21,Linking ideas I,3
-te-kara-de-nai-to,21,Linking ideas I,4
-de-nai-to,21,Linking ideas I,5
-de-nakattara,21,Linking ideas I,6
-de-nakute-wa,21,Linking ideas I,7
-de-nakereba,21,Linking ideas I,8
-de-yokereba,21,Linking ideas I,9
-ba-noni,21,Linking ideas I,10
-ba-hodo,21,Linking ideas I,11
-ikura-temo,21,Linking ideas I,12
-tatte,21,Linking ideas I,13
-dekireba,21,Linking ideas I,14
-moshimo-tara,21,Linking ideas I,15
-moshimo-nara,21,Linking ideas I,16
-okage-de,21,Linking ideas I,17
-ka-nai-ka,21,Linking ideas I,18
-kara-da,21,Linking ideas I,19
-kara-iu-to,21,Linking ideas I,20
-zu-ni,21,Linking ideas I,21
-sei-de,21,Linking ideas I,22
-ta-totan,21,Linking ideas I,23
-dake-de-wa-naku,21,Linking ideas I,24
-dake-de-wa-naku-2,21,Linking ideas I,25
-dake-demo,21,Linking ideas I,26
-te-wa-ikenai-kara,21,Linking ideas I,27
-temo-nakutemo,21,Linking ideas I,28
-dewa-nakute,21,Linking ideas I,29
-de-iu-to,22,Linking ideas II,1
-to-iu-riyuu-de,22,Linking ideas II,2
-to-onaji-de,22,Linking ideas II,3
-to-ittemo,22,Linking ideas II,4
-nai-uchi-ni,22,Linking ideas II,5
-naku,22,Linking ideas II,6
-ni-awasete,22,Linking ideas II,7
-ni-ataru,22,Linking ideas II,8
-ni-kurabete,22,Linking ideas II,9
-noni-2,22,Linking ideas II,10
-no-aida-ni,22,Linking ideas II,11
-wa-iu-made-mo-nai,22,Linking ideas II,12
-bakari-de,22,Linking ideas II,13
-bakari-de-wa-naku,22,Linking ideas II,14
-bakari-de-wa-naku-2,22,Linking ideas II,15
-bakari-de-wa-naku-3,22,Linking ideas II,16
-bakari-de-wa-naku-4,22,Linking ideas II,17
-hodo-nai,22,Linking ideas II,18
-mo-ba-mo,22,Linking ideas II,19
-o-komete,22,Linking ideas II,20
-kawari-ni,22,Linking ideas II,21
-saichuu-ni,22,Linking ideas II,22
-tochuu-de,22,Linking ideas II,23
-ato,22,Linking ideas II,24
-ikura-demo,22,Linking ideas II,25
-okage,22,Linking ideas II,26
-kuse-ni,22,Linking ideas II,27
-koto-kara,22,Linking ideas II,28
-koto-de,22,Linking ideas II,29
-koto-ni-yori-yotte,23,Linking ideas III,1
-koto-wa,23,Linking ideas III,2
-sate,23,Linking ideas III,3
-suru-to,23,Linking ideas III,4
-sei,23,Linking ideas III,5
-sou-suru-to,23,Linking ideas III,6
-so-desu-ga,23,Linking ideas III,7
-soko-de,23,Linking ideas III,8
-sono-tame,23,Linking ideas III,9
-sono-tame-ni,23,Linking ideas III,10
-sono-kekka,23,Linking ideas III,11
-sore-to,23,Linking ideas III,12
-soretomo,23,Linking ideas III,13
-sore-ni,23,Linking ideas III,14
-tada,23,Linking ideas III,15
-tatoe-temo,23,Linking ideas III,16
-tame-da,23,Linking ideas III,17
-tara-sugu,23,Linking ideas III,18
-tara-sugu-2,23,Linking ideas III,19
-daga,23,Linking ideas III,20
-datte,23,Linking ideas III,21
-tsuide-ni,23,Linking ideas III,22
-tsumari,23,Linking ideas III,23
-to-iu-to,23,Linking ideas III,24
-to-iu-no-wa,23,Linking ideas III,25
-to-iu-fu-ni,23,Linking ideas III,26
-to-iu-yori,23,Linking ideas III,27
-to-ieba,23,Linking ideas III,28
-toki-ni-wa,23,Linking ideas III,29
-tokoro-ga,24,Linking ideas IV,1
-tokoro-de,24,Linking ideas IV,2
-to-sugu-ni,24,Linking ideas IV,3
-to-suru-to,24,Linking ideas IV,4
-to-onaji-kurai,24,Linking ideas IV,5
-donna-ni-temo,24,Linking ideas IV,6
-nagara-mo,24,Linking ideas IV,7
-nashi-de,24,Linking ideas IV,8
-nazenara,24,Linking ideas IV,9
-naze-nara-ba-kara-da,24,Linking ideas IV,10
-ni-shite-wa,24,Linking ideas IV,11
-ni-shite-mo,24,Linking ideas IV,12
-ni-tsurete,24,Linking ideas IV,13
-ni-naru-to,24,Linking ideas IV,14
-ni-yoru-to,24,Linking ideas IV,15
-ni-yoreba,24,Linking ideas IV,16
-ni-taishite-2,24,Linking ideas IV,17
-ni-kuraberu-to,24,Linking ideas IV,18
-ni-kanshite-2,24,Linking ideas IV,19
-no-da-kara,24,Linking ideas IV,20
-no-kawari-ni,24,Linking ideas IV,21
-mata-wa,24,Linking ideas IV,22
-o-hajime-to-shite,24,Linking ideas IV,23
-tatoeba,24,Linking ideas IV,24
-wari-ni-wa,24,Linking ideas IV,25
-tabi-ni,24,Linking ideas IV,26
-tashika-ni-ga,24,Linking ideas IV,27
-totan-ni,24,Linking ideas IV,28
-zurai,25,"Intention, judgment & interaction I",1
-te-goran,25,"Intention, judgment & interaction I",2
-agaru-ageru,25,"Intention, judgment & interaction I",3
-kiru,25,"Intention, judgment & interaction I",4
-kirenai,25,"Intention, judgment & interaction I",5
-au,25,"Intention, judgment & interaction I",6
-teki,25,"Intention, judgment & interaction I",7
-naosu,25,"Intention, judgment & interaction I",8
-komu,25,"Intention, judgment & interaction I",9
-toosu,25,"Intention, judgment & interaction I",10
-te-yaru,25,"Intention, judgment & interaction I",11
-koto-da,25,"Intention, judgment & interaction I",12
-sou-ni-nai,25,"Intention, judgment & interaction I",13
-ta-mono-da,25,"Intention, judgment & interaction I",14
-dake-da,25,"Intention, judgment & interaction I",15
-tsumori-datta,25,"Intention, judgment & interaction I",16
-tsumori-de,25,"Intention, judgment & interaction I",17
-teiru-baai-janai,25,"Intention, judgment & interaction I",18
-temo-kamawanai,25,"Intention, judgment & interaction I",19
-temo-hajimaranai,25,"Intention, judgment & interaction I",20
-te-sumu,25,"Intention, judgment & interaction I",21
-to-suru,25,"Intention, judgment & interaction I",22
-to-mieru,25,"Intention, judgment & interaction I",23
-to-ieru,25,"Intention, judgment & interaction I",24
-na-prohibitive,25,"Intention, judgment & interaction I",25
-nai-koto-wa-nai,25,"Intention, judgment & interaction I",26
-ni-kagiru,25,"Intention, judgment & interaction I",27
-no-deshou-ka,25,"Intention, judgment & interaction I",28
-ba-ii,25,"Intention, judgment & interaction I",29
-furi-o-suru,25,"Intention, judgment & interaction I",30
-beki-da,25,"Intention, judgment & interaction I",31
-beki-de-wa-nai,25,"Intention, judgment & interaction I",32
-you-to-shinai,25,"Intention, judgment & interaction I",33
-you-na-ki-ga-suru,26,"Intention, judgment & interaction II",1
-wake-ga-nai,26,"Intention, judgment & interaction II",2
-kanousei-ga-aru,26,"Intention, judgment & interaction II",3
-hitsuyo-wa-nai,26,"Intention, judgment & interaction II",4
-gatai,26,"Intention, judgment & interaction II",5
-koto-ni-natte-iru,26,"Intention, judgment & interaction II",6
-koto-wa-nai,26,"Intention, judgment & interaction II",7
-shika-nai,26,"Intention, judgment & interaction II",8
-sou-ni-naru,26,"Intention, judgment & interaction II",9
-tamaranai,26,"Intention, judgment & interaction II",10
-tara-ii-ka,26,"Intention, judgment & interaction II",11
-darou-ka,26,"Intention, judgment & interaction II",12
-te-shikata-ga-nai,26,"Intention, judgment & interaction II",13
-te-tamaranai,26,"Intention, judgment & interaction II",14
-to-wa-kagiranai,26,"Intention, judgment & interaction II",15
-nai-youni-shite-kudasai,26,"Intention, judgment & interaction II",16
-naranai,26,"Intention, judgment & interaction II",17
-nante-2,26,"Intention, judgment & interaction II",18
-ni-chigainai,26,"Intention, judgment & interaction II",19
-marude-you-da,26,"Intention, judgment & interaction II",20
-mono-da,26,"Intention, judgment & interaction II",21
-wake-da,26,"Intention, judgment & interaction II",22
-wake-de-wa-nai,26,"Intention, judgment & interaction II",23
-wake-ni-wa-ikanai,26,"Intention, judgment & interaction II",24
-shikata-ga-nai,26,"Intention, judgment & interaction II",25
-atarimae-da,26,"Intention, judgment & interaction II",26
-kangaerarenai,26,"Intention, judgment & interaction II",27
-to-iu-koto-da,26,"Intention, judgment & interaction II",28
-youni-iu,26,"Intention, judgment & interaction II",29
-ndatte,26,"Intention, judgment & interaction II",30
-o-suru,26,"Intention, judgment & interaction II",31
-saa,26,"Intention, judgment & interaction II",32
-naruhodo,26,"Intention, judgment & interaction II",33
-zettai-ni,27,"Time, degree & adverbial nuance I",1
-goto-ni,27,"Time, degree & adverbial nuance I",2
-buri-ni,27,"Time, degree & adverbial nuance I",3
-gimi,27,"Time, degree & adverbial nuance I",4
-amari-ni-mo,27,"Time, degree & adverbial nuance I",5
-oki-ni,27,"Time, degree & adverbial nuance I",6
-kanari,27,"Time, degree & adverbial nuance I",7
-sappari,27,"Time, degree & adverbial nuance I",8
-shibaraku,27,"Time, degree & adverbial nuance I",9
-seizei,27,"Time, degree & adverbial nuance I",10
-sekkaku,27,"Time, degree & adverbial nuance I",11
-semete,27,"Time, degree & adverbial nuance I",12
-sorezore,27,"Time, degree & adverbial nuance I",13
-sore-dake,27,"Time, degree & adverbial nuance I",14
-tatta,27,"Time, degree & adverbial nuance I",15
-tama-ni-wa,27,"Time, degree & adverbial nuance I",16
-daitai,27,"Time, degree & adverbial nuance I",17
-chittomo,27,"Time, degree & adverbial nuance I",18
-chanto,27,"Time, degree & adverbial nuance I",19
-ppoi,27,"Time, degree & adverbial nuance I",20
-tsui,27,"Time, degree & adverbial nuance I",21
-toutou,27,"Time, degree & adverbial nuance I",22
-totemo-nai,27,"Time, degree & adverbial nuance I",23
-tonikaku,27,"Time, degree & adverbial nuance I",24
-dou-ka,27,"Time, degree & adverbial nuance I",25
-doushitemo,27,"Time, degree & adverbial nuance I",26
-donnani,27,"Time, degree & adverbial nuance I",27
-nakanaka,27,"Time, degree & adverbial nuance I",28
-naze-ka,27,"Time, degree & adverbial nuance I",29
-nanto,27,"Time, degree & adverbial nuance I",30
-nan-to-ka,28,"Time, degree & adverbial nuance II",1
-hotondo-nai,28,"Time, degree & adverbial nuance II",2
-masaka,28,"Time, degree & adverbial nuance II",3
-marude,28,"Time, degree & adverbial nuance II",4
-mushiro,28,"Time, degree & adverbial nuance II",5
-metta-ni,28,"Time, degree & adverbial nuance II",6
-moshika-shitara,28,"Time, degree & adverbial nuance II",7
-motomoto-no,28,"Time, degree & adverbial nuance II",8
-yatto,28,"Time, degree & adverbial nuance II",9
-yappari,28,"Time, degree & adverbial nuance II",10
-yahari,28,"Time, degree & adverbial nuance II",11
-yahari-yappari,28,"Time, degree & adverbial nuance II",12
-wazawaza,28,"Time, degree & adverbial nuance II",13
-ichido-ni,28,"Time, degree & adverbial nuance II",14
-ippanni,28,"Time, degree & adverbial nuance II",15
-mattaku,28,"Time, degree & adverbial nuance II",16
-mattaku-nai,28,"Time, degree & adverbial nuance II",17
-futatabi,28,"Time, degree & adverbial nuance II",18
-betsu-ni-nai,28,"Time, degree & adverbial nuance II",19
-sukoshi-mo,28,"Time, degree & adverbial nuance II",20
-sukoshi-mo-nai,28,"Time, degree & adverbial nuance II",21
-igai-to,28,"Time, degree & adverbial nuance II",22
-sude-ni,28,"Time, degree & adverbial nuance II",23
-mottomo,28,"Time, degree & adverbial nuance II",24
-kesshite,28,"Time, degree & adverbial nuance II",25
-tadachi-ni,28,"Time, degree & adverbial nuance II",26
-tashika-ni,28,"Time, degree & adverbial nuance II",27
-kekkyoku,28,"Time, degree & adverbial nuance II",28
-kekkou,28,"Time, degree & adverbial nuance II",29
-hodo,29,"Reference, scope & sentence patterns I",1
-ni-tsuite,29,"Reference, scope & sentence patterns I",2
-ka-nani-ka,29,"Reference, scope & sentence patterns I",3
-kiri,29,"Reference, scope & sentence patterns I",4
-dake-shika,29,"Reference, scope & sentence patterns I",5
-darake,29,"Reference, scope & sentence patterns I",6
-tte,29,"Reference, scope & sentence patterns I",7
-demo-demo,29,"Reference, scope & sentence patterns I",8
-bakari,29,"Reference, scope & sentence patterns I",9
-hoka,29,"Reference, scope & sentence patterns I",10
-chu-ni,29,"Reference, scope & sentence patterns I",11
-igai-wa,29,"Reference, scope & sentence patterns I",12
-irai,29,"Reference, scope & sentence patterns I",13
-kurai,29,"Reference, scope & sentence patterns I",14
-koso,29,"Reference, scope & sentence patterns I",15
-sae,29,"Reference, scope & sentence patterns I",16
-zo,29,"Reference, scope & sentence patterns I",17
-dai,29,"Reference, scope & sentence patterns I",18
-datte-2,29,"Reference, scope & sentence patterns I",19
-kke,29,"Reference, scope & sentence patterns I",20
-de-sae,29,"Reference, scope & sentence patterns I",21
-de-wa,29,"Reference, scope & sentence patterns I",22
-to-shite,29,"Reference, scope & sentence patterns I",23
-to-shite-wa,29,"Reference, scope & sentence patterns I",24
-nado-to,29,"Reference, scope & sentence patterns I",25
-nado-no,29,"Reference, scope & sentence patterns I",26
-nanka,29,"Reference, scope & sentence patterns I",27
-nante,29,"Reference, scope & sentence patterns I",28
-ni-kakete,29,"Reference, scope & sentence patterns I",29
-ni-totte,29,"Reference, scope & sentence patterns I",30
-ni-wa,29,"Reference, scope & sentence patterns I",31
-ni-yotte,29,"Reference, scope & sentence patterns I",32
-ni-yoru,29,"Reference, scope & sentence patterns I",33
-ni-taishite,29,"Reference, scope & sentence patterns I",34
-ni-kanshite,30,"Reference, scope & sentence patterns II",1
-wa,30,"Reference, scope & sentence patterns II",2
-mon,30,"Reference, scope & sentence patterns II",3
-de-mo-aru,30,"Reference, scope & sentence patterns II",4
-de-aru,30,"Reference, scope & sentence patterns II",5
-kakeru,30,"Reference, scope & sentence patterns II",6
-te-bakari-iru,30,"Reference, scope & sentence patterns II",7
-tokoro-da,30,"Reference, scope & sentence patterns II",8
-tokoro-datta,30,"Reference, scope & sentence patterns II",9
-wa-to-natte-iru,30,"Reference, scope & sentence patterns II",10
-ippou-da,30,"Reference, scope & sentence patterns II",11
-koto-ni-shite-iru,30,"Reference, scope & sentence patterns II",12
-ppanashi,30,"Reference, scope & sentence patterns II",13
-mi,30,"Reference, scope & sentence patterns II",14
-toori-ni,30,"Reference, scope & sentence patterns II",15
-masu-stem-noun,30,"Reference, scope & sentence patterns II",16
-kankei-ga-aru,30,"Reference, scope & sentence patterns II",17
-ni-nareru,30,"Reference, scope & sentence patterns II",18
-wa-de-yuumei,30,"Reference, scope & sentence patterns II",19
-sayuu-suru,30,"Reference, scope & sentence patterns II",20
-muki,30,"Reference, scope & sentence patterns II",21
-muke,30,"Reference, scope & sentence patterns II",22
-jishin,30,"Reference, scope & sentence patterns II",23
-men,30,"Reference, scope & sentence patterns II",24
-kou-itta,30,"Reference, scope & sentence patterns II",25
-kou-shita,30,"Reference, scope & sentence patterns II",26
-to-naru,30,"Reference, scope & sentence patterns II",27
-igo,30,"Reference, scope & sentence patterns II",28
-ikou,30,"Reference, scope & sentence patterns II",29
-nan-mo,30,"Reference, scope & sentence patterns II",30
-rhetorical-question,30,"Reference, scope & sentence patterns II",31
-jibun,30,"Reference, scope & sentence patterns II",32
-okonau,30,"Reference, scope & sentence patterns II",33
-to-shite-mo,31,Linking arguments I,1
-kagiri,31,Linking arguments I,2
-tatte-2,31,Linking arguments I,3
-ka-to-iu-to,31,Linking arguments I,4
-ka-to-omou-to,31,Linking arguments I,5
-kara-koso,31,Linking arguments I,6
-kara-shite,31,Linking arguments I,7
-kara-suru-to,31,Linking arguments I,8
-kara-to-itte,31,Linking arguments I,9
-kara-ni-wa,31,Linking arguments I,10
-kara-mite,31,Linking arguments I,11
-kara-miru-to,31,Linking arguments I,12
-ga-kikkake-de,31,Linking arguments I,13
-kuse-shite,31,Linking arguments I,14
-koto-dakara,31,Linking arguments I,15
-koto-naku,31,Linking arguments I,16
-zu-ni-sumu,31,Linking arguments I,17
-ta-sue,31,Linking arguments I,18
-te-ite-wa,31,Linking arguments I,19
-te-koso,31,Linking arguments I,20
-de-atte-mo,31,Linking arguments I,21
-to-iu-fuu-ni,31,Linking arguments I,22
-tokoro-ni,31,Linking arguments I,23
-dokoroka,31,Linking arguments I,24
-ni-shitara,31,Linking arguments I,25
-nimo-kakawarazu,31,Linking arguments I,26
-ni-kuwaete,31,Linking arguments I,27
-ni-mukete-muketa,31,Linking arguments I,28
-ni-kotaete,31,Linking arguments I,29
-ni-sotte,31,Linking arguments I,30
-ni-kakawaru,31,Linking arguments I,31
-wa-tomokaku,31,Linking arguments I,32
-wa-mochiron,31,Linking arguments I,33
-wa-moto-yori,31,Linking arguments I,34
-wa-betsu-to-shite,32,Linking arguments II,1
-mo-kamawazu,32,Linking arguments II,2
-mono-dakara,32,Linking arguments II,3
-mono-desu-kara,32,Linking arguments II,4
-megutte-meguru,32,Linking arguments II,5
-ippou-de,32,Linking arguments II,6
-no-ue-de,32,Linking arguments II,7
-ijou-wa,32,Linking arguments II,8
-ijou-ni,32,Linking arguments II,9
-hanmen,32,Linking arguments II,10
-kekka,32,Linking arguments II,11
-kagiri-wa,32,Linking arguments II,12
-aruiwa,32,Linking arguments II,13
-omake-ni,32,Linking arguments II,14
-oyobi,32,Linking arguments II,15
-ka-to-itte,32,Linking arguments II,16
-sara-ni,32,Linking arguments II,17
-shika-mo,32,Linking arguments II,18
-sou-ieba,32,Linking arguments II,19
-sono-ue,32,Linking arguments II,20
-sono-ue-ni,32,Linking arguments II,21
-sore-nanoni,32,Linking arguments II,22
-sore-ni-shitemo,32,Linking arguments II,23
-dakara-to-itte,32,Linking arguments II,24
-chinami-ni,32,Linking arguments II,25
-te-wa,32,Linking arguments II,26
-te-hajimete,32,Linking arguments II,27
-to-iu-ka,32,Linking arguments II,28
-to-iu-koto-wa,32,Linking arguments II,29
-to-iu-noni,32,Linking arguments II,30
-to-iu-youna,32,Linking arguments II,31
-to-iu-youni,32,Linking arguments II,32
-to-iu-yori-wa,32,Linking arguments II,33
-to-ittara,33,Linking arguments III,1
-to-itte,33,Linking arguments III,2
-to-itte-mo,33,Linking arguments III,3
-to-tomo-ni,33,Linking arguments III,4
-to-naru-to,33,Linking arguments III,5
-to-douji-ni,33,Linking arguments III,6
-nashi-ni,33,Linking arguments III,7
-naze-ka-to-iu-to,33,Linking arguments III,8
-naze-ka-to-iu-to-kara-da,33,Linking arguments III,9
-nanishiro,33,Linking arguments III,10
-ni-kakawarazu,33,Linking arguments III,11
-ni-mo-kakawarazu,33,Linking arguments III,12
-ni-tomonatte,33,Linking arguments III,13
-ni-hanshite,33,Linking arguments III,14
-ni-hanshite-2,33,Linking arguments III,15
-ni-motozuite,33,Linking arguments III,16
-ni-shitagatte,33,Linking arguments III,17
-ni-oujite,33,Linking arguments III,18
-ni-kagirazu,33,Linking arguments III,19
-no-koto-da-kara,33,Linking arguments III,20
-mono-no,33,Linking arguments III,21
-o-moto-ni,33,Linking arguments III,22
-o-chushin-to-ni-shite,33,Linking arguments III,23
-o-towazu,33,Linking arguments III,24
-o-toshite,33,Linking arguments III,25
-o-tsujite,33,Linking arguments III,26
-o-nozoite,33,Linking arguments III,27
-ue-ni,33,Linking arguments III,28
-shitagatte,33,Linking arguments III,29
-yousuru-ni,33,Linking arguments III,30
-ju-made-mo-nai,33,Linking arguments III,31
-gyaku-ni,33,Linking arguments III,32
-sai-ni,33,Linking arguments III,33
-nuku,34,"Stance, possibility & obligation",1
-kanenai,34,"Stance, possibility & obligation",2
-kaneru,34,"Stance, possibility & obligation",3
-ka-no-you-da,34,"Stance, possibility & obligation",4
-ka-no-youni,34,"Stance, possibility & obligation",5
-zaru-o-enai,34,"Stance, possibility & obligation",6
-kkonai,34,"Stance, possibility & obligation",7
-te-shou-ga-nai,34,"Stance, possibility & obligation",8
-te-touzen-da,34,"Stance, possibility & obligation",9
-to-iu-mono-da,34,"Stance, possibility & obligation",10
-to-iu-mono-dewa-nai,34,"Stance, possibility & obligation",11
-to-iu-wake-dewa-nai,34,"Stance, possibility & obligation",12
-to-kangaerareru,34,"Stance, possibility & obligation",13
-dokoro-de-wa-nai,34,"Stance, possibility & obligation",14
-nakute-sumu,34,"Stance, possibility & obligation",15
-naku-wa-nai,34,"Stance, possibility & obligation",16
-ni-kimatte-iru,34,"Stance, possibility & obligation",17
-ni-koshita-koto-wa-nai,34,"Stance, possibility & obligation",18
-no-dewa-nai-darou-ka,34,"Stance, possibility & obligation",19
-no-mo-touzen-da,34,"Stance, possibility & obligation",20
-mono-ga-aru,34,"Stance, possibility & obligation",21
-mo-touzen-da,34,"Stance, possibility & obligation",22
-keikou-ga-aru,34,"Stance, possibility & obligation",23
-kikensei-ga-aru,34,"Stance, possibility & obligation",24
-enai,34,"Stance, possibility & obligation",25
-eru,34,"Stance, possibility & obligation",26
-tara-ii-noni,34,"Stance, possibility & obligation",27
-te-wa-naranai,34,"Stance, possibility & obligation",28
-nai-wake-ni-wa-ikanai,34,"Stance, possibility & obligation",29
-ni-suginai,34,"Stance, possibility & obligation",30
-neba-naranai,34,"Stance, possibility & obligation",31
-mono-de-wa-nai,34,"Stance, possibility & obligation",32
-touzen-da,34,"Stance, possibility & obligation",33
-osore-ga-aru,34,"Stance, possibility & obligation",34
-toka-2,34,"Stance, possibility & obligation",35
-fuu-ni,35,"Degree, evaluation & adverbial nuance I",1
-ikinari,35,"Degree, evaluation & adverbial nuance I",2
-itsu-no-ma-ni-ka,35,"Degree, evaluation & adverbial nuance I",3
-iyoiyo,35,"Degree, evaluation & adverbial nuance I",4
-ukkari,35,"Degree, evaluation & adverbial nuance I",5
-osoraku,35,"Degree, evaluation & adverbial nuance I",6
-kaette,35,"Degree, evaluation & adverbial nuance I",7
-sasuga,35,"Degree, evaluation & adverbial nuance I",8
-sasuga-ni,35,"Degree, evaluation & adverbial nuance I",9
-somosomo,35,"Degree, evaluation & adverbial nuance I",10
-tachimachi,35,"Degree, evaluation & adverbial nuance I",11
-tsui-ni,35,"Degree, evaluation & adverbial nuance I",12
-tokku-ni,35,"Degree, evaluation & adverbial nuance I",13
-toriaezu,35,"Degree, evaluation & adverbial nuance I",14
-douse,35,"Degree, evaluation & adverbial nuance I",15
-dou-ni-ka,35,"Degree, evaluation & adverbial nuance I",16
-dou-yara,35,"Degree, evaluation & adverbial nuance I",17
-dochira-ka-to-iu-to,35,"Degree, evaluation & adverbial nuance I",18
-dochira-ka-to-ieba,35,"Degree, evaluation & adverbial nuance I",19
-masumasu,35,"Degree, evaluation & adverbial nuance I",20
-mou-sukoshi-de,35,"Degree, evaluation & adverbial nuance I",21
-yagate,35,"Degree, evaluation & adverbial nuance I",22
-yohodo,35,"Degree, evaluation & adverbial nuance I",23
-roku-ni-nai,36,"Degree, evaluation & adverbial nuance II",1
-wazuka-ni,36,"Degree, evaluation & adverbial nuance II",2
-issai-nai,36,"Degree, evaluation & adverbial nuance II",3
-issou,36,"Degree, evaluation & adverbial nuance II",4
-ichiou,36,"Degree, evaluation & adverbial nuance II",5
-ikki-ni,36,"Degree, evaluation & adverbial nuance II",6
-man-ga-ichi,36,"Degree, evaluation & adverbial nuance II",7
-nani-kara-nani-made,36,"Degree, evaluation & adverbial nuance II",8
-nani-shiro,36,"Degree, evaluation & adverbial nuance II",9
-nan-to-ittemo,36,"Degree, evaluation & adverbial nuance II",10
-nani-yori,36,"Degree, evaluation & adverbial nuance II",11
-tan-ni,36,"Degree, evaluation & adverbial nuance II",12
-jitsuni,36,"Degree, evaluation & adverbial nuance II",13
-sukunakutomo,36,"Degree, evaluation & adverbial nuance II",14
-saiwai,36,"Degree, evaluation & adverbial nuance II",15
-kanarazushimo,36,"Degree, evaluation & adverbial nuance II",16
-omou-you-ni,36,"Degree, evaluation & adverbial nuance II",17
-akiraka-ni,36,"Degree, evaluation & adverbial nuance II",18
-imada-ni,36,"Degree, evaluation & adverbial nuance II",19
-angai,36,"Degree, evaluation & adverbial nuance II",20
-youyaku,36,"Degree, evaluation & adverbial nuance II",21
-machigai-naku,36,"Degree, evaluation & adverbial nuance II",22
-atari,37,"Reference, scope & expression",1
-kara-ni-kakete,37,"Reference, scope & expression",2
-dake-wa,37,"Reference, scope & expression",3
-de-shika-nai,37,"Reference, scope & expression",4
-no-uchi-de,37,"Reference, scope & expression",5
-buri,37,"Reference, scope & expression",6
-bun,37,"Reference, scope & expression",7
-nuki-de,37,"Reference, scope & expression",8
-ttara,37,"Reference, scope & expression",9
-to-itta,37,"Reference, scope & expression",10
-to-wa,37,"Reference, scope & expression",11
-ni-oite,37,"Reference, scope & expression",12
-ni-tsuki,37,"Reference, scope & expression",13
-ni-mo,37,"Reference, scope & expression",14
-ni-watatte,37,"Reference, scope & expression",15
-ni-mukatte,37,"Reference, scope & expression",16
-ni-mukete,37,"Reference, scope & expression",17
-nomi,37,"Reference, scope & expression",18
-mo-mata,37,"Reference, scope & expression",19
-ten-de,37,"Reference, scope & expression",20
-tsutsu-aru,37,"Reference, scope & expression",21
-omowareru,37,"Reference, scope & expression",22
-ga-ki-ni-naru,37,"Reference, scope & expression",23
-ni-ki-o-tsukeru,37,"Reference, scope & expression",24
-o-ni-makaseru,37,"Reference, scope & expression",25
-ikasu,37,"Reference, scope & expression",26
-jou,37,"Reference, scope & expression",27
-kai-gai,37,"Reference, scope & expression",28
-jitai,37,"Reference, scope & expression",29
-iwayuru,37,"Reference, scope & expression",30
-nanraka-no,37,"Reference, scope & expression",31
-nani-ka-no,37,"Reference, scope & expression",32
-kai,38,Advanced common grammar,1
-dara,38,Advanced common grammar,2
-nai-wa-nai,38,Advanced common grammar,3
-kikeru,38,Advanced common grammar,4
-suuryou-wa,38,Advanced common grammar,5
-ka-ka-dochiraka,38,Advanced common grammar,6
-ka-ne,38,Advanced common grammar,7
-wa-kurai-desu,38,Advanced common grammar,8
-made-de,38,Advanced common grammar,9
-te-sashiageru,38,Advanced common grammar,10
-koto-nano,38,Advanced common grammar,11
-temo-shikata-ga-nai,38,Advanced common grammar,12
-to-iu-no-wa-jijitsu-da,38,Advanced common grammar,13
-rareru,38,Advanced common grammar,14
-ka-wa-ni-yotte-chigau,38,Advanced common grammar,15
-aida-wa,38,Advanced common grammar,16
-uchi-wa,38,Advanced common grammar,17
-ni-kawatte,38,Advanced common grammar,18
-ni-kanshite-wa,38,Advanced common grammar,19
-no-wa-no-koto-da,38,Advanced common grammar,20
-zensha-wa,38,Advanced common grammar,21
-gachi,38,Advanced common grammar,22
-amari-2,38,Advanced common grammar,23
-metta-ni-nai,38,Advanced common grammar,24
-zenbu-wa-nai,38,Advanced common grammar,25
-mata-mo,38,Advanced common grammar,26
-no-sugata,38,Advanced common grammar,27
-aa-shita,38,Advanced common grammar,28
-futsu-no,38,Advanced common grammar,29
-saigo-made,38,Advanced common grammar,30
-made-mo-nai,38,Advanced common grammar,31
-towa-iu-mono-no,38,Advanced common grammar,32
-ni-kakatteiru,38,Advanced common grammar,33
-o-zentei-ni,38,Advanced common grammar,34
-o-fumaete,38,Advanced common grammar,35
-izure-ni-shitemo,38,Advanced common grammar,36
-arakajime,38,Advanced common grammar,37
-katsute,38,Advanced common grammar,38
-mohaya,38,Advanced common grammar,39
-omoi-o-suru,38,Advanced common grammar,40
-nari-ni,38,Advanced common grammar,41
-nari-ni-no,38,Advanced common grammar,42
-nai-koto-niwa-nai,39,Extension — relations & conditions I,1
-ba-hodo-yoi,39,Extension — relations & conditions I,2
-youde-wa,39,Extension — relations & conditions I,3
-tari-shitara,39,Extension — relations & conditions I,4
-nai-koto-ni-wa,39,Extension — relations & conditions I,5
-nashi-de-wa,39,Extension — relations & conditions I,6
-nashi-ni-wa,39,Extension — relations & conditions I,7
-no-de-areba,39,Extension — relations & conditions I,8
-mono-nara,39,Extension — relations & conditions I,9
-to-itsu-de-mo,39,Extension — relations & conditions I,10
-ageku-ni,39,Extension — relations & conditions I,11
-ka-nai-ka-no-uchi-ni,39,Extension — relations & conditions I,12
-ka-to-omoeba,39,Extension — relations & conditions I,13
-kara-itte,39,Extension — relations & conditions I,14
-gake-ni,39,Extension — relations & conditions I,15
-koto-wa-ga,39,Extension — relations & conditions I,16
-dake-atte,39,Extension — relations & conditions I,17
-dake-ni,39,Extension — relations & conditions I,18
-dake-no-koto-wa-atte,39,Extension — relations & conditions I,19
-te-demo,39,Extension — relations & conditions I,20
-tewa-tewa,39,Extension — relations & conditions I,21
-to-iu-ten-kara-kangaeru-to,39,Extension — relations & conditions I,22
-tokoro-o,39,Extension — relations & conditions I,23
-tokoro-o-miru-to,39,Extension — relations & conditions I,24
-to-wa-iu-mono-no,39,Extension — relations & conditions I,25
-ni-kakete-wa,39,Extension — relations & conditions I,26
-ni-shitemo-ni-shitemo,39,Extension — relations & conditions I,27
-ni-shiro-ni-shiro,39,Extension — relations & conditions I,28
-ni-sakidachi,39,Extension — relations & conditions I,29
-bakari-ka,40,Extension — relations & conditions II,1
-bakari-ni,40,Extension — relations & conditions II,2
-mama-ni,40,Extension — relations & conditions II,3
-mo-ba,40,Extension — relations & conditions II,4
-mo-shi-mo,40,Extension — relations & conditions II,5
-you-to-ga,40,Extension — relations & conditions II,6
-o-chushin-ni,40,Extension — relations & conditions II,7
-o-keiki-ni,40,Extension — relations & conditions II,8
-jou-wa,40,Extension — relations & conditions II,9
-naka-o,40,Extension — relations & conditions II,10
-koto-ni-yoru,40,Extension — relations & conditions II,11
-sara-ni-wa,40,Extension — relations & conditions II,12
-soko-de-2,40,Extension — relations & conditions II,13
-sore-ga,40,Extension — relations & conditions II,14
-sore-dokoroka,40,Extension — relations & conditions II,15
-sore-mo,40,Extension — relations & conditions II,16
-tadashi,40,Extension — relations & conditions II,17
-tsuite-wa,40,Extension — relations & conditions II,18
-tsutsu,40,Extension — relations & conditions II,19
-to-iu-no-wa-koto-da,40,Extension — relations & conditions II,20
-toka-de,40,Extension — relations & conditions II,21
-toki-ni,40,Extension — relations & conditions II,22
-tokoro-kara,40,Extension — relations & conditions II,23
-to-narande,40,Extension — relations & conditions II,24
-to-onajiku,40,Extension — relations & conditions II,25
-to-gyaku-ni,40,Extension — relations & conditions II,26
-nai-de-mo,40,Extension — relations & conditions II,27
-nao,40,Extension — relations & conditions II,28
-ni-shiro,40,Extension — relations & conditions II,29
-ni-tsuke,41,Extension — relations & conditions III,1
-ni-atatte,41,Extension — relations & conditions III,2
-ni-kankei-naku,41,Extension — relations & conditions III,3
-ni-saishite,41,Extension — relations & conditions III,4
-nochi-ni,41,Extension — relations & conditions III,5
-no-hoka-ni-wa-nai,41,Extension — relations & conditions III,6
-no-hoka-ni-nai,41,Extension — relations & conditions III,7
-nomi-narazu,41,Extension — relations & conditions III,8
-no-moto-de,41,Extension — relations & conditions III,9
-no-ue-de-wa,41,Extension — relations & conditions III,10
-no-ten-de,41,Extension — relations & conditions III,11
-no-kankei-de,41,Extension — relations & conditions III,12
-madashimo,41,Extension — relations & conditions III,13
-moshikuwa,41,Extension — relations & conditions III,14
-o-megutte,41,Extension — relations & conditions III,15
-o-mezashite,41,Extension — relations & conditions III,16
-o-mokuhyou-ni,41,Extension — relations & conditions III,17
-ippou-de-wa-tahou-de-wa,41,Extension — relations & conditions III,18
-omoeba,41,Extension — relations & conditions III,19
-ori,41,Extension — relations & conditions III,20
-ori-ni,41,Extension — relations & conditions III,21
-sue-ni,41,Extension — relations & conditions III,22
-shidai,41,Extension — relations & conditions III,23
-shidai-de,41,Extension — relations & conditions III,24
-shunkan-ni,41,Extension — relations & conditions III,25
-daiichi,41,Extension — relations & conditions III,26
-itte-mireba,41,Extension — relations & conditions III,27
-sai,41,Extension — relations & conditions III,28
-zu,42,Extension — stance & possibility,1
-tamae,42,Extension — stance & possibility,2
-te-miseru,42,Extension — stance & possibility,3
-o-negau,42,Extension — stance & possibility,4
-nu,42,Extension — stance & possibility,5
-koto-niwa-naranai,42,Extension — stance & possibility,6
-zu-ni-wa-irarenai,42,Extension — stance & possibility,7
-dake-no-koto-da,42,Extension — stance & possibility,8
-dake-no-koto-wa-aru,42,Extension — stance & possibility,9
-dake-mashi-da,42,Extension — stance & possibility,10
-nai-dewa-irarenai,42,Extension — stance & possibility,11
-ni-soui-nai,42,Extension — stance & possibility,12
-no-mo-mottomo-da,42,Extension — stance & possibility,13
-beki-ka,42,Extension — stance & possibility,14
-hodo-no-koto-wa-nai,42,Extension — stance & possibility,15
-mono-ka,42,Extension — stance & possibility,16
-you-ka-mai-ka,42,Extension — stance & possibility,17
-you-dewa-nai-ka,42,Extension — stance & possibility,18
-yori-hoka-nai,42,Extension — stance & possibility,19
-yori-shikata-ga-nai,42,Extension — stance & possibility,20
-yori-hoka-nai-2,42,Extension — stance & possibility,21
-igai-ni-nai,42,Extension — stance & possibility,22
-kai-ga-aru,42,Extension — stance & possibility,23
-koto-ka,42,Extension — stance & possibility,24
-tara-ii-no-da-ga,42,Extension — stance & possibility,25
-te-naranai,42,Extension — stance & possibility,26
-te-wa-irarenai,42,Extension — stance & possibility,27
-de-arou,42,Extension — stance & possibility,28
-dorehodo-koto-ka,42,Extension — stance & possibility,29
-donnani-koto-ka,42,Extension — stance & possibility,30
-nai-koto-mo-nai,42,Extension — stance & possibility,31
-nai-koto-mo-wa-nai,42,Extension — stance & possibility,32
-nai-de-mo-nai,42,Extension — stance & possibility,33
-naku-mo-nai,42,Extension — stance & possibility,34
-ni-hokanaranai,42,Extension — stance & possibility,35
-mai,42,Extension — stance & possibility,36
-mashida,42,Extension — stance & possibility,37
-mou-sukoshi-de-suru-tokoro,42,Extension — stance & possibility,38
-subete-wa-nai,42,Extension — stance & possibility,39
-to-no,42,Extension — stance & possibility,40
-to-no-koto,42,Extension — stance & possibility,41
-nado-to-wa,42,Extension — stance & possibility,42
-kara-naru,43,Extension — expression & nuance I,1
-ya-ya,43,Extension — expression & nuance I,2
-yara-yara,43,Extension — expression & nuance I,3
-sore-wa,43,Extension — expression & nuance I,4
-de-sura,43,Extension — expression & nuance I,5
-tomo,43,Extension — expression & nuance I,6
-ni-kagitte,43,Extension — expression & nuance I,7
-yara,43,Extension — expression & nuance I,8
-wa-3,43,Extension — expression & nuance I,9
-tani-de,43,Extension — expression & nuance I,10
-bakari-da,43,Extension — expression & nuance I,11
-you,43,Extension — expression & nuance I,12
-no-nasa,43,Extension — expression & nuance I,13
-to-shite-nai,43,Extension — expression & nuance I,14
-kagiri-2,43,Extension — expression & nuance I,15
-ikanimo,43,Extension — expression & nuance I,16
-itsumo-wa-nai,43,Extension — expression & nuance I,17
-oyoso,43,Extension — expression & nuance I,18
-koto-ni,43,Extension — expression & nuance I,19
-sou-shita,43,Extension — expression & nuance I,20
-sono-mono,43,Extension — expression & nuance I,21
-tada-no,43,Extension — expression & nuance I,22
-toutei-nai,43,Extension — expression & nuance I,23
-dou-iu-wake-da-ka,44,Extension — expression & nuance II,1
-doushite-da-ka,44,Extension — expression & nuance II,2
-doko-made-mo,44,Extension — expression & nuance II,3
-minna-wa-nai,44,Extension — expression & nuance II,4
-hitotsu,44,Extension — expression & nuance II,5
-ittan,44,Extension — expression & nuance II,6
-imasara,44,Extension — expression & nuance II,7
-kari-ni,44,Extension — expression & nuance II,8
-izen-to-shite,44,Extension — expression & nuance II,9
-wazuka,44,Extension — expression & nuance II,10
-wariai,44,Extension — expression & nuance II,11
-omoikitte,44,Extension — expression & nuance II,12
-omowazu,44,Extension — expression & nuance II,13
-hatashite,44,Extension — expression & nuance II,14
-iwaba,44,Extension — expression & nuance II,15
-doushi,44,Extension — expression & nuance II,16
-kinshi,44,Extension — expression & nuance II,17
-fu-no,44,Extension — expression & nuance II,18
-rei-no,44,Extension — expression & nuance II,19
-sumaseru,44,Extension — expression & nuance II,20
-sumu,44,Extension — expression & nuance II,21
-jibun-2,44,Extension — expression & nuance II,22
-negau,44,Extension — expression & nuance II,23
-kurai-nara,45,Advanced comprehension — relations & conditions I,1
-tara-tokoro-da,45,Advanced comprehension — relations & conditions I,2
-tara-saigo,45,Advanced comprehension — relations & conditions I,3
-to-areba,45,Advanced comprehension — relations & conditions I,4
-to-mo-naru-to,45,Advanced comprehension — relations & conditions I,5
-to-ie-domo,45,Advanced comprehension — relations & conditions I,6
-ba-sore-made-da,45,Advanced comprehension — relations & conditions I,7
-you-mono-nara,45,Advanced comprehension — relations & conditions I,8
-to-atte-wa,45,Advanced comprehension — relations & conditions I,9
-nakushite-wa,45,Advanced comprehension — relations & conditions I,10
-atte-no,45,Advanced comprehension — relations & conditions I,11
-ikan-de,45,Advanced comprehension — relations & conditions I,12
-katagata,45,Advanced comprehension — relations & conditions I,13
-ka-to-omoikiya,45,Advanced comprehension — relations & conditions I,14
-gatera,45,Advanced comprehension — relations & conditions I,15
-ga-hayai-ka,45,Advanced comprehension — relations & conditions I,16
-koto-dashi,45,Advanced comprehension — relations & conditions I,17
-koto-nashi-ni,45,Advanced comprehension — relations & conditions I,18
-koto-no-nai-you-ni,45,Advanced comprehension — relations & conditions I,19
-koto-mo-atte,45,Advanced comprehension — relations & conditions I,20
-ja-aru-mai-shi,45,Advanced comprehension — relations & conditions I,21
-soba-kara,45,Advanced comprehension — relations & conditions I,22
-tara-tade,45,Advanced comprehension — relations & conditions I,23
-ta-hazumi-ni,45,Advanced comprehension — relations & conditions I,24
-darou-ga-to,45,Advanced comprehension — relations & conditions I,25
-te-kara-to-iu-mono,45,Advanced comprehension — relations & conditions I,26
-de-are,45,Advanced comprehension — relations & conditions I,27
-dewa-arumai-shi,45,Advanced comprehension — relations & conditions I,28
-demo-ari-demo-aru,45,Advanced comprehension — relations & conditions I,29
-to-ii-to-ii,45,Advanced comprehension — relations & conditions I,30
-to-iou-ka,45,Advanced comprehension — relations & conditions I,31
-to-aimatte,46,Advanced comprehension — relations & conditions II,1
-nagara-ni,46,Advanced comprehension — relations & conditions II,2
-nara-de,46,Advanced comprehension — relations & conditions II,3
-nara-madashimo,46,Advanced comprehension — relations & conditions II,4
-nari,46,Advanced comprehension — relations & conditions II,5
-ni-shite-mireba,46,Advanced comprehension — relations & conditions II,6
-ni-hikikae,46,Advanced comprehension — relations & conditions II,7
-ni-matsuwaru,46,Advanced comprehension — relations & conditions II,8
-nimo-mashite,46,Advanced comprehension — relations & conditions II,9
-ni-sakigakete,46,Advanced comprehension — relations & conditions II,10
-ni-nottotte,46,Advanced comprehension — relations & conditions II,11
-ni-sokushite,46,Advanced comprehension — relations & conditions II,12
-ni-terashite,46,Advanced comprehension — relations & conditions II,13
-ni-itaru,46,Advanced comprehension — relations & conditions II,14
-ni-itaru-made,46,Advanced comprehension — relations & conditions II,15
-ni-iwasereba,46,Advanced comprehension — relations & conditions II,16
-wa-ii-to-shite-mo,46,Advanced comprehension — relations & conditions II,17
-wa-sate-oki,46,Advanced comprehension — relations & conditions II,18
-wa-iu-made-mo-naku,46,Advanced comprehension — relations & conditions II,19
-mo-shinai-de,46,Advanced comprehension — relations & conditions II,20
-you-ga-mai-ga,46,Advanced comprehension — relations & conditions II,21
-you-tomo,46,Advanced comprehension — relations & conditions II,22
-you-ni-yotte-wa,46,Advanced comprehension — relations & conditions II,23
-o-ii-koto-ni,46,Advanced comprehension — relations & conditions II,24
-o-motte,46,Advanced comprehension — relations & conditions II,25
-o-kanete,46,Advanced comprehension — relations & conditions II,26
-o-ki-ni,46,Advanced comprehension — relations & conditions II,27
-o-kawakiri-ni,46,Advanced comprehension — relations & conditions II,28
-o-hete,46,Advanced comprehension — relations & conditions II,29
-ori-niwa,46,Advanced comprehension — relations & conditions II,30
-kai-mo-naku,46,Advanced comprehension — relations & conditions II,31
-katsu,47,Advanced comprehension — relations & conditions III,1
-samonaito,47,Advanced comprehension — relations & conditions III,2
-shikashi-nagara,47,Advanced comprehension — relations & conditions III,3
-sunawachi,47,Advanced comprehension — relations & conditions III,4
-sou-ka-to-itte,47,Advanced comprehension — relations & conditions III,5
-sore-de-ite,47,Advanced comprehension — relations & conditions III,6
-sore-yue,47,Advanced comprehension — relations & conditions III,7
-tatoete-ieba,47,Advanced comprehension — relations & conditions III,8
-ta-tokoro-de,47,Advanced comprehension — relations & conditions III,9
-ta-nari-de,47,Advanced comprehension — relations & conditions III,10
-to-atte,47,Advanced comprehension — relations & conditions III,11
-to-kitara,47,Advanced comprehension — relations & conditions III,12
-to-wa-ie,47,Advanced comprehension — relations & conditions III,13
-to-bakari-ni,47,Advanced comprehension — relations & conditions III,14
-to-mo-naku,47,Advanced comprehension — relations & conditions III,15
-to-mo-nashi-ni,47,Advanced comprehension — relations & conditions III,16
-to-iwan-bakari-ni,47,Advanced comprehension — relations & conditions III,17
-naishi-wa,47,Advanced comprehension — relations & conditions III,18
-nai-made-mo,47,Advanced comprehension — relations & conditions III,19
-ni-yorazu,47,Advanced comprehension — relations & conditions III,20
-ni-todomarazu,47,Advanced comprehension — relations & conditions III,21
-wa-oroka,47,Advanced comprehension — relations & conditions III,22
-mashite-ya,47,Advanced comprehension — relations & conditions III,23
-mottomo-2,47,Advanced comprehension — relations & conditions III,24
-ya-ina-ya,47,Advanced comprehension — relations & conditions III,25
-o-kaishite,47,Advanced comprehension — relations & conditions III,26
-hitotsu-ni-wa,47,Advanced comprehension — relations & conditions III,27
-narabi-ni,47,Advanced comprehension — relations & conditions III,28
-kuwaete,47,Advanced comprehension — relations & conditions III,29
-yue-ni,47,Advanced comprehension — relations & conditions III,30
-setsu-ni,47,Advanced comprehension — relations & conditions III,31
-jimita,48,Advanced comprehension — stance & evaluation I,1
-sobireru,48,Advanced comprehension — stance & evaluation I,2
-biru,48,Advanced comprehension — stance & evaluation I,3
-buru,48,Advanced comprehension — stance & evaluation I,4
-makuru,48,Advanced comprehension — stance & evaluation I,5
-meku,48,Advanced comprehension — stance & evaluation I,6
-sokonau,48,Advanced comprehension — stance & evaluation I,7
-kirai-ga-aru,48,Advanced comprehension — stance & evaluation I,8
-kurai-no-mono-da,48,Advanced comprehension — stance & evaluation I,9
-zu-jimai,48,Advanced comprehension — stance & evaluation I,10
-zu-niwa-sumanai,48,Advanced comprehension — stance & evaluation I,11
-ta-koto-ni-suru,48,Advanced comprehension — stance & evaluation I,12
-ta-tsumori-wa-nai,48,Advanced comprehension — stance & evaluation I,13
-ta-made-da,48,Advanced comprehension — stance & evaluation I,14
-tameshi-ga-nai,48,Advanced comprehension — stance & evaluation I,15
-darou-ni,48,Advanced comprehension — stance & evaluation I,16
-temo-dou-ni-mo-naranai,48,Advanced comprehension — stance & evaluation I,17
-temo-sashitsukaenai,48,Advanced comprehension — stance & evaluation I,18
-temo-shiranai,48,Advanced comprehension — stance & evaluation I,19
-te-kanawanai,48,Advanced comprehension — stance & evaluation I,20
-te-sumu-koto-dewa-nai,48,Advanced comprehension — stance & evaluation I,21
-dewa-sumanai,48,Advanced comprehension — stance & evaluation I,22
-demo-nan-demo-nai,48,Advanced comprehension — stance & evaluation I,23
-to-iu-tokoro,48,Advanced comprehension — stance & evaluation I,24
-towa-kurabemono-ni-naranai,48,Advanced comprehension — stance & evaluation I,25
-to-ienaku-mo-nai,48,Advanced comprehension — stance & evaluation I,26
-dokoro-no-hanashi-de-wa-nai,48,Advanced comprehension — stance & evaluation I,27
-nai-tomo-kagiranai,48,Advanced comprehension — stance & evaluation I,28
-nai-mono-ka,48,Advanced comprehension — stance & evaluation I,29
-nai-mono-demo-nai,48,Advanced comprehension — stance & evaluation I,30
-niwa-ataranai,48,Advanced comprehension — stance & evaluation I,31
-ni-wa-muri-ga-aru,48,Advanced comprehension — stance & evaluation I,32
-nimo-hodo-ga-aru,49,Advanced comprehension — stance & evaluation II,1
-ni-atai-suru,49,Advanced comprehension — stance & evaluation II,2
-ni-taeru,49,Advanced comprehension — stance & evaluation II,3
-ni-taranai,49,Advanced comprehension — stance & evaluation II,4
-ni-kagitta-koto-dewa-nai,49,Advanced comprehension — stance & evaluation II,5
-hou-ga-mashi-da,49,Advanced comprehension — stance & evaluation II,6
-hodo-no-koto-dewa-nai,49,Advanced comprehension — stance & evaluation II,7
-made-no-koto-da,49,Advanced comprehension — stance & evaluation II,8
-mono-toshite,49,Advanced comprehension — stance & evaluation II,9
-mono-to-suru,49,Advanced comprehension — stance & evaluation II,10
-mono-to-omou,49,Advanced comprehension — stance & evaluation II,11
-mono-to-omotte-ita,49,Advanced comprehension — stance & evaluation II,12
-mono-to-omowareru,49,Advanced comprehension — stance & evaluation II,13
-mo-douzen-da,49,Advanced comprehension — stance & evaluation II,14
-you-ni-mo-nai,49,Advanced comprehension — stance & evaluation II,15
-ru-made-da,49,Advanced comprehension — stance & evaluation II,16
-o-yoginaku-saseru,49,Advanced comprehension — stance & evaluation II,17
-o-yoginaku-sareru,49,Advanced comprehension — stance & evaluation II,18
-n-bakari-ni,49,Advanced comprehension — stance & evaluation II,19
-kiri-ga-nai,49,Advanced comprehension — stance & evaluation II,20
-shimatsu-da,49,Advanced comprehension — stance & evaluation II,21
-shidai-desu,49,Advanced comprehension — stance & evaluation II,22
-hame-ni-naru,49,Advanced comprehension — stance & evaluation II,23
-sube-ga-nai,49,Advanced comprehension — stance & evaluation II,24
-kagiri-da,49,Advanced comprehension — stance & evaluation II,25
-nimo-nai,49,Advanced comprehension — stance & evaluation II,26
-sore-made-da,49,Advanced comprehension — stance & evaluation II,27
-takute-mo-nai,49,Advanced comprehension — stance & evaluation II,28
-te-bakari-wa-irarenai,49,Advanced comprehension — stance & evaluation II,29
-to-itta-tokoro-da,49,Advanced comprehension — stance & evaluation II,30
-ni-wa-oyobanai,49,Advanced comprehension — stance & evaluation II,31
-shinpai-ga-aru,49,Advanced comprehension — stance & evaluation II,32
-kara-ni-itaru-made,50,Advanced comprehension — description & nuance I,1
-kara-aru,50,Advanced comprehension — description & nuance I,2
-ka-ina-ka,50,Advanced comprehension — description & nuance I,3
-gurumi,50,Advanced comprehension — description & nuance I,4
-zukume,50,Advanced comprehension — description & nuance I,5
-da-no-da-no,50,Advanced comprehension — description & nuance I,6
-nara-dewa,50,Advanced comprehension — description & nuance I,7
-nari-nari,50,Advanced comprehension — description & nuance I,8
-no-yara,50,Advanced comprehension — description & nuance I,9
-no-yara-no-yara,50,Advanced comprehension — description & nuance I,10
-ka-de,50,Advanced comprehension — description & nuance I,11
-sura,50,Advanced comprehension — description & nuance I,12
-soko-o,50,Advanced comprehension — description & nuance I,13
-tada-nomi-da,50,Advanced comprehension — description & nuance I,14
-o-4,50,Advanced comprehension — description & nuance I,15
-ni-shite,50,Advanced comprehension — description & nuance I,16
-aete,50,Advanced comprehension — description & nuance I,17
-akumade-mo,50,Advanced comprehension — description & nuance I,18
-anagachi-nai,50,Advanced comprehension — description & nuance I,19
-ikani,50,Advanced comprehension — description & nuance I,20
-kotogotoku,50,Advanced comprehension — description & nuance I,21
-sazo,50,Advanced comprehension — description & nuance I,22
-sore-nari-ni,50,Advanced comprehension — description & nuance I,23
-takaga,50,Advanced comprehension — description & nuance I,24
-to-mo-suru-to,50,Advanced comprehension — description & nuance I,25
-to-mo-sureba,50,Advanced comprehension — description & nuance I,26
-dou-ka-suru-to,51,Advanced comprehension — description & nuance II,1
-dou-nimo,51,Advanced comprehension — description & nuance II,2
-dou-ni-mo-nai,51,Advanced comprehension — description & nuance II,3
-naosara,51,Advanced comprehension — description & nuance II,4
-marukkiri,51,Advanced comprehension — description & nuance II,5
-hetani,51,Advanced comprehension — description & nuance II,6
-chuto-hanpa,51,Advanced comprehension — description & nuance II,7
-nanra-nai,51,Advanced comprehension — description & nuance II,8
-onoono,51,Advanced comprehension — description & nuance II,9
-shiite,51,Advanced comprehension — description & nuance II,10
-an-no-jo,51,Advanced comprehension — description & nuance II,11
-kiwamete,51,Advanced comprehension — description & nuance II,12
-oomune,51,Advanced comprehension — description & nuance II,13
-miru-kara-ni,51,Advanced comprehension — description & nuance II,14
-karoujite,51,Advanced comprehension — description & nuance II,15
-meimei,51,Advanced comprehension — description & nuance II,16
-rai,51,Advanced comprehension — description & nuance II,17
-to-ittara-nai,51,Advanced comprehension — description & nuance II,18
-domo,51,Advanced comprehension — description & nuance II,19
-nami,51,Advanced comprehension — description & nuance II,20
-ikan,51,Advanced comprehension — description & nuance II,21
-ikanaru,51,Advanced comprehension — description & nuance II,22
-nara-de-wa-no,51,Advanced comprehension — description & nuance II,23
-mamire,51,Advanced comprehension — description & nuance II,24
-ichi-to-shite-nai,51,Advanced comprehension — description & nuance II,25
-ga-nara,52,Appendix — rare literary links & rhetoric I,1
-de-are-de-are,52,Appendix — rare literary links & rhetoric I,2
-de-arou-ga,52,Appendix — rare literary links & rhetoric I,3
-ikan-da,52,Appendix — rare literary links & rhetoric I,4
-ikan-ni-kakawarazu,52,Appendix — rare literary links & rhetoric I,5
-kare-kare,52,Appendix — rare literary links & rhetoric I,6
-koso-are,52,Appendix — rare literary links & rhetoric I,7
-koso-sure,52,Appendix — rare literary links & rhetoric I,8
-koto-tote,52,Appendix — rare literary links & rhetoric I,9
-zu-shite,52,Appendix — rare literary links & rhetoric I,10
-zu-tomo,52,Appendix — rare literary links & rhetoric I,11
-de-arou-ga-to,52,Appendix — rare literary links & rhetoric I,12
-de-arou-to-de-arou-to,52,Appendix — rare literary links & rhetoric I,13
-to-iwazu,52,Appendix — rare literary links & rhetoric I,14
-to-iwazu-to-iwazu,52,Appendix — rare literary links & rhetoric I,15
-nara-iza-shirazu,52,Appendix — rare literary links & rhetoric I,16
-ni-o-kasanete,52,Appendix — rare literary links & rhetoric I,17
-ni-atte,52,Appendix — rare literary links & rhetoric I,18
-ni-kakatte-wa,52,Appendix — rare literary links & rhetoric I,19
-ni-kakotsukete,52,Appendix — rare literary links & rhetoric I,20
-ni-kamakete,52,Appendix — rare literary links & rhetoric I,21
-ni-shite-2,52,Appendix — rare literary links & rhetoric I,22
-ni-itattemo,52,Appendix — rare literary links & rhetoric I,23
-wa-atte-mo,52,Appendix — rare literary links & rhetoric I,24
-wa-are,52,Appendix — rare literary links & rhetoric I,25
-wa-iu-ni-oyobazu,53,Appendix — rare literary links & rhetoric II,1
-ba-koso,53,Appendix — rare literary links & rhetoric II,2
-beku,53,Appendix — rare literary links & rhetoric II,3
-beku-shite,53,Appendix — rare literary links & rhetoric II,4
-you-ttatte,53,Appendix — rare literary links & rhetoric II,5
-n-ga-tame-ni,53,Appendix — rare literary links & rhetoric II,6
-katawara,53,Appendix — rare literary links & rhetoric II,7
-samo-nakuba,53,Appendix — rare literary links & rhetoric II,8
-saru-koto-nagara,53,Appendix — rare literary links & rhetoric II,9
-to-naku,53,Appendix — rare literary links & rhetoric II,10
-ni-to-mo-naru-to,53,Appendix — rare literary links & rhetoric II,11
-ni-to-mo-nareba,53,Appendix — rare literary links & rhetoric II,12
-ni-shita-tokoro-de,53,Appendix — rare literary links & rhetoric II,13
-ni-itatte-wa,53,Appendix — rare literary links & rhetoric II,14
-no-no-to,53,Appendix — rare literary links & rhetoric II,15
-mo-saru-koto-nagara,53,Appendix — rare literary links & rhetoric II,16
-mono-o,53,Appendix — rare literary links & rhetoric II,17
-o-oite-hoka-ni-wa-nai,53,Appendix — rare literary links & rhetoric II,18
-o-mono-to-mo-sezu,53,Appendix — rare literary links & rhetoric II,19
-o-yoso-ni,53,Appendix — rare literary links & rhetoric II,20
-hiite-wa,53,Appendix — rare literary links & rhetoric II,21
-iwanya,53,Appendix — rare literary links & rhetoric II,22
-kangaeru-ni,53,Appendix — rare literary links & rhetoric II,23
-yoshi,53,Appendix — rare literary links & rhetoric II,24
-mai-no-you-ni,54,Appendix — rare forms & expressions I,1
-kitte-no,54,Appendix — rare forms & expressions I,2
-tari-tomo,54,Appendix — rare forms & expressions I,3
-dani,54,Appendix — rare forms & expressions I,4
-nari-tomo,54,Appendix — rare forms & expressions I,5
-wa-wa,54,Appendix — rare forms & expressions I,6
-taruya,54,Appendix — rare forms & expressions I,7
-ichi-tari-tomo-nai,54,Appendix — rare forms & expressions I,8
-gamashii,54,Appendix — rare forms & expressions I,9
-te-yamanai,54,Appendix — rare forms & expressions I,10
-ka-no-gotoku,54,Appendix — rare forms & expressions I,11
-karou,54,Appendix — rare forms & expressions I,12
-zu-ni-wa-okanai,54,Appendix — rare forms & expressions I,13
-zu-ni-wa-orarenai,54,Appendix — rare forms & expressions I,14
-te-shikaru-beki-da,54,Appendix — rare forms & expressions I,15
-denakute-nan-darou,54,Appendix — rare forms & expressions I,16
-dewa-arumai-ka,54,Appendix — rare forms & expressions I,17
-tomo-arou,54,Appendix — rare forms & expressions I,18
-ni-nai,54,Appendix — rare forms & expressions I,19
-ni-shinobinai,54,Appendix — rare forms & expressions I,20
-ni-hajinai,54,Appendix — rare forms & expressions I,21
-ni-taru,54,Appendix — rare forms & expressions I,22
-no-nan-no-tte,54,Appendix — rare forms & expressions I,23
-bekarazu,54,Appendix — rare forms & expressions I,24
-beku-mo-nai,54,Appendix — rare forms & expressions I,25
-majiki,54,Appendix — rare forms & expressions I,26
-n-to-suru,54,Appendix — rare forms & expressions I,27
-gotoshi,54,Appendix — rare forms & expressions I,28
-ikani-koto-ka,54,Appendix — rare forms & expressions I,29
-kono-ue-nai,55,Appendix — rare forms & expressions II,1
-taku-to-mo-nai,55,Appendix — rare forms & expressions II,2
-to-demo-iu-beki,55,Appendix — rare forms & expressions II,3
-nado-to-iu-mono-de-wa-nai,55,Appendix — rare forms & expressions II,4
-ni-katakunai,55,Appendix — rare forms & expressions II,5
-okinji-enai,55,Appendix — rare forms & expressions II,6
-no-kiwami,55,Appendix — rare forms & expressions II,7
-no-itari,55,Appendix — rare forms & expressions II,8
-atakamo,55,Appendix — rare forms & expressions II,9
-samo,55,Appendix — rare forms & expressions II,10
-dou-ni-mo-kou-ni-mo-nai,55,Appendix — rare forms & expressions II,11
-namaji-kka,55,Appendix — rare forms & expressions II,12
-ni-mo-naku,55,Appendix — rare forms & expressions II,13
-yaya-mo-suru-to,55,Appendix — rare forms & expressions II,14
-yaya-mo-sureba,55,Appendix — rare forms & expressions II,15
-yomoya,55,Appendix — rare forms & expressions II,16
-omou-ni,55,Appendix — rare forms & expressions II,17
-kiwamari-nai,55,Appendix — rare forms & expressions II,18
-ku,55,Appendix — rare forms & expressions II,19
-nasu,55,Appendix — rare forms & expressions II,20
-o-oite-hoka-ni-nai,55,Appendix — rare forms & expressions II,21
-o-kinzuru,55,Appendix — rare forms & expressions II,22
-tatoete-iu-naraba,55,Appendix — rare forms & expressions II,23
-tsuzuke-da,55,Appendix — rare forms & expressions II,24
-tokitama-shika-nai,55,Appendix — rare forms & expressions II,25
-wakeru,55,Appendix — rare forms & expressions II,26
-oozei,55,Appendix — rare forms & expressions II,27
-kiraida,55,Appendix — rare forms & expressions II,28
+desu,1,Your first sentences: X is Y,1
+wa-2,1,Your first sentences: X is Y,2
+wa-desu,1,Your first sentences: X is Y,3
+ka,1,Your first sentences: X is Y,4
+no-3,1,Your first sentences: X is Y,5
+mo,1,Your first sentences: X is Y,6
+ne,1,Your first sentences: X is Y,7
+yo,1,Your first sentences: X is Y,8
+ga-2,2,"Mark who, what, where, and when",1
+o,2,"Mark who, what, where, and when",2
+ni-2,2,"Mark who, what, where, and when",3
+ni-3,2,"Mark who, what, where, and when",4
+e,2,"Mark who, what, where, and when",5
+de,2,"Mark who, what, where, and when",6
+to-2,2,"Mark who, what, where, and when",7
+kara-3,2,"Mark who, what, where, and when",8
+made,2,"Mark who, what, where, and when",9
+verb-classes,3,Make verbs polite; say what there is,1
+masu-form,3,Make verbs polite; say what there is,2
+kudasai,3,Make verbs polite; say what there is,3
+ga-aru,3,Make verbs polite; say what there is,4
+ga-iru,3,Make verbs polite; say what there is,5
+da,5,Plain (casual) form,1
+wa-da,5,Plain (casual) form,2
+janai,5,Plain (casual) form,3
+datta,5,Plain (casual) form,4
+janakatta,5,Plain (casual) form,5
+nai,5,Plain (casual) form,6
+ta-form,5,Plain (casual) form,7
+te,6,Connect and continue actions with て,1
+de-3,6,Connect and continue actions with て,2
+te-kudasai,6,Connect and continue actions with て,3
+te-iru,6,Connect and continue actions with て,4
+te-kara,6,Connect and continue actions with て,5
+te-mo-ii,6,Connect and continue actions with て,6
+te-wa-ikenai,6,Connect and continue actions with て,7
+te-shimau,6,Connect and continue actions with て,8
+te-miru,6,Connect and continue actions with て,9
+ageru,7,"Give, receive, and ask for help",1
+kureru,7,"Give, receive, and ask for help",2
+ageru-2,7,"Give, receive, and ask for help",3
+kureru-2,7,"Give, receive, and ask for help",4
+morau,7,"Give, receive, and ask for help",5
+tai,8,"Want, invite, and express uncertainty",1
+hoshii,8,"Want, invite, and express uncertainty",2
+volitional-form,8,"Want, invite, and express uncertainty",3
+darou,8,"Want, invite, and express uncertainty",4
+deshou,8,"Want, invite, and express uncertainty",5
+kamoshirenai,8,"Want, invite, and express uncertainty",6
+hazu,8,"Want, invite, and express uncertainty",7
+to-conditional,9,If and when: the four conditionals,1
+tara,9,If and when: the four conditionals,2
+ba,9,If and when: the four conditionals,3
+nara,9,If and when: the four conditionals,4
+kara,10,"Join ideas: reason, contrast, and time",1
+node,10,"Join ideas: reason, contrast, and time",2
+kedo,10,"Join ideas: reason, contrast, and time",3
+ga-3,10,"Join ideas: reason, contrast, and time",4
+noni,10,"Join ideas: reason, contrast, and time",5
+nagara,10,"Join ideas: reason, contrast, and time",6
+toki,10,"Join ideas: reason, contrast, and time",7
+mae-ni,10,"Join ideas: reason, contrast, and time",8
+ato-de,10,"Join ideas: reason, contrast, and time",9
+koto,11,"Turn actions into things, compare, and change",1
+no-ga-suki,11,"Turn actions into things, compare, and change",2
+yori,11,"Turn actions into things, compare, and change",3
+no-hou-ga,11,"Turn actions into things, compare, and change",4
+yori-no-hou-ga,11,"Turn actions into things, compare, and change",5
+ichiban,11,"Turn actions into things, compare, and change",6
+ni-naru,11,"Turn actions into things, compare, and change",7
+ga-arimasu,12,Everyday descriptions & reference I,1
+kono,12,Everyday descriptions & reference I,2
+san,12,Everyday descriptions & reference I,3
+naru,12,Everyday descriptions & reference I,4
+kuru,12,Everyday descriptions & reference I,5
+no-ga-jouzu,12,Everyday descriptions & reference I,6
+no-ga-heta,12,Everyday descriptions & reference I,7
+chan,12,Everyday descriptions & reference I,8
+tachi,12,Everyday descriptions & reference I,9
+donna,12,Everyday descriptions & reference I,10
+o-tsukatte,12,Everyday descriptions & reference I,11
+mae,12,Everyday descriptions & reference I,12
+sukida,12,Everyday descriptions & reference I,13
+sukunai,12,Everyday descriptions & reference I,14
+shiru,12,Everyday descriptions & reference I,15
+iru-4,12,Everyday descriptions & reference I,16
+kata,12,Everyday descriptions & reference I,17
+goro,12,Everyday descriptions & reference I,18
+konna,12,Everyday descriptions & reference I,19
+ni-suru,12,Everyday descriptions & reference I,20
+relative-clause,12,Everyday descriptions & reference I,21
+de-gozaimasu,13,Everyday descriptions & reference II,1
+wa-no-hitotsu-da,13,Everyday descriptions & reference II,2
+to-iu-koto,13,Everyday descriptions & reference II,3
+no,13,Everyday descriptions & reference II,4
+sa,13,Everyday descriptions & reference II,5
+tokoro,13,Everyday descriptions & reference II,6
+no-koto,13,Everyday descriptions & reference II,7
+no-wa-da,13,Everyday descriptions & reference II,8
+mono,13,Everyday descriptions & reference II,9
+ga-suru,13,Everyday descriptions & reference II,10
+ni-ki-ga-tsuku,13,Everyday descriptions & reference II,11
+gata,13,Everyday descriptions & reference II,12
+me,13,Everyday descriptions & reference II,13
+kan,13,Everyday descriptions & reference II,14
+kou-iu,13,Everyday descriptions & reference II,15
+kono-youna,13,Everyday descriptions & reference II,16
+sashiageru,13,Everyday descriptions & reference II,17
+sou-iu,13,Everyday descriptions & reference II,18
+dono-youna,13,Everyday descriptions & reference II,19
+mama,13,Everyday descriptions & reference II,20
+mama-de,13,Everyday descriptions & reference II,21
+yaru-3,13,Everyday descriptions & reference II,22
+ra,13,Everyday descriptions & reference II,23
+nandemo,13,Everyday descriptions & reference II,24
+kun,13,Everyday descriptions & reference II,25
+imperative,13,Everyday descriptions & reference II,26
+sukunakunai,13,Everyday descriptions & reference II,27
+sama,13,Everyday descriptions & reference II,28
+jidoushi-tadoushi,13,Everyday descriptions & reference II,29
+mieru,13,Everyday descriptions & reference II,30
+mada-te-imasen,14,"Everyday actions, states & change",1
+koto-ga-aru,14,"Everyday actions, states & change",2
+you-to-suru,14,"Everyday actions, states & change",3
+youni-suru,14,"Everyday actions, states & change",4
+youni-naru,14,"Everyday actions, states & change",5
+shimau,14,"Everyday actions, states & change",6
+rareru-2,14,"Everyday actions, states & change",7
+causative-form,14,"Everyday actions, states & change",8
+seru,14,"Everyday actions, states & change",9
+saseru,14,"Everyday actions, states & change",10
+saserareru,14,"Everyday actions, states & change",11
+sasete-kudasai,14,"Everyday actions, states & change",12
+ta-tokoro,14,"Everyday actions, states & change",13
+ta-bakari,14,"Everyday actions, states & change",14
+iku,14,"Everyday actions, states & change",15
+te-ita,14,"Everyday actions, states & change",16
+teiru-tokoro,14,"Everyday actions, states & change",17
+kuru-2,14,"Everyday actions, states & change",18
+toku,14,"Everyday actions, states & change",19
+ru-tokoro-da,14,"Everyday actions, states & change",20
+dasu,14,"Everyday actions, states & change",21
+hajimeru,14,"Everyday actions, states & change",22
+tsuzukeru,14,"Everyday actions, states & change",23
+te-aru,14,"Everyday actions, states & change",24
+te-oku,14,"Everyday actions, states & change",25
+naku-naru,14,"Everyday actions, states & change",26
+owaru,14,"Everyday actions, states & change",27
+reru,14,"Everyday actions, states & change",28
+mirareru,14,"Everyday actions, states & change",29
+nai-de-kudasai,15,"Everyday intention, ability & interaction I",1
+ga-hoshii,15,"Everyday intention, ability & interaction I",2
+ta-hou-ga-ii,15,"Everyday intention, ability & interaction I",3
+nai-hou-ga-ii,15,"Everyday intention, ability & interaction I",4
+naku-temo-ii,15,"Everyday intention, ability & interaction I",5
+mashou-ka,15,"Everyday intention, ability & interaction I",6
+masen-ka,15,"Everyday intention, ability & interaction I",7
+te-wa-ikemasen,15,"Everyday intention, ability & interaction I",8
+nakute-wa-ikenai,15,"Everyday intention, ability & interaction I",9
+nakute-wa-naranai,15,"Everyday intention, ability & interaction I",10
+no-desu,15,"Everyday intention, ability & interaction I",11
+mashou,15,"Everyday intention, ability & interaction I",12
+n-desu,15,"Everyday intention, ability & interaction I",13
+to-quotative,15,"Everyday intention, ability & interaction I",14
+sugiru,15,"Everyday intention, ability & interaction I",15
+cha-ikenai,15,"Everyday intention, ability & interaction I",16
+naku-cha,15,"Everyday intention, ability & interaction I",17
+douzo,15,"Everyday intention, ability & interaction I",18
+yasui,15,"Everyday intention, ability & interaction I",19
+itadaku,15,"Everyday intention, ability & interaction I",20
+you-to-omou,15,"Everyday intention, ability & interaction I",21
+hou-ga-ii,15,"Everyday intention, ability & interaction I",22
+koto-ga-dekiru,15,"Everyday intention, ability & interaction I",23
+tsumori,15,"Everyday intention, ability & interaction I",24
+nai-to-ikenai,15,"Everyday intention, ability & interaction I",25
+nakereba-ikenai,15,"Everyday intention, ability & interaction I",26
+nakereba-naranai,15,"Everyday intention, ability & interaction I",27
+no-da,15,"Everyday intention, ability & interaction I",28
+youda,15,"Everyday intention, ability & interaction I",29
+to-omou,15,"Everyday intention, ability & interaction I",30
+to-iu,15,"Everyday intention, ability & interaction I",31
+garu,15,"Everyday intention, ability & interaction I",32
+ku-suru,15,"Everyday intention, ability & interaction I",33
+tagaru,15,"Everyday intention, ability & interaction I",34
+chimau,16,"Everyday intention, ability & interaction II",1
+chau,16,"Everyday intention, ability & interaction II",2
+te-itadakemasen-ka,16,"Everyday intention, ability & interaction II",3
+te-kurenai,16,"Everyday intention, ability & interaction II",4
+yaru,16,"Everyday intention, ability & interaction II",5
+ka-suru,16,"Everyday intention, ability & interaction II",6
+gozaimasu,16,"Everyday intention, ability & interaction II",7
+te-itadaku,16,"Everyday intention, ability & interaction II",8
+te-kudasaru,16,"Everyday intention, ability & interaction II",9
+nikui,16,"Everyday intention, ability & interaction II",10
+no-youna,16,"Everyday intention, ability & interaction II",11
+ma-prefix,16,"Everyday intention, ability & interaction II",12
+ga-hitsuyou,16,"Everyday intention, ability & interaction II",13
+ga-mirareru,16,"Everyday intention, ability & interaction II",14
+koto-ga-aru-2,16,"Everyday intention, ability & interaction II",15
+janai-ka,16,"Everyday intention, ability & interaction II",16
+souda-2,16,"Everyday intention, ability & interaction II",17
+sou-ni,16,"Everyday intention, ability & interaction II",18
+tara-ii-desu-ka,16,"Everyday intention, ability & interaction II",19
+tara-dou,16,"Everyday intention, ability & interaction II",20
+dewa-nai-ka,16,"Everyday intention, ability & interaction II",21
+to-ii,16,"Everyday intention, ability & interaction II",22
+to-sarete-iru,16,"Everyday intention, ability & interaction II",23
+to-kangaerarete-iru,16,"Everyday intention, ability & interaction II",24
+to-ittemo-ii,16,"Everyday intention, ability & interaction II",25
+to-iwarete-iru,16,"Everyday intention, ability & interaction II",26
+naito,16,"Everyday intention, ability & interaction II",27
+ni-mieru,16,"Everyday intention, ability & interaction II",28
+no-darou-ka,16,"Everyday intention, ability & interaction II",29
+hazu-ga-nai,16,"Everyday intention, ability & interaction II",30
+hazu-da,16,"Everyday intention, ability & interaction II",31
+ba-yokatta,16,"Everyday intention, ability & interaction II",32
+mitai,16,"Everyday intention, ability & interaction II",33
+mitai-ni,17,"Everyday intention, ability & interaction III",1
+yona,17,"Everyday intention, ability & interaction III",2
+you-ni-te-hoshii,17,"Everyday intention, ability & interaction III",3
+rareru-3,17,"Everyday intention, ability & interaction III",4
+yotei-da,17,"Everyday intention, ability & interaction III",5
+hitsuyou-ga-aru,17,"Everyday intention, ability & interaction III",6
+ii,17,"Everyday intention, ability & interaction III",7
+koto-ni-suru,17,"Everyday intention, ability & interaction III",8
+koto-ni-naru,17,"Everyday intention, ability & interaction III",9
+koto-ni-kimeru,17,"Everyday intention, ability & interaction III",10
+tara-do-desuka,17,"Everyday intention, ability & interaction III",11
+daro,17,"Everyday intention, ability & interaction III",12
+te-hoshii,17,"Everyday intention, ability & interaction III",13
+te-moraitai,17,"Everyday intention, ability & interaction III",14
+te-yokatta,17,"Everyday intention, ability & interaction III",15
+nakute-wa,17,"Everyday intention, ability & interaction III",16
+nasai,17,"Everyday intention, ability & interaction III",17
+mitaida,17,"Everyday intention, ability & interaction III",18
+rashii,17,"Everyday intention, ability & interaction III",19
+rarenai,17,"Everyday intention, ability & interaction III",20
+kikoeru,17,"Everyday intention, ability & interaction III",21
+to-kiita,17,"Everyday intention, ability & interaction III",22
+souda,17,"Everyday intention, ability & interaction III",23
+itashimasu,17,"Everyday intention, ability & interaction III",24
+itasu,17,"Everyday intention, ability & interaction III",25
+irassharu,17,"Everyday intention, ability & interaction III",26
+o-vmasu-kudasai,17,"Everyday intention, ability & interaction III",27
+o-suru-2,17,"Everyday intention, ability & interaction III",28
+o-ni-naru,17,"Everyday intention, ability & interaction III",29
+kudasaru,17,"Everyday intention, ability & interaction III",30
+nasaru,17,"Everyday intention, ability & interaction III",31
+oi,17,"Everyday intention, ability & interaction III",32
+te-ne,17,"Everyday intention, ability & interaction III",33
+kara-made,18,"Everyday particles, quantity & emphasis I",1
+dake,18,"Everyday particles, quantity & emphasis I",2
+wa-ga,18,"Everyday particles, quantity & emphasis I",3
+he-iku,18,"Everyday particles, quantity & emphasis I",4
+shika,18,"Everyday particles, quantity & emphasis I",5
+ni,18,"Everyday particles, quantity & emphasis I",6
+ni-5,18,"Everyday particles, quantity & emphasis I",7
+no-2,18,"Everyday particles, quantity & emphasis I",8
+no-naka-de-ga-ichiban,18,"Everyday particles, quantity & emphasis I",9
+ka-2,18,"Everyday particles, quantity & emphasis I",10
+nani-ka-nani-mo,18,"Everyday particles, quantity & emphasis I",11
+ni-4,18,"Everyday particles, quantity & emphasis I",12
+yo-ne,18,"Everyday particles, quantity & emphasis I",13
+dareka-dokoka,18,"Everyday particles, quantity & emphasis I",14
+ka-dou-ka,18,"Everyday particles, quantity & emphasis I",15
+tari-tari,18,"Everyday particles, quantity & emphasis I",16
+tari-tari-suru,18,"Everyday particles, quantity & emphasis I",17
+de-mo,18,"Everyday particles, quantity & emphasis I",18
+made-ni,18,"Everyday particles, quantity & emphasis I",19
+ka-ka,18,"Everyday particles, quantity & emphasis I",20
+counter,18,"Everyday particles, quantity & emphasis I",21
+kana,19,"Everyday particles, quantity & emphasis II",1
+kara-tsukuru,19,"Everyday particles, quantity & emphasis II",2
+zutsu,19,"Everyday particles, quantity & emphasis II",3
+de-dekiru,19,"Everyday particles, quantity & emphasis II",4
+to-to-dochira-ga,19,"Everyday particles, quantity & emphasis II",5
+toka-toka,19,"Everyday particles, quantity & emphasis II",6
+no-naka-de,19,"Everyday particles, quantity & emphasis II",7
+mo-mo,19,"Everyday particles, quantity & emphasis II",8
+igai,19,"Everyday particles, quantity & emphasis II",9
+hou-ga,19,"Everyday particles, quantity & emphasis II",10
+kashira,19,"Everyday particles, quantity & emphasis II",11
+toka,19,"Everyday particles, quantity & emphasis II",12
+na-2,19,"Everyday particles, quantity & emphasis II",13
+naa,19,"Everyday particles, quantity & emphasis II",14
+nado,19,"Everyday particles, quantity & emphasis II",15
+mo-2,19,"Everyday particles, quantity & emphasis II",16
+ya,19,"Everyday particles, quantity & emphasis II",17
+o-2,19,"Everyday particles, quantity & emphasis II",18
+o-3,19,"Everyday particles, quantity & emphasis II",19
+mae-kara,19,"Everyday particles, quantity & emphasis II",20
+kute,20,Everyday connections & conversation I,1
+ni-iku,20,Everyday connections & conversation I,2
+soshite,20,Everyday connections & conversation I,3
+sore-kara,20,Everyday connections & conversation I,4
+mata,20,Everyday connections & conversation I,5
+sugu,20,Everyday connections & conversation I,6
+totemo,20,Everyday connections & conversation I,7
+mada,20,Everyday connections & conversation I,8
+mou,20,Everyday connections & conversation I,9
+motto,20,Everyday connections & conversation I,10
+issho-ni,20,Everyday connections & conversation I,11
+amari,20,Everyday connections & conversation I,12
+takusan,20,Everyday connections & conversation I,13
+dou,20,Everyday connections & conversation I,14
+doushite,20,Everyday connections & conversation I,15
+douyatte,20,Everyday connections & conversation I,16
+nakereba,20,Everyday connections & conversation I,17
+ato-de-2,20,Everyday connections & conversation I,18
+te-mo,20,Everyday connections & conversation I,19
+baai,20,Everyday connections & conversation I,20
+shikashi,20,Everyday connections & conversation I,21
+dakara,20,Everyday connections & conversation I,22
+nai-de,20,Everyday connections & conversation I,23
+nakute,20,Everyday connections & conversation I,24
+no-tame-ni,20,Everyday connections & conversation I,25
+youni,20,Everyday connections & conversation I,26
+zenzen,20,Everyday connections & conversation I,27
+nakattara,20,Everyday connections & conversation I,28
+no-nara,20,Everyday connections & conversation I,29
+shi-shi,20,Everyday connections & conversation I,30
+dake-de,20,Everyday connections & conversation I,31
+te-iru-aida-ni,20,Everyday connections & conversation I,32
+te-kurete-arigatou,20,Everyday connections & conversation I,33
+te-sumimasen,20,Everyday connections & conversation I,34
+you-ni-inoru,20,Everyday connections & conversation I,35
+ndakedo,20,Everyday connections & conversation I,36
+baai-wa,20,Everyday connections & conversation I,37
+aida-ni,21,Everyday connections & conversation II,1
+uchi-ni,21,Everyday connections & conversation II,2
+keredo,21,Everyday connections & conversation II,3
+shi,21,Everyday connections & conversation II,4
+sore-de,21,Everyday connections & conversation II,5
+sore-de-wa,21,Everyday connections & conversation II,6
+sore-demo,21,Everyday connections & conversation II,7
+sore-nara,21,Everyday connections & conversation II,8
+dakedo,21,Everyday connections & conversation II,9
+to-issho-ni,21,Everyday connections & conversation II,10
+nakute-mo,21,Everyday connections & conversation II,11
+ni-tsuite-wa,21,Everyday connections & conversation II,12
+no-baai-wa,21,Everyday connections & conversation II,13
+anmari,21,Everyday connections & conversation II,14
+ikaga,21,Everyday connections & conversation II,15
+ikura,21,Everyday connections & conversation II,16
+itsu-de-mo,21,Everyday connections & conversation II,17
+kitto,21,Everyday connections & conversation II,18
+sakki,21,Everyday connections & conversation II,19
+zutto,21,Everyday connections & conversation II,20
+sonna-ni,21,Everyday connections & conversation II,21
+dandan,21,Everyday connections & conversation II,22
+dondon,21,Everyday connections & conversation II,23
+nakanaka-nai,21,Everyday connections & conversation II,24
+naru-beku,21,Everyday connections & conversation II,25
+hoka-ni-mo,21,Everyday connections & conversation II,26
+hotondo,21,Everyday connections & conversation II,27
+mo-sugu,21,Everyday connections & conversation II,28
+moshi-mo,21,Everyday connections & conversation II,29
+ichido,21,Everyday connections & conversation II,30
+nani-mo-nai,21,Everyday connections & conversation II,31
+zenzen-nai,21,Everyday connections & conversation II,32
+taihen,21,Everyday connections & conversation II,33
+kanarazu,21,Everyday connections & conversation II,34
+hontou-ni,21,Everyday connections & conversation II,35
+hijouni,21,Everyday connections & conversation II,36
+tame-ni,22,Linking ideas I,1
+ga-nakereba,22,Linking ideas I,2
+sae-ba,22,Linking ideas I,3
+te-kara-de-nai-to,22,Linking ideas I,4
+de-nai-to,22,Linking ideas I,5
+de-nakattara,22,Linking ideas I,6
+de-nakute-wa,22,Linking ideas I,7
+de-nakereba,22,Linking ideas I,8
+de-yokereba,22,Linking ideas I,9
+ba-noni,22,Linking ideas I,10
+ba-hodo,22,Linking ideas I,11
+ikura-temo,22,Linking ideas I,12
+tatte,22,Linking ideas I,13
+dekireba,22,Linking ideas I,14
+moshimo-tara,22,Linking ideas I,15
+moshimo-nara,22,Linking ideas I,16
+okage-de,22,Linking ideas I,17
+ka-nai-ka,22,Linking ideas I,18
+kara-da,22,Linking ideas I,19
+kara-iu-to,22,Linking ideas I,20
+zu-ni,22,Linking ideas I,21
+sei-de,22,Linking ideas I,22
+ta-totan,22,Linking ideas I,23
+dake-de-wa-naku,22,Linking ideas I,24
+dake-de-wa-naku-2,22,Linking ideas I,25
+dake-demo,22,Linking ideas I,26
+te-wa-ikenai-kara,22,Linking ideas I,27
+temo-nakutemo,22,Linking ideas I,28
+dewa-nakute,22,Linking ideas I,29
+de-iu-to,23,Linking ideas II,1
+to-iu-riyuu-de,23,Linking ideas II,2
+to-onaji-de,23,Linking ideas II,3
+to-ittemo,23,Linking ideas II,4
+nai-uchi-ni,23,Linking ideas II,5
+naku,23,Linking ideas II,6
+ni-awasete,23,Linking ideas II,7
+ni-ataru,23,Linking ideas II,8
+ni-kurabete,23,Linking ideas II,9
+noni-2,23,Linking ideas II,10
+no-aida-ni,23,Linking ideas II,11
+wa-iu-made-mo-nai,23,Linking ideas II,12
+bakari-de,23,Linking ideas II,13
+bakari-de-wa-naku,23,Linking ideas II,14
+bakari-de-wa-naku-2,23,Linking ideas II,15
+bakari-de-wa-naku-3,23,Linking ideas II,16
+bakari-de-wa-naku-4,23,Linking ideas II,17
+hodo-nai,23,Linking ideas II,18
+mo-ba-mo,23,Linking ideas II,19
+o-komete,23,Linking ideas II,20
+kawari-ni,23,Linking ideas II,21
+saichuu-ni,23,Linking ideas II,22
+tochuu-de,23,Linking ideas II,23
+ato,23,Linking ideas II,24
+ikura-demo,23,Linking ideas II,25
+okage,23,Linking ideas II,26
+kuse-ni,23,Linking ideas II,27
+koto-kara,23,Linking ideas II,28
+koto-de,23,Linking ideas II,29
+koto-ni-yori-yotte,24,Linking ideas III,1
+koto-wa,24,Linking ideas III,2
+sate,24,Linking ideas III,3
+suru-to,24,Linking ideas III,4
+sei,24,Linking ideas III,5
+sou-suru-to,24,Linking ideas III,6
+so-desu-ga,24,Linking ideas III,7
+soko-de,24,Linking ideas III,8
+sono-tame,24,Linking ideas III,9
+sono-tame-ni,24,Linking ideas III,10
+sono-kekka,24,Linking ideas III,11
+sore-to,24,Linking ideas III,12
+soretomo,24,Linking ideas III,13
+sore-ni,24,Linking ideas III,14
+tada,24,Linking ideas III,15
+tatoe-temo,24,Linking ideas III,16
+tame-da,24,Linking ideas III,17
+tara-sugu,24,Linking ideas III,18
+tara-sugu-2,24,Linking ideas III,19
+daga,24,Linking ideas III,20
+datte,24,Linking ideas III,21
+tsuide-ni,24,Linking ideas III,22
+tsumari,24,Linking ideas III,23
+to-iu-to,24,Linking ideas III,24
+to-iu-no-wa,24,Linking ideas III,25
+to-iu-fu-ni,24,Linking ideas III,26
+to-iu-yori,24,Linking ideas III,27
+to-ieba,24,Linking ideas III,28
+toki-ni-wa,24,Linking ideas III,29
+tokoro-ga,25,Linking ideas IV,1
+tokoro-de,25,Linking ideas IV,2
+to-sugu-ni,25,Linking ideas IV,3
+to-suru-to,25,Linking ideas IV,4
+to-onaji-kurai,25,Linking ideas IV,5
+donna-ni-temo,25,Linking ideas IV,6
+nagara-mo,25,Linking ideas IV,7
+nashi-de,25,Linking ideas IV,8
+nazenara,25,Linking ideas IV,9
+naze-nara-ba-kara-da,25,Linking ideas IV,10
+ni-shite-wa,25,Linking ideas IV,11
+ni-shite-mo,25,Linking ideas IV,12
+ni-tsurete,25,Linking ideas IV,13
+ni-naru-to,25,Linking ideas IV,14
+ni-yoru-to,25,Linking ideas IV,15
+ni-yoreba,25,Linking ideas IV,16
+ni-taishite-2,25,Linking ideas IV,17
+ni-kuraberu-to,25,Linking ideas IV,18
+ni-kanshite-2,25,Linking ideas IV,19
+no-da-kara,25,Linking ideas IV,20
+no-kawari-ni,25,Linking ideas IV,21
+mata-wa,25,Linking ideas IV,22
+o-hajime-to-shite,25,Linking ideas IV,23
+tatoeba,25,Linking ideas IV,24
+wari-ni-wa,25,Linking ideas IV,25
+tabi-ni,25,Linking ideas IV,26
+tashika-ni-ga,25,Linking ideas IV,27
+totan-ni,25,Linking ideas IV,28
+zurai,26,"Intention, judgment & interaction I",1
+te-goran,26,"Intention, judgment & interaction I",2
+agaru-ageru,26,"Intention, judgment & interaction I",3
+kiru,26,"Intention, judgment & interaction I",4
+kirenai,26,"Intention, judgment & interaction I",5
+au,26,"Intention, judgment & interaction I",6
+teki,26,"Intention, judgment & interaction I",7
+naosu,26,"Intention, judgment & interaction I",8
+komu,26,"Intention, judgment & interaction I",9
+toosu,26,"Intention, judgment & interaction I",10
+te-yaru,26,"Intention, judgment & interaction I",11
+koto-da,26,"Intention, judgment & interaction I",12
+sou-ni-nai,26,"Intention, judgment & interaction I",13
+ta-mono-da,26,"Intention, judgment & interaction I",14
+dake-da,26,"Intention, judgment & interaction I",15
+tsumori-datta,26,"Intention, judgment & interaction I",16
+tsumori-de,26,"Intention, judgment & interaction I",17
+teiru-baai-janai,26,"Intention, judgment & interaction I",18
+temo-kamawanai,26,"Intention, judgment & interaction I",19
+temo-hajimaranai,26,"Intention, judgment & interaction I",20
+te-sumu,26,"Intention, judgment & interaction I",21
+to-suru,26,"Intention, judgment & interaction I",22
+to-mieru,26,"Intention, judgment & interaction I",23
+to-ieru,26,"Intention, judgment & interaction I",24
+na-prohibitive,26,"Intention, judgment & interaction I",25
+nai-koto-wa-nai,26,"Intention, judgment & interaction I",26
+ni-kagiru,26,"Intention, judgment & interaction I",27
+no-deshou-ka,26,"Intention, judgment & interaction I",28
+ba-ii,26,"Intention, judgment & interaction I",29
+furi-o-suru,26,"Intention, judgment & interaction I",30
+beki-da,26,"Intention, judgment & interaction I",31
+beki-de-wa-nai,26,"Intention, judgment & interaction I",32
+you-to-shinai,26,"Intention, judgment & interaction I",33
+you-na-ki-ga-suru,27,"Intention, judgment & interaction II",1
+wake-ga-nai,27,"Intention, judgment & interaction II",2
+kanousei-ga-aru,27,"Intention, judgment & interaction II",3
+hitsuyo-wa-nai,27,"Intention, judgment & interaction II",4
+gatai,27,"Intention, judgment & interaction II",5
+koto-ni-natte-iru,27,"Intention, judgment & interaction II",6
+koto-wa-nai,27,"Intention, judgment & interaction II",7
+shika-nai,27,"Intention, judgment & interaction II",8
+sou-ni-naru,27,"Intention, judgment & interaction II",9
+tamaranai,27,"Intention, judgment & interaction II",10
+tara-ii-ka,27,"Intention, judgment & interaction II",11
+darou-ka,27,"Intention, judgment & interaction II",12
+te-shikata-ga-nai,27,"Intention, judgment & interaction II",13
+te-tamaranai,27,"Intention, judgment & interaction II",14
+to-wa-kagiranai,27,"Intention, judgment & interaction II",15
+nai-youni-shite-kudasai,27,"Intention, judgment & interaction II",16
+naranai,27,"Intention, judgment & interaction II",17
+nante-2,27,"Intention, judgment & interaction II",18
+ni-chigainai,27,"Intention, judgment & interaction II",19
+marude-you-da,27,"Intention, judgment & interaction II",20
+mono-da,27,"Intention, judgment & interaction II",21
+wake-da,27,"Intention, judgment & interaction II",22
+wake-de-wa-nai,27,"Intention, judgment & interaction II",23
+wake-ni-wa-ikanai,27,"Intention, judgment & interaction II",24
+shikata-ga-nai,27,"Intention, judgment & interaction II",25
+atarimae-da,27,"Intention, judgment & interaction II",26
+kangaerarenai,27,"Intention, judgment & interaction II",27
+to-iu-koto-da,27,"Intention, judgment & interaction II",28
+youni-iu,27,"Intention, judgment & interaction II",29
+ndatte,27,"Intention, judgment & interaction II",30
+o-suru,27,"Intention, judgment & interaction II",31
+saa,27,"Intention, judgment & interaction II",32
+naruhodo,27,"Intention, judgment & interaction II",33
+zettai-ni,28,"Time, degree & adverbial nuance I",1
+goto-ni,28,"Time, degree & adverbial nuance I",2
+buri-ni,28,"Time, degree & adverbial nuance I",3
+gimi,28,"Time, degree & adverbial nuance I",4
+amari-ni-mo,28,"Time, degree & adverbial nuance I",5
+oki-ni,28,"Time, degree & adverbial nuance I",6
+kanari,28,"Time, degree & adverbial nuance I",7
+sappari,28,"Time, degree & adverbial nuance I",8
+shibaraku,28,"Time, degree & adverbial nuance I",9
+seizei,28,"Time, degree & adverbial nuance I",10
+sekkaku,28,"Time, degree & adverbial nuance I",11
+semete,28,"Time, degree & adverbial nuance I",12
+sorezore,28,"Time, degree & adverbial nuance I",13
+sore-dake,28,"Time, degree & adverbial nuance I",14
+tatta,28,"Time, degree & adverbial nuance I",15
+tama-ni-wa,28,"Time, degree & adverbial nuance I",16
+daitai,28,"Time, degree & adverbial nuance I",17
+chittomo,28,"Time, degree & adverbial nuance I",18
+chanto,28,"Time, degree & adverbial nuance I",19
+ppoi,28,"Time, degree & adverbial nuance I",20
+tsui,28,"Time, degree & adverbial nuance I",21
+toutou,28,"Time, degree & adverbial nuance I",22
+totemo-nai,28,"Time, degree & adverbial nuance I",23
+tonikaku,28,"Time, degree & adverbial nuance I",24
+dou-ka,28,"Time, degree & adverbial nuance I",25
+doushitemo,28,"Time, degree & adverbial nuance I",26
+donnani,28,"Time, degree & adverbial nuance I",27
+nakanaka,28,"Time, degree & adverbial nuance I",28
+naze-ka,28,"Time, degree & adverbial nuance I",29
+nanto,28,"Time, degree & adverbial nuance I",30
+nan-to-ka,29,"Time, degree & adverbial nuance II",1
+hotondo-nai,29,"Time, degree & adverbial nuance II",2
+masaka,29,"Time, degree & adverbial nuance II",3
+marude,29,"Time, degree & adverbial nuance II",4
+mushiro,29,"Time, degree & adverbial nuance II",5
+metta-ni,29,"Time, degree & adverbial nuance II",6
+moshika-shitara,29,"Time, degree & adverbial nuance II",7
+motomoto-no,29,"Time, degree & adverbial nuance II",8
+yatto,29,"Time, degree & adverbial nuance II",9
+yappari,29,"Time, degree & adverbial nuance II",10
+yahari,29,"Time, degree & adverbial nuance II",11
+yahari-yappari,29,"Time, degree & adverbial nuance II",12
+wazawaza,29,"Time, degree & adverbial nuance II",13
+ichido-ni,29,"Time, degree & adverbial nuance II",14
+ippanni,29,"Time, degree & adverbial nuance II",15
+mattaku,29,"Time, degree & adverbial nuance II",16
+mattaku-nai,29,"Time, degree & adverbial nuance II",17
+futatabi,29,"Time, degree & adverbial nuance II",18
+betsu-ni-nai,29,"Time, degree & adverbial nuance II",19
+sukoshi-mo,29,"Time, degree & adverbial nuance II",20
+sukoshi-mo-nai,29,"Time, degree & adverbial nuance II",21
+igai-to,29,"Time, degree & adverbial nuance II",22
+sude-ni,29,"Time, degree & adverbial nuance II",23
+mottomo,29,"Time, degree & adverbial nuance II",24
+kesshite,29,"Time, degree & adverbial nuance II",25
+tadachi-ni,29,"Time, degree & adverbial nuance II",26
+tashika-ni,29,"Time, degree & adverbial nuance II",27
+kekkyoku,29,"Time, degree & adverbial nuance II",28
+kekkou,29,"Time, degree & adverbial nuance II",29
+hodo,30,"Reference, scope & sentence patterns I",1
+ni-tsuite,30,"Reference, scope & sentence patterns I",2
+ka-nani-ka,30,"Reference, scope & sentence patterns I",3
+kiri,30,"Reference, scope & sentence patterns I",4
+dake-shika,30,"Reference, scope & sentence patterns I",5
+darake,30,"Reference, scope & sentence patterns I",6
+tte,30,"Reference, scope & sentence patterns I",7
+demo-demo,30,"Reference, scope & sentence patterns I",8
+bakari,30,"Reference, scope & sentence patterns I",9
+hoka,30,"Reference, scope & sentence patterns I",10
+chu-ni,30,"Reference, scope & sentence patterns I",11
+igai-wa,30,"Reference, scope & sentence patterns I",12
+irai,30,"Reference, scope & sentence patterns I",13
+kurai,30,"Reference, scope & sentence patterns I",14
+koso,30,"Reference, scope & sentence patterns I",15
+sae,30,"Reference, scope & sentence patterns I",16
+zo,30,"Reference, scope & sentence patterns I",17
+dai,30,"Reference, scope & sentence patterns I",18
+datte-2,30,"Reference, scope & sentence patterns I",19
+kke,30,"Reference, scope & sentence patterns I",20
+de-sae,30,"Reference, scope & sentence patterns I",21
+de-wa,30,"Reference, scope & sentence patterns I",22
+to-shite,30,"Reference, scope & sentence patterns I",23
+to-shite-wa,30,"Reference, scope & sentence patterns I",24
+nado-to,30,"Reference, scope & sentence patterns I",25
+nado-no,30,"Reference, scope & sentence patterns I",26
+nanka,30,"Reference, scope & sentence patterns I",27
+nante,30,"Reference, scope & sentence patterns I",28
+ni-kakete,30,"Reference, scope & sentence patterns I",29
+ni-totte,30,"Reference, scope & sentence patterns I",30
+ni-wa,30,"Reference, scope & sentence patterns I",31
+ni-yotte,30,"Reference, scope & sentence patterns I",32
+ni-yoru,30,"Reference, scope & sentence patterns I",33
+ni-taishite,30,"Reference, scope & sentence patterns I",34
+ni-kanshite,31,"Reference, scope & sentence patterns II",1
+wa,31,"Reference, scope & sentence patterns II",2
+mon,31,"Reference, scope & sentence patterns II",3
+de-mo-aru,31,"Reference, scope & sentence patterns II",4
+de-aru,31,"Reference, scope & sentence patterns II",5
+kakeru,31,"Reference, scope & sentence patterns II",6
+te-bakari-iru,31,"Reference, scope & sentence patterns II",7
+tokoro-da,31,"Reference, scope & sentence patterns II",8
+tokoro-datta,31,"Reference, scope & sentence patterns II",9
+wa-to-natte-iru,31,"Reference, scope & sentence patterns II",10
+ippou-da,31,"Reference, scope & sentence patterns II",11
+koto-ni-shite-iru,31,"Reference, scope & sentence patterns II",12
+ppanashi,31,"Reference, scope & sentence patterns II",13
+mi,31,"Reference, scope & sentence patterns II",14
+toori-ni,31,"Reference, scope & sentence patterns II",15
+masu-stem-noun,31,"Reference, scope & sentence patterns II",16
+kankei-ga-aru,31,"Reference, scope & sentence patterns II",17
+ni-nareru,31,"Reference, scope & sentence patterns II",18
+wa-de-yuumei,31,"Reference, scope & sentence patterns II",19
+sayuu-suru,31,"Reference, scope & sentence patterns II",20
+muki,31,"Reference, scope & sentence patterns II",21
+muke,31,"Reference, scope & sentence patterns II",22
+jishin,31,"Reference, scope & sentence patterns II",23
+men,31,"Reference, scope & sentence patterns II",24
+kou-itta,31,"Reference, scope & sentence patterns II",25
+kou-shita,31,"Reference, scope & sentence patterns II",26
+to-naru,31,"Reference, scope & sentence patterns II",27
+igo,31,"Reference, scope & sentence patterns II",28
+ikou,31,"Reference, scope & sentence patterns II",29
+nan-mo,31,"Reference, scope & sentence patterns II",30
+rhetorical-question,31,"Reference, scope & sentence patterns II",31
+jibun,31,"Reference, scope & sentence patterns II",32
+okonau,31,"Reference, scope & sentence patterns II",33
+to-shite-mo,32,Linking arguments I,1
+kagiri,32,Linking arguments I,2
+tatte-2,32,Linking arguments I,3
+ka-to-iu-to,32,Linking arguments I,4
+ka-to-omou-to,32,Linking arguments I,5
+kara-koso,32,Linking arguments I,6
+kara-shite,32,Linking arguments I,7
+kara-suru-to,32,Linking arguments I,8
+kara-to-itte,32,Linking arguments I,9
+kara-ni-wa,32,Linking arguments I,10
+kara-mite,32,Linking arguments I,11
+kara-miru-to,32,Linking arguments I,12
+ga-kikkake-de,32,Linking arguments I,13
+kuse-shite,32,Linking arguments I,14
+koto-dakara,32,Linking arguments I,15
+koto-naku,32,Linking arguments I,16
+zu-ni-sumu,32,Linking arguments I,17
+ta-sue,32,Linking arguments I,18
+te-ite-wa,32,Linking arguments I,19
+te-koso,32,Linking arguments I,20
+de-atte-mo,32,Linking arguments I,21
+to-iu-fuu-ni,32,Linking arguments I,22
+tokoro-ni,32,Linking arguments I,23
+dokoroka,32,Linking arguments I,24
+ni-shitara,32,Linking arguments I,25
+nimo-kakawarazu,32,Linking arguments I,26
+ni-kuwaete,32,Linking arguments I,27
+ni-mukete-muketa,32,Linking arguments I,28
+ni-kotaete,32,Linking arguments I,29
+ni-sotte,32,Linking arguments I,30
+ni-kakawaru,32,Linking arguments I,31
+wa-tomokaku,32,Linking arguments I,32
+wa-mochiron,32,Linking arguments I,33
+wa-moto-yori,32,Linking arguments I,34
+wa-betsu-to-shite,33,Linking arguments II,1
+mo-kamawazu,33,Linking arguments II,2
+mono-dakara,33,Linking arguments II,3
+mono-desu-kara,33,Linking arguments II,4
+megutte-meguru,33,Linking arguments II,5
+ippou-de,33,Linking arguments II,6
+no-ue-de,33,Linking arguments II,7
+ijou-wa,33,Linking arguments II,8
+ijou-ni,33,Linking arguments II,9
+hanmen,33,Linking arguments II,10
+kekka,33,Linking arguments II,11
+kagiri-wa,33,Linking arguments II,12
+aruiwa,33,Linking arguments II,13
+omake-ni,33,Linking arguments II,14
+oyobi,33,Linking arguments II,15
+ka-to-itte,33,Linking arguments II,16
+sara-ni,33,Linking arguments II,17
+shika-mo,33,Linking arguments II,18
+sou-ieba,33,Linking arguments II,19
+sono-ue,33,Linking arguments II,20
+sono-ue-ni,33,Linking arguments II,21
+sore-nanoni,33,Linking arguments II,22
+sore-ni-shitemo,33,Linking arguments II,23
+dakara-to-itte,33,Linking arguments II,24
+chinami-ni,33,Linking arguments II,25
+te-wa,33,Linking arguments II,26
+te-hajimete,33,Linking arguments II,27
+to-iu-ka,33,Linking arguments II,28
+to-iu-koto-wa,33,Linking arguments II,29
+to-iu-noni,33,Linking arguments II,30
+to-iu-youna,33,Linking arguments II,31
+to-iu-youni,33,Linking arguments II,32
+to-iu-yori-wa,33,Linking arguments II,33
+to-ittara,34,Linking arguments III,1
+to-itte,34,Linking arguments III,2
+to-itte-mo,34,Linking arguments III,3
+to-tomo-ni,34,Linking arguments III,4
+to-naru-to,34,Linking arguments III,5
+to-douji-ni,34,Linking arguments III,6
+nashi-ni,34,Linking arguments III,7
+naze-ka-to-iu-to,34,Linking arguments III,8
+naze-ka-to-iu-to-kara-da,34,Linking arguments III,9
+nanishiro,34,Linking arguments III,10
+ni-kakawarazu,34,Linking arguments III,11
+ni-mo-kakawarazu,34,Linking arguments III,12
+ni-tomonatte,34,Linking arguments III,13
+ni-hanshite,34,Linking arguments III,14
+ni-hanshite-2,34,Linking arguments III,15
+ni-motozuite,34,Linking arguments III,16
+ni-shitagatte,34,Linking arguments III,17
+ni-oujite,34,Linking arguments III,18
+ni-kagirazu,34,Linking arguments III,19
+no-koto-da-kara,34,Linking arguments III,20
+mono-no,34,Linking arguments III,21
+o-moto-ni,34,Linking arguments III,22
+o-chushin-to-ni-shite,34,Linking arguments III,23
+o-towazu,34,Linking arguments III,24
+o-toshite,34,Linking arguments III,25
+o-tsujite,34,Linking arguments III,26
+o-nozoite,34,Linking arguments III,27
+ue-ni,34,Linking arguments III,28
+shitagatte,34,Linking arguments III,29
+yousuru-ni,34,Linking arguments III,30
+ju-made-mo-nai,34,Linking arguments III,31
+gyaku-ni,34,Linking arguments III,32
+sai-ni,34,Linking arguments III,33
+nuku,35,"Stance, possibility & obligation",1
+kanenai,35,"Stance, possibility & obligation",2
+kaneru,35,"Stance, possibility & obligation",3
+ka-no-you-da,35,"Stance, possibility & obligation",4
+ka-no-youni,35,"Stance, possibility & obligation",5
+zaru-o-enai,35,"Stance, possibility & obligation",6
+kkonai,35,"Stance, possibility & obligation",7
+te-shou-ga-nai,35,"Stance, possibility & obligation",8
+te-touzen-da,35,"Stance, possibility & obligation",9
+to-iu-mono-da,35,"Stance, possibility & obligation",10
+to-iu-mono-dewa-nai,35,"Stance, possibility & obligation",11
+to-iu-wake-dewa-nai,35,"Stance, possibility & obligation",12
+to-kangaerareru,35,"Stance, possibility & obligation",13
+dokoro-de-wa-nai,35,"Stance, possibility & obligation",14
+nakute-sumu,35,"Stance, possibility & obligation",15
+naku-wa-nai,35,"Stance, possibility & obligation",16
+ni-kimatte-iru,35,"Stance, possibility & obligation",17
+ni-koshita-koto-wa-nai,35,"Stance, possibility & obligation",18
+no-dewa-nai-darou-ka,35,"Stance, possibility & obligation",19
+no-mo-touzen-da,35,"Stance, possibility & obligation",20
+mono-ga-aru,35,"Stance, possibility & obligation",21
+mo-touzen-da,35,"Stance, possibility & obligation",22
+keikou-ga-aru,35,"Stance, possibility & obligation",23
+kikensei-ga-aru,35,"Stance, possibility & obligation",24
+enai,35,"Stance, possibility & obligation",25
+eru,35,"Stance, possibility & obligation",26
+tara-ii-noni,35,"Stance, possibility & obligation",27
+te-wa-naranai,35,"Stance, possibility & obligation",28
+nai-wake-ni-wa-ikanai,35,"Stance, possibility & obligation",29
+ni-suginai,35,"Stance, possibility & obligation",30
+neba-naranai,35,"Stance, possibility & obligation",31
+mono-de-wa-nai,35,"Stance, possibility & obligation",32
+touzen-da,35,"Stance, possibility & obligation",33
+osore-ga-aru,35,"Stance, possibility & obligation",34
+toka-2,35,"Stance, possibility & obligation",35
+fuu-ni,36,"Degree, evaluation & adverbial nuance I",1
+ikinari,36,"Degree, evaluation & adverbial nuance I",2
+itsu-no-ma-ni-ka,36,"Degree, evaluation & adverbial nuance I",3
+iyoiyo,36,"Degree, evaluation & adverbial nuance I",4
+ukkari,36,"Degree, evaluation & adverbial nuance I",5
+osoraku,36,"Degree, evaluation & adverbial nuance I",6
+kaette,36,"Degree, evaluation & adverbial nuance I",7
+sasuga,36,"Degree, evaluation & adverbial nuance I",8
+sasuga-ni,36,"Degree, evaluation & adverbial nuance I",9
+somosomo,36,"Degree, evaluation & adverbial nuance I",10
+tachimachi,36,"Degree, evaluation & adverbial nuance I",11
+tsui-ni,36,"Degree, evaluation & adverbial nuance I",12
+tokku-ni,36,"Degree, evaluation & adverbial nuance I",13
+toriaezu,36,"Degree, evaluation & adverbial nuance I",14
+douse,36,"Degree, evaluation & adverbial nuance I",15
+dou-ni-ka,36,"Degree, evaluation & adverbial nuance I",16
+dou-yara,36,"Degree, evaluation & adverbial nuance I",17
+dochira-ka-to-iu-to,36,"Degree, evaluation & adverbial nuance I",18
+dochira-ka-to-ieba,36,"Degree, evaluation & adverbial nuance I",19
+masumasu,36,"Degree, evaluation & adverbial nuance I",20
+mou-sukoshi-de,36,"Degree, evaluation & adverbial nuance I",21
+yagate,36,"Degree, evaluation & adverbial nuance I",22
+yohodo,36,"Degree, evaluation & adverbial nuance I",23
+roku-ni-nai,37,"Degree, evaluation & adverbial nuance II",1
+wazuka-ni,37,"Degree, evaluation & adverbial nuance II",2
+issai-nai,37,"Degree, evaluation & adverbial nuance II",3
+issou,37,"Degree, evaluation & adverbial nuance II",4
+ichiou,37,"Degree, evaluation & adverbial nuance II",5
+ikki-ni,37,"Degree, evaluation & adverbial nuance II",6
+man-ga-ichi,37,"Degree, evaluation & adverbial nuance II",7
+nani-kara-nani-made,37,"Degree, evaluation & adverbial nuance II",8
+nani-shiro,37,"Degree, evaluation & adverbial nuance II",9
+nan-to-ittemo,37,"Degree, evaluation & adverbial nuance II",10
+nani-yori,37,"Degree, evaluation & adverbial nuance II",11
+tan-ni,37,"Degree, evaluation & adverbial nuance II",12
+jitsuni,37,"Degree, evaluation & adverbial nuance II",13
+sukunakutomo,37,"Degree, evaluation & adverbial nuance II",14
+saiwai,37,"Degree, evaluation & adverbial nuance II",15
+kanarazushimo,37,"Degree, evaluation & adverbial nuance II",16
+omou-you-ni,37,"Degree, evaluation & adverbial nuance II",17
+akiraka-ni,37,"Degree, evaluation & adverbial nuance II",18
+imada-ni,37,"Degree, evaluation & adverbial nuance II",19
+angai,37,"Degree, evaluation & adverbial nuance II",20
+youyaku,37,"Degree, evaluation & adverbial nuance II",21
+machigai-naku,37,"Degree, evaluation & adverbial nuance II",22
+atari,38,"Reference, scope & expression",1
+kara-ni-kakete,38,"Reference, scope & expression",2
+dake-wa,38,"Reference, scope & expression",3
+de-shika-nai,38,"Reference, scope & expression",4
+no-uchi-de,38,"Reference, scope & expression",5
+buri,38,"Reference, scope & expression",6
+bun,38,"Reference, scope & expression",7
+nuki-de,38,"Reference, scope & expression",8
+ttara,38,"Reference, scope & expression",9
+to-itta,38,"Reference, scope & expression",10
+to-wa,38,"Reference, scope & expression",11
+ni-oite,38,"Reference, scope & expression",12
+ni-tsuki,38,"Reference, scope & expression",13
+ni-mo,38,"Reference, scope & expression",14
+ni-watatte,38,"Reference, scope & expression",15
+ni-mukatte,38,"Reference, scope & expression",16
+ni-mukete,38,"Reference, scope & expression",17
+nomi,38,"Reference, scope & expression",18
+mo-mata,38,"Reference, scope & expression",19
+ten-de,38,"Reference, scope & expression",20
+tsutsu-aru,38,"Reference, scope & expression",21
+omowareru,38,"Reference, scope & expression",22
+ga-ki-ni-naru,38,"Reference, scope & expression",23
+ni-ki-o-tsukeru,38,"Reference, scope & expression",24
+o-ni-makaseru,38,"Reference, scope & expression",25
+ikasu,38,"Reference, scope & expression",26
+jou,38,"Reference, scope & expression",27
+kai-gai,38,"Reference, scope & expression",28
+jitai,38,"Reference, scope & expression",29
+iwayuru,38,"Reference, scope & expression",30
+nanraka-no,38,"Reference, scope & expression",31
+nani-ka-no,38,"Reference, scope & expression",32
+kai,39,Advanced common grammar,1
+dara,39,Advanced common grammar,2
+nai-wa-nai,39,Advanced common grammar,3
+kikeru,39,Advanced common grammar,4
+suuryou-wa,39,Advanced common grammar,5
+ka-ka-dochiraka,39,Advanced common grammar,6
+ka-ne,39,Advanced common grammar,7
+wa-kurai-desu,39,Advanced common grammar,8
+made-de,39,Advanced common grammar,9
+te-sashiageru,39,Advanced common grammar,10
+koto-nano,39,Advanced common grammar,11
+temo-shikata-ga-nai,39,Advanced common grammar,12
+to-iu-no-wa-jijitsu-da,39,Advanced common grammar,13
+rareru,39,Advanced common grammar,14
+ka-wa-ni-yotte-chigau,39,Advanced common grammar,15
+aida-wa,39,Advanced common grammar,16
+uchi-wa,39,Advanced common grammar,17
+ni-kawatte,39,Advanced common grammar,18
+ni-kanshite-wa,39,Advanced common grammar,19
+no-wa-no-koto-da,39,Advanced common grammar,20
+zensha-wa,39,Advanced common grammar,21
+gachi,39,Advanced common grammar,22
+amari-2,39,Advanced common grammar,23
+metta-ni-nai,39,Advanced common grammar,24
+zenbu-wa-nai,39,Advanced common grammar,25
+mata-mo,39,Advanced common grammar,26
+no-sugata,39,Advanced common grammar,27
+aa-shita,39,Advanced common grammar,28
+futsu-no,39,Advanced common grammar,29
+saigo-made,39,Advanced common grammar,30
+made-mo-nai,39,Advanced common grammar,31
+towa-iu-mono-no,39,Advanced common grammar,32
+ni-kakatteiru,39,Advanced common grammar,33
+o-zentei-ni,39,Advanced common grammar,34
+o-fumaete,39,Advanced common grammar,35
+izure-ni-shitemo,39,Advanced common grammar,36
+arakajime,39,Advanced common grammar,37
+katsute,39,Advanced common grammar,38
+mohaya,39,Advanced common grammar,39
+omoi-o-suru,39,Advanced common grammar,40
+nari-ni,39,Advanced common grammar,41
+nari-ni-no,39,Advanced common grammar,42
+nai-koto-niwa-nai,40,Extension — relations & conditions I,1
+ba-hodo-yoi,40,Extension — relations & conditions I,2
+youde-wa,40,Extension — relations & conditions I,3
+tari-shitara,40,Extension — relations & conditions I,4
+nai-koto-ni-wa,40,Extension — relations & conditions I,5
+nashi-de-wa,40,Extension — relations & conditions I,6
+nashi-ni-wa,40,Extension — relations & conditions I,7
+no-de-areba,40,Extension — relations & conditions I,8
+mono-nara,40,Extension — relations & conditions I,9
+to-itsu-de-mo,40,Extension — relations & conditions I,10
+ageku-ni,40,Extension — relations & conditions I,11
+ka-nai-ka-no-uchi-ni,40,Extension — relations & conditions I,12
+ka-to-omoeba,40,Extension — relations & conditions I,13
+kara-itte,40,Extension — relations & conditions I,14
+gake-ni,40,Extension — relations & conditions I,15
+koto-wa-ga,40,Extension — relations & conditions I,16
+dake-atte,40,Extension — relations & conditions I,17
+dake-ni,40,Extension — relations & conditions I,18
+dake-no-koto-wa-atte,40,Extension — relations & conditions I,19
+te-demo,40,Extension — relations & conditions I,20
+tewa-tewa,40,Extension — relations & conditions I,21
+to-iu-ten-kara-kangaeru-to,40,Extension — relations & conditions I,22
+tokoro-o,40,Extension — relations & conditions I,23
+tokoro-o-miru-to,40,Extension — relations & conditions I,24
+to-wa-iu-mono-no,40,Extension — relations & conditions I,25
+ni-kakete-wa,40,Extension — relations & conditions I,26
+ni-shitemo-ni-shitemo,40,Extension — relations & conditions I,27
+ni-shiro-ni-shiro,40,Extension — relations & conditions I,28
+ni-sakidachi,40,Extension — relations & conditions I,29
+bakari-ka,41,Extension — relations & conditions II,1
+bakari-ni,41,Extension — relations & conditions II,2
+mama-ni,41,Extension — relations & conditions II,3
+mo-ba,41,Extension — relations & conditions II,4
+mo-shi-mo,41,Extension — relations & conditions II,5
+you-to-ga,41,Extension — relations & conditions II,6
+o-chushin-ni,41,Extension — relations & conditions II,7
+o-keiki-ni,41,Extension — relations & conditions II,8
+jou-wa,41,Extension — relations & conditions II,9
+naka-o,41,Extension — relations & conditions II,10
+koto-ni-yoru,41,Extension — relations & conditions II,11
+sara-ni-wa,41,Extension — relations & conditions II,12
+soko-de-2,41,Extension — relations & conditions II,13
+sore-ga,41,Extension — relations & conditions II,14
+sore-dokoroka,41,Extension — relations & conditions II,15
+sore-mo,41,Extension — relations & conditions II,16
+tadashi,41,Extension — relations & conditions II,17
+tsuite-wa,41,Extension — relations & conditions II,18
+tsutsu,41,Extension — relations & conditions II,19
+to-iu-no-wa-koto-da,41,Extension — relations & conditions II,20
+toka-de,41,Extension — relations & conditions II,21
+toki-ni,41,Extension — relations & conditions II,22
+tokoro-kara,41,Extension — relations & conditions II,23
+to-narande,41,Extension — relations & conditions II,24
+to-onajiku,41,Extension — relations & conditions II,25
+to-gyaku-ni,41,Extension — relations & conditions II,26
+nai-de-mo,41,Extension — relations & conditions II,27
+nao,41,Extension — relations & conditions II,28
+ni-shiro,41,Extension — relations & conditions II,29
+ni-tsuke,42,Extension — relations & conditions III,1
+ni-atatte,42,Extension — relations & conditions III,2
+ni-kankei-naku,42,Extension — relations & conditions III,3
+ni-saishite,42,Extension — relations & conditions III,4
+nochi-ni,42,Extension — relations & conditions III,5
+no-hoka-ni-wa-nai,42,Extension — relations & conditions III,6
+no-hoka-ni-nai,42,Extension — relations & conditions III,7
+nomi-narazu,42,Extension — relations & conditions III,8
+no-moto-de,42,Extension — relations & conditions III,9
+no-ue-de-wa,42,Extension — relations & conditions III,10
+no-ten-de,42,Extension — relations & conditions III,11
+no-kankei-de,42,Extension — relations & conditions III,12
+madashimo,42,Extension — relations & conditions III,13
+moshikuwa,42,Extension — relations & conditions III,14
+o-megutte,42,Extension — relations & conditions III,15
+o-mezashite,42,Extension — relations & conditions III,16
+o-mokuhyou-ni,42,Extension — relations & conditions III,17
+ippou-de-wa-tahou-de-wa,42,Extension — relations & conditions III,18
+omoeba,42,Extension — relations & conditions III,19
+ori,42,Extension — relations & conditions III,20
+ori-ni,42,Extension — relations & conditions III,21
+sue-ni,42,Extension — relations & conditions III,22
+shidai,42,Extension — relations & conditions III,23
+shidai-de,42,Extension — relations & conditions III,24
+shunkan-ni,42,Extension — relations & conditions III,25
+daiichi,42,Extension — relations & conditions III,26
+itte-mireba,42,Extension — relations & conditions III,27
+sai,42,Extension — relations & conditions III,28
+zu,43,Extension — stance & possibility,1
+tamae,43,Extension — stance & possibility,2
+te-miseru,43,Extension — stance & possibility,3
+o-negau,43,Extension — stance & possibility,4
+nu,43,Extension — stance & possibility,5
+koto-niwa-naranai,43,Extension — stance & possibility,6
+zu-ni-wa-irarenai,43,Extension — stance & possibility,7
+dake-no-koto-da,43,Extension — stance & possibility,8
+dake-no-koto-wa-aru,43,Extension — stance & possibility,9
+dake-mashi-da,43,Extension — stance & possibility,10
+nai-dewa-irarenai,43,Extension — stance & possibility,11
+ni-soui-nai,43,Extension — stance & possibility,12
+no-mo-mottomo-da,43,Extension — stance & possibility,13
+beki-ka,43,Extension — stance & possibility,14
+hodo-no-koto-wa-nai,43,Extension — stance & possibility,15
+mono-ka,43,Extension — stance & possibility,16
+you-ka-mai-ka,43,Extension — stance & possibility,17
+you-dewa-nai-ka,43,Extension — stance & possibility,18
+yori-hoka-nai,43,Extension — stance & possibility,19
+yori-shikata-ga-nai,43,Extension — stance & possibility,20
+yori-hoka-nai-2,43,Extension — stance & possibility,21
+igai-ni-nai,43,Extension — stance & possibility,22
+kai-ga-aru,43,Extension — stance & possibility,23
+koto-ka,43,Extension — stance & possibility,24
+tara-ii-no-da-ga,43,Extension — stance & possibility,25
+te-naranai,43,Extension — stance & possibility,26
+te-wa-irarenai,43,Extension — stance & possibility,27
+de-arou,43,Extension — stance & possibility,28
+dorehodo-koto-ka,43,Extension — stance & possibility,29
+donnani-koto-ka,43,Extension — stance & possibility,30
+nai-koto-mo-nai,43,Extension — stance & possibility,31
+nai-koto-mo-wa-nai,43,Extension — stance & possibility,32
+nai-de-mo-nai,43,Extension — stance & possibility,33
+naku-mo-nai,43,Extension — stance & possibility,34
+ni-hokanaranai,43,Extension — stance & possibility,35
+mai,43,Extension — stance & possibility,36
+mashida,43,Extension — stance & possibility,37
+mou-sukoshi-de-suru-tokoro,43,Extension — stance & possibility,38
+subete-wa-nai,43,Extension — stance & possibility,39
+to-no,43,Extension — stance & possibility,40
+to-no-koto,43,Extension — stance & possibility,41
+nado-to-wa,43,Extension — stance & possibility,42
+kara-naru,44,Extension — expression & nuance I,1
+ya-ya,44,Extension — expression & nuance I,2
+yara-yara,44,Extension — expression & nuance I,3
+sore-wa,44,Extension — expression & nuance I,4
+de-sura,44,Extension — expression & nuance I,5
+tomo,44,Extension — expression & nuance I,6
+ni-kagitte,44,Extension — expression & nuance I,7
+yara,44,Extension — expression & nuance I,8
+wa-3,44,Extension — expression & nuance I,9
+tani-de,44,Extension — expression & nuance I,10
+bakari-da,44,Extension — expression & nuance I,11
+you,44,Extension — expression & nuance I,12
+no-nasa,44,Extension — expression & nuance I,13
+to-shite-nai,44,Extension — expression & nuance I,14
+kagiri-2,44,Extension — expression & nuance I,15
+ikanimo,44,Extension — expression & nuance I,16
+itsumo-wa-nai,44,Extension — expression & nuance I,17
+oyoso,44,Extension — expression & nuance I,18
+koto-ni,44,Extension — expression & nuance I,19
+sou-shita,44,Extension — expression & nuance I,20
+sono-mono,44,Extension — expression & nuance I,21
+tada-no,44,Extension — expression & nuance I,22
+toutei-nai,44,Extension — expression & nuance I,23
+dou-iu-wake-da-ka,45,Extension — expression & nuance II,1
+doushite-da-ka,45,Extension — expression & nuance II,2
+doko-made-mo,45,Extension — expression & nuance II,3
+minna-wa-nai,45,Extension — expression & nuance II,4
+hitotsu,45,Extension — expression & nuance II,5
+ittan,45,Extension — expression & nuance II,6
+imasara,45,Extension — expression & nuance II,7
+kari-ni,45,Extension — expression & nuance II,8
+izen-to-shite,45,Extension — expression & nuance II,9
+wazuka,45,Extension — expression & nuance II,10
+wariai,45,Extension — expression & nuance II,11
+omoikitte,45,Extension — expression & nuance II,12
+omowazu,45,Extension — expression & nuance II,13
+hatashite,45,Extension — expression & nuance II,14
+iwaba,45,Extension — expression & nuance II,15
+doushi,45,Extension — expression & nuance II,16
+kinshi,45,Extension — expression & nuance II,17
+fu-no,45,Extension — expression & nuance II,18
+rei-no,45,Extension — expression & nuance II,19
+sumaseru,45,Extension — expression & nuance II,20
+sumu,45,Extension — expression & nuance II,21
+jibun-2,45,Extension — expression & nuance II,22
+negau,45,Extension — expression & nuance II,23
+kurai-nara,46,Advanced comprehension — relations & conditions I,1
+tara-tokoro-da,46,Advanced comprehension — relations & conditions I,2
+tara-saigo,46,Advanced comprehension — relations & conditions I,3
+to-areba,46,Advanced comprehension — relations & conditions I,4
+to-mo-naru-to,46,Advanced comprehension — relations & conditions I,5
+to-ie-domo,46,Advanced comprehension — relations & conditions I,6
+ba-sore-made-da,46,Advanced comprehension — relations & conditions I,7
+you-mono-nara,46,Advanced comprehension — relations & conditions I,8
+to-atte-wa,46,Advanced comprehension — relations & conditions I,9
+nakushite-wa,46,Advanced comprehension — relations & conditions I,10
+atte-no,46,Advanced comprehension — relations & conditions I,11
+ikan-de,46,Advanced comprehension — relations & conditions I,12
+katagata,46,Advanced comprehension — relations & conditions I,13
+ka-to-omoikiya,46,Advanced comprehension — relations & conditions I,14
+gatera,46,Advanced comprehension — relations & conditions I,15
+ga-hayai-ka,46,Advanced comprehension — relations & conditions I,16
+koto-dashi,46,Advanced comprehension — relations & conditions I,17
+koto-nashi-ni,46,Advanced comprehension — relations & conditions I,18
+koto-no-nai-you-ni,46,Advanced comprehension — relations & conditions I,19
+koto-mo-atte,46,Advanced comprehension — relations & conditions I,20
+ja-aru-mai-shi,46,Advanced comprehension — relations & conditions I,21
+soba-kara,46,Advanced comprehension — relations & conditions I,22
+tara-tade,46,Advanced comprehension — relations & conditions I,23
+ta-hazumi-ni,46,Advanced comprehension — relations & conditions I,24
+darou-ga-to,46,Advanced comprehension — relations & conditions I,25
+te-kara-to-iu-mono,46,Advanced comprehension — relations & conditions I,26
+de-are,46,Advanced comprehension — relations & conditions I,27
+dewa-arumai-shi,46,Advanced comprehension — relations & conditions I,28
+demo-ari-demo-aru,46,Advanced comprehension — relations & conditions I,29
+to-ii-to-ii,46,Advanced comprehension — relations & conditions I,30
+to-iou-ka,46,Advanced comprehension — relations & conditions I,31
+to-aimatte,47,Advanced comprehension — relations & conditions II,1
+nagara-ni,47,Advanced comprehension — relations & conditions II,2
+nara-de,47,Advanced comprehension — relations & conditions II,3
+nara-madashimo,47,Advanced comprehension — relations & conditions II,4
+nari,47,Advanced comprehension — relations & conditions II,5
+ni-shite-mireba,47,Advanced comprehension — relations & conditions II,6
+ni-hikikae,47,Advanced comprehension — relations & conditions II,7
+ni-matsuwaru,47,Advanced comprehension — relations & conditions II,8
+nimo-mashite,47,Advanced comprehension — relations & conditions II,9
+ni-sakigakete,47,Advanced comprehension — relations & conditions II,10
+ni-nottotte,47,Advanced comprehension — relations & conditions II,11
+ni-sokushite,47,Advanced comprehension — relations & conditions II,12
+ni-terashite,47,Advanced comprehension — relations & conditions II,13
+ni-itaru,47,Advanced comprehension — relations & conditions II,14
+ni-itaru-made,47,Advanced comprehension — relations & conditions II,15
+ni-iwasereba,47,Advanced comprehension — relations & conditions II,16
+wa-ii-to-shite-mo,47,Advanced comprehension — relations & conditions II,17
+wa-sate-oki,47,Advanced comprehension — relations & conditions II,18
+wa-iu-made-mo-naku,47,Advanced comprehension — relations & conditions II,19
+mo-shinai-de,47,Advanced comprehension — relations & conditions II,20
+you-ga-mai-ga,47,Advanced comprehension — relations & conditions II,21
+you-tomo,47,Advanced comprehension — relations & conditions II,22
+you-ni-yotte-wa,47,Advanced comprehension — relations & conditions II,23
+o-ii-koto-ni,47,Advanced comprehension — relations & conditions II,24
+o-motte,47,Advanced comprehension — relations & conditions II,25
+o-kanete,47,Advanced comprehension — relations & conditions II,26
+o-ki-ni,47,Advanced comprehension — relations & conditions II,27
+o-kawakiri-ni,47,Advanced comprehension — relations & conditions II,28
+o-hete,47,Advanced comprehension — relations & conditions II,29
+ori-niwa,47,Advanced comprehension — relations & conditions II,30
+kai-mo-naku,47,Advanced comprehension — relations & conditions II,31
+katsu,48,Advanced comprehension — relations & conditions III,1
+samonaito,48,Advanced comprehension — relations & conditions III,2
+shikashi-nagara,48,Advanced comprehension — relations & conditions III,3
+sunawachi,48,Advanced comprehension — relations & conditions III,4
+sou-ka-to-itte,48,Advanced comprehension — relations & conditions III,5
+sore-de-ite,48,Advanced comprehension — relations & conditions III,6
+sore-yue,48,Advanced comprehension — relations & conditions III,7
+tatoete-ieba,48,Advanced comprehension — relations & conditions III,8
+ta-tokoro-de,48,Advanced comprehension — relations & conditions III,9
+ta-nari-de,48,Advanced comprehension — relations & conditions III,10
+to-atte,48,Advanced comprehension — relations & conditions III,11
+to-kitara,48,Advanced comprehension — relations & conditions III,12
+to-wa-ie,48,Advanced comprehension — relations & conditions III,13
+to-bakari-ni,48,Advanced comprehension — relations & conditions III,14
+to-mo-naku,48,Advanced comprehension — relations & conditions III,15
+to-mo-nashi-ni,48,Advanced comprehension — relations & conditions III,16
+to-iwan-bakari-ni,48,Advanced comprehension — relations & conditions III,17
+naishi-wa,48,Advanced comprehension — relations & conditions III,18
+nai-made-mo,48,Advanced comprehension — relations & conditions III,19
+ni-yorazu,48,Advanced comprehension — relations & conditions III,20
+ni-todomarazu,48,Advanced comprehension — relations & conditions III,21
+wa-oroka,48,Advanced comprehension — relations & conditions III,22
+mashite-ya,48,Advanced comprehension — relations & conditions III,23
+mottomo-2,48,Advanced comprehension — relations & conditions III,24
+ya-ina-ya,48,Advanced comprehension — relations & conditions III,25
+o-kaishite,48,Advanced comprehension — relations & conditions III,26
+hitotsu-ni-wa,48,Advanced comprehension — relations & conditions III,27
+narabi-ni,48,Advanced comprehension — relations & conditions III,28
+kuwaete,48,Advanced comprehension — relations & conditions III,29
+yue-ni,48,Advanced comprehension — relations & conditions III,30
+setsu-ni,48,Advanced comprehension — relations & conditions III,31
+jimita,49,Advanced comprehension — stance & evaluation I,1
+sobireru,49,Advanced comprehension — stance & evaluation I,2
+biru,49,Advanced comprehension — stance & evaluation I,3
+buru,49,Advanced comprehension — stance & evaluation I,4
+makuru,49,Advanced comprehension — stance & evaluation I,5
+meku,49,Advanced comprehension — stance & evaluation I,6
+sokonau,49,Advanced comprehension — stance & evaluation I,7
+kirai-ga-aru,49,Advanced comprehension — stance & evaluation I,8
+kurai-no-mono-da,49,Advanced comprehension — stance & evaluation I,9
+zu-jimai,49,Advanced comprehension — stance & evaluation I,10
+zu-niwa-sumanai,49,Advanced comprehension — stance & evaluation I,11
+ta-koto-ni-suru,49,Advanced comprehension — stance & evaluation I,12
+ta-tsumori-wa-nai,49,Advanced comprehension — stance & evaluation I,13
+ta-made-da,49,Advanced comprehension — stance & evaluation I,14
+tameshi-ga-nai,49,Advanced comprehension — stance & evaluation I,15
+darou-ni,49,Advanced comprehension — stance & evaluation I,16
+temo-dou-ni-mo-naranai,49,Advanced comprehension — stance & evaluation I,17
+temo-sashitsukaenai,49,Advanced comprehension — stance & evaluation I,18
+temo-shiranai,49,Advanced comprehension — stance & evaluation I,19
+te-kanawanai,49,Advanced comprehension — stance & evaluation I,20
+te-sumu-koto-dewa-nai,49,Advanced comprehension — stance & evaluation I,21
+dewa-sumanai,49,Advanced comprehension — stance & evaluation I,22
+demo-nan-demo-nai,49,Advanced comprehension — stance & evaluation I,23
+to-iu-tokoro,49,Advanced comprehension — stance & evaluation I,24
+towa-kurabemono-ni-naranai,49,Advanced comprehension — stance & evaluation I,25
+to-ienaku-mo-nai,49,Advanced comprehension — stance & evaluation I,26
+dokoro-no-hanashi-de-wa-nai,49,Advanced comprehension — stance & evaluation I,27
+nai-tomo-kagiranai,49,Advanced comprehension — stance & evaluation I,28
+nai-mono-ka,49,Advanced comprehension — stance & evaluation I,29
+nai-mono-demo-nai,49,Advanced comprehension — stance & evaluation I,30
+niwa-ataranai,49,Advanced comprehension — stance & evaluation I,31
+ni-wa-muri-ga-aru,49,Advanced comprehension — stance & evaluation I,32
+nimo-hodo-ga-aru,50,Advanced comprehension — stance & evaluation II,1
+ni-atai-suru,50,Advanced comprehension — stance & evaluation II,2
+ni-taeru,50,Advanced comprehension — stance & evaluation II,3
+ni-taranai,50,Advanced comprehension — stance & evaluation II,4
+ni-kagitta-koto-dewa-nai,50,Advanced comprehension — stance & evaluation II,5
+hou-ga-mashi-da,50,Advanced comprehension — stance & evaluation II,6
+hodo-no-koto-dewa-nai,50,Advanced comprehension — stance & evaluation II,7
+made-no-koto-da,50,Advanced comprehension — stance & evaluation II,8
+mono-toshite,50,Advanced comprehension — stance & evaluation II,9
+mono-to-suru,50,Advanced comprehension — stance & evaluation II,10
+mono-to-omou,50,Advanced comprehension — stance & evaluation II,11
+mono-to-omotte-ita,50,Advanced comprehension — stance & evaluation II,12
+mono-to-omowareru,50,Advanced comprehension — stance & evaluation II,13
+mo-douzen-da,50,Advanced comprehension — stance & evaluation II,14
+you-ni-mo-nai,50,Advanced comprehension — stance & evaluation II,15
+ru-made-da,50,Advanced comprehension — stance & evaluation II,16
+o-yoginaku-saseru,50,Advanced comprehension — stance & evaluation II,17
+o-yoginaku-sareru,50,Advanced comprehension — stance & evaluation II,18
+n-bakari-ni,50,Advanced comprehension — stance & evaluation II,19
+kiri-ga-nai,50,Advanced comprehension — stance & evaluation II,20
+shimatsu-da,50,Advanced comprehension — stance & evaluation II,21
+shidai-desu,50,Advanced comprehension — stance & evaluation II,22
+hame-ni-naru,50,Advanced comprehension — stance & evaluation II,23
+sube-ga-nai,50,Advanced comprehension — stance & evaluation II,24
+kagiri-da,50,Advanced comprehension — stance & evaluation II,25
+nimo-nai,50,Advanced comprehension — stance & evaluation II,26
+sore-made-da,50,Advanced comprehension — stance & evaluation II,27
+takute-mo-nai,50,Advanced comprehension — stance & evaluation II,28
+te-bakari-wa-irarenai,50,Advanced comprehension — stance & evaluation II,29
+to-itta-tokoro-da,50,Advanced comprehension — stance & evaluation II,30
+ni-wa-oyobanai,50,Advanced comprehension — stance & evaluation II,31
+shinpai-ga-aru,50,Advanced comprehension — stance & evaluation II,32
+kara-ni-itaru-made,51,Advanced comprehension — description & nuance I,1
+kara-aru,51,Advanced comprehension — description & nuance I,2
+ka-ina-ka,51,Advanced comprehension — description & nuance I,3
+gurumi,51,Advanced comprehension — description & nuance I,4
+zukume,51,Advanced comprehension — description & nuance I,5
+da-no-da-no,51,Advanced comprehension — description & nuance I,6
+nara-dewa,51,Advanced comprehension — description & nuance I,7
+nari-nari,51,Advanced comprehension — description & nuance I,8
+no-yara,51,Advanced comprehension — description & nuance I,9
+no-yara-no-yara,51,Advanced comprehension — description & nuance I,10
+ka-de,51,Advanced comprehension — description & nuance I,11
+sura,51,Advanced comprehension — description & nuance I,12
+soko-o,51,Advanced comprehension — description & nuance I,13
+tada-nomi-da,51,Advanced comprehension — description & nuance I,14
+o-4,51,Advanced comprehension — description & nuance I,15
+ni-shite,51,Advanced comprehension — description & nuance I,16
+aete,51,Advanced comprehension — description & nuance I,17
+akumade-mo,51,Advanced comprehension — description & nuance I,18
+anagachi-nai,51,Advanced comprehension — description & nuance I,19
+ikani,51,Advanced comprehension — description & nuance I,20
+kotogotoku,51,Advanced comprehension — description & nuance I,21
+sazo,51,Advanced comprehension — description & nuance I,22
+sore-nari-ni,51,Advanced comprehension — description & nuance I,23
+takaga,51,Advanced comprehension — description & nuance I,24
+to-mo-suru-to,51,Advanced comprehension — description & nuance I,25
+to-mo-sureba,51,Advanced comprehension — description & nuance I,26
+dou-ka-suru-to,52,Advanced comprehension — description & nuance II,1
+dou-nimo,52,Advanced comprehension — description & nuance II,2
+dou-ni-mo-nai,52,Advanced comprehension — description & nuance II,3
+naosara,52,Advanced comprehension — description & nuance II,4
+marukkiri,52,Advanced comprehension — description & nuance II,5
+hetani,52,Advanced comprehension — description & nuance II,6
+chuto-hanpa,52,Advanced comprehension — description & nuance II,7
+nanra-nai,52,Advanced comprehension — description & nuance II,8
+onoono,52,Advanced comprehension — description & nuance II,9
+shiite,52,Advanced comprehension — description & nuance II,10
+an-no-jo,52,Advanced comprehension — description & nuance II,11
+kiwamete,52,Advanced comprehension — description & nuance II,12
+oomune,52,Advanced comprehension — description & nuance II,13
+miru-kara-ni,52,Advanced comprehension — description & nuance II,14
+karoujite,52,Advanced comprehension — description & nuance II,15
+meimei,52,Advanced comprehension — description & nuance II,16
+rai,52,Advanced comprehension — description & nuance II,17
+to-ittara-nai,52,Advanced comprehension — description & nuance II,18
+domo,52,Advanced comprehension — description & nuance II,19
+nami,52,Advanced comprehension — description & nuance II,20
+ikan,52,Advanced comprehension — description & nuance II,21
+ikanaru,52,Advanced comprehension — description & nuance II,22
+nara-de-wa-no,52,Advanced comprehension — description & nuance II,23
+mamire,52,Advanced comprehension — description & nuance II,24
+ichi-to-shite-nai,52,Advanced comprehension — description & nuance II,25
+ga-nara,53,Appendix — rare literary links & rhetoric I,1
+de-are-de-are,53,Appendix — rare literary links & rhetoric I,2
+de-arou-ga,53,Appendix — rare literary links & rhetoric I,3
+ikan-da,53,Appendix — rare literary links & rhetoric I,4
+ikan-ni-kakawarazu,53,Appendix — rare literary links & rhetoric I,5
+kare-kare,53,Appendix — rare literary links & rhetoric I,6
+koso-are,53,Appendix — rare literary links & rhetoric I,7
+koso-sure,53,Appendix — rare literary links & rhetoric I,8
+koto-tote,53,Appendix — rare literary links & rhetoric I,9
+zu-shite,53,Appendix — rare literary links & rhetoric I,10
+zu-tomo,53,Appendix — rare literary links & rhetoric I,11
+de-arou-ga-to,53,Appendix — rare literary links & rhetoric I,12
+de-arou-to-de-arou-to,53,Appendix — rare literary links & rhetoric I,13
+to-iwazu,53,Appendix — rare literary links & rhetoric I,14
+to-iwazu-to-iwazu,53,Appendix — rare literary links & rhetoric I,15
+nara-iza-shirazu,53,Appendix — rare literary links & rhetoric I,16
+ni-o-kasanete,53,Appendix — rare literary links & rhetoric I,17
+ni-atte,53,Appendix — rare literary links & rhetoric I,18
+ni-kakatte-wa,53,Appendix — rare literary links & rhetoric I,19
+ni-kakotsukete,53,Appendix — rare literary links & rhetoric I,20
+ni-kamakete,53,Appendix — rare literary links & rhetoric I,21
+ni-shite-2,53,Appendix — rare literary links & rhetoric I,22
+ni-itattemo,53,Appendix — rare literary links & rhetoric I,23
+wa-atte-mo,53,Appendix — rare literary links & rhetoric I,24
+wa-are,53,Appendix — rare literary links & rhetoric I,25
+wa-iu-ni-oyobazu,54,Appendix — rare literary links & rhetoric II,1
+ba-koso,54,Appendix — rare literary links & rhetoric II,2
+beku,54,Appendix — rare literary links & rhetoric II,3
+beku-shite,54,Appendix — rare literary links & rhetoric II,4
+you-ttatte,54,Appendix — rare literary links & rhetoric II,5
+n-ga-tame-ni,54,Appendix — rare literary links & rhetoric II,6
+katawara,54,Appendix — rare literary links & rhetoric II,7
+samo-nakuba,54,Appendix — rare literary links & rhetoric II,8
+saru-koto-nagara,54,Appendix — rare literary links & rhetoric II,9
+to-naku,54,Appendix — rare literary links & rhetoric II,10
+ni-to-mo-naru-to,54,Appendix — rare literary links & rhetoric II,11
+ni-to-mo-nareba,54,Appendix — rare literary links & rhetoric II,12
+ni-shita-tokoro-de,54,Appendix — rare literary links & rhetoric II,13
+ni-itatte-wa,54,Appendix — rare literary links & rhetoric II,14
+no-no-to,54,Appendix — rare literary links & rhetoric II,15
+mo-saru-koto-nagara,54,Appendix — rare literary links & rhetoric II,16
+mono-o,54,Appendix — rare literary links & rhetoric II,17
+o-oite-hoka-ni-wa-nai,54,Appendix — rare literary links & rhetoric II,18
+o-mono-to-mo-sezu,54,Appendix — rare literary links & rhetoric II,19
+o-yoso-ni,54,Appendix — rare literary links & rhetoric II,20
+hiite-wa,54,Appendix — rare literary links & rhetoric II,21
+iwanya,54,Appendix — rare literary links & rhetoric II,22
+kangaeru-ni,54,Appendix — rare literary links & rhetoric II,23
+yoshi,54,Appendix — rare literary links & rhetoric II,24
+mai-no-you-ni,55,Appendix — rare forms & expressions I,1
+kitte-no,55,Appendix — rare forms & expressions I,2
+tari-tomo,55,Appendix — rare forms & expressions I,3
+dani,55,Appendix — rare forms & expressions I,4
+nari-tomo,55,Appendix — rare forms & expressions I,5
+wa-wa,55,Appendix — rare forms & expressions I,6
+taruya,55,Appendix — rare forms & expressions I,7
+ichi-tari-tomo-nai,55,Appendix — rare forms & expressions I,8
+gamashii,55,Appendix — rare forms & expressions I,9
+te-yamanai,55,Appendix — rare forms & expressions I,10
+ka-no-gotoku,55,Appendix — rare forms & expressions I,11
+karou,55,Appendix — rare forms & expressions I,12
+zu-ni-wa-okanai,55,Appendix — rare forms & expressions I,13
+zu-ni-wa-orarenai,55,Appendix — rare forms & expressions I,14
+te-shikaru-beki-da,55,Appendix — rare forms & expressions I,15
+denakute-nan-darou,55,Appendix — rare forms & expressions I,16
+dewa-arumai-ka,55,Appendix — rare forms & expressions I,17
+tomo-arou,55,Appendix — rare forms & expressions I,18
+ni-nai,55,Appendix — rare forms & expressions I,19
+ni-shinobinai,55,Appendix — rare forms & expressions I,20
+ni-hajinai,55,Appendix — rare forms & expressions I,21
+ni-taru,55,Appendix — rare forms & expressions I,22
+no-nan-no-tte,55,Appendix — rare forms & expressions I,23
+bekarazu,55,Appendix — rare forms & expressions I,24
+beku-mo-nai,55,Appendix — rare forms & expressions I,25
+majiki,55,Appendix — rare forms & expressions I,26
+n-to-suru,55,Appendix — rare forms & expressions I,27
+gotoshi,55,Appendix — rare forms & expressions I,28
+ikani-koto-ka,55,Appendix — rare forms & expressions I,29
+kono-ue-nai,56,Appendix — rare forms & expressions II,1
+taku-to-mo-nai,56,Appendix — rare forms & expressions II,2
+to-demo-iu-beki,56,Appendix — rare forms & expressions II,3
+nado-to-iu-mono-de-wa-nai,56,Appendix — rare forms & expressions II,4
+ni-katakunai,56,Appendix — rare forms & expressions II,5
+okinji-enai,56,Appendix — rare forms & expressions II,6
+no-kiwami,56,Appendix — rare forms & expressions II,7
+no-itari,56,Appendix — rare forms & expressions II,8
+atakamo,56,Appendix — rare forms & expressions II,9
+samo,56,Appendix — rare forms & expressions II,10
+dou-ni-mo-kou-ni-mo-nai,56,Appendix — rare forms & expressions II,11
+namaji-kka,56,Appendix — rare forms & expressions II,12
+ni-mo-naku,56,Appendix — rare forms & expressions II,13
+yaya-mo-suru-to,56,Appendix — rare forms & expressions II,14
+yaya-mo-sureba,56,Appendix — rare forms & expressions II,15
+yomoya,56,Appendix — rare forms & expressions II,16
+omou-ni,56,Appendix — rare forms & expressions II,17
+kiwamari-nai,56,Appendix — rare forms & expressions II,18
+ku,56,Appendix — rare forms & expressions II,19
+nasu,56,Appendix — rare forms & expressions II,20
+o-oite-hoka-ni-nai,56,Appendix — rare forms & expressions II,21
+o-kinzuru,56,Appendix — rare forms & expressions II,22
+tatoete-iu-naraba,56,Appendix — rare forms & expressions II,23
+tsuzuke-da,56,Appendix — rare forms & expressions II,24
+tokitama-shika-nai,56,Appendix — rare forms & expressions II,25
+wakeru,56,Appendix — rare forms & expressions II,26
+oozei,56,Appendix — rare forms & expressions II,27
+kiraida,56,Appendix — rare forms & expressions II,28
+i-adjective,4,Describe things: い and な adjectives,1
+na-adjective,4,Describe things: い and な adjectives,2

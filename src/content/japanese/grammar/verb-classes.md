@@ -1,5 +1,5 @@
 ---
-title: "動詞のグループ — Verb Classes (Godan, Ichidan, Irregular)"
+title: "Verb classes — u-verbs, ru-verbs, and irregular"
 canonical: "動詞のグループ"
 reading: "どうしのグループ"
 register: ["casual-spoken", "polite-spoken", "written-modern"]

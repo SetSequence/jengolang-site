@@ -24,8 +24,8 @@ usageSetting: "Written へ, pronounced え. Slightly more formal-feeling than �
 examples:
   - jp: "来年{らいねん}、国{くに}へ帰{かえ}る。"
     en: "Next year I'll return to my home country."
-  - jp: "右{みぎ}へ曲{ま}がってください。"
-    en: "Please turn to the right."
+  - jp: "次{つぎ}の角{かど}を右{みぎ}へ曲{ま}がる。"
+    en: "Turn right at the next corner."
   - jp: "家族{かぞく}へのプレゼントを買{か}った。"
     en: "I bought a present for my family."
     note: "への links to a following noun"

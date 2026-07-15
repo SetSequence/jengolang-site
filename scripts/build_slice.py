@@ -42,8 +42,8 @@ OUT = os.path.abspath(os.path.join(HERE, "..", "src", "data", "grammar_slice.jso
 # tier-0 "form" grouping in the render. Ordered bases-first for display.
 # ---------------------------------------------------------------------------
 ANCHOR_SLUGS = [
-    "verb-classes", "masu-stem", "te-form", "ta-form", "nai-form",
-    "ba-conditional", "volitional-form", "causative-form", "counter",
+    "verb-classes", "ta-form",
+    "volitional-form", "causative-form", "counter",
 ]
 
 # ---------------------------------------------------------------------------
@@ -53,24 +53,36 @@ ANCHOR_SLUGS = [
 # DAG is too sparse to layer the spine (it collapses to ≤2 tiers, see report).
 # ONE canonical slug per concept; OCR dups deliberately dropped (audited below).
 # ---------------------------------------------------------------------------
+# NB: FOUNDATION_STAGES mirrors Arc 1 (units 1–11) exactly — the shared trunk
+# every goal route inherits. A guard in load_spine() asserts each stage's slugs
+# resolve to the matching unit_index in the right order, so this MUST track the
+# Arc-1 assignment in spine_units.csv. Reorder both together.
 FOUNDATION_STAGES = [
-    ("Make your first 'X is Y' sentences",  ["da", "desu", "wa-2", "no-3", "janai", "datta"]),
-    ("Say who, what, where, and when",
-        ["ga-2", "o", "ni-2", "ni-3", "de", "ka", "e", "to-2", "mo", "kara-3",
-         "made", "ne", "yo"]),
-    ("Make verbs polite, negative, and past",   ["masu-stem", "masu-form", "te-form", "nai", "kudasai"]),
-    ("Connect actions with て",
-        ["te", "te-kudasai", "te-iru", "te-kara", "te-mo-ii", "te-wa-ikenai",
-         "te-shimau", "te-miru"]),
+    ("Your first sentences: X is Y",
+        ["desu", "wa-2", "wa-desu", "ka", "no-3", "mo", "ne", "yo"]),
+    ("Mark who, what, where, and when",
+        ["ga-2", "o", "ni-2", "ni-3", "e", "de", "to-2", "kara-3", "made"]),
+    ("Make verbs polite; say what there is",
+        ["verb-classes", "masu-form", "kudasai", "ga-aru", "ga-iru"]),
+    ("Describe things: い and な adjectives",
+        ["i-adjective", "na-adjective"]),
+    ("Plain (casual) form",
+        ["da", "wa-da", "janai", "datta", "janakatta", "nai", "ta-form"]),
+    ("Connect and continue actions with て",
+        ["te", "de-3", "te-kudasai", "te-iru", "te-kara", "te-mo-ii",
+         "te-wa-ikenai", "te-shimau", "te-miru"]),
     ("Give, receive, and ask for help",
         ["ageru", "kureru", "ageru-2", "kureru-2", "morau"]),
     ("Want, invite, and express uncertainty",
-        ["tai", "hoshii", "darou", "deshou", "kamoshirenai", "hazu"]),
-    ("If and when: four patterns",     ["to-conditional", "tara", "ba", "nara"]),
+        ["tai", "hoshii", "volitional-form", "darou", "deshou",
+         "kamoshirenai", "hazu"]),
+    ("If and when: the four conditionals",
+        ["to-conditional", "tara", "ba", "nara"]),
     ("Join ideas: reason, contrast, and time",
         ["kara", "node", "kedo", "ga-3", "noni", "nagara", "toki", "mae-ni", "ato-de"]),
-    ("Turn actions into things and compare",
-        ["koto", "no-ga-suki", "no-hou-ga", "yori-no-hou-ga", "ichiban"]),
+    ("Turn actions into things, compare, and change",
+        ["koto", "no-ga-suki", "yori", "no-hou-ga", "yori-no-hou-ga",
+         "ichiban", "ni-naru"]),
 ]
 FOUNDATIONS = [s for _, slugs in FOUNDATION_STAGES for s in slugs]
 
@@ -117,46 +129,47 @@ FREQ_RANK = {"essential": 0, "common": 1, "uncommon": 2, "rare": 3}
 JLPT_RANK = {"N5": 0, "N4": 1, "N3": 2, "N2": 3, "N1": 4, "none": 5}
 # mirrors lib/grammar.ts FAMILY_ORDER so within-band order never drifts
 FAMILY_ORDER = [
-    "particle", "copula", "aspect", "conditional", "auxiliary", "modality",
-    "quotation", "nominalizer", "causative", "passive", "honorific",
+    "particle", "copula", "adjective", "aspect", "conditional", "auxiliary",
+    "modality", "quotation", "nominalizer", "causative", "passive", "honorific",
     "connective", "adverbial", "counter", "form", "interjection", "other",
 ]
 FAM_RANK = {f: i for i, f in enumerate(FAMILY_ORDER)}
 JLPT_LEVELS = ["N5", "N4", "N3", "N2", "N1"]
 
 ARC_RANGES = [
-    (1, "Start speaking and understanding simple Japanese", 1, 10),
-    (2, "Build everyday Japanese", 11, 20),
-    (3, "Make longer sentences", 21, 24),
-    (4, "Make plans, give advice, and talk with people", 25, 30),
-    (5, "Say more precisely", 31, 37),
-    (6, "Add nuance in speech and writing", 38, 38),
-    (7, "Less common, useful patterns", 39, 44),
-    (8, "Read advanced Japanese", 45, 51),
-    (9, "Reference: rare and literary grammar", 52, 55),
+    (1, "Start speaking and understanding simple Japanese", 1, 11),
+    (2, "Build everyday Japanese", 12, 21),
+    (3, "Make longer sentences", 22, 25),
+    (4, "Make plans, give advice, and talk with people", 26, 31),
+    (5, "Say more precisely", 32, 38),
+    (6, "Add nuance in speech and writing", 39, 39),
+    (7, "Less common, useful patterns", 40, 45),
+    (8, "Read advanced Japanese", 46, 52),
+    (9, "Reference: rare and literary grammar", 53, 56),
 ]
 
 UNIT_LABELS = {
-    1: "Make your first 'X is Y' sentences",
-    2: "Say who, what, where, and when",
-    3: "Make verbs polite, negative, and past",
-    4: "Connect actions with て",
-    5: "Give, receive, and ask for help",
-    6: "Want, invite, and express uncertainty",
-    7: "If and when: four patterns",
-    8: "Join ideas: reason, contrast, and time",
-    9: "Turn actions into things and compare",
-    10: "Describe people, things, and change",
-    11: "Everyday reference and detail",
-    12: "Describe and refer to things in more ways",
-    13: "Everyday actions, states, and change",
-    14: "Requests, advice, and obligation",
-    15: "Casual requests and interaction",
-    16: "Ability, plans, and polite interaction",
-    17: "Everyday particles and quantity",
-    18: "Everyday emphasis and choices",
-    19: "Connect everyday conversations",
-    20: "Link everyday ideas",
+    1: "Your first sentences: X is Y",
+    2: "Mark who, what, where, and when",
+    3: "Make verbs polite; say what there is",
+    4: "Describe things: い and な adjectives",
+    5: "Plain (casual) form",
+    6: "Connect and continue actions with て",
+    7: "Give, receive, and ask for help",
+    8: "Want, invite, and express uncertainty",
+    9: "If and when: the four conditionals",
+    10: "Join ideas: reason, contrast, and time",
+    11: "Turn actions into things, compare, and change",
+    12: "Everyday reference and detail",
+    13: "Describe and refer to things in more ways",
+    14: "Everyday actions, states, and change",
+    15: "Requests, advice, and obligation",
+    16: "Casual requests and interaction",
+    17: "Ability, plans, and polite interaction",
+    18: "Everyday particles and quantity",
+    19: "Everyday emphasis and choices",
+    20: "Connect everyday conversations",
+    21: "Link everyday ideas",
 }
 
 # keigo bands: pedagogical order polite → respectful → humble (§2)

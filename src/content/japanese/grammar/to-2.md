@@ -21,7 +21,7 @@ senses:
       jp: "パンと卵{たまご}を買{か}った。"
       en: "I bought bread and eggs."
     examples:
-      - jp: "犬{いぬ}と猫{ねこ}を飼{か}っている。"
+      - jp: "犬{いぬ}と猫{ねこ}を飼{か}う。"
         en: "I keep a dog and a cat."
   - label: "'with' (accompaniment)"
     equivalents:

@@ -1,5 +1,5 @@
 ---
-title: "て形 — Make the て-Form"
+title: "The て form — connecting verbs"
 canonical: "て形"
 reading: "てけい"
 register: ["casual-spoken", "polite-spoken", "written-modern"]

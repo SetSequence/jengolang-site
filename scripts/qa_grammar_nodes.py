@@ -56,6 +56,7 @@ FAMILY = {
     "conditional", "causative", "passive", "aspect", "modality", "quotation",
     "connective", "nominalizer", "particle", "auxiliary", "adverbial",
     "honorific", "copula", "counter", "interjection", "other",
+    "adjective",  # い/な-adjective conjugation (Foundations adjectives unit)
     "form",  # promoted form anchors: te-form, masu-stem, ta-form, … (Build step 1)
 }
 CONFIDENCE = {"high", "med", "low"}

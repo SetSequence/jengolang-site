@@ -1,5 +1,5 @@
 ---
-title: "た形 — The Plain Past Form"
+title: "Plain past — the た form"
 canonical: "た形"
 reading: "たけい"
 register: ["casual-spoken", "polite-spoken", "written-modern"]
@@ -47,8 +47,8 @@ examples:
     en: "Last week I went to Kyoto."
   - jp: "子{こ}どもの頃{ころ}、よく泳{およ}いだ。"
     en: "I swam a lot when I was a child."
-  - jp: "駅{えき}に着{つ}いたら、電話{でんわ}してください。"
-    en: "When you arrive at the station, please call."
+  - jp: "駅{えき}に着{つ}いたら、連絡{れんらく}する。"
+    en: "When I arrive at the station, I'll get in touch."
     note: "base for the たら conditional"
   - jp: "北海道{ほっかいどう}に行{い}ったことがある。"
     en: "I have been to Hokkaido."

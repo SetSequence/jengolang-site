@@ -27,8 +27,8 @@ python3 scripts/qa_grammar_nodes.py scripts/data/grammar_enriched.csv --source g
 python3 scripts/list_stubs.py --freq uncommon  # Pass-2 long-tail worklist: un-enriched stubs (noindex:true), prioritized by freq+JLPT; excludes foldInto folds (--include-folds to see them). The resume state for Pass-2 (see PASS.md §1 for the current band).
 python3 scripts/lint_batch.py <slug…>          # pre-build lint over a batch: furigana brace balance, dangling contrast/prereq slugs, sense-ref↔senses[].label, foreign-script scan (run before `npm run build`)
 ```
-- Catalog: `scripts/data/grammar_enriched.csv` (the seed/tag layer, 1,458 nodes post-dedup).
-- Node pages: `src/content/japanese/grammar/*.md` (Astro Content Collection, schema in `src/content.config.ts`). All 1,458 materialized (tag layer); teaching layer is Pass-2 (`CALIBRATION2.md`).
+- Catalog: `scripts/data/grammar_enriched.csv` (the seed/tag layer, 1,462 nodes post-dedup).
+- Node pages: `src/content/japanese/grammar/*.md` (Astro Content Collection, schema in `src/content.config.ts`). All 1,462 materialized (tag layer); teaching layer is Pass-2 (`CALIBRATION2.md`).
 
 ## Rules
 - No emojis. SVG icons only.

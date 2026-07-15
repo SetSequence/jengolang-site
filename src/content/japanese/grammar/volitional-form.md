@@ -1,5 +1,5 @@
 ---
-title: "意向形 — The Volitional Form"
+title: "Volitional — let's / I'll (the よう / おう form)"
 canonical: "意向形"
 reading: "いこうけい"
 register: ["casual-spoken", "polite-spoken", "written-modern"]
