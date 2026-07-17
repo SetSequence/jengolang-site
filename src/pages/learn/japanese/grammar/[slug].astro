@@ -222,8 +222,9 @@ const jsonLd =
       }
       .badge.jlpt { color: #fff; border: none; }
       .badge.cat { background: var(--brand); color: #fff; border: none; }
-      .path-place { margin-top:1rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; padding:.75rem .9rem; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text-secondary); font-size:.78rem; }
-      .path-place a { color:var(--brand); font-weight:700; text-decoration:none; }
+      .path-place { margin-top:1rem; color:var(--text-secondary); font-size:.78rem; }
+      .path-place a { color:var(--brand); text-decoration:underline; text-decoration-color:color-mix(in oklab,var(--brand) 35%,transparent); text-underline-offset:3px; }
+      .path-place a:hover { text-decoration-color:currentColor; }
 
       h1 {
         font-size: clamp(1.6rem, 4.5vw, 2.3rem); font-weight: 800; letter-spacing: -0.02em;
@@ -412,7 +413,7 @@ const jsonLd =
         )}
       </header>
 
-      {pathPlace && <div class="path-place"><span>Arc {pathPlace.arc.index}: {pathPlace.arc.label} · Unit {pathPlace.unit.index}</span><a href={`/learn/japanese/grammar/path/unit/${pathPlace.unit.index}`}>View in Path →</a></div>}
+      {pathPlace && <p class="path-place"><a href={`/learn/japanese/grammar/path#unit-${pathPlace.unit.index}`}>← Back to Unit {pathPlace.unit.index} · Arc {pathPlace.arc.index}</a></p>}
 
       {/* ── builds-on (prereqs, nav chrome) ── */}
       {prereqs.length > 0 && (
