@@ -14,7 +14,7 @@ narratives are **append-only in `HISTORY.md`** ("PASS.md frontier ledger" sectio
 batch 6–119 ledger was archived there 2026-07-02). After a pass: update the numbers
 here, write the batch narrative in HISTORY.md.
 
-- **Indexed: 1199 / 1,462** (through batch 119 + the 2026-07-15 adjectives unit; truth =
+- **Indexed: 1202 / 1,462** (through batch 120, the unit-39 spine-order pilot; truth =
   working-tree grep `noindex: false`). `list_stubs.py` *is* the resume state — there is no
   cursor file; a node is done iff `noindex:false`. `--enriched` lists finished nodes;
   `foldInto` folds are excluded by default (`--include-folds` to see them).
@@ -23,13 +23,20 @@ here, write the batch narrative in HISTORY.md.
   **common band drained (batch 72)** — any "common stubs" still surfacing in the
   worklist are resolved noindex redirect-hubs by design; skip them. Currently mining
   the **uncommon band**: `python3 scripts/list_stubs.py --freq uncommon` (then `rare`).
-- **Worklist order:** freq band first, low JLPT within a band, grouped into thematic
-  clusters — **until `scripts/data/spine_units.csv` lands** (RESTRUCTURE.md decision
-  2026-07-02). Once the spine exists, spine order **becomes** the Pass-2 worklist:
-  enrich in unit order. (The uncommon/rare tail maps to the Extension/appendix units,
-  so current work is compatible either way.)
+- **Worklist order = spine unit order.** `scripts/data/spine_units.csv` landed
+  2026-07-10 (SPINE.md §10 — all 1,419 non-fold nodes placed, 9 arcs / 56 units), so
+  spine order is now the Pass-2 worklist: enrich unit by unit, `order` within a unit.
+  The remaining non-fold stubs all sit in **units 39–56** (Extension → Advanced
+  comprehension → Appendix): ~35 across units 39–45, ~20 across 47–52, ~99 in the
+  Appendix (53–56). Units *are* the thematic clusters now — no more ad-hoc grouping.
+  `list_stubs.py` is not spine-aware; join its output against `spine_units.csv`
+  (or add a `--spine` flag) to get the unit-ordered worklist.
 - **Open catalog decisions:** near-dup fold pairs `o-suru`(N3)/`o-suru-2`(N4) and
-  `yaru`/`yaru-3`/`te-yaru` still need a catalog-level fold decision.
+  `yaru`/`yaru-3`/`te-yaru` still need a catalog-level fold decision. `mata-mo` canonical
+  in `grammar_enriched.csv` is still the wrong frame notation `又〜も` (node fixed to `又も`
+  batch 120; the CSV is hook-guarded as generated — fix pipeline-side). `koto-nano` and
+  `no-wa-no-koto-da` remain low-conf fold/dup candidates (enriched conservatively b120,
+  held noindex).
 - **Throughput (user directives 2026-06-15 / 2026-06-19):** roll multiple thematic
   clusters back-to-back per turn; one consolidated build + one checkpoint
   (PASS + HISTORY) per cluster-group. Context ceiling ≈ **20% per turn** (~60–70 nodes,
@@ -39,11 +46,10 @@ here, write the batch narrative in HISTORY.md.
 
 ## 2. The loop (per batch)
 
-1. **Pick a thematic cluster of ~15–25 stubs.** Fill order: highest `freq` first, low
-   JLPT first within a band (SEO weight) — **until `scripts/data/spine_units.csv` exists**,
-   at which point spine unit order takes over (RESTRUCTURE.md, 2026-07-02). Either way,
-   group by *theme* so the `contrasts` slot cross-links densely — that density is the GEO
-   win, and it's why we cluster rather than go alphabetically.
+1. **Pick the next spine unit (or 2–3 small adjacent ones) with unfilled stubs.**
+   Spine unit order is the worklist (see §1); work a unit's stubs in its `order`. The
+   unit is the thematic cluster — its members are the natural `contrasts` targets, and
+   that cross-link density is the GEO win.
 2. **Get the cluster brief (subagent — see §3).** This hands you the existing sibling
    slugs, valid contrast targets, and homograph warnings up front, so your context stays
    on the judgment work instead of grep round-trips.
@@ -76,10 +82,18 @@ hand on the pen). Parallelize the *read-heavy prep and the verify*, not the writ
 - **After a batch — spawn an `Explore` (or general) agent** to QA the finished files
   against CALIBRATION2 §1–§4: the furigana/gate/over-fill/under-fill scans (§7) + a
   §1–§4 spot-read. It reports issues; you fix. A second set of eyes, not a parallel pen.
-- **Not recommended (yet):** subagents drafting whole clusters. The contrast web fragments
-  across isolated agents and calibration drifts; a mandatory single-threaded review+merge
-  gate eats most of the supposed throughput win. Revisit only if prep+verify offload isn't
-  enough and the review gate is shown to hold quality.
+- **Writer-subagent pattern (piloted batch 120, unit 39 — validated for the tail):** an
+  Opus writer subagent drafts a whole unit, orchestrated per unit: Explore prep brief →
+  writer (gets the brief + CALIBRATION2 + PASS §4 gotchas + 2–3 enriched same-unit
+  exemplars, self-lints, conservative-noindex mandate) → orchestrator runs lint + build →
+  `content-reviewer` agent audits vs CALIBRATION2 → orchestrator adjudicates findings and
+  fixes. Pilot yield: 6 nodes, writer made 3 real slips (a §5 contrasts-on-low-conf
+  violation, a notation error, an example contradicting its own nuance) — all caught by
+  the gate; main context stayed at briefs + verdicts. **One writer per unit, ≤2 units in
+  flight.** The old caution stands for dense essential/common material: this pattern is
+  cleared for the uncommon/rare tail (units 39–56), where contrasts are sparse and holds
+  are cheap. Orchestrator must re-adjudicate reviewer findings against the seed diff —
+  the reviewer can't tell seeded content from writer-invented content.
 
 ## 4. Gotchas (the traps that cost real time — fold new ones in here)
 

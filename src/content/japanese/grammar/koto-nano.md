@@ -21,6 +21,11 @@ formation:
   - attaches_to: "Verb/clause nominalized with こと + な + のだ"
     form: "〜こと + な + のだ"
     example: "必要{ひつよう}なのは、休{やす}むことなのだ"
+examples:
+  - jp: "問題{もんだい}は、誰{だれ}がやるかということなのだ。"
+    en: "The question is who's going to do it."
+  - jp: "彼{かれ}が言{い}いたいのは、もっと練習{れんしゅう}することなのだ。"
+    en: "What he wants to say is that we should practice more."
 contrasts:
   - slug: "no-da"
     label: "のだ"

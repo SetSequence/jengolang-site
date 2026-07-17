@@ -2695,6 +2695,23 @@ full batch 6–119 narratives. New batch narratives append below this section.
   bumps:** subete-wa-nai/dokoro-no-hanashi-de-wa-nai/tani-de/tomo/toki-ni med→high. **Seed-title fix:** wa-3
   (truncated 'feminine spee'). **Quote-safety:** rewrote tomo's dialogue key sentence with single quotes (no
   nested double-quotes). Clean build, lint clean (14), scan clean. **Session b117–119: 1150 → 1192 (+42 indexed).**
+  · **batch 120** (SPINE-ORDER PILOT — unit 39 'Advanced common grammar', first orchestrated batch:
+  Fable orchestrator + Explore prep brief + Opus writer subagent + content-reviewer QA gate + orchestrator
+  adjudication; 3 indexed, 3 conservative holds): てさしあげる (kenjougo of てあげる, でさしあげる fold child
+  absorbed as variants[] on parent, condescension nuance ↔ ageru-2 register-mirror / te-itadaku
+  direction-mirror) · 又も ('yet again' exasperation ↔ mata neutral / mo-mata word-order-flip; またもや
+  variant; **notation fix** seed 又〜も → 又も, it's the fixed adverb またも not a frame) · 〜(の)姿
+  (Vる姿/N姿/Nの姿 appearance-of, compound 制服姿 drops の, 姿-concrete vs 様子-abstract prose notes, no
+  contrast manufactured — no 様子/状態 node exists). **Holds (stay noindex):** futsu-no (borderline lexical;
+  writer's invented tada-no contrast STRIPPED per CALIBRATION2 §5 low-conf rule) · koto-nano +
+  no-wa-no-koto-da (low-conf reconstructions, +2 examples each on the pass-1 seed; seed contrasts kept —
+  §5 bars *inventing*, not pre-seeded content). **Reviewer catches (both real):** te-sashiageru example 2
+  contradicted its own nuance line (face-to-face 〜てさしあげましょうか offer → reworded to third-person
+  narration) · the 又〜も notation error. **Catalog follow-up:** grammar_enriched.csv canonical still 又〜も —
+  hook-guarded generated file, needs a pipeline-side fix. **Pilot verdict:** pattern holds — writer output
+  strong (1 notation error + 1 example slip + 1 §5 violation across 6 nodes, all caught by the review gate);
+  main-context cost ≈ briefs + verdicts only. Lint clean (6), build clean.
+  **Session b120: 1199 → 1202 (+3 indexed).**
   modality する/なる oppositions, keigo & こそあど register ladders, benefactive viewpoint mirrors,
   connective result/concession/condition axes.
 - **`common` band DRAINED (batch 72).** All remaining `--freq common` stubs are resolved noindex

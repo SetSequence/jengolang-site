@@ -21,6 +21,11 @@ formation:
   - attaches_to: "〜のは (cleft topic) + 名詞{めいし} + のことだ"
     form: "〜のは + N + のことだ"
     example: "問題{もんだい}なのは、安全{あんぜん}のことだ"
+examples:
+  - jp: "彼{かれ}が心配{しんぱい}しているのは、子{こ}どもの将来{しょうらい}のことだ。"
+    en: "What he's worried about is his children's future."
+  - jp: "さっきから話{はな}しているのは、来週{らいしゅう}の予定{よてい}のことだ。"
+    en: "What we've been talking about all this while is next week's schedule."
 contrasts:
   - slug: "no-wa-da"
     label: "のは〜だ"
